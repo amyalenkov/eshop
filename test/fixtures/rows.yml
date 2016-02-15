@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min_count: 1
+  current_count: 1
+
+two:
+  min_count: 1
+  current_count: 1

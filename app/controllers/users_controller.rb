@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
   end
 
   # GET/PATCH /users/:id/finish_signup
