@@ -31,3 +31,9 @@ gem 'devise', '4.0.0.rc1'
 
 gem 'slim-rails', '3.0.1'
 gem 'html2slim'
+
+gem 'nokogiri'
+
+gem 'activeadmin', github: 'activeadmin'
+
+gem 'will_paginate', '~> 3.0.6'
