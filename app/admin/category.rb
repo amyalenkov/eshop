@@ -1,5 +1,9 @@
 ActiveAdmin.register Category do
 
+  config.per_page = 30
+
+  filter :name
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
