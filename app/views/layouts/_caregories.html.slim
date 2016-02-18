@@ -4,11 +4,17 @@
       | Все категори
       span.caret
     ul.dropdown-menu
-      /- menu.each do |category, subcategories|
+      - menu.each do |category|
         li.dropdown-submenu
           a href="/category/#{category.name}"
             = category.name
-          = cache @subcategories do
+            .subcategory.dropdown-menu
+              ul[style="list-style: none outside none; width: 350px; padding-left: 15px;"]
+                - category.subcategories.each do |subcategory|
+                  li[style="display: block; width: 220px;"]
+                    a href="/subcategory/#{subcategory.name}"
+                      = subcategory.name
+          /= cache @subcategories do
             .subcategory.dropdown-menu
               ul[style="list-style: none outside none; width: 350px; padding-left: 15px;"]
                 - subcategories.each do |subcategory|
