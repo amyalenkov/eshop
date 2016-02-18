@@ -7,6 +7,8 @@ table[style="width:100%"]
         | Название
       th[style="text-align:right;"]
         | Price
+      th[style="text-align:right;"]
+        | add in cart
   tbody
     - @products.each do |product|
       tr
@@ -14,4 +16,8 @@ table[style="width:100%"]
           = link_to product.name, product_path(product.id)
         td[style="text-align:right;"]
           = product.price
+        td[style="text-align:right;"]
+          /.add_in_cart{:id => "#{product.id}"}
+          .add_in_cart_index id="#{product.id}"
+            = render 'products/add_in_cart', product: product
 =paginate @products

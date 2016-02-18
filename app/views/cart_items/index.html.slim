@@ -1,0 +1,18 @@
+table[style="width:100%"]
+  thead
+    tr
+      th[style="text-align:right;"]
+        | Название
+      th[style="text-align:right;"]
+        | State
+      th[style="text-align:right;"]
+        | Count
+  tbody
+    - @cart_items.each do |cart_item|
+      tr
+        td[style="text-align:right;"]
+          = link_to cart_item.get_product_name, product_path(cart_item.product_id)
+        td[style="text-align:right;"]
+          = cart_item.state
+        td[style="text-align:right;"]
+          = cart_item.count
