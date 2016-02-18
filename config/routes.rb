@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :products, only: [:index, :show]
-  resources :cart_items, only: [:create, :index]
+  resources :cart_items, only: [:index, :create, :destroy]
 
   get '/subcategory/:name' => 'products#index'
   get '/category/:name' => 'products#index'

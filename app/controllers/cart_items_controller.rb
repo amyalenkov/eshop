@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @cart_items = current_user.cart_items
+    get_cart_items
   end
 
   def create
@@ -18,6 +18,19 @@ class CartItemsController < ApplicationController
       cart_item.user_id = current_user.id
       cart_item.save!
     end
+  end
+
+  def destroy
+    cart_item = CartItem.find_by_id params[:id]
+    cart_item.destroy! unless cart_item.nil?
+    get_cart_items
+  end
+
+  private
+
+  def get_cart_items
+    @cart_items = current_user.cart_items
+    p @cart_items.size.to_s
   end
 
 end
