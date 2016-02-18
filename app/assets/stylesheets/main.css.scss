@@ -105,13 +105,12 @@ body > #wrap {height: auto; min-height: 100%;}
 
 
 /* bootstrap 3 helpers */
-
 .navbar-form input, .form-inline input {
   width:auto;
 }
 
 header {
-  height:280px;
+  height:135px;
 }
 
 #nav.affix {
@@ -128,6 +127,11 @@ header {
 #sidebar.affix {
   position: fixed;
   top: 80px;
+}
+
+.lines{
+  border: 1px solid rgba(34, 34, 34, 0.21);
+  padding-bottom: 15px;
 }
 
 
@@ -152,10 +156,12 @@ header {
 .dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
 .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;}
 
+.margin-top{
+  margin-top: 15px;
+}
 
 #imaginary_container{
   width: 25%;
-  margin-top: 10px;
   float: left;
 }
 .info{
