@@ -1,0 +1,17 @@
+h1
+  =@products.size
+table[style="width:100%"]
+  thead
+    tr
+      th[style="text-align:right;"]
+        | Название
+      th[style="text-align:right;"]
+        | Price
+  tbody
+    - @products.each do |product|
+      tr
+        td[style="text-align:right;"]
+          = link_to product.name, product_path(product.id)
+        td[style="text-align:right;"]
+          = product.price
+=paginate @products

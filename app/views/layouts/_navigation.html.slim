@@ -6,6 +6,9 @@
           h3 Shop
       .col-xs-12.col-sm-7.col-md-7.col-lg-7.menu_left
         = render 'layouts/menu'
+      .col-xs-12.col-sm-7.col-md-7.col-lg-7.menu_left
+        - cache @categories do
+          = render 'layouts/caregories', menu: @categories
       .col-xs-12.col-sm-4.col-md-4.col-lg-4.menu_right
 
         .login
