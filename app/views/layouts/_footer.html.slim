@@ -1,0 +1,13 @@
+#footer
+  .container-fluid
+    .row
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12
+        h4
+          | Каталог Крафтеров
+        .footer_catalog.column
+          - categories.each do |category|
+            |  <a href="#
+            = category.name
+            | ">
+            = category.name
+            br

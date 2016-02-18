@@ -1,0 +1,21 @@
+.dropdown
+  .dropdown-submenu
+    button.btn.btn-default.dropdown-toggle.bullet.button-no-border[type="button" data-toggle="dropdown"]
+      | Все категори
+      span.caret
+    ul.dropdown-menu
+      /- menu.each do |category, subcategories|
+        li.dropdown-submenu
+          a href="/category/#{category.name}"
+            = category.name
+          = cache @subcategories do
+            .subcategory.dropdown-menu
+              ul[style="list-style: none outside none; width: 350px; padding-left: 15px;"]
+                - subcategories.each do |subcategory|
+                    - if subcategory.title_sub_category != ('') and subcategory.title_sub_category != (nil)
+                      li[style="float: left; display: block; width: 220px;"]
+                        p[style="font-weight: bold; color: #000000; font-size: 17px; margin-bottom: 5px;margin-top: 5px;"]
+                          = subcategory.title_sub_category
+                    li[style="display: block; width: 220px;"]
+                      a href="/subcategory/#{subcategory.name}"
+                        = subcategory.name
