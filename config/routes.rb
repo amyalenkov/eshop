@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'cart_items/create'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'static_pages#index'
@@ -8,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :products
+  resources :products, only: [:index, :show]
+  resources :cart_items, only: [:index, :create, :destroy]
 
   get '/subcategory/:name' => 'products#index'
   get '/category/:name' => 'products#index'

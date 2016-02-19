@@ -6,4 +6,9 @@ class CartItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :row
   belongs_to :order
+
+  def get_product_name
+    product = Product.find_by_id product_id
+    product.name
+  end
 end
