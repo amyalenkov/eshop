@@ -4,6 +4,7 @@ class CartItemsController < ApplicationController
 
   def index
     get_cart_items
+    @order = Order.new
   end
 
   def create
@@ -30,7 +31,6 @@ class CartItemsController < ApplicationController
 
   def get_cart_items
     @cart_items = current_user.cart_items
-    p @cart_items.size.to_s
   end
 
 end
