@@ -1,46 +1,19 @@
-/.top_menu
-  .col-xs-3.col-sm-3.col-md-3.col-lg-3
-    #imaginary_container
-      .input-group.stylish-input-group
-        = form_tag('/search', :method => :get, :class => 'search') do
-          = text_field_tag 'search', nil, :placeholder => 'Найти...', :autocomplete => 'off', :class => 'search_input'
-          = submit_tag 'OK', :class => 'search_button'
-      #search_result[style="display: none"]
-        .search_result
-          span
-            | X
-          ul#result_search_ul
-            = render 'layouts/search'
-  .col-xs-9.col-sm-9.col-md-9.col-lg-9
-    /.info
-    = render 'layouts/info'
-
-
 #nav
-  .navbar.navbar-default.navbar-static
-    .container
-    /<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-    /navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="glyphicon glyphicon-bar"></span>
-      <span class="glyphicon glyphicon-bar"></span>
-      <span class="glyphicon glyphicon-bar"></span>
-    /</a>
-    .navbar-collapse.collapse
-      ul class="nav navbar-nav"
-        li class="active"
-          a href="#" Home
-        li class="divider"
-        li
-          a href="#" Link
-        li
-          a href="#" Link
-      ul class="nav pull-right navbar-nav"
-        li
-          form class="navbar-form"
-            input type="text" class="form-control" placeholder="Search"
-            button type="submit" class="btn btn-default"
-              /i class="glyphicon glyphicon-search"
-        li
-          a href="#"
-            /i class="glyphicon glyphicon-flag">
-              span class="badge" 2
+  .navbar.navbar-inverse.navbar-static
+    .container-fluid.lines
+      .col-xs-3.col-sm-3.col-md-3.col-lg-3.margin-top
+        #imaginary_container
+          .input-group.stylish-input-group
+            = form_tag('/search', :method => :get, :class => 'search') do
+              = text_field_tag 'search', nil, :placeholder => 'Найти...', :autocomplete => 'off', :class => 'search_input'
+              = submit_tag 'OK', :class => 'search_button'
+          #search_result[style="display: none"]
+            .search_result
+              span
+                | X
+              ul#result_search_ul
+                = render 'layouts/search'
+
+      .col-xs-9.col-sm-9.col-md-9.col-lg-9.margin-top
+        .info
+          = render 'layouts/info'
