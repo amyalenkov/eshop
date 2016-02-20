@@ -1,0 +1,14 @@
+table[style="width:100%"]
+  thead
+    tr
+      th[style="text-align:right;"]
+        | id
+      th[style="text-align:right;"]
+        | state
+  tbody
+    - @orders.each do |order|
+      tr
+        td[style="text-align:right;"]
+          = link_to 'order '+order.id.to_s, order_path(order.id)
+        td[style="text-align:right;"]
+          = order.state
