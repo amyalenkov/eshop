@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'cart_items/create'
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'static_pages#index'
