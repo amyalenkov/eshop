@@ -2,6 +2,8 @@ a> href='url1' Текущий заказ
 a> href='url2' История заказов
 a> href='url3' Встречи/Доставка
 a> href='url4' Ряды
+- cache @categories do
+  = render 'layouts/partials/caregories', menu: @categories
 button.btn.btn-default[type='button' class='pull-right']
   | Корзина
 button.btn.btn-default[type='button' class='pull-right']

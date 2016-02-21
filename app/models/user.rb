@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_many :cart_items
+  has_many :orders
 
   def contains_product_in_cart? product_id
     if cart_items.find_by_product_id(product_id).nil?
@@ -13,6 +14,10 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def get_all_cart_items_for_state state
+    cart_items.where :state => state
   end
 
 end

@@ -9,14 +9,11 @@ html
   body
     #wrap
       #main.clearfix
-        .container-fluid
-          .row
-            .col-xs-12.col-sm-12.col-md-12.col-lg-12
-              = render 'layouts/navigation'
-              = render 'layouts/top'
-              p.notice
-                = notice
-              p.alert
-                = alert
-              .content
-                = yield
+        = render 'layouts/partials/navigation'
+        = render 'layouts/partials/top'
+        p.notice
+          = notice
+        p.alert
+          = alert
+        .content
+          = yield

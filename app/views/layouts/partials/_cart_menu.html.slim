@@ -1,0 +1,5 @@
+-if current_user.get_all_cart_items_for_state(CartItem.states.keys[0]).nil?
+  = link_to 'Cart', cart_items_path
+-else
+  = link_to 'Cart ('+current_user.get_all_cart_items_for_state(CartItem.states.keys[0]).size.to_s+')', cart_items_path
+

@@ -1,2 +1,5 @@
 .cart_items
-  = render 'cart_items'
+  = form_for @order do |order|
+    = render 'cart_items', order: order
+    =order.submit 'Заказать'
+
