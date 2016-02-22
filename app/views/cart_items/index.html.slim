@@ -1,5 +1,10 @@
 .cart_items
   = form_for @order do |order|
-    = render 'cart_items', order: order
+    = render 'cart_items'
     =order.submit 'Заказать'
 
+.cart_items_for_row
+    - @cart_items_for_rows.each do |cart_item|
+      = form_for @row do |row|
+        = render 'cart_items_for_row', cart_item: cart_item
+        = row.submit 'Add to row'

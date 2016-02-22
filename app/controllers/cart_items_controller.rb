@@ -4,7 +4,12 @@ class CartItemsController < ApplicationController
 
   def index
     get_cart_items
+    @cart_items_for_rows = Array.new
+    @cart_items.each { |cart_item|
+      @cart_items_for_rows.push(cart_item) unless cart_item.possible_to_order?
+    }
     @order = Order.new
+    @row = Row.new
   end
 
   def create

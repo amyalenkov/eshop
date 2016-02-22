@@ -8,6 +8,8 @@ table[style="width:100%"]
       th[style="text-align:right;"]
         | Price
       th[style="text-align:right;"]
+        | min
+      th[style="text-align:right;"]
         | add in cart
   tbody
     - @products.each do |product|
@@ -16,6 +18,8 @@ table[style="width:100%"]
           = link_to product.name, product_path(product.id)
         td[style="text-align:right;"]
           = product.price
+        td[style="text-align:right;"]
+          = product.sales_notes
         td[style="text-align:right;"]
           /.add_in_cart{:id => "#{product.id}"}
           .add_in_cart_index id="#{product.id}"

@@ -1,0 +1,18 @@
+table[style="width:100%"]
+  thead
+    tr
+      th[style="text-align:right;"]
+        | id
+      th[style="text-align:right;"]
+        | min_count
+      th[style="text-align:right;"]
+        | current_count
+  tbody
+    - @rows.each do |row|
+      tr
+        td[style="text-align:right;"]
+          = link_to 'row '+row.id.to_s, order_path(row.id)
+        td[style="text-align:right;"]
+          = row.min_count
+        td[style="text-align:right;"]
+          = row.current_count

@@ -9,17 +9,21 @@ table[style="width:100%"]
         | State
       th[style="text-align:right;"]
         | Count
+      th[style="text-align:right;"]
+        | min
   tbody
     - @cart_items.each do |cart_item|
       -unless cart_item.in_order?
         tr
           td[style="text-align:right;"]
-            = check_box_tag 'card_items_id['+cart_item.id.to_s+']'
+            = check_box_tag 'card_items_id['+cart_item.id.to_s+']', cart_item.id.to_s, false, :disabled =>(cart_item.possible_to_order? ? false : true)
           td[style="text-align:right;"]
             = link_to cart_item.get_product_name, product_path(cart_item.product_id)
           td[style="text-align:right;"]
             = cart_item.state
           td[style="text-align:right;"]
             = cart_item.count
+          td[style="text-align:right;"]
+            = cart_item.get_min_sale
           td[style="text-align:right;"]
             /= button_to 'delete', cart_item, remote: true, method: :delete

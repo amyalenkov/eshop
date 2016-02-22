@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post 'choice_payment'
     end
   end
+  resources :rows, only: [:index, :create, :show]
 
   get '/subcategory/:name' => 'products#index'
   get '/category/:name' => 'products#index'
