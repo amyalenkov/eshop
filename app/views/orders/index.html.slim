@@ -5,6 +5,8 @@ table[style="width:100%"]
         | id
       th[style="text-align:right;"]
         | state
+      th[style="text-align:right;"]
+        | payment_type
   tbody
     - @orders.each do |order|
       tr
@@ -12,3 +14,5 @@ table[style="width:100%"]
           = link_to 'order '+order.id.to_s, order_path(order.id)
         td[style="text-align:right;"]
           = order.state
+        td[style="text-align:right;"]
+          = order.payment_type

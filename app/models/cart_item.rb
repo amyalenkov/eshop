@@ -1,6 +1,6 @@
 class CartItem < ActiveRecord::Base
 
-  enum state: [:add_in_cart, :in_order]
+  enum state: [:in_cart, :in_order]
 
   belongs_to :user
   belongs_to :product

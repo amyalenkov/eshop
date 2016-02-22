@@ -6,6 +6,5 @@ class Order < ActiveRecord::Base
   has_many :cart_items
 
   belongs_to :user
-  has_one :payment
 
 end

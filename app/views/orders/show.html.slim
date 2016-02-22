@@ -1,6 +1,5 @@
 h1
   =@order.id
-  = render 'choice_payment'
-/- if @order.state? == Order.state.keys[0]
-/- if @order.state? == 'complete'
+  =@order.state
+- if @order.not_choice?
   = render 'choice_payment'

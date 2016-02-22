@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
       @order.will_paid_offline!
     elsif payment_type == Order.payment_types[:card].to_s
       @order.card!
+      @order.payment_in_progress!
     end
   end
 
