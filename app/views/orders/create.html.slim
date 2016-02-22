@@ -1,2 +1,5 @@
 h1
   =@order.id
+  =@order.state
+-if @order.state == Order.state.keys[0]
+    = render 'choice_payment'

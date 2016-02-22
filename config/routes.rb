@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'static_pages#index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'static_pages#index'
 
   devise_for :users, controllers: {confirmations: 'users/confirmations'}
 
@@ -10,7 +11,11 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:index, :create, :destroy]
-  resources :orders, only: [:index, :create, :show]
+  resources :orders, only: [:index, :create, :show] do
+    member do
+      post 'choice_payment'
+    end
+  end
 
   get '/subcategory/:name' => 'products#index'
   get '/category/:name' => 'products#index'

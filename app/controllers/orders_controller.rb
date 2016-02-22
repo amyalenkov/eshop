@@ -24,4 +24,15 @@ class OrdersController < ApplicationController
     @order.save!
   end
 
+  def choice_payment
+    @order = Order.find_by_id params[:id]
+    payment_type = params[:order][:payment_type]
+    if payment_type == Order.payment_types[:offline].to_s
+      @order.offline!
+      @order.will_paid_offline!
+    elsif payment_type == Order.payment_types[:card].to_s
+      @order.card!
+    end
+  end
+
 end

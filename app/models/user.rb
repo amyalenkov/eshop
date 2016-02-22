@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :cart_items
   has_many :orders
+  has_many :payments
 
   def contains_product_in_cart? product_id
     if cart_items.find_by_product_id(product_id).nil?
