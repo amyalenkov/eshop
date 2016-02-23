@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  ratyrate_rater
+
   has_many :cart_items
   has_many :orders
   has_many :comments

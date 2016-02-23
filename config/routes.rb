@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   resources :rows, only: [:index, :create, :show, :update]
   resources :comments, only: [:create, :show, :update]
+  post '/rate' => 'rater#create', :as => 'rate'
 
   get '/subcategory/:name' => 'products#index'
   get '/category/:name' => 'products#index'

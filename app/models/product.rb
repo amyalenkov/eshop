@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
 
   belongs_to :subcategory
 
+  ratyrate_rateable 'rating'
+
   def get_not_full_row
     rows.find_by state: Row.states[:not_full]
   end
