@@ -7,4 +7,13 @@ class Product < ActiveRecord::Base
 
   belongs_to :subcategory
 
+  def get_not_full_row
+    rows.find_by state: Row.states[:not_full]
+  end
+
+  def get_min_sale
+    result = /\d+/.match sales_notes.to_s
+    result[0].to_i
+  end
+
 end

@@ -1,4 +1,4 @@
-= form_for(@order, :url =>choice_payment_order_path, :method => :post) do |order|
+= form_for(@order, :url =>choice_payment_order_path(@order), :method => :post) do |order|
   =label_tag 'offline'
   =order.radio_button 'payment_type', Order.payment_types[:offline], :checked => true
   =label_tag 'card'

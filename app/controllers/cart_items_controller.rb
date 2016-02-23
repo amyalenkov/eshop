@@ -4,9 +4,18 @@ class CartItemsController < ApplicationController
 
   def index
     get_cart_items
-    @cart_items_for_rows = Array.new
+    @cart_items_for_orders = Array.new
+    @cart_items_for_new_rows = Array.new
+    @cart_items_already_in_row = Array.new
+    @cart_items_already_in_my_row = Array.new
     @cart_items.each { |cart_item|
-      @cart_items_for_rows.push(cart_item) unless cart_item.possible_to_order?
+      @cart_items_for_orders.push(cart_item) if cart_item.possible_to_order?
+      @cart_items_for_new_rows.push(cart_item) if cart_item.for_new_row?
+      if cart_item.row.nil?
+        @cart_items_already_in_row.push(cart_item) if cart_item.in_row?
+      else
+        @cart_items_already_in_my_row.push cart_item if cart_item.row.not_full?
+      end
     }
     @order = Order.new
     @row = Row.new

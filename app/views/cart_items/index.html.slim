@@ -1,10 +1,27 @@
+h1
+  |order
 .cart_items
   = form_for @order do |order|
     = render 'cart_items'
     =order.submit 'Заказать'
-
-.cart_items_for_row
-    - @cart_items_for_rows.each do |cart_item|
+h1
+  |my rows
+.cart_items_in_rows
+  - @cart_items_already_in_my_row.each do |cart_item|
+    = form_for cart_item.get_row do |row|
+      = render 'cart_items_in_row', cart_item: cart_item
+      = row.submit 'update row'
+h1
+  |create new row
+.cart_items_for_new_rows
+    - @cart_items_for_new_rows.each do |cart_item|
       = form_for @row do |row|
         = render 'cart_items_for_row', cart_item: cart_item
-        = row.submit 'Add to row'
+        = row.submit 'create new row'
+h1
+  |add in row
+.cart_items_in_rows
+  - @cart_items_already_in_row.each do |cart_item|
+    = form_for cart_item.get_row do |row|
+      = render 'cart_items_in_row', cart_item: cart_item
+      = row.submit 'update row'

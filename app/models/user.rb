@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     cart_items.where :state => state
   end
 
+  def get_cart_items_in_rows
+    cart_items.where.not(row_id: nil)
+  end
+
 end
