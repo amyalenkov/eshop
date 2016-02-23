@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
   resources :rows, only: [:index, :create, :show, :update]
+  resources :comments, only: [:create, :show, :update]
 
   get '/subcategory/:name' => 'products#index'
   get '/category/:name' => 'products#index'

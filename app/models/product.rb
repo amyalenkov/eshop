@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   has_many :product_params
   has_many :product_pictures
   has_many :rows
+  has_many :comments
 
   belongs_to :subcategory
 

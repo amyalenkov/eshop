@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :cart_items
   has_many :orders
-  has_many :payments
+  has_many :comments
 
   def product_in_cart? product_id
     cart_item = cart_items.find_by(product_id: product_id, state: CartItem.states[:in_cart])
