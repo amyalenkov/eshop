@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   def search_ajax
     @search_products  = ThinkingSphinx.search params[:search], classes: [Product], :star => true,
                                               :page => params[:page], :per_page => 25
-    render nothing: ''
+    render json: @search_products.to_json
   end
 
   def search

@@ -15,4 +15,45 @@ $ ->
           console.log('error search')
         success: (data, textStatus, jqXHR) ->
           console.log('success search')
-#          live_search(data, search_string)
+          live_search(data, search_string)
+
+live_search = (data,search_request) ->
+  ul = $('#result_search_ul').empty()
+  ul.empty()
+  for index of data
+    if index < 5
+      li = $('<li></li>', {
+        "class": "li_class"
+      })
+      a = $('<a></a>', {
+        "href":"/products/#{data[index].id}",
+        "class": "a_class"
+      })
+#      add_image_tag(li, data[index].avatar.url)
+      create_new_li(li, 'name', data[index].name)
+#      create_new_li(li, 'description_search', data[index].description)
+#      create_new_li(li, 'address', data[index].address)
+#      create_new_li(li, 'city', data[index].city)
+
+      a.append(li)
+
+      ul.append(a)
+    else
+      url = "/products/search?utf8=✓&search="+search_request+"&commit=OK"
+      li = $('<li><a id="all_results" class="all_results" href='+url+'>Просмотреть все результаты</a></li>', {
+        "class": "li_class"
+      })
+      ul.append(li)
+      break
+
+
+create_new_li = (li, div_class_name, data) ->
+  div = $('<div></div>', {
+    "class": div_class_name
+  }).text(data).appendTo(li)
+
+add_image_tag = (li, image_src) ->
+  image = $('<img/>', {
+    "src": "/assets/" + image_src,
+    "class": "company_logo"
+  }).appendTo(li)
