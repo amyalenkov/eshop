@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   has_many :product_pictures
   has_many :rows
   has_many :comments
+  has_many :favorites
 
   belongs_to :subcategory
 
@@ -17,6 +18,10 @@ class Product < ActiveRecord::Base
   def get_min_sale
     result = /\d+/.match sales_notes.to_s
     result[0].to_i
+  end
+
+  def get_favorite user
+    Favorite.find_by(user_id: user.id, product_id: id)
   end
 
 end

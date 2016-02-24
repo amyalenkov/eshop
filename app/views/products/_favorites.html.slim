@@ -1,0 +1,11 @@
+-@favorite = @product.get_favorite(current_user)
+-if @favorite.nil?
+  = form_for Favorite.new, remote: true do |favorite|
+    =favorite.hidden_field :product_id, :value => @product.id
+    =favorite.hidden_field :user_id, :value => current_user.id
+    =favorite.submit 'add to favorites'
+- else
+  = form_for @favorite, method: :delete, remote: true do |favorite|
+    =favorite.hidden_field :product_id, :value => @product.id
+    =favorite.hidden_field :user_id, :value => current_user.id
+    =favorite.submit 'remove from favorite'

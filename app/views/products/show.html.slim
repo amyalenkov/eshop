@@ -4,6 +4,9 @@
 .rating
   = render 'rating'
 - if user_signed_in?
+  .favorites
+    = render 'favorites'
+- if user_signed_in?
   .add_comment
     = render 'add_comment_for_product'
 .all_comments

@@ -1,0 +1,5 @@
+- @favorites.each do |favorite|
+  div.field
+    = link_to favorite.product.name, product_path(favorite.product.id)
+    br
+    = favorite.product.price
