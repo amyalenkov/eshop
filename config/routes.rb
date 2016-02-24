@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    collection do
+      post 'search_ajax'
+      get 'search'
+    end
+  end
   resources :cart_items, only: [:index, :create, :destroy]
   resources :orders, only: [:index, :create, :show] do
     member do
