@@ -17,4 +17,16 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find_by_id params[:id]
   end
+
+  def search_ajax
+    @search_products  = ThinkingSphinx.search params[:search], classes: [Product], :star => true,
+                                              :page => params[:page], :per_page => 25
+    render nothing: ''
+  end
+
+  def search
+    @search_products  = ThinkingSphinx.search params[:search], classes: [Product], :star => true,
+                                              :page => params[:page], :per_page => 25
+
+  end
 end
