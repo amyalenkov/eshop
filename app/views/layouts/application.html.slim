@@ -12,8 +12,9 @@ html
         = render 'layouts/partials/navigation'
         = render 'layouts/partials/top'
         p.notice
-          = notice
+        = notice
         p.alert
-          = alert
+        = alert
         .content
-          = yield
+        = yield
+        = render 'layouts/partials/footer'

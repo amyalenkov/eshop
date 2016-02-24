@@ -129,12 +129,22 @@ header {
   top: 80px;
 }
 
-.lines{
-  border: 1px solid rgba(34, 34, 34, 0.21);
-  padding-bottom: 15px;
+.top{
+  background: #6cb2db;
+  height: 50px;
 }
 
 
+
+.order_menu, .categories_menu, .meeting_menu,
+.cart_menu, .rows_menu, .orders_menu, .create_question{
+  float: left;
+  padding-right: 10px;
+}
+
+.cart_menu{
+  padding-left: 15px;
+}
 
 
 .button-no-border{
@@ -157,7 +167,10 @@ header {
 .dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;}
 
 .margin-top{
-  margin-top: 15px;
+  margin-top: -5px;
+  a{
+    color: white;
+  }
 }
 
 #imaginary_container{
@@ -190,7 +203,11 @@ header {
 }
 
 .search_button{
-  margin-left: -5px;
+  margin-left: 0px;
+  background: #2e3192;
+  color: white;
+  border: none;
+  padding: 2px 5px 2px 5px;
 }
 
 #search_result{
@@ -242,6 +259,29 @@ header {
   font-size: 15px !important;
 }
 
+
+
+
+.recall, .catalog{
+  float: left;
+  text-align: center;
+}
+
+.recall{
+  height: 330px;
+  background: #2e3192;
+  color: #ffffff;
+}
+
+.catalog{
+  height: 830px;
+  .catalog_items{
+    float: left;
+    width: 25%;
+    height: 200px;
+  }
+}
+
 .search_crafter_title{
   float: left;
   width: 25%;
@@ -284,7 +324,7 @@ header {
 
 /*CONTENT*/
 .content{
-  height: 100000px;
+  //height: 100000px;
 }
 /*END_CONTENT*/
 
@@ -811,6 +851,10 @@ header {
 }
 
 @media (min-width: 931px) {
+
+  .search_input {
+    width: 140px;
+  }
   #imaginary_container{
     width: auto;
   }

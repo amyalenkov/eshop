@@ -1,3 +1,6 @@
-- menu.each do |category|
-  a href="/category/#{category.name}"
-    = category.name
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    - menu.each do |category|
+      .catalog_items
+        a href="/category/#{category.name}"
+          = category.name

@@ -1,10 +1,26 @@
-a> href='url1' Текущий заказ
-a> href='url2' История заказов
-a> href='url3' Встречи/Доставка
-a> href='url4' Ряды
-- cache @categories do
-  = render 'layouts/partials/caregories', menu: @categories
-button.btn.btn-default[type='button' class='pull-right']
-  | Корзина
-button.btn.btn-default[type='button' class='pull-right']
-  | Контакты
+/.categories_menu
+  - cache @categories do
+    = render 'layouts/partials/caregories', menu: @categories
+
+.order_menu
+  a> href='url1' Текущий заказ
+
+.orders_menu
+  = render 'layouts/partials/orders_menu'
+
+.meeting_menu
+  a> href='url3' Встречи/Доставка
+
+.rows_menu
+  - if user_signed_in?
+    = render 'layouts/partials/rows_menu'
+
+.create_question
+  a> href='url3' Задать вопрос
+
+.cart_menu.pull-right
+  - if user_signed_in?
+    = render 'layouts/partials/cart_menu'
+
+.pull-right
+    = link_to 'Контакты', nil
