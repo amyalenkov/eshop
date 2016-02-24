@@ -1,0 +1,6 @@
+- if @order.offline?
+  =render 'orders/finish_offline_payment'
+- elsif @order.card?
+  =render 'orders/card_payment'
+- else
+  =render 'orders/zx'

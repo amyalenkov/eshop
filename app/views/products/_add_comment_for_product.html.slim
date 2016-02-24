@@ -1,0 +1,13 @@
+= form_for(Comment.new, remote: true) do |comment|
+  div.field
+    = comment.label :title
+    br
+    = comment.text_field :title
+  div.field
+    = comment.label :body
+    br
+    = comment.text_field :body
+    br
+    = comment.hidden_field :product_id, :value =>  @product.id
+  div.actions
+    = comment.submit 'add comment'

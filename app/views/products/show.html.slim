@@ -1,3 +1,10 @@
 = @product.name
 .add_in_cart
-  = render 'products/add_in_cart', product: @product
+  = render 'products/add_in_cart'
+.rating
+  = render 'rating'
+- if user_signed_in?
+  .add_comment
+    = render 'add_comment_for_product'
+.all_comments
+  = render 'all_comments_for_product'

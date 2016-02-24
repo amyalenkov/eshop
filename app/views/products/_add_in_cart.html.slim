@@ -1,6 +1,9 @@
 - product = @product if product.nil?
 - if user_signed_in?
-  -if current_user.contains_product_in_cart?(product.id)
+  -if current_user.product_in_cart?(product)
+    h1
+      | product already in cart
+  -else
     = form_for(CartItem.new, remote: true) do |f|
       div.field
         = f.label :count
@@ -10,6 +13,3 @@
         = f.hidden_field :product_id, :value => product.id
       div.actions
         = f.submit 'add to cart'
-  -else
-    h1
-      | product already in cart
