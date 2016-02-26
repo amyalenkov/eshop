@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :set_menu
-  before_filter :get_submenu_by_categorie
+  # before_filter :get_submenu_by_categorie
 
   private
 
