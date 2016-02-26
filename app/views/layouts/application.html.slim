@@ -11,10 +11,11 @@ html
       #main.clearfix
         = render 'layouts/partials/navigation'
         = render 'layouts/partials/top'
-        p.notice
-        = notice
-        p.alert
-        = alert
+        /p.notice
+        /= notice
+        /p.alert
+        /= alert
         .content
-        = yield
+          = yield
+        = render 'layouts/partials/info_links'
         = render 'layouts/partials/footer'

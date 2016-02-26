@@ -3,4 +3,6 @@
     - menu.each do |category|
       .catalog_items
         a href="/category/#{category.name}"
-          = category.name
+          p
+            | #{category.name}
+          = image_tag ("#{category.logo_image}")

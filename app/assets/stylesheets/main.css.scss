@@ -1,7 +1,7 @@
 * { margin:0; padding:0; }
 html, body, #wrap { height: 100%; /*background: #d8d8d8*/ scroll-behavior: smooth;}
 body > #wrap {height: auto; min-height: 100%;}
-#main { padding-bottom: 250px; }  /* must be same height as the footer */
+#main { padding-bottom: 0px; }  /* must be same height as the footer */
 .clearfix:after {content: ".";
   display: block;
   height: 0;
@@ -91,6 +91,11 @@ body > #wrap {height: auto; min-height: 100%;}
     width: 75%;
     a{
       width: 100%;
+      margin-right: 5px ;
+    }
+    img{
+      margin-right: 15px;
+      width: 25px;
     }
   }
 }
@@ -132,6 +137,7 @@ header {
 .top{
   background: #6cb2db;
   height: 50px;
+  padding-top: 15px;
 }
 
 
@@ -274,11 +280,14 @@ header {
 }
 
 .catalog{
-  height: 830px;
+  //height: 830px;
   .catalog_items{
     float: left;
+    text-align: center;
     width: 25%;
     height: 200px;
+    //p{}
+    //img{}
   }
 }
 
@@ -736,6 +745,11 @@ header {
 /*END_REGISTRATION_AND_EDITOR_PAGE*/
 
 /*FOOTER*/
+
+.footer{
+  background: #6dcff6;
+}
+
 #footer{
   position: relative;
   margin-top: -250px;
