@@ -744,10 +744,31 @@ header {
 
 /*END_REGISTRATION_AND_EDITOR_PAGE*/
 
+/*INFO_LINKS*/
+.info_links{
+  height: 190px;
+  background: #e1e4e5;
+  a, p{
+    float: left;
+    width: 100%;
+    padding-left: 50px;
+    padding-top: 15px;
+  }
+  p{
+    margin-bottom: -5px;
+  }
+}
+/*END_INFO_LINKS*/
+
 /*FOOTER*/
 
 .footer{
+  height: 190px;
   background: #6dcff6;
+  font-size: 10px;
+  color: #736e6e;
+  padding-top: 30px;
+  padding-left: 40px;
 }
 
 #footer{

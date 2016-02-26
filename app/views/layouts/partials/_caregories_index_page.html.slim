@@ -5,4 +5,8 @@
         a href="/category/#{category.name}"
           p
             | #{category.name}
-          = image_tag ("#{category.logo_image}")
+          = image_tag ("categories/#{category.logo_image}")
+
+    - submenu.each do |subcategory|
+      p
+        | #{subcategory.id}
