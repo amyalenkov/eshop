@@ -51,3 +51,17 @@ gem 'thinking-sphinx', '3.1.4'
 
 #rating
 gem 'ratyrate'
+
+#capistrano
+gem 'capistrano-bundler'
+group :development do
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv', '~> 2.0', require: false
+end
+
+# gem 'capistrano-bundler', '~> 1.1.2'
+# gem 'capistrano-rails', '~> 1.1.1'
+# Add this if you're using rbenv
+# gem 'capistrano-rbenv', github: 'capistrano/rbenv'
+# Add this if you're using rvm
+# gem 'capistrano-rvm', github: 'capistrano/rvm'

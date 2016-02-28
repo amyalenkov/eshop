@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160224153636) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "logo_image"
   end
 
   create_table "comments", force: true do |t|
