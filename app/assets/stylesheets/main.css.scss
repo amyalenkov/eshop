@@ -268,15 +268,27 @@ header {
 
 
 
-.recall, .catalog{
+.catalog_list, .catalog{
   float: left;
   text-align: center;
 }
 
-.recall{
-  height: 330px;
-  background: #2e3192;
-  color: #ffffff;
+.catalog_list{
+  //height: 330px;
+  float: left;
+  padding-left: 50px;
+  text-align: left;
+  line-height: 5px;
+  color: #000000;
+  p{
+    padding-top: 15px;
+    //padding-bottom: 10px;
+  }
+  a{
+    p{
+      padding-top: 0;
+    }
+  }
 }
 
 .catalog{
@@ -285,7 +297,7 @@ header {
     float: left;
     text-align: center;
     width: 25%;
-    height: 200px;
+    //height: 200px;
     //p{}
     //img{}
   }
@@ -414,7 +426,7 @@ header {
   line-height: 16px;
   margin-left: 40px;
   padding-left: 20px;
-//  width: 64%;
+  //  width: 64%;
   width: 601px;
 }
 
@@ -631,7 +643,7 @@ header {
     }
   }
 
-// delete free space in divs
+  // delete free space in divs
   .masonry-container {
     -moz-column-count: 3;
     -moz-column-gap: 0;
@@ -642,14 +654,14 @@ header {
   }
 
   .masonry-container, .item {
-//    display: inline-block;
+    //    display: inline-block;
     width: 100%;
   }
 
   .slide_image{
     width: 100%;
   }
-// end
+  // end
 
   .your_albums{
     float: left;
@@ -818,7 +830,7 @@ header {
   }
   .menu_right{
     margin-top: 15px;
-//    text-align: center;
+    //    text-align: center;
     text-align: left;
     position: inherit;
   }

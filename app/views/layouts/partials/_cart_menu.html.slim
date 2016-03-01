@@ -1,5 +1,5 @@
 .pull-right
   -if current_user.get_all_cart_items_for_state(CartItem.states.keys[0]).nil?
-    = link_to image_tag('categories/cart.png'), cart_items_path
+    = link_to image_tag('cart.png'), cart_items_path
   -else
-    = link_to image_tag('categories/cart.png')+' ('+current_user.get_all_cart_items_for_state(CartItem.states.keys[0]).size.to_s+')', cart_items_path
+    = link_to image_tag('cart.png')+' ('+current_user.get_all_cart_items_for_state(CartItem.states.keys[0]).size.to_s+')', cart_items_path
