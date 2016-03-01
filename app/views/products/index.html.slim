@@ -1,27 +1,29 @@
-h1
-  =@products.size
-table[style="width:100%"]
-  thead
-    tr
-      th[style="text-align:right;"]
-        | Название
-      th[style="text-align:right;"]
-        | Price
-      th[style="text-align:right;"]
-        | min
-      th[style="text-align:right;"]
-        | add in cart
-  tbody
-    - @products.each do |product|
-      tr
-        td[style="text-align:right;"]
-          = link_to product.name, product_path(product.id)
-        td[style="text-align:right;"]
-          = product.price
-        td[style="text-align:right;"]
-          = product.sales_notes
-        td[style="text-align:right;"]
-          /.add_in_cart{:id => "#{product.id}"}
-          .add_in_cart_index id="#{product.id}"
-            = render 'products/add_in_cart', product: product
-=paginate @products
+.container-fluid
+  .row
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_list
+      h5
+        | Недавно просмотренные товары
+      /- cache @categories do
+        = render 'layouts/partials/categories_list', menu: @categories
+    .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog
+      h5
+        /| #{@products.categories}
+        | Имя категории
+      - @products.each do |product|
+        .product
+          .image
+            a href="#{product_path(product.id)}"
+              /= image_tag ("#{(product.product_pictures[0]).url}")
+              = image_tag ("")
+          .title
+            = link_to product.name.gsub('&quot;', ''), product_path(product.id)
+            p
+              | Материал: #{(product.product_params.find_by_name 'material')[:value]}
+            p
+              | Производитель: нет
+          .info
+            = product.sales_notes
+            = product.price
+            .add_in_cart_index id="#{product.id}"
+              = render 'products/add_in_cart', product: product
+      =paginate @products
