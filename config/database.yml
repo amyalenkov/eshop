@@ -49,5 +49,5 @@ test:
 production:
   <<: *default
   database: eshop_production
-  username: eshop
-  password: <%= ENV['ESHOP_DATABASE_PASSWORD'] %>
+  username: eshop_db
+  password: eshop_db01

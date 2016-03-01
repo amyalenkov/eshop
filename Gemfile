@@ -6,6 +6,11 @@ gem 'rails', '4.1.0'
 
 group :development do
   gem 'rack-mini-profiler'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 # Use SCSS for stylesheets
