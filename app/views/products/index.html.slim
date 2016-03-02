@@ -19,7 +19,7 @@
         .product
           .image
             a href="#{product_path(product.id)}"
-              = image_tag ("#{(product.product_pictures[0]).url}")
+              = image_tag ("#{(product.product_pictures.first).url}")
           .title
             = link_to product.name.gsub('&quot;', ''), product_path(product.id)
             p
