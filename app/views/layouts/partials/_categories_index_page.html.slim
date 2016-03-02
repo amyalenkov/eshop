@@ -3,15 +3,11 @@
     - menu.each do |category|
       .catalog_items
         a href="/category/#{category.name}"
-          p
+          h4
             | #{category.name}
           = image_tag ("categories/#{category.name}.png")
+
           - category.subcategories.each do |subcategory|
-            p
-              | #{subcategory.name}
-              | #{subcategory.name}
-
-
-    /- submenu.each do |subcategory|
-    /  p
-    /    | #{subcategory.id}
+            a href="/subcategory/#{subcategory.name}"
+              p.subcategory_name
+                | #{subcategory.name}

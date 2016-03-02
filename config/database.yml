@@ -1,29 +1,24 @@
-default: &default 
-  adapter: postgresql
-  pool: 5
-  timeout: 5000
+default: &default
   encoding: utf8
-
-
-development: 
-  # «: *default
-  # database: eshop_development
   adapter: postgresql
-  host: localhost
   database: eshop_development
+  host: localhost
   pool: 5
-  # username: amyalenkov
-  # password: 2102
   username: sushi
   password: 1234
-  encoding: utf8
+#  username: amyalenkov
+#  password: 2102
 
-test: 
-  «: *default
+development:
+  <<: *default
+  database: eshop_development
+
+test:
+  <<: *default
   database: eshop_test
 
-production: 
-  «: *default
+production:
+  <<: *default
   database: eshop_production
-  username: eshop
-  password: <%= ENV['ESHOP_DATABASE_PASSWORD'] %>
+  username: eshop_db
+  password: <%= Rails.application.secrets.db_password  %>

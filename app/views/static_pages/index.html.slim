@@ -6,7 +6,6 @@
       - cache @categories do
         = render 'layouts/partials/categories_list', menu: @categories
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog
-      /| Каталог
       br
       - cache @categories, @subcategories do
-        = render 'layouts/partials/categories_index_page', menu: @categories, subcategories: @categories
+        = render 'layouts/partials/categories_index_page', menu: @categories

@@ -146,10 +146,18 @@ header {
 .cart_menu, .rows_menu, .orders_menu, .create_question{
   float: left;
   padding-right: 10px;
+  font-size: 13px;
+  padding-top: 4px;
 }
 
 .cart_menu{
-  padding-left: 15px;
+  margin-top: -8px;
+  padding-left: 20px;
+}
+
+.contact_menu{
+  float: left;
+  font-size: 18px;
 }
 
 
@@ -292,14 +300,75 @@ header {
 }
 
 .catalog{
-  //height: 830px;
-  .catalog_items{
+  .row_count{
     float: left;
+    width: 100%;
+  }
+  .catalog_items{
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
     text-align: center;
-    width: 25%;
-    //height: 200px;
-      //p{}
+    width: 24%;
+    .subcategory_name{
+      float: left;
+      width: 100%;
+      line-height: 15px;
+      text-align: left;
+      padding-left: 5px;
+      margin-bottom: 7px;
+    }
     //img{}
+  }
+  .product{
+    float: left;
+    width: 33%;
+    height: 215px;
+    border-bottom: 1px solid #2E2F30;
+    margin-bottom: 20px;
+    .image{
+      float: left;
+      width: 50%;
+      img{
+        width: 100%;
+      }
+    }
+    .title{
+      float: left;
+      width: 50%;
+      text-align: left;
+      font-size: 10px;
+      color: #057e89;
+    }
+    .info{
+      float: left;
+      width: 100%;
+      text-align: left;
+      .params{
+        float: left;
+        width: 50%;
+        p{
+          font-size: 10px;
+          line-height: 7px;
+        }
+      }
+      .sale{
+        float: left;
+        width: 25%;
+      }
+      .cart{
+        float: left;
+        width: 25%;
+      }
+      .actions{
+        input[type="submit"]{
+          background: url("cart_button.png");
+          width: 29px;
+          height: 24px;
+          border: none;
+        }
+      }
+    }
   }
 }
 

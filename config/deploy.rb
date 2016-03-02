@@ -1,76 +1,47 @@
-require 'bundler/capistrano' # for bundler support
-require 'capistrano'
-require 'capistrano/deploy'
+# config valid only for current version of Capistrano
+lock '3.4.0'
 
-set :application, "ehop"
-set :repository,  "git@github.com:amyalenkov/eshop.git"
+set :application, 'uzelok4you.by'
+# set :application, '185.66.69.13'
+set :repo_url, 'https://github.com/amyalenkov/eshop.git'
 
-set :user, 'root'
-set :deploy_to, "/var/www/webapps/#{application}/public"
-set :use_sudo, false
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
+set :deploy_to, '/var/www/webapps/eshop'
+set :rvm_ruby_version, '2.2.1'
+set :user, 'deploy'
+set :use_sudo, true
+set :rails_env, 'production'
+set :deploy_via, :copy
+
+# Default value for :scm is :git
 set :scm, :git
 
-default_run_options[:pty] = true
+# Default value for :format is :pretty
+set :format, :pretty
 
-role :web, "185.47.153.50"  # Your HTTP server, Apache/etc
-role :app, "185.47.153.50"  # This may be the same as your `Web` server
+# Default value for :pty is false
+set :pty, false
 
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+# Default value for :linked_files is []
+# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+# Default value for linked_dirs is []
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
-# If you are using Passenger mod_rails uncomment this:
+# Default value for keep_releases is 5
+set :keep_releases, 5
+
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
   end
+
 end
-
-
-
-
-
-
-
-
-
-
-# require "bundler/capistrano"
-# require 'bundler/setup'
-#
-# set :application, "eshop"
-# set :repository,  "git@github.com:amyalenkov/eshop.git"
-# set :user, "root"
-#
-# # set :applicationdir, "/var/www/webapps/#{application}"
-# set :domain, "uzelok4you.by"
-#
-# set :scm, :git
-# set :branch, "master"
-# set :git_shallow_clone, 1
-# set :scm_verbose, true
-# # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-#
-# role :web, domain                          # Your HTTP server, Apache/etc
-# role :app, domain                          # This may be the same as your `Web` server
-# role :db,  domain, :primary => true # This is where Rails migrations will run
-#
-# set :deploy_to, applicationdir
-# set :deploy_via, :remote_cache
-#
-# # if you're still using the script/reaper helper you will need
-# # these http://github.com/rails/irs_process_scripts
-#
-# # If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end

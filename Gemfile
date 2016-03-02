@@ -6,6 +6,11 @@ gem 'rails', '4.1.0'
 
 group :development do
   gem 'rack-mini-profiler'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 # Use SCSS for stylesheets
@@ -15,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -52,16 +57,4 @@ gem 'thinking-sphinx', '3.1.4'
 #rating
 gem 'ratyrate'
 
-#capistrano
-gem 'capistrano-bundler'
-group :development do
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv', '~> 2.0', require: false
-end
-
-# gem 'capistrano-bundler', '~> 1.1.2'
-# gem 'capistrano-rails', '~> 1.1.1'
-# Add this if you're using rbenv
-# gem 'capistrano-rbenv', github: 'capistrano/rbenv'
-# Add this if you're using rvm
-# gem 'capistrano-rvm', github: 'capistrano/rvm'
+gem 'rake', '10.5.0'

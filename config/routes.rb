@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     member do
       post 'choice_payment'
     end
+    collection do
+      get 'meetings'
+    end
   end
   resources :rows, only: [:index, :create, :show, :update]
   resources :comments, only: [:create, :show, :update]
