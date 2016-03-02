@@ -3,18 +3,23 @@
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_list
       h5
         | Недавно просмотренные товары
-      /- cache @categories do
+    /- cache @categories do
         = render 'layouts/partials/categories_list', menu: @categories
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog
       h5
-        /| #{@products.categories}
+        /| #{@subcategories.category.name}
         | Имя категории
+      - if @subcategories != nil
+        - @subcategories.each do |subcategory|
+          /a href="/subcategory/#{subcategory.name}"
+
+          = link_to subcategory.name, "/subcategory/#{subcategory.name}"
+
       - @products.each do |product|
         .product
           .image
             a href="#{product_path(product.id)}"
-              /= image_tag ("#{(product.product_pictures[0]).url}")
-              = image_tag ("")
+              = image_tag ("#{(product.product_pictures[0]).url}")
           .title
             = link_to product.name.gsub('&quot;', ''), product_path(product.id)
             p
@@ -22,8 +27,18 @@
             p
               | Производитель: нет
           .info
-            = product.sales_notes
-            = product.price
-            .add_in_cart_index id="#{product.id}"
-              = render 'products/add_in_cart', product: product
+            .sale
+              = product.sales_notes
+            .params
+              p
+                | Размер:
+              p
+                | Артикул:
+              p
+                | На складе:
+            .cart
+              = product.price
+              /.add_in_cart_index id="#{product.id}"
+                = render 'products/add_in_cart', product: product
+
       =paginate @products

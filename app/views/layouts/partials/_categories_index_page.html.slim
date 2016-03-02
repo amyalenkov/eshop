@@ -8,6 +8,6 @@
           = image_tag ("categories/#{category.name}.png")
 
           - category.subcategories.each do |subcategory|
-            a href="/category/#{subcategory.name}"
+            a href="/subcategory/#{subcategory.name}"
               p.subcategory_name
                 | #{subcategory.name}
