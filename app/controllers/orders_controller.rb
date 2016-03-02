@@ -38,4 +38,8 @@ class OrdersController < ApplicationController
     end
   end
 
+  def meetings
+    @orders = current_user.get_meetings
+  end
+
 end
