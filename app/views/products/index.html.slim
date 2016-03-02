@@ -1,11 +1,11 @@
 .container-fluid
   .row
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_list
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_list
       h5
         | Недавно просмотренные товары
     /- cache @categories do
         = render 'layouts/partials/categories_list', menu: @categories
-    .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       h5
         /| #{@subcategories.category.name}
         | Имя категории

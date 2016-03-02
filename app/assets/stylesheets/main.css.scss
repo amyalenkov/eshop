@@ -284,7 +284,7 @@ header {
 .catalog_list{
   //height: 330px;
   float: left;
-  padding-left: 50px;
+  padding-left: 15px;
   text-align: left;
   line-height: 5px;
   color: #000000;
@@ -323,9 +323,11 @@ header {
   .product{
     float: left;
     width: 33%;
-    height: 215px;
+    height: 190px;
     border-bottom: 1px solid #2E2F30;
     margin-bottom: 20px;
+    position:relative;
+
     .image{
       float: left;
       width: 50%;
@@ -343,7 +345,13 @@ header {
     .info{
       float: left;
       width: 100%;
+      height: 50px;
       text-align: left;
+
+      position:absolute;
+      left:0;
+      bottom:0;
+
       .params{
         float: left;
         width: 50%;
@@ -354,21 +362,44 @@ header {
       }
       .sale{
         float: left;
-        width: 25%;
+        width: 20%;
+        font-size: 16px;
+
+        position:absolute;
+        left:50%;
+        bottom:3px;
       }
       .cart{
         float: left;
-        width: 25%;
-      }
-      .actions{
-        input[type="submit"]{
-          background: url("cart_button.png");
-          width: 29px;
-          height: 24px;
-          border: none;
+        width: 30%;
+
+        position:absolute;
+        left:70%;
+        bottom:0;
+        .field{
+          float: left;
+          margin-right: 5px;
+          input[type="text"]{
+            width: 25px;
+            height: 20px;
+          }
         }
+        .actions{
+          float: left;
+          input[type="submit"]{
+            background: url("cart_button.png");
+            width: 29px;
+            height: 24px;
+            border: none;
+          }
+        }
+
       }
     }
+  }
+  .product:hover{
+    border: 1px solid #262626;
+    border-radius: 15px;
   }
 }
 
