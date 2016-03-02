@@ -10,11 +10,15 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
-  adapter: postgresql
-  pool: 5
-  username: amyalenkov
-  password: 2102
   encoding: utf8
+  adapter: postgresql
+  database: eshop_development
+  host: localhost
+  pool: 5
+  username: sushi_new
+  password: 1234
+#  username: amyalenkov
+#  password: 2102
 
 development:
   <<: *default

@@ -340,6 +340,23 @@ header {
       font-size: 10px;
       color: #057e89;
     }
+    .info{
+      float: left;
+      width: 100%;
+      text-align: left;
+      .params{
+        float: left;
+        width: 35%;
+      }
+      .sale{
+        float: left;
+        width: 35%;
+      }
+      .cart{
+        float: left;
+        width: 30%;
+      }
+    }
   }
 }
 
