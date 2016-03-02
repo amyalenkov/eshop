@@ -362,7 +362,10 @@ header {
       }
       .actions{
         input[type="submit"]{
-          //background: ;
+          background: url("cart_button.png");
+          width: 29px;
+          height: 24px;
+          border: none;
         }
       }
     }
