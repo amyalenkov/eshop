@@ -346,15 +346,24 @@ header {
       text-align: left;
       .params{
         float: left;
-        width: 35%;
+        width: 50%;
+        p{
+          font-size: 10px;
+          line-height: 7px;
+        }
       }
       .sale{
         float: left;
-        width: 35%;
+        width: 25%;
       }
       .cart{
         float: left;
-        width: 30%;
+        width: 25%;
+      }
+      .actions{
+        input[type="submit"]{
+          //background: ;
+        }
       }
     }
   }
