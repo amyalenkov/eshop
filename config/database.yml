@@ -54,4 +54,4 @@ production:
   <<: *default
   database: eshop_production
   username: eshop_db
-  password: eshop_db01
+  password: <%= Rails.application.secrets.db_password  %>
