@@ -51,3 +51,4 @@ production:
   database: eshop_production
   username: eshop_db
   password: <%= Rails.application.secrets.db_password  %>
+  host: ""
