@@ -9,7 +9,7 @@
   = render 'layouts/partials/orders_menu'
 
 .meeting_menu
-  a> href='url3' Встречи/Доставка
+  = link_to 'Встречи/Доставка', meetings_orders_path
 
 .rows_menu
   - if user_signed_in?

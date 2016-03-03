@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   def set_menu
     @categories = Category.includes :subcategories
+    @categories = @categories.page(1).per(50)
   end
 
 end

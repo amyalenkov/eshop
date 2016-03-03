@@ -1,11 +1,11 @@
 .container-fluid
   .row
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_list
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_list
       h5
         | Недавно просмотренные товары
     /- cache @categories do
         = render 'layouts/partials/categories_list', menu: @categories
-    .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       h5
         /| #{@subcategories.category.name}
         | Имя категории
@@ -19,7 +19,7 @@
         .product
           .image
             a href="#{product_path(product.id)}"
-              = image_tag ("#{(product.product_pictures[0]).url}")
+              = image_tag ("#{(product.product_pictures.first).url}")
           .title
             = link_to product.name.gsub('&quot;', ''), product_path(product.id)
             p
@@ -27,18 +27,17 @@
             p
               | Производитель: нет
           .info
-            .sale
-              = product.sales_notes
             .params
               p
-                | Размер:
+                | Размер: #{(product.product_params.find_by_name 'size')[:value]}
               p
-                | Артикул:
+                | Артикул: #{(product.id)}
               p
-                | На складе:
-            .cart
+                | На складе: #{(product.product_params.find_by_name 'stock_balance')[:value]}
+            .sale
               = product.price
-              /.add_in_cart_index id="#{product.id}"
+            .cart
+              .add_in_cart_index id="#{product.id}"
                 = render 'products/add_in_cart', product: product
 
       =paginate @products

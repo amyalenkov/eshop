@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
     else
       @products = Product.all.page(params[:page])
     end
-    # @products = Kaminari.paginate_array(@products).page(params[:page])
   end
 
   def show

@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
     cart_items.where.not(row_id: nil)
   end
 
+  def get_meetings
+    orders.where.not(meeting_id: nil)
+  end
+
 end
