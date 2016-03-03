@@ -3,41 +3,46 @@
     .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_list
       h5
         | Недавно просмотренные товары
-    /- cache @categories do
-        = render 'layouts/partials/categories_list', menu: @categories
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       h5
-        /| #{@subcategories.category.name}
         | Имя категории
-      - if @subcategories != nil
-        - @subcategories.each do |subcategory|
-          /a href="/subcategory/#{subcategory.name}"
+        /| #{@subcategories.category.name}
+        - if @subcategories != nil
+          - @subcategories.each do |subcategory|
+            = link_to subcategory.name, "/subcategory/#{subcategory.name}"
 
-          = link_to subcategory.name, "/subcategory/#{subcategory.name}"
+          .row_products
+            - @products.each do |product|
+              - product_image = product.product_pictures.first.url
+              - product_name = product.name.gsub('&quot;', '')
+              - product_material = (product.product_params.find_by_name 'material')[:value]
+              - product_size = (product.product_params.find_by_name 'size')[:value]
+              - product_stock_availability = (product.product_params.find_by_name 'stock_balance')[:value]
+              - product_id = product.id
+              - product_price = product.price
 
-      - @products.each do |product|
-        .product
-          .image
-            a href="#{product_path(product.id)}"
-              = image_tag ("#{(product.product_pictures.first).url}")
-          .title
-            = link_to product.name.gsub('&quot;', ''), product_path(product.id)
-            p
-              | Материал: #{(product.product_params.find_by_name 'material')[:value]}
-            p
-              | Производитель: нет
-          .info
-            .params
-              p
-                | Размер: #{(product.product_params.find_by_name 'size')[:value]}
-              p
-                | Артикул: #{(product.id)}
-              p
-                | На складе: #{(product.product_params.find_by_name 'stock_balance')[:value]}
-            .sale
-              = product.price
-            .cart
-              .add_in_cart_index id="#{product.id}"
-                = render 'products/add_in_cart', product: product
+              .product
+                .image
+                  a href="#{product_path(product.id)}"
+                    = image_tag ("#{product_image}")
+                .title
+                  = link_to product_name, product_path(product.id)
+                  p
+                    | Материал: #{product_material}
+                  p
+                    | Производитель: нет
+                .info
+                  .params
+                    p
+                      | Размер: #{product_size}
+                    p
+                      | Артикул: #{product_id}
+                    p
+                      | На складе: #{product_stock_availability}
+                  .sale
+                    = product_price
+                  .cart
+                    .add_in_cart_index id="#{product_id}"
+                      = render 'products/add_in_cart', product: product
 
       =paginate @products
