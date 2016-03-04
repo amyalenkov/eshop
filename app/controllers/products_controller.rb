@@ -13,8 +13,6 @@ class ProductsController < ApplicationController
       all_subcategories.push subcategory
       @products = Product.includes(:subcategory).joins(:product_pictures).references(all_subcategories).
           where(subcategory_id: all_subcategories).page(params[:page])
-      p @products.size
-      p Product.all.size
     else
       @products = Product.all.page(params[:page])
     end
