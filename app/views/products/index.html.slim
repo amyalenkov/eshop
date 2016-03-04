@@ -10,6 +10,7 @@
         - if @subcategories != nil
           - @subcategories.each do |subcategory|
             = link_to subcategory.name, "/subcategory/#{subcategory.name}"
+          - @subcategories.each do |subcategory|
             - @products.in_groups_of(3, false) do |products|
               .row_products
                 - for product in products
@@ -28,17 +29,17 @@
                     .title
                       = link_to product_name, product_path(product_id)
                       p
-                        | Материал: #{product_material}
+                        | Материал: <b>#{product_material}</b>
                       p
-                        | Производитель: нет
+                        | Производитель: <b>нет</b>
                     .info
                       .params
                         p
-                          | Размер: #{product_size}
+                          | Размер: <b>#{product_size}</b>
                         p
-                          | Артикул: #{product_id}
+                          | Артикул: <b>#{product_id}</b>
                         p
-                          | На складе: #{product_stock_availability}
+                          | На складе: <b>#{product_stock_availability}</b>
                       .sale
                         = product_price
                       .cart
