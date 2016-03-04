@@ -3,9 +3,31 @@
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.zoom_list
 
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
-      = @product.name
+      .title
+        = @product.name.gsub('&quot;', '')
+      .description
+        dl
+          dt <i>Артикул</i>:
+          dd <i><b>#{@product.id}</b></i>
+          dt <i>Остаток на складе:</i>
+          dd <i><b>#{@product.product_params.find_by_name('stock_balance')[:value]}</b></i>
+          dt <i>Страна-производитель:</i>
+          dd <i><b>НЕТ ДАННЫХ</b></i>
+          dt <i>Размер:</i>
+          dd <i><b>#{@product.product_params.find_by_name('size')[:value]}</b></i>
+          dt <i>Материал:</i>
+          dd <i><b>#{@product.product_params.find_by_name('material')[:value]}</b></i>
+          dt <i>В боксе:</i>
+          dd <i><b>НЕТ ДАННЫХ</b></i>
+          dt <i>Упаковано в:</i>
+          dd <i><b>#{@product.product_params.find_by_name('box_type')[:value]}</b></i>
+          dt <i>Сертификат:</i>
+          dd <i><b>#{@product.product_params.find_by_name('certificate')[:value]}</b></i>
+          dt <i>Вес:</i>
+          dd <i><b>#{@product.product_params.find_by_name('weight')[:value]}</b></i>
+
       .add_in_cart
-        = render 'products/add_in_cart'
+        = render 'products/add_in_cart_from_show'
       .rating
         = render 'rating'
       - if user_signed_in?

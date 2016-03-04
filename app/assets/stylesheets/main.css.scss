@@ -419,6 +419,88 @@ header {
   }
 }
 
+.description_product{
+  .title{
+    float: left;
+    color: #f2a31a;
+    font-size: 20px;
+  }
+  .description{
+    float: left;
+    width: 100%;
+    dl{
+      width: 350px;
+      padding-top: 25px;
+      font-size: 12px;
+      dt{
+        float: left;
+        width: 190px;
+        font-weight: normal;
+      }
+    }
+  }
+  .add_in_cart{
+    float: left;
+    width: 330px;
+    height: 95px;
+    border: 2px solid #ffb11a;
+    border-radius: 10px;
+    background: #feeaff;
+    .price{
+      float: left;
+      width: 150px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #f28709;
+      padding-top: 35px;
+      padding-left: 40px;
+    }
+    .count_for_cart{
+      float: left;
+      width: 150px;
+      height: 50px;
+      margin-top: 25px;
+      border-radius: 5px;
+      background: #d2e2fe;
+      padding-top: 10px;
+      padding-left: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      .field_count{
+        float: left;
+        margin-right: 5px;
+        margin-top: 7px;
+        margin-left: 10px;
+        input[type="text"]{
+          float: left;
+          width: 65px;
+          height: 20px;
+          border: 1px solid rgba(46, 47, 48, 0.45);
+          border-radius: 5px;
+          outline: none;
+          padding-left: 5px;
+        }
+        img{
+          float: left;
+          margin-top: -17px;
+          margin-left: 5px;
+        }
+      }
+      .actions{
+        float: left;
+        input[type="submit"]{
+          background: url("cart_button.png");
+          width: 29px;
+          height: 24px;
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+
 .search_crafter_title{
   float: left;
   width: 25%;
@@ -534,21 +616,7 @@ header {
   }
 }
 
-.description_company{}
 
-.description{
-  float: left;
-  font-size: 16px;
-  line-height: 16px;
-  margin-left: 40px;
-  padding-left: 20px;
-  //  width: 64%;
-  width: 601px;
-}
-
-.description_show{
-  border-left: 1px solid #000000;
-}
 
 .line{
   float: left;
@@ -809,62 +877,6 @@ header {
 .line_bottom{
   margin-top: 15px;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
-}
-
-.modal-for-album{
-  width: 682px !important;
-  .show_album, .show_album_for_edit{
-    width: 85%;
-    margin-left: 50px;
-    float: left;
-    min-height: 100px;
-    padding-top: 20px;
-    .image_box{
-      float: left;
-      width: 100%;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-      border-bottom: 1px solid rgba(16, 16, 16, 0.20);
-      .delete{
-        width: 10px;
-        height: 10px;
-        float: right;
-      }
-      .left, .right{
-        float: left;
-        width: 45%;
-      }
-      .right{
-        width: 55%;
-      }
-      .title{
-        float: left;
-        font-weight: bold;
-      }
-      .img img{
-        float: left;
-        width: 250px;
-      }
-      .name{
-        margin-top: 0px;
-      }
-      .name, .description, .label_checkbox{
-        float: left;
-        width: 80%;
-        padding-left: 10px;
-        margin-left: 10px;
-        resize: vertical !important;
-      }
-      .label_checkbox{
-        width: 165px;
-      }
-      .checkbox{
-        float: left;
-        width: 5%;
-        margin-top: 12px;
-      }
-    }
-  }
 }
 
 
