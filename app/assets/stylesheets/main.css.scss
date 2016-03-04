@@ -419,13 +419,20 @@ header {
   }
 }
 
+.zoom_list{
+  float: left;
+  img{
+    width: 95%;
+  }
+}
+
 .description_product{
   .title{
     float: left;
     color: #f2a31a;
     font-size: 20px;
   }
-  .description{
+  .info{
     float: left;
     width: 100%;
     dl{
@@ -455,6 +462,28 @@ header {
       padding-top: 35px;
       padding-left: 40px;
     }
+    .favourites{
+      float: left;
+      margin-left: 43px;
+      margin-bottom: -20px;
+      margin-top: 5px;
+      .favourite{
+        input[type="submit"]{
+          background: url("star.png");
+          width: 14px;
+          height: 14px;
+          border: none;
+        }
+      }
+      //.favourite:hover{
+      //  input[type="submit"]{
+      //    background: url("star.png");
+      //    width: 14px;
+      //    height: 14px;
+      //    border: none;
+      //  }
+      //}
+    }
     .count_for_cart{
       float: left;
       width: 150px;
@@ -465,24 +494,34 @@ header {
       padding-top: 10px;
       padding-left: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      .field_count{
+      .count{
         float: left;
         margin-right: 5px;
-        margin-top: 7px;
+        margin-top: 10px;
         margin-left: 10px;
-        input[type="text"]{
+        width: 85px;
+        .field_count{
           float: left;
-          width: 65px;
-          height: 20px;
-          border: 1px solid rgba(46, 47, 48, 0.45);
-          border-radius: 5px;
-          outline: none;
-          padding-left: 5px;
+          input[type="number"]{
+            float: left;
+            width: 65px;
+            height: 20px;
+            border: 1px solid rgba(46, 47, 48, 0.45);
+            border-radius: 5px;
+            outline: none;
+            padding-left: 5px;
+            margin-top: -8px;
+          }
+          p{
+            font-size: 9px;
+            font-weight: bold;
+            padding-left: 10px;
+          }
         }
         img{
           float: left;
-          margin-top: -17px;
-          margin-left: 5px;
+          margin-top: -20px;
+          margin-left: 10px;
         }
       }
       .actions{
@@ -492,9 +531,21 @@ header {
           width: 29px;
           height: 24px;
           border: none;
+          margin-top: 3px;
         }
       }
     }
+  }
+  .description{
+    float: left;
+    width: 100%;
+    text-align: justify;
+    font-size: 12px;
+    margin-top: 25px;
+  }
+  .rating, .add_comment{
+    float: left;
+    width: 100%;
   }
 }
 

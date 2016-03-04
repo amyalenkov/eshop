@@ -1,11 +1,14 @@
 .container-fluid
   .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.zoom_list
+      /= image_tag ("#{@product.product_pictures.first.url}")
+      a href="#{@product.product_pictures.first.url}" class="MagicZoom" id="Zoomer"
+        = image_tag ("#{@product.product_pictures.first.url}"), width: "95%"
 
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
       .title
         = @product.name.gsub('&quot;', '')
-      .description
+      .info
         dl
           dt <i>Артикул</i>:
           dd <i><b>#{@product.id}</b></i>
@@ -28,11 +31,11 @@
 
       .add_in_cart
         = render 'products/add_in_cart_from_show'
+      .description
+        p
+          | #{@product.description}
       .rating
         = render 'rating'
-      - if user_signed_in?
-        .favorites
-          = render 'favorites'
       - if user_signed_in?
         .add_comment
           = render 'add_comment_for_product'

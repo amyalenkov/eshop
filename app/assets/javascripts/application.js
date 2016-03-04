@@ -17,4 +17,5 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require topMenu
+//= require magiczoom
 //= require_tree .
