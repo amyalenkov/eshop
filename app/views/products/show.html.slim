@@ -1,13 +1,18 @@
-= @product.name
-.add_in_cart
-  = render 'products/add_in_cart'
-.rating
-  = render 'rating'
-- if user_signed_in?
-  .favorites
-    = render 'favorites'
-- if user_signed_in?
-  .add_comment
-    = render 'add_comment_for_product'
-.all_comments
-  = render 'all_comments_for_product'
+.container-fluid
+  .row
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.zoom_list
+
+    .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
+      = @product.name
+      .add_in_cart
+        = render 'products/add_in_cart'
+      .rating
+        = render 'rating'
+      - if user_signed_in?
+        .favorites
+          = render 'favorites'
+      - if user_signed_in?
+        .add_comment
+          = render 'add_comment_for_product'
+      .all_comments
+        = render 'all_comments_for_product'
