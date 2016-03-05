@@ -17,5 +17,8 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require topMenu
-//= require magiczoom
+//= require zoom
+//= require active_zoom
+//= require fancybox/jquery.fancybox
+//= require browser
 //= require_tree .
