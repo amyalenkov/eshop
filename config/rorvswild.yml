@@ -1,0 +1,7 @@
+development:
+  app_id: 143
+  api_key: "EC7u7-Qki86MebAaTcsx"
+
+production:
+  app_id: 143
+  api_key: "EC7u7-DIiPJJ6YmtifwRYfWfXw"

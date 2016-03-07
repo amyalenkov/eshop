@@ -10,39 +10,40 @@
         - if @subcategories != nil
           - @subcategories.each do |subcategory|
             = link_to subcategory.name, "/subcategory/#{subcategory.name}"
-          - @products.in_groups_of(3, false) do |products|
-            .row_products
-              - for product in products
-                - product_image = product.product_pictures.first.url
-                - product_name = product.name.gsub('&quot;', '')
-                - product_material = (product.product_params.find_by_name 'material')[:value]
-                - product_size = (product.product_params.find_by_name 'size')[:value]
-                - product_stock_availability = (product.product_params.find_by_name 'stock_balance')[:value]
-                - product_id = product.id
-                - product_price = product.price
+          - unless @products.nil?
+            - @products.in_groups_of(3, false) do |products|
+              .row_products
+                - for product in products
+                  - product_image = product.product_pictures.first.url
+                  - product_name = product.name.gsub('&quot;', '')
+                  - product_material = (product.product_params.find_by_name 'material')[:value]
+                  - product_size = (product.product_params.find_by_name 'size')[:value]
+                  - product_stock_availability = (product.product_params.find_by_name 'stock_balance')[:value]
+                  - product_id = product.id
+                  - product_price = product.price
 
-                .product
-                  .image
-                    a href="#{product_path(product_id)}"
-                      = image_tag ("#{product_image}")
-                  .title
-                    = link_to product_name, product_path(product_id)
-                    p
-                      | Материал: <b>#{product_material}</b>
-                    p
-                      | Производитель: <b>нет</b>
-                  .info
-                    .params
+                  .product
+                    .image
+                      a href="#{product_path(product_id)}"
+                        = image_tag ("#{product_image.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl")}")
+                    .title
+                      = link_to product_name, product_path(product_id)
                       p
-                        | Размер: <b>#{product_size}</b>
+                        | Материал: <b>#{product_material}</b>
                       p
-                        | Артикул: <b>#{product_id}</b>
-                      p
-                        | На складе: <b>#{product_stock_availability}</b>
-                    .sale
-                      = product_price
-                    .cart
-                      .add_in_cart_index id="#{product_id}"
-                        = render 'products/add_in_cart', product: product
+                        | Производитель: <b>нет</b>
+                    .info
+                      .params
+                        p
+                          | Размер: <b>#{product_size}</b>
+                        p
+                          | Артикул: <b>#{product_id}</b>
+                        p
+                          | На складе: <b>#{product_stock_availability}</b>
+                      .sale
+                        = product_price
+                      .cart
+                        .add_in_cart_index id="#{product_id}"
+                          = render 'products/add_in_cart', product: product
 
-      =paginate @products
+            =paginate @products
