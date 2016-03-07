@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :favorites
 
   def product_in_cart? product_id
-    cart_item = cart_items.find_by(product_id: product_id, state: CartItem.states[:in_cart])
+    cart_item = cart_items.find_by(product_id: product_id)
     if cart_item.nil?
       false
     else
@@ -21,8 +21,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def get_all_cart_items_for_state state
-    cart_items.where :state => state
+  def get_cart_items_size
+    if cart_items.nil?
+      0
+    else
+      cart_items.length
+    end
   end
 
   def get_cart_items_in_rows
@@ -31,6 +35,10 @@ class User < ActiveRecord::Base
 
   def get_meetings
     orders.where.not(meeting_id: nil)
+  end
+
+  def get_current_order
+    Order.find_by user_id: id, state: Order.states[:in_progress]
   end
 
 end

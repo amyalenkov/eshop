@@ -1,0 +1,5 @@
+h1
+  =order.id
+  =order.state
+- order.cart_items.each do |cart_item|
+    = render 'cart_items_in_row', cart_item: cart_item

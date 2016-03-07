@@ -1,5 +1,5 @@
 h1
   =@order.id
   =@order.state
-- if @order.not_choice?
-  = render 'choice_payment'
+.current_order
+  = render 'order_item'

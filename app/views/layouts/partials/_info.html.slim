@@ -3,7 +3,9 @@
     = render 'layouts/partials/caregories', menu: @categories
 
 .order_menu
-  a> href='url1' Текущий заказ
+  - if user_signed_in?
+    - current_order = current_user.get_current_order
+    = link_to 'Текущий заказ', order_path(current_order.id)
 
 .orders_menu
   = render 'layouts/partials/orders_menu'

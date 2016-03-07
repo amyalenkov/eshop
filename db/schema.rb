@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302160207) do
+ActiveRecord::Schema.define(version: 20160307152511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,16 +63,11 @@ ActiveRecord::Schema.define(version: 20160302160207) do
     t.decimal  "total_price"
     t.integer  "user_id"
     t.integer  "product_id"
-    t.integer  "row_id"
-    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "state",       default: 0
   end
 
-  add_index "cart_items", ["order_id"], name: "index_cart_items_on_order_id", using: :btree
   add_index "cart_items", ["product_id"], name: "index_cart_items_on_product_id", using: :btree
-  add_index "cart_items", ["row_id"], name: "index_cart_items_on_row_id", using: :btree
   add_index "cart_items", ["user_id"], name: "index_cart_items_on_user_id", using: :btree
 
   create_table "categories", force: true do |t|
@@ -104,6 +99,12 @@ ActiveRecord::Schema.define(version: 20160302160207) do
   add_index "favorites", ["product_id"], name: "index_favorites_on_product_id", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
+  create_table "main_orders", force: true do |t|
+    t.integer  "state",      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "meetings", force: true do |t|
     t.integer  "admin_user_id"
     t.text     "description"
@@ -111,15 +112,29 @@ ActiveRecord::Schema.define(version: 20160302160207) do
     t.datetime "updated_at"
   end
 
+  create_table "order_items", force: true do |t|
+    t.integer  "price"
+    t.integer  "count"
+    t.integer  "state",      default: 0
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
+
   create_table "orders", force: true do |t|
     t.decimal  "total_price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "state",        default: 0
+    t.integer  "state",         default: 0
     t.integer  "user_id"
-    t.integer  "payment_type", default: 0
-    t.integer  "delivery",     default: 0
+    t.integer  "payment_type",  default: 0
+    t.integer  "delivery",      default: 0
     t.integer  "meeting_id"
+    t.integer  "main_order_id"
   end
 
   create_table "overall_averages", force: true do |t|
@@ -190,12 +205,24 @@ ActiveRecord::Schema.define(version: 20160302160207) do
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
+  create_table "row_items", force: true do |t|
+    t.integer  "count"
+    t.integer  "row_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "row_items", ["row_id"], name: "index_row_items_on_row_id", using: :btree
+  add_index "row_items", ["user_id"], name: "index_row_items_on_user_id", using: :btree
+
   create_table "rows", force: true do |t|
     t.integer  "current_count"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "state",         default: 0
     t.integer  "product_id"
+    t.integer  "min_count"
   end
 
   create_table "subcategories", force: true do |t|
