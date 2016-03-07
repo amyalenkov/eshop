@@ -1,9 +1,5 @@
 - menu.each do |category|
-  - count_sub_categories = 0
-  - category.subcategories.each do |subcategory|
-    - count_sub_categories += 1
-
   .catalog_items
     a href="/category/#{category.name}"
       p
-        | #{category.name} (#{count_sub_categories})
+        | #{category.name} (#{category.subcategories.size})
