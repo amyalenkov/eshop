@@ -4,8 +4,6 @@ class ProductsController < ApplicationController
     if request.url.to_s.include? '/category/'
       category = Category.find_by_name params[:name]
       all_subcategories,@subcategories = get_subs(category.id)
-      @products = Product.includes(:subcategory).joins(:product_pictures).references(all_subcategories).
-          where(subcategory_id: all_subcategories).page(params[:page])
     elsif request.url.to_s.include? '/subcategory/'
       subcategory = Subcategory.find_by_name params[:name]
       # @subcategories = Subcategory.where :category_id => subcategory.id
