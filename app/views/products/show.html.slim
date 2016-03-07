@@ -1,11 +1,24 @@
 .container-fluid
   .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.zoom_list
+      - pictures_hash = Hash.new
+      - key = pictures_hash.keys
+      - @product.product_pictures.all.each do |picture|
+        - pictures_hash[picture.id] = picture.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')
+
+      - first_product_image = pictures_hash.values[0]
+      - Rails.logger.info("first_product_image: "+first_product_image.to_s)
+      = image_tag ("#{first_product_image}"), id: 'zoom_image', width: '100%', data: { 'zoom-image' => "#{first_product_image}"}
+
+      - index=0
+      - pictures_hash.each_value do |elem|
+        = image_tag ("#{elem}"), id: "zoom_image+#{index+1}", width: '50%', onClick: "get_id('zoom_image+#{index+1}')"
+        - index+=1
 
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
       .title
         = @product.name.gsub('&quot;', '')
-      .description
+      .info
         dl
           dt <i>Артикул</i>:
           dd <i><b>#{@product.id}</b></i>
@@ -28,11 +41,11 @@
 
       .add_in_cart
         = render 'products/add_in_cart_from_show'
+      .description
+        p
+          | #{@product.description}
       .rating
         = render 'rating'
-      - if user_signed_in?
-        .favorites
-          = render 'favorites'
       - if user_signed_in?
         .add_comment
           = render 'add_comment_for_product'
