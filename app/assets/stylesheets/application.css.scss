@@ -14,4 +14,12 @@ d */
 
 @import 'bootstrap.min';
 @import 'main';
-@import 'jquery.fancybox';
+@import 'fancybox';
+
+///*
+// *= require_self
+// *= require bootstrap.min
+// *= require main.css.scss
+// *= require fancybox
+// *= require_tree .
+// */

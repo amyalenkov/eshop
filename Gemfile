@@ -58,3 +58,7 @@ gem 'thinking-sphinx', '3.1.4'
 gem 'ratyrate'
 
 gem 'rake', '10.5.0'
+
+# for image product
+gem 'elevatezoom-rails'
+gem 'fancybox2-rails', '~> 0.2.8'
