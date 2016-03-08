@@ -14,24 +14,7 @@
         - pictures_hash.each_value do |elem|
           a href="#" data-image="#{elem}" data-max-width="50%" data-zoom-image="#{elem}"
             = image_tag ("#{elem}"), id: 'zoom_image', width: '45%'
-            /= image_tag ("#{elem}"), id: "zoom_image#{index+1}", width: '50%', onClick: "get_id('zoom_image#{index+1}')"
             - index+=1
-
-      /<img id="zoom_03" src="images/small/image1.png" data-zoom-image="images/large/image1.jpg"/>
-      /<div id="gallery_01">
-      /  <a href="#" data-image="images/small/image1.png" data-zoom-image="images/large/image1.jpg">
-      /    <img id="zoom_03" src="images/thumb/image1.jpg" />
-      /  </a>
-      /  <a href="#" data-image="images/small/image2.png" data-zoom-image="images/large/image2.jpg">
-      /    <img id="zoom_03" src="images/thumb/image2.jpg" />
-      /  </a>
-      /  <a href="#" data-image="images/small/image3.png" data-zoom-image="images/large/image3.jpg">
-      /    <img id="zoom_03" src="images/thumb/image3.jpg" />
-      /  </a>
-      /  <a href="#" data-image="images/small/image5.png" data-zoom-image="images/large/image5.jpg">
-      /    <img id="zoom_03" src="images/thumb/image5.jpg" />
-      /  </a>
-      /</div>
 
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
       .title
