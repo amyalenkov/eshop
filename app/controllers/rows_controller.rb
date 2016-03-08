@@ -3,7 +3,7 @@ class RowsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @cart_items_already_in_row = current_user.get_cart_items_in_rows
+    @rows = Row.all
   end
 
   def show

@@ -5,7 +5,10 @@
 .order_menu
   - if user_signed_in?
     - current_order = current_user.get_current_order
-    = link_to 'Текущий заказ', order_path(current_order.id)
+    -unless current_order.nil?
+      = link_to 'Текущий заказ', order_path(current_order.id)
+    -else
+      = link_to 'нету текущего заказа :('
 
 .orders_menu
   = render 'layouts/partials/orders_menu'
