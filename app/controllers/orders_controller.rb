@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
       order_item.count = cart_item.count
       order_item.order = @order
       cart_item.destroy!
+      order_item.set_state current_user
       order_item.save!
     }
     @order.save!
@@ -38,6 +39,7 @@ class OrdersController < ApplicationController
       order_item.count = cart_item.count
       order_item.order = @order
       cart_item.destroy!
+      order_item.set_state current_user
       order_item.save!
     }
     redirect_to order_path @order

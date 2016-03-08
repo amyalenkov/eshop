@@ -24,12 +24,12 @@ table[style="width:100%"]
           = order_item.count
         td[style="text-align:right;"]
           = order_item.product.get_min_sale
-          /- row = order_item.get_not_full_product_row
-          /- unless row.nil?
-          /td[style="text-align:right;"]
-          /  = link_to row.id, row_path(row.idlayouts/cart_menu)
-          /  - else
-          /td[style="text-align:right;"]
-            /| Create new row
+        - row = order_item.product.get_row
+        - unless row.nil?
+          td[style="text-align:right;"]
+            = link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
+        - else
+          td[style="text-align:right;"]
+            = link_to 'new row', rows_path(product_id: order_item.product.id, count: order_item.count), method: :post
         td[style="text-align:right;"]
           = button_to 'delete', order_item, remote: true, method: :delete

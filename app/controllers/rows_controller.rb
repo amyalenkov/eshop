@@ -30,10 +30,11 @@ class RowsController < ApplicationController
     old_row_count = row_item.count
     row_item.count = params[:count].to_i
     row_item.save!
+    order_item = row_item.order_item
+    order_item.count = row_item.count
+    order_item.save!
     @row = Row.find_by_id params[:id]
     @row.current_count = @row.current_count - old_row_count + params[:count].to_i
-    @row.full! if @row.current_count >= @row.min_count
-    @row.not_full! if @row.current_count < @row.min_count
     @row.save!
     redirect_to @row
   end
