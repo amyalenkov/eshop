@@ -7,28 +7,31 @@
         - pictures_hash[picture.id] = picture.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')
 
       - first_product_image = pictures_hash.values[0]
-      = image_tag ("#{first_product_image}"), id: 'zoom_image', width: '100%', data: { 'zoom-image' => "#{first_product_image}"}
+      = image_tag ("#{first_product_image}"), id: 'zoom_image', class: 'fancybox', width: '100%', data: { 'zoom-image' => "#{first_product_image}"}
 
       - index=0
-      #gal1
+      #gallery
         - pictures_hash.each_value do |elem|
-          a href="#" data-image="#{elem}" width="50%" data-zoom-image="#{elem}" id="zoom_image#{index+1}"
+          a href="#" data-image="#{elem}" data-max-width="50%" data-zoom-image="#{elem}"
             = image_tag ("#{elem}"), id: 'zoom_image', width: '45%'
             /= image_tag ("#{elem}"), id: "zoom_image#{index+1}", width: '50%', onClick: "get_id('zoom_image#{index+1}')"
             - index+=1
 
-        /<img id="img_01" src="small/image1.jpg" data-zoom-image="large/image1.jpg"/>
-        /<div id="gal1">
-        /  <a data-image="https://st-cdn.r.worldssl.net/items/122/1224171/0/400.jpg" data-zoom-image="https://st-cdn.r.worldssl.net/items/122/1224171/1/400.jpg" href="#" width="50%">
-        /    <img alt="400" id="zoom_image" src="https://st-cdn.r.worldssl.net/items/122/1224171/1/400.jpg" width="50%">
-        /  </a>
-        /  <a href="#" data-image="small/image1.jpg" data-zoom-image="large/image1.jpg">
-        /    <img id="img_01" src="thumb/image1.jpg" />
-        /  </a>
-        /  <a href="#" data-image="small/image2.jpg" data-zoom-image="large/image2.jpg">
-        /    <img id="img_01" src="thumb/image2.jpg" />
-        /  </a>
-        /</div>
+      /<img id="zoom_03" src="images/small/image1.png" data-zoom-image="images/large/image1.jpg"/>
+      /<div id="gallery_01">
+      /  <a href="#" data-image="images/small/image1.png" data-zoom-image="images/large/image1.jpg">
+      /    <img id="zoom_03" src="images/thumb/image1.jpg" />
+      /  </a>
+      /  <a href="#" data-image="images/small/image2.png" data-zoom-image="images/large/image2.jpg">
+      /    <img id="zoom_03" src="images/thumb/image2.jpg" />
+      /  </a>
+      /  <a href="#" data-image="images/small/image3.png" data-zoom-image="images/large/image3.jpg">
+      /    <img id="zoom_03" src="images/thumb/image3.jpg" />
+      /  </a>
+      /  <a href="#" data-image="images/small/image5.png" data-zoom-image="images/large/image5.jpg">
+      /    <img id="zoom_03" src="images/thumb/image5.jpg" />
+      /  </a>
+      /</div>
 
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
       .title
