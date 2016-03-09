@@ -18,6 +18,7 @@ class CartItemsController < ApplicationController
       cart_item.count = count
       cart_item.total_price = count * @product.price
       cart_item.user_id = current_user.id
+      cart_item.product_picture = @product.product_pictures.first.url
       cart_item.save!
     end
   end

@@ -1,43 +1,47 @@
-table[style="width:100%"]
+table class="table"
   thead
     tr
-      th[style="text-align:right;"]
-        | выбрать
-      th[style="text-align:right;"]
-        | Название
-      th[style="text-align:right;"]
-        | Count
-      th[style="text-align:right;"]
-        | row
-      th[style="text-align:right;"]
-        | min
-      th[style="text-align:right;"]
-        | delete
-      th[style="text-align:right;"]
-        | favorite
+      th
+      th
+      th Наименование товара
+      th Ряд
+      th Цена
+      th Количество
+      th Сумма
+      th
   tbody
     = form_for @order do |order|
       - @cart_items.each do |cart_item|
         tr
-          td[style="text-align:right;"]
-            = check_box_tag 'card_items_id['+cart_item.id.to_s+']', cart_item.id.to_s
-          td[style="text-align:right;"]
-            = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
-          td[style="text-align:right;"]
-            = cart_item.count
+          td
+            .checkbox-inline.check-box
+              = check_box_tag 'card_items_id['+cart_item.id.to_s+']', cart_item.id.to_s
+          td
+            .favourite
+              /= link_to '', cart_item, remote: true, method: :delete
+              / переделать link на checkbox
+              = link_to '', '#', class: 'favourite'
+
+          td
+            .product_cart
+              .image_cart
+                = link_to image_tag(cart_item.product_picture.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl"))
+              .description_cart
+                .title
+                  = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
+                p Артикул: <b>#{cart_item.product_id}</b>
+                p Дата добавления: <b>data</b>
+                p Комментарий
+
           - row = cart_item.product.get_row
           - unless row.nil?
-            td[style="text-align:right;"]
-              = link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
+            td = link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
           -else
-            td[style="text-align:right;"]
-              = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count),method: :post
-          td[style="text-align:right;"]
-            = cart_item.product.get_min_sale
-          td[style="text-align:right;"]
-            = link_to 'favorite', cart_item, remote: true, method: :delete
-          td[style="text-align:right;"]
-            = link_to 'delete', cart_item, remote: true, method: :delete
+            td = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count),method: :post
 
+          td = cart_item.count
+          td = cart_item.product.get_min_sale
+          td
+          td.delete = link_to 'x', cart_item, remote: true, method: :delete, class:'delete'
 
       =order.submit 'Заказать'
