@@ -275,7 +275,7 @@ header {
 
 
 
-
+/*CATALOG_INDEX*/
 .catalog_list, .catalog{
   float: left;
   text-align: center;
@@ -426,7 +426,10 @@ header {
     //transition: 0.1s;
   }
 }
+/*END_CATALOG_INDEX*/
 
+
+/*SHOW_PRODUCT*/
 .zoom_list{
   float: left;
   img{
@@ -590,10 +593,23 @@ header {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5), 0px -2px 6px 0 rgba(0, 0, 0, 0.5)
   }
 }
+/*END_SHOW_PRODUCT*/
+
+/*CART*/
+.cart{
+  p{
+
+  }
+}
+/*END_CART*/
+
+/*CALENDAR*/
+.calendar{
+}
+/*END_CALENDAR*/
 
 
-
-
+/*SEARCH*/
 .search_crafter_title{
   float: left;
   width: 25%;
