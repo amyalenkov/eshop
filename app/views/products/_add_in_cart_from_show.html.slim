@@ -14,7 +14,7 @@
       .count_for_cart
         .count
           .field_count
-            = f.number_field :count
+            = f.number_field :count, :value => '1', :min => '1'
             p
               | <i>мин. 1 шт.</i>
           = image_tag ("st.png")

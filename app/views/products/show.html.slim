@@ -14,6 +14,9 @@
           a href="#" data-image="#{elem}" data-zoom-image="#{elem}"
             = image_tag ("#{elem}"), id: 'zoom_image', width: '45%'
 
+      .rating
+        = render 'rating'
+
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
       .title
         = @product.name.gsub('&quot;', '')
@@ -43,10 +46,14 @@
       .description
         p
           | #{@product.description}
-      .rating
-        = render 'rating'
       - if user_signed_in?
         .add_comment
           = render 'add_comment_for_product'
       .all_comments
         = render 'all_comments_for_product'
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.other_product
+      .title
+        p
+          | Другие посетители с этим товаром смотрели:
+      .products

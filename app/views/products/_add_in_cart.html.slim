@@ -1,12 +1,12 @@
 - product = @product if product.nil?
 - if user_signed_in?
   -if current_user.product_in_cart?(product)
-    h1
-      | product already  in cart
+    .ok
+      = link_to image_tag('ok.png'), cart_items_path
   -else
     = form_for(CartItem.new, remote: true) do |f|
       .field
-        = f.text_field :count
+        = f.number_field :count, :value => '0', :min => '0'
         br
         = f.hidden_field :product_id, :value => product.id
       .actions

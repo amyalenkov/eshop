@@ -1,13 +1,13 @@
 = form_for(Comment.new, remote: true) do |comment|
   div.field
-    = comment.label :title
-    br
-    = comment.text_field :title
+    /= comment.label :Заголовок, class: 'label_login'
+    /br
+    = comment.text_field :title, class: 'form-control', placeholder: 'Заголовок'
   div.field
-    = comment.label :body
+    /= comment.label :Комментарий, class: 'label_login'
     br
-    = comment.text_field :body
+    = comment.text_area :body, class: 'form-control', placeholder: 'Комментарий'
     br
     = comment.hidden_field :product_id, :value =>  @product.id
   div.actions
-    = comment.submit 'add comment'
+    = comment.submit 'Оставить комментарий', class: 'btn btn-success pull-right'
