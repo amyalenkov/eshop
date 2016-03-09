@@ -4,20 +4,7 @@ class CartItemsController < ApplicationController
 
   def index
     get_cart_items
-    @cart_items_for_orders = Array.new
-    @cart_items_for_new_rows = Array.new
-    @cart_items_already_in_row = Array.new
-    @cart_items_already_in_my_row = Array.new
-    @cart_items.each { |cart_item|
-      @cart_items_for_orders.push(cart_item) if cart_item.possible_to_order?
-      @cart_items_for_new_rows.push(cart_item) if cart_item.for_new_row?
-      if cart_item.row.nil?
-        @cart_items_already_in_row.push(cart_item) if cart_item.in_row?
-      else
-        @cart_items_already_in_my_row.push cart_item if cart_item.row.not_full?
-      end
-    }
-    @order = Order.new
+    get_current_order
     @row = Row.new
   end
 
@@ -39,12 +26,18 @@ class CartItemsController < ApplicationController
     cart_item = CartItem.find_by_id params[:id]
     cart_item.destroy! unless cart_item.nil?
     get_cart_items
+    get_current_order
   end
 
   private
 
   def get_cart_items
     @cart_items = current_user.cart_items
+  end
+
+  def get_current_order
+    @order = current_user.get_current_order
+    @order = Order.new if @order.nil?
   end
 
 end

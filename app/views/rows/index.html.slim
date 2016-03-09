@@ -1,27 +1,43 @@
-table[style="width:100%"]
-  thead
-    tr
-      th[style="text-align:right;"]
-        | id
-      th[style="text-align:right;"]
-        | min_count
-      th[style="text-align:right;"]
-        | current_count
-      th[style="text-align:right;"]
-        | state
-  tbody
-    - @cart_items_already_in_row.each do |cart_item|
+- @rows.each do |row|
+  table[style="width:100%"]
+    thead
       tr
-        td[style="text-align:right;"]
-          = link_to cart_item.get_product_name, product_path(cart_item.product_id)
-        td[style="text-align:right;"]
-          = link_to 'row', row_path(cart_item.row_id)
-        td[style="text-align:right;"]
-          = cart_item.state
-        td[style="text-align:right;"]
-          = text_field_tag 'count', cart_item.count
-          = hidden_field_tag 'product_id', cart_item.product_id
-          = hidden_field_tag 'cart_item_id', cart_item.id
-        td[style="text-align:right;"]
-          = cart_item.product.get_min_sale
-        td[style="text-align:right;"]
+        th[style="text-align:right;"]
+          | id
+        th[style="text-align:right;"]
+          | product
+        th[style="text-align:right;"]
+          | state
+        th[style="text-align:right;"]
+          | current_count
+        th[style="text-align:right;"]
+          | min_count
+        th[style="text-align:right;"]
+          | user_id
+        th[style="text-align:right;"]
+          | user_count
+    tbody
+      tr
+        th[style="text-align:right;"]
+          = row.id
+        th[style="text-align:right;"]
+          = link_to row.product.name, product_path(row.product)
+        th[style="text-align:right;"]
+          = row.state
+        th[style="text-align:right;"]
+          = row.current_count
+        th[style="text-align:right;"]
+          = row.min_count
+        - row.row_items.each do |row_item|
+          td[style="text-align:right;"]
+            = row_item.user.id
+          - if row_item.user == current_user
+            = form_for row_item.row do |f|
+              td[style="text-align:right;"]
+                = text_field_tag 'count', row_item.count
+                = hidden_field_tag 'row_item_id', row_item.id
+              td[style="text-align:right;"]
+                = f.submit 'update row'
+          - else
+            td[style="text-align:right;"]
+              = row_item.count
