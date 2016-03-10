@@ -3,10 +3,11 @@
   = form_for Favorite.new, remote: true do |favorite|
     =favorite.hidden_field :product_id, :value => @product.id
     =favorite.hidden_field :user_id, :value => current_user.id
-    .favourite
+    .favourite_add
       =favorite.submit ''
 - else
   = form_for @favorite, method: :delete, remote: true do |favorite|
     =favorite.hidden_field :product_id, :value => @product.id
     =favorite.hidden_field :user_id, :value => current_user.id
-    =favorite.submit 'remove from favorite'
+    .favourite_remove
+      = favorite.submit ''
