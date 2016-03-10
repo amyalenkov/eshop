@@ -606,6 +606,10 @@ header {
     font-style: italic;
   }
   .cart_items{
+    position: relative;
+    .table{
+      margin-bottom: 60px !important;
+    }
     .check-box{
       float: left;
       padding-top: 30px;
@@ -661,10 +665,10 @@ header {
         text-align: center;
         padding-top: 11px;
         line-height: 0;
+        text-decoration: none;
       }
       a:hover{
         background: rgba(0, 0, 0, 0.85);
-        text-decoration: none;
         transition: 0.3s;
       }
     }
@@ -688,6 +692,19 @@ header {
 }
 .highlight_row_click {
   background: #798dbd;
+}
+
+.button_cart_left, .button_cart_right{
+  position: absolute;
+  bottom: -45px;
+}
+
+.button_cart_right{
+  right: 0;
+}
+
+.button_cart_left{
+  left: 0;
 }
 /*END_CART*/
 

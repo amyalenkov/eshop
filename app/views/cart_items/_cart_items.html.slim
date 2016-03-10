@@ -11,6 +11,7 @@ table class="table"
       th
   tbody
     = form_for @order do |order|
+      - index=1
       - @cart_items.each do |cart_item|
         tr
           td
@@ -18,9 +19,9 @@ table class="table"
               = check_box_tag 'card_items_id['+cart_item.id.to_s+']', cart_item.id.to_s
           td
             .favourite
-              /= link_to '', cart_item, remote: true, method: :delete
+              = link_to '', cart_item, remote: true, method: :delete, class: 'favourite'
               / переделать link на checkbox
-              = link_to '', '#', class: 'favourite'
+              /= link_to '', '#', class: 'favourite'
 
           td
             .product_cart
@@ -39,9 +40,22 @@ table class="table"
           -else
             td = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count),method: :post
 
-          td = cart_item.count
-          td = cart_item.product.get_min_sale
+          td = cart_item.product.price
+          td
+            .input-group
+              .input-group-btn
+                button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[#{index}]" style="float:left;"
+                  span class="glyphicon glyphicon-minus"
+                input type="text" name="quant[#{index}]" class="form-control input-number" value="#{cart_item.count}" min="1" max="100" style="width: 50px;"
+                span class="input-group-btn"
+                  button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[#{index}]"
+                    span class="glyphicon glyphicon-plus"
+
           td
           td.delete = link_to 'x', cart_item, remote: true, method: :delete, class:'delete'
+          - index=index+1
 
-      =order.submit 'Заказать'
+      .pull-left.button_cart_left
+        =order.submit 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success'
+      .pull-right.button_cart_right
+        =order.submit 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success'

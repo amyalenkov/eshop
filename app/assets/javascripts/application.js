@@ -22,4 +22,5 @@
 //= require active_zoom
 //= require select_row_by_checkbox_in_cart_items
 //= require select_row_by_link_in_cart_items
+//= require counter_for_cart
 //= require_tree .
