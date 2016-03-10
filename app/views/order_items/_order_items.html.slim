@@ -1,0 +1,12 @@
+table class="table"
+  thead
+    tr
+      th id
+      th state
+      th payment_type
+  tbody
+    - @orders.each do |order|
+      tr
+        td = link_to 'order '+order.id.to_s, order_path(order.id)
+        td = order.state
+        td = order.payment_type

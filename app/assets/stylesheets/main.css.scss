@@ -490,23 +490,26 @@ header {
       float: left;
       margin-left: 43px;
       margin-bottom: -20px;
-      margin-top: 5px;
+      padding-top: 5px;
       .favourite{
+        float: left;
         input[type="submit"]{
-          background: url("star.png");
-          width: 14px;
-          height: 14px;
+          float: left;
+          width: 15px;
+          height: 15px;
+          background: url("star.png") no-repeat;
           border: none;
+          outline: none;
+        }
+        input[type="submit"]:hover{
+          background: url("star-hover.png") no-repeat;
+          background-size: 15px;
+        }
+        .button_bg{
+          background: url("star-hover.png") no-repeat !important;
+          background-size: 15px !important;
         }
       }
-      //.favourite:hover{
-      //  input[type="submit"]{
-      //    background: url("star.png");
-      //    width: 14px;
-      //    height: 14px;
-      //    border: none;
-      //  }
-      //}
     }
     .count_for_cart{
       float: left;
@@ -616,11 +619,12 @@ header {
     }
     .favourite{
       float: left;
-      margin-top: 16px;
+      margin-top: 31px;
       input[type="submit"]{
         float: left;
         width: 15px;
         height: 15px;
+        margin-top: 1px;
         background: url("star.png") no-repeat;
         border: none;
         outline: none;
@@ -661,15 +665,15 @@ header {
     }
     .delete{
       a{
-        font-size: 22px;
+        font-size: 20px;
         background: rgba(0, 0, 0, 0.65);
         color: white;
         border-radius: 50%;
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
         float: left;
         text-align: center;
-        padding-top: 11px;
+        padding-top: 10px;
         line-height: 0;
         text-decoration: none;
       }
