@@ -10,50 +10,49 @@ table class="table"
       th Сумма
       th
   tbody
-      /= form_for @order do |order|
-      - @cart_items.each_with_index do |cart_item, index|
-        - check_favorite, favorite_product = current_user.is_favorite_product?(cart_item.product_id)
-        - tr_class = 'highlight_row_click' if check_favorite
-        - tr_class = '' unless check_favorite
-        tr class="#{tr_class}" id="tr_product_#{cart_item.product_id}"
-          td
-            .checkbox-inline.check-box
-              = check_box_tag 'card_items_id['+cart_item.id.to_s+']', cart_item.id.to_s
-          td
-            .favourite id="for_favorite_#{cart_item.product_id}"
-              =render 'favorite_product', product_id: cart_item.product_id
-          td
-            .product_cart
-              .image_cart
-                = link_to image_tag(cart_item.product.product_pictures.first.url.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl"))
-              .description_cart
-                .title
-                  = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
-                p Артикул: <b>#{cart_item.product_id}</b>
-                p Дата добавления: <b>data</b>
-                p Комментарий
+    - @cart_items.each_with_index do |cart_item, index|
+      - check_favorite, favorite_product = current_user.is_favorite_product?(cart_item.product_id)
+      - tr_class = 'highlight_row_click' if check_favorite
+      - tr_class = '' unless check_favorite
+      tr class="#{tr_class}" id="tr_product_#{cart_item.product_id}"
+        td
+          .checkbox-inline.check-box
+            = check_box_tag 'card_items_id['+cart_item.id.to_s+']', cart_item.id.to_s, false, class: 'check_box_items'
+        td
+          .favourite id="for_favorite_#{cart_item.product_id}"
+            = render 'favorite_product', product_id: cart_item.product_id
+        td
+          .product_cart
+            .image_cart
+              = link_to image_tag(cart_item.product.product_pictures.first.url.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl"))
+            .description_cart
+              .title
+                = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
+              p Артикул: <b>#{cart_item.product_id}</b>
+              p Дата добавления: <b>data</b>
+              p Комментарий
 
-          - row = cart_item.product.get_row
-          - unless row.nil?
-            td = link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
-          -else
-            td = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count),method: :post
+        - row = cart_item.product.get_row
+        - unless row.nil?
+          td = link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
+        - else
+          td = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count), method: :post
 
-          td = cart_item.product.price
-          td
-            .input-group
-              .input-group-btn
-                button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[#{index}]" style="float:left;"
-                  span class="glyphicon glyphicon-minus"
-                input type="text" name="quant[#{index}]" class="form-control input-number" value="#{cart_item.count}" min="1" max="100" style="width: 50px;"
-                span class="input-group-btn"
-                  button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[#{index}]"
-                    span class="glyphicon glyphicon-plus"
+        td = cart_item.product.price
+        td
+          .input-group
+            .input-group-btn
+              button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[#{index}]" style="float:left;"
+                span class="glyphicon glyphicon-minus"
+              input type="text" name="quant[#{index}]" class="form-control input-number" value="#{cart_item.count}" min="1" max="100" style="width: 50px;"
+              span class="input-group-btn"
+                button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[#{index}]"
+                  span class="glyphicon glyphicon-plus"
 
-          td
-          td.delete = link_to 'x', cart_item, remote: true, method: :delete, class:'delete'
+        td
+        td.delete = link_to 'x', cart_item, remote: true, method: :delete, class: 'delete'
 
-      /.pull-left.button_cart_left
-      /  =order.submit 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success'
-      /.pull-right.button_cart_right
-      /  =order.submit 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success'
+    .pull-left.button_cart_left
+      = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'
+    .pull-right.button_cart_right
+      = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success'

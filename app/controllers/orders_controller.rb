@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.user_id = current_user.id
     @order.main_order = MainOrder.find_by state: MainOrder.states[:current]
-    card_items_id.each_key { |id|
+    card_items_id.each { |id|
       order_item = OrderItem.new
       cart_item = CartItem.find_by_id id
       order_item.product = cart_item.product
