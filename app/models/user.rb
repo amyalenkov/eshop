@@ -41,4 +41,13 @@ class User < ActiveRecord::Base
     Order.find_by user_id: id, state: Order.states[:in_progress]
   end
 
+  def is_favorite_product? product_id
+    favorite = Favorite.find_by user_id: id, product_id: product_id
+    if favorite.nil?
+      return false
+    else
+      return true, favorite
+    end
+  end
+
 end

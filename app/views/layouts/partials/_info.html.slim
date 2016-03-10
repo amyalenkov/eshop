@@ -20,6 +20,10 @@
   - if user_signed_in?
     = render 'layouts/partials/rows_menu'
 
+.rows_menu
+  - if user_signed_in?
+    = link_to 'favorites', favorites_path
+
 .create_question
   a> href='url3' Задать вопрос
 

@@ -1,3 +1,4 @@
-| $('.favorites').html("
-= escape_javascript (render partial: 'products/favorites')
+| $('#for_favorite_#{@product.id}').html("
+= escape_javascript (render partial: 'cart_items/favorite_product')
 | ");
+| $('#tr_product_#{@product.id}').addClass("highlight_row_click");
