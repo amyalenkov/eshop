@@ -1,18 +1,10 @@
-table[style="width:100%"]
-  thead
-    tr
-      th[style="text-align:right;"]
-        | id
-      th[style="text-align:right;"]
-        | state
-      th[style="text-align:right;"]
-        | payment_type
-  tbody
-    - @orders.each do |order|
-      tr
-        td[style="text-align:right;"]
-          = link_to 'order '+order.id.to_s, order_path(order.id)
-        td[style="text-align:right;"]
-          = order.state
-        td[style="text-align:right;"]
-          = order.payment_type
+.container-fluid
+  .row
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.calendar
+      h5
+        | Ближайшие встречи
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
+      p
+        | Чтобы посмотреть счета на оплату перейдите по ссылке: История заказов
+      .cart_items
+        = render 'order_items/order_items'
