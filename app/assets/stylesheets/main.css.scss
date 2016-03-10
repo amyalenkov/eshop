@@ -602,7 +602,11 @@ header {
 /*END_SHOW_PRODUCT*/
 
 /*CART*/
+
 .cart{
+  .table th{
+    text-align: center;
+  }
   p{
     font-size: 12px;
     color: #837f7f;
@@ -658,12 +662,31 @@ header {
         width: 90px;
         float: left;
         text-align: center;
+        padding-right: 10px;
         img{
           max-height: 80px;
         }
       }
     }
+    .row{
+      text-align: center;
+      .progress{
+        margin-bottom: 5px !important;
+      }
+      p{
+        font-size: 10px;
+        color: #000;
+      }
+      a{
+        text-decoration: none;
+        font-style: italic;
+        padding: 5px 10px;
+        background: #ffff00;
+      }
+    }
     .delete{
+      text-align: center;
+
       a{
         font-size: 20px;
         background: rgba(0, 0, 0, 0.65);
@@ -681,6 +704,27 @@ header {
         background: rgba(0, 0, 0, 0.85);
         transition: 0.3s;
       }
+    }
+  }
+  .info{
+    p{
+      font-size: 15px;
+      color: #000;
+    }
+    .info_1, .info_2, .info_3{
+      float: left;
+      width: 50px;
+      height: 22px;
+      margin-right: 15px;
+    }
+    .info_1{
+      background: #6fbaa7;
+    }
+    .info_2{
+      background: #798dbd;
+    }
+    .info_3{
+      background: #a773bc;
     }
   }
 }

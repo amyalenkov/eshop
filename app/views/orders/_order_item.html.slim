@@ -11,8 +11,37 @@ table class="table"
       th
   tbody
     - @order.order_items.each_with_index do |order_item, index|
-      tr
-        /td = order_item.state
+
+      - if order_item.state == 'in_progress'
+        - background = 'background: #6fbaa7;'
+      - elsif order_item.state == 'reserving'
+        - background = 'background: #798dbd;'
+      - elsif order_item.state == 'reserved'
+        - background = 'background: #a773bc;'
+      - elsif order_item.state == 'refusing_after_reserved'
+        - background = 'background: #ffffff;'
+      - elsif order_item.state == 0
+        - background = 'background: #ffffff;'
+
+      - progress_status='progress-bar-'
+      - width='width: '
+
+      - if order_item.product.get_row != nil
+        - pc = (order_item.product.get_row.current_count * 100)/order_item.product.get_row.min_count
+        - if pc > 0 and pc < 25
+          - progress_status.concat('danger')
+          - width.concat('25%')
+        - if pc > 26 and pc <= 50
+          - progress_status.concat('warning')
+          - width.concat('50%')
+        - if pc > 51 and pc < 75
+          - progress_status.concat('info')
+          - width.concat('75%')
+        - if pc > 75 and pc < 100
+          - progress_status.concat('success')
+          - width.concat('100%')
+
+      tr style="#{background}"
         td
           .product_cart
             .image_cart
@@ -26,13 +55,19 @@ table class="table"
 
         - row = order_item.product.get_row
         - unless row.nil?
-          td
-            = link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
+          td style="width: 100px;"
+            .row
+              .progress
+                .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
+                  /= link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
+              p Ряд собран #{row.current_count.to_s+' из '+row.min_count.to_s}
         - else
           td
-            = link_to 'new row', rows_path(product_id: order_item.product.id, count: order_item.count), method: :post
+            .row
+              p Создайте ряд для выкупа
+              = link_to 'Открыть ряд', rows_path(product_id: order_item.product.id, count: order_item.count), method: :post
 
-        td style="width: 150px;"
+        td style="width: 135px; text-align: center;"
           .input-group
             .input-group-btn
               button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[#{index}]" style="float:left;"
@@ -46,3 +81,11 @@ table class="table"
         td = order_item.product.price
         td
         td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
+
+.info
+  .info_1
+  p <i>Товар в обработке</i>
+  .info_2
+  p <i>Товар забронирован</i>
+  .info_3
+  p <i>Не собрался ряд</i>
