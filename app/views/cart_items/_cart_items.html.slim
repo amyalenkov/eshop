@@ -44,11 +44,9 @@ table class="table"
             .input-group
               .input-group-btn
                 button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[#{index}]" style="float:left;"
-                  span class="glyphicon glyphicon-minus"
                 input type="text" name="quant[#{index}]" class="form-control input-number" value="#{cart_item.count}" min="1" max="100" style="width: 50px;"
                 span class="input-group-btn"
                   button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[#{index}]"
-                    span class="glyphicon glyphicon-plus"
 
           td
           td.delete = link_to 'x', cart_item, remote: true, method: :delete, class:'delete'
