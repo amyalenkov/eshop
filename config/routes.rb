@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
   resources :cart_items, only: [:index, :create, :destroy]
   resources :order_items, only: [:update, :destroy]
-  resources :orders, only: [:index, :create, :show, :update] do
+  resources :orders, only: [:index, :create, :show] do
     member do
       post 'choice_payment'
     end

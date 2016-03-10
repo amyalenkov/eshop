@@ -14,10 +14,16 @@ $ ->
       '/orders',
       card_items_id: cart_items
     )
-#      error: (jqXHR, textStatus, errorThrown) ->
-#        console.log('error')
-#      success: (data, textStatus, jqXHR) ->
-#        console.log('success' + data)
+
+  $('#create_order_for_all_cart').click ->
+    cart_items = []
+    $('.check_box_items').each (index, element) =>
+      cart_items.push element.value
+    if cart_items.length > 0
+      $.post(
+        '/orders',
+        card_items_id: cart_items
+      )
 
 check_button_disable = () ->
   disable = true

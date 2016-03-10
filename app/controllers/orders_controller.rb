@@ -12,9 +12,13 @@ class OrdersController < ApplicationController
 
   def create
     card_items_id = params[:card_items_id]
-    @order = Order.new
-    @order.user_id = current_user.id
-    @order.main_order = MainOrder.find_by state: MainOrder.states[:current]
+    @order = current_user.get_current_order
+    if @order.nil?
+      @order = Order.new
+      @order.user_id = current_user.id
+      @order.main_order = MainOrder.find_by state: MainOrder.states[:current]
+    end
+
     card_items_id.each { |id|
       order_item = OrderItem.new
       cart_item = CartItem.find_by_id id
@@ -26,23 +30,7 @@ class OrdersController < ApplicationController
       order_item.save!
     }
     @order.save!
-    redirect_to order_path @order
-  end
-
-  def update
-    card_items_id = params[:card_items_id]
-    @order = Order.find_by_id params[:id]
-    card_items_id.each_key { |id|
-      order_item = OrderItem.new
-      cart_item = CartItem.find_by_id id
-      order_item.product = cart_item.product
-      order_item.count = cart_item.count
-      order_item.order = @order
-      cart_item.destroy!
-      order_item.set_state current_user
-      order_item.save!
-    }
-    redirect_to order_path @order
+    render js: "document.location = '#{order_path(@order)}'"
   end
 
   def choice_payment
