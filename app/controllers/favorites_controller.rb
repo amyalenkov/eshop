@@ -3,14 +3,14 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    Favorite.create favorite_params
+    Favorite.create product_id: params[:product_id], user_id: current_user.id
     get_product
   end
 
   def destroy
-    favorite = Favorite.find_by favorite_params
+    favorite = Favorite.find_by id: params[:id]
+    @product = Product.find_by_id favorite.product_id
     favorite.destroy!
-    get_product
   end
 
   def index
@@ -19,12 +19,8 @@ class FavoritesController < ApplicationController
 
   private
 
-  def favorite_params
-    params.require(:favorite).permit(:product_id, :user_id)
-  end
-
   def get_product
-    @product = Product.find_by_id params[:favorite][:product_id]
+    @product = Product.find_by_id params[:product_id]
   end
 
 end

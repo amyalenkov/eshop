@@ -1,0 +1,6 @@
+-product_id = @product.id if product_id.nil?
+- check_favorite, favorite_product = current_user.is_favorite_product?(product_id)
+- if check_favorite
+  = button_to '', favorite_path(favorite_product.id), remote: true, method: :delete, class: 'button_bg'
+- else
+  = button_to '', favorites_path(product_id: product_id), remote: true, method: :post, class: 'favourite'

@@ -617,15 +617,21 @@ header {
     .favourite{
       float: left;
       margin-top: 16px;
-      a{
+      input[type="submit"]{
         float: left;
         width: 15px;
         height: 15px;
         background: url("star.png") no-repeat;
+        border: none;
+        outline: none;
       }
-      a:hover{
+      input[type="submit"]:hover{
         background: url("star-hover.png") no-repeat;
         background-size: 15px;
+      }
+      .button_bg{
+        background: url("star-hover.png") no-repeat !important;
+        background-size: 15px !important;
       }
     }
     .product_cart{
