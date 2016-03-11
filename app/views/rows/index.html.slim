@@ -1,43 +1,35 @@
-- @rows.each do |row|
-  table[style="width:100%"]
-    thead
-      tr
-        th[style="text-align:right;"]
-          | id
-        th[style="text-align:right;"]
-          | product
-        th[style="text-align:right;"]
-          | state
-        th[style="text-align:right;"]
-          | current_count
-        th[style="text-align:right;"]
-          | min_count
-        th[style="text-align:right;"]
-          | user_id
-        th[style="text-align:right;"]
-          | user_count
-    tbody
-      tr
-        th[style="text-align:right;"]
-          = row.id
-        th[style="text-align:right;"]
-          = link_to row.product.name, product_path(row.product)
-        th[style="text-align:right;"]
-          = row.state
-        th[style="text-align:right;"]
-          = row.current_count
-        th[style="text-align:right;"]
-          = row.min_count
-        - row.row_items.each do |row_item|
-          td[style="text-align:right;"]
-            = row_item.user.id
-          - if row_item.user == current_user
-            = form_for row_item.row do |f|
-              td[style="text-align:right;"]
-                = text_field_tag 'count', row_item.count
-                = hidden_field_tag 'row_item_id', row_item.id
-              td[style="text-align:right;"]
-                = f.submit 'update row'
-          - else
-            td[style="text-align:right;"]
-              = row_item.count
+.container-fluid
+  .row
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.calendar
+      h5
+        | Ближайшие встречи
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
+      - @rows.each do |row|
+        table class="table"
+          thead
+            tr
+              th id
+              th product
+              th state
+              th current_count
+              th min_count
+              th user_id
+              th user_count
+          tbody
+            tr
+              th = row.id
+              th = link_to row.product.name, product_path(row.product)
+              th = row.state
+              th = row.current_count
+              th = row.min_count
+              - row.row_items.each do |row_item|
+                td = row_item.user.id
+                - if row_item.user == current_user
+                  = form_for row_item.row do |f|
+                    td
+                      = text_field_tag 'count', row_item.count
+                      = hidden_field_tag 'row_item_id', row_item.id
+                    td
+                      = f.submit 'update row'
+                - else
+                  td = row_item.count

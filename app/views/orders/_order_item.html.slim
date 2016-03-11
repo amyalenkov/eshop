@@ -83,6 +83,15 @@ table class="table"
         td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
 
 .info
+  .total_amount
+    | СУММА К ОПЛАТЕ 123456
+  .total_by_cart
+    .total_items
+      p Наименований: 123456
+      p Текущих единиц: 123456
+    .total_amount_by_cart
+      p Итого в таблице: 123456
+
   .info_1
   p <i>Товар в обработке</i>
   .info_2
