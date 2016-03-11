@@ -38,7 +38,8 @@ table class="table"
         - else
           td = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count), method: :post
 
-        td = cart_item.product.price
+        td
+          = text_field_tag "price_quant[#{index}]",cart_item.product.price, :readonly => true, :disabled => true
         td
           .input-group
             .input-group-btn
@@ -50,8 +51,7 @@ table class="table"
                   span class="glyphicon glyphicon-plus"
 
         td
-
-          = cart_item.product.price.to_i * cart_item.count.to_i
+          = text_field_tag "total_price_quant[#{index}]",cart_item.product.price.to_i * cart_item.count.to_i, :readonly => true, :disabled => true
         td.delete = link_to 'x', cart_item, remote: true, method: :delete, class: 'delete'
 
     .pull-left.button_cart_left

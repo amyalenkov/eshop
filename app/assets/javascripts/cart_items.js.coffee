@@ -12,19 +12,22 @@ $ ->
     input = $("input[name='" + fieldName + "']");
     currentVal = parseInt(input.val());
     if (!isNaN(currentVal))
+      price = $("input[name='price_" + fieldName + "']")
+      total_price = $("input[name='total_price_" + fieldName + "']")
       if(type == 'minus')
         if(currentVal > input.attr('min'))
           input.val(currentVal - 1).change();
-        else
-          $(this).attr('disabled', true);
+          total_price.val(price.val() * input.val())
       if(type == 'plus')
         if(currentVal < input.attr('max'))
           input.val(currentVal + 1).change();
-        else
-          $(this).attr('disabled', true);
-
+          total_price.val(price.val() * input.val())
     else
       input.val(0);
 
   $(".input-number").keyup ->
     this.value = this.value.replace(/[^0-9\.]/g,'')
+    fieldName = $(this).attr('name');
+    price = $("input[name='price_" + fieldName + "']")
+    total_price = $("input[name='total_price_" + fieldName + "']")
+    total_price.val(price.val() * this.value)
