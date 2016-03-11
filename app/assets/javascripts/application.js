@@ -15,6 +15,7 @@
 //= require jquery.raty
 //= require ratyrate
 //= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap.min
 //= require jquery.elevatezoom
 //= require_tree .
