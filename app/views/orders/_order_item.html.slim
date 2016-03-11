@@ -63,20 +63,20 @@ table class="table"
                   /= link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
               p Ряд собран #{row.current_count.to_s+' из '+row.min_count.to_s}
         - else
-          td
+          td style="width: 100px;"
             .row
               p Создайте ряд для выкупа
               = link_to 'Открыть ряд', rows_path(product_id: order_item.product.id, count: order_item.count), method: :post
 
-        td style="width: 135px; text-align: center;"
-          .input-group
-            .input-group-btn
-              button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[#{index}]" style="float:left;"
-                span class="glyphicon glyphicon-minus"
-              input type="text" name="quant[#{index}]" class="form-control input-number" value="#{order_item.count}" min="1" max="100" style="width: 50px;"
-              span class="input-group-btn"
-                button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[#{index}]"
-                  span class="glyphicon glyphicon-plus"
+        td
+          .counter
+            button type="button" class="btn btn-danger btn-number minus" data-type="minus" data-field="quant[#{order_item.id}]" style="float:left;"
+              p -
+
+            input type="number" name="quant[#{order_item.id}]" class="form-control input-number count_field" value="#{order_item.count}" min="1" max="10000"
+
+            button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[#{order_item.id}]"
+              p +
 
         /td = order_item.product.get_min_sale
         td = order_item.product.price
