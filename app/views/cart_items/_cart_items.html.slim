@@ -31,6 +31,7 @@ table class="table"
               p Артикул: <b>#{cart_item.product_id}</b>
               p Дата добавления: <b>data</b>
               p Комментарий
+              =text_area_tag 'comment_'+cart_item.id.to_s
 
         - row = cart_item.product.get_row
         - unless row.nil?

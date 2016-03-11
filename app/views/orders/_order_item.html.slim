@@ -52,8 +52,9 @@ table class="table"
               p Артикул: <b>#{order_item.product_id}</b>
               p Дата добавления: <b>data</b>
               p Комментарий
+              =text_area_tag 'comment', order_item.comment, :disabled => true
 
-        - row = order_item.product.get_row
+              - row = order_item.product.get_row
         - unless row.nil?
           td style="width: 100px;"
             .row
