@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+
+  $('.delete').on 'click', ->
+    check_button_disable()
+
   $('.new_cart_item').on 'submit', ->
     val = $(this).parent().find('#cart_item_product_id').val()
     $('#' + val).hide()
@@ -31,3 +35,13 @@ $ ->
     price = $("input[name='price_" + fieldName + "']")
     total_price = $("input[name='total_price_" + fieldName + "']")
     total_price.val(price.val() * this.value)
+
+check_button_disable = () ->
+  disable = true
+  $('.check_box_items').each (index, element) =>
+    if element.checked == true
+      disable = false
+  if disable == true
+    $('#create_order_for_all_cart').addClass("disabled")
+  else
+    $('#create_order_for_all_cart').removeClass("disabled")
