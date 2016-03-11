@@ -11,7 +11,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    card_items_id = params[:card_items_id]
+    card_items = params[:card_items]
+    card_items.each { |cart_item|
+      id = cart_item[0]
+      count = cart_item[1][:count]
+      comment = cart_item[1][:comment]
+    }
+
     @order = current_user.get_current_order
     if @order.nil?
       @order = Order.new
@@ -19,11 +25,16 @@ class OrdersController < ApplicationController
       @order.main_order = MainOrder.find_by state: MainOrder.states[:current]
     end
 
-    card_items_id.each { |id|
+    card_items.each { |cart_item|
+      cart_item_id = cart_item[0]
+      count = cart_item[1][:count]
+      comment = cart_item[1][:comment]
       order_item = OrderItem.new
-      cart_item = CartItem.find_by_id id
+      cart_item = CartItem.find_by_id cart_item_id
       order_item.product = cart_item.product
-      order_item.count = cart_item.count
+      order_item.count = count.to_i
+      order_item.price = count.to_i * cart_item.product.price.to_i
+      order_item.comment = comment
       order_item.order = @order
       cart_item.destroy!
       order_item.set_state current_user

@@ -707,6 +707,31 @@ header {
     }
   }
   .info{
+    .total_amount{
+      float: left;
+      width: 40%;
+      font-size: 16px;
+      color: #000;
+      font-weight: bold;
+      font-style: italic;
+      margin-bottom: 60px;
+    }
+    .total_by_cart{
+      float: right;
+      width: 60%;
+      margin-bottom: 60px;
+      p {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 14px;
+        color: #515151;
+        line-height: 15px;
+      }
+      .total_items, .total_amount_by_cart{
+        float: left;
+        width: 50%;
+      }
+    }
     p{
       font-size: 15px;
       color: #000;
@@ -1156,6 +1181,22 @@ header {
 .info_links{
   height: 190px;
   background: #e1e4e5;
+  .height_90{
+    height: 90%;
+  }
+  .block_links{
+    margin-top: 10px;
+    padding-bottom: 10px;
+    float: left;
+    font-style: italic;
+    line-height: 15px;
+    width: 100%;
+    border-right: 1px solid rgba(46, 47, 48, 0.3);
+  }
+  .table_border{
+    border-right: 1px solid rgba(46, 47, 48, 0.3);
+    height: 100%;
+  }
   a, p{
     float: left;
     width: 100%;
@@ -1164,6 +1205,15 @@ header {
   }
   p{
     margin-bottom: -5px;
+  }
+  .social_links{
+    margin-left: 56px;
+    a{
+      float: left;
+      width: 40px;
+      margin-right: 15px;
+      padding-left: inherit;
+    }
   }
 }
 /*END_INFO_LINKS*/
