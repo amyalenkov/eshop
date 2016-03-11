@@ -6,13 +6,14 @@ $ ->
     check_button_disable()
 
   $('#create_order').click ->
-    cart_items = []
+    cart_items = {}
     $('.check_box_items').each (index, element) =>
       if element.checked == true
-        cart_items.push element.value
+        input = $("input[name='quant[" + element.value + "]']");
+        cart_items[element.value] = input.val()
     $.post(
       '/orders',
-      card_items_id: cart_items
+      card_items: cart_items
     )
 
   $('#create_order_for_all_cart').click ->
