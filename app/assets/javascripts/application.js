@@ -15,10 +15,15 @@
 //= require jquery.raty
 //= require ratyrate
 //= require turbolinks
+//= require jquery.turbolinks
 //= require bootstrap.min
-//= require topMenu
 //= require jquery.elevatezoom
+//= require_tree .
+//= require topMenu
 //= require fancybox
 //= require active_zoom
 //= require select_row_by_checkbox_in_cart_items
-//= require_tree .
+//= require cart_items
+//= require orders
+//= require products
+

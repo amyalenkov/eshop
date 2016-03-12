@@ -40,19 +40,21 @@ table class="table"
           td = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count), method: :post
 
         td
-          = text_field_tag "price_quant[#{cart_item.id}]",cart_item.product.price, :readonly => true, :disabled => true
-        td
-          .input-group
-            .input-group-btn
-              button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[#{cart_item.id}]" style="float:left;"
-                span class="glyphicon glyphicon-minus"
-              input type="text" name="quant[#{cart_item.id}]" class="form-control input-number" value="#{cart_item.count}" min="1" max="10000" style="width: 50px;"
-              span class="input-group-btn"
-                button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[#{cart_item.id}]"
-                  span class="glyphicon glyphicon-plus"
+          = text_field_tag "price_quant[#{cart_item.id}]",cart_item.product.price, :readonly => true, :disabled => true, :class => 'price'
 
         td
-          = text_field_tag "total_price_quant[#{cart_item.id}]",cart_item.product.price.to_i * cart_item.count.to_i, :readonly => true, :disabled => true
+          .counter
+
+            button type="button" class="btn btn-danger btn-number minus" data-type="minus" data-field="quant[#{cart_item.id}]" style="float:left;"
+              p -
+
+            input type="number" name="quant[#{cart_item.id}]" class="form-control input-number count_field" value="#{cart_item.count}" min="1" max="10000"
+
+            button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[#{cart_item.id}]"
+              p +
+
+        td
+          = text_field_tag "total_price_quant[#{cart_item.id}]",cart_item.product.price.to_i * cart_item.count.to_i, :readonly => true, :disabled => true, :class => 'amount'
         td.delete = link_to 'x', cart_item, remote: true, method: :delete, class: 'delete'
 
     .pull-left.button_cart_left

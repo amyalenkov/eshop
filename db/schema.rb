@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160311115253) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "product_picture"
   end
 
   add_index "cart_items", ["product_id"], name: "index_cart_items_on_product_id", using: :btree

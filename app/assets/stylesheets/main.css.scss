@@ -684,6 +684,43 @@ header {
         background: #ffff00;
       }
     }
+    .row_cart{
+      text-align: center;
+    }
+    .price, .amount{
+      width: 100%;
+      border: none;
+      background: none;
+      text-align: center;
+    }
+    .counter{
+      float: left;
+      text-align: center;
+      width: 130px;
+      .count_field{
+        float: left;
+        width: 65px;
+      }
+      .minus, .plus{
+        float: left;
+        border-radius: 50%;
+        width: 20px;
+        height: 26px;
+        margin-top: 4px;
+        margin-right: 3px;
+        outline: none;
+        text-align: center;
+        p{
+          font-size: 20px;
+          color: #ffffff;
+          margin-top: -8px;
+          margin-left: -6px;
+        }
+      }
+      .plus{
+        margin-left: 3px;
+      }
+    }
     .delete{
       text-align: center;
 
