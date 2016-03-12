@@ -4,11 +4,11 @@
     .ok
       = link_to image_tag('ok.png'), cart_items_path
   -else
+    .favourites
+      - if user_signed_in?
+        .favourite id="for_favorite_#{product.id}"
+          = render 'cart_items/favorite_product', product_id: product.id
     = form_for(CartItem.new, remote: true) do |f|
-      /.favourites
-        - if user_signed_in?
-          .favourite id="for_favorite_#{product.id}"
-            = render 'cart_items/favorite_product', product_id: product.id
       .field
         = f.number_field :count, :value => '0', :min => '0'
         br

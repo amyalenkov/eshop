@@ -23,7 +23,6 @@
       | <i>#{product.price}</i>
     .favourites
       - if user_signed_in?
-        /= render 'favorites'
         .favourite id="for_favorite_#{product.id}"
           = render 'cart_items/favorite_product', product_id: product.id
     .count_for_cart
@@ -35,8 +34,7 @@
         = image_tag ("st.png")
 
       = form_for(CartItem.new, remote: true) do |f|
-        - product.price
-        = hidden_field :count, :value => '1', :min => '1'
-        = hidden_field :product_id, :value => product.id
+        = f.hidden_field :count, :value => '1', :min => '1'
+        = f.hidden_field :product_id, :value => product.id
         .actions
           = f.submit ''
