@@ -53,23 +53,32 @@ table class="table"
               p Дата добавления: <b>data</b>
               p Комментарий
               =text_area_tag 'comment', order_item.comment, :disabled => true
+        - row = order_item.product.get_row
         -if order_item.in_progress?
-          - row = order_item.product.get_row
           - unless row.nil?
             td style="width: 100px;"
               .row
                 .progress
                   .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
-                p Ряд собран #{row.current_count.to_s+' из '+row.min_count.to_s}
+                = link_to 'Ряд ', row_path(row), method: :get
+                p собран #{row.current_count.to_s+' из '+row.min_count.to_s}
           - else
             td style="width: 100px;"
               .row
                 p Создайте ряд для выкупа
                 = link_to 'Открыть ряд', rows_path(product_id: order_item.product.id, count: order_item.count), method: :post
         -else
-          td style="width: 100px;"
-            .row
-              p Ряд не нужен
+          -if row.nil?
+            td style="width: 100px;"
+              .row
+                p Ряд не нужен, ты без ряда все выкупил. Красава!
+          -else
+            td style="width: 100px;"
+              .row
+                .progress
+                  .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
+                = link_to 'Ряд ', row_path(row), method: :get
+                p собран #{row.current_count.to_s+' из '+row.min_count.to_s}
         td
           .counter
             button type="button" class="btn btn-danger btn-number minus" data-type="minus" data-field="quant[#{order_item.id}]" style="float:left;"

@@ -35,6 +35,7 @@ class RowsController < ApplicationController
     order_item.save!
     @row = Row.find_by_id params[:id]
     @row.current_count = @row.current_count - old_row_count + params[:count].to_i
+    @row.check_state
     @row.save!
     redirect_to @row
   end
