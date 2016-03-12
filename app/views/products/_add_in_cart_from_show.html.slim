@@ -2,8 +2,22 @@
 - if user_signed_in?
 
   -if current_user.product_in_cart?(product)
-    h1
-      | product already  in cart
+    .price
+      | <i>#{product.price}</i>
+    .favourites
+      - if user_signed_in?
+        /= render 'favorites'
+        .favourite id="for_favorite_#{product.id}"
+          = render 'cart_items/favorite_product', product_id: product.id
+    .count_for_cart
+      .count
+        .field_count
+          = number_field :count, :value => '1', :min => '1'
+          p
+            | <i>мин. 1 шт.</i>
+        = image_tag ("st.png")
+      .ok
+        = link_to image_tag('ok.png'), cart_items_path
   -else
     .price
       | <i>#{product.price}</i>
@@ -19,8 +33,6 @@
           p
             | <i>мин. 1 шт.</i>
         = image_tag ("st.png")
-      /.actions
-        = f.submit ''
 
       = form_for(CartItem.new, remote: true) do |f|
         - product.price
@@ -28,33 +40,3 @@
         = hidden_field :product_id, :value => product.id
         .actions
           = f.submit ''
-
-
-
-
-/
-/- product = @product if product.nil?
-/- if user_signed_in?
-/
-/  -if current_user.product_in_cart?(product)
-/    h1
-/      | product already  in cart
-/  -else
-/    = form_for(CartItem.new, remote: true) do |f|
-/      .price
-/        | <i>#{product.price}</i>
-/      .favourites
-/        - if user_signed_in?
-/          /= render 'favorites'
-/          .favourite id="for_favorite_#{product.id}"
-/            =render 'cart_items/favorite_product', product_id: product.id
-/      .count_for_cart
-/        .count
-/          .field_count
-/            = f.number_field :count, :value => '1', :min => '1'
-/            p
-/              | <i>мин. 1 шт.</i>
-/          = image_tag ("st.png")
-/          = f.hidden_field :product_id, :value => product.id
-/        .actions
-/          = f.submit ''

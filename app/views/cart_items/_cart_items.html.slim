@@ -14,6 +14,36 @@ table class="table"
       - check_favorite, favorite_product = current_user.is_favorite_product?(cart_item.product_id)
       - tr_class = 'highlight_row_click' if check_favorite
       - tr_class = '' unless check_favorite
+
+      /- if cart_item.@order.order_items.state == 'in_progress'
+      /  - background = 'background: #6fbaa7;'
+      /- elsif cart_item.state == 'reserving'
+      /  - background = 'background: #798dbd;'
+      /- elsif cart_item.state == 'reserved'
+      /  - background = 'background: #a773bc;'
+      /- elsif cart_item.state == 'refusing_after_reserved'
+      /  - background = 'background: #ffffff;'
+      /- elsif cart_item.state == 0
+      /  - background = 'background: #ffffff;'
+      /
+      /- progress_status='progress-bar-'
+      /- width='width: '
+      /
+      /- if cart_item.product.get_row != nil
+      /  - pc = (cart_item.product.get_row.current_count * 100)/cart_item.product.get_row.min_count
+      /  - if pc > 0 and pc < 25
+      /    - progress_status.concat('danger')
+      /    - width.concat('25%')
+      /  - if pc > 26 and pc <= 50
+      /    - progress_status.concat('warning')
+      /    - width.concat('50%')
+      /  - if pc > 51 and pc < 75
+      /    - progress_status.concat('info')
+      /    - width.concat('75%')
+      /  - if pc > 75 and pc < 100
+      /    - progress_status.concat('success')
+      /    - width.concat('100%')
+
       tr class="#{tr_class}" id="tr_product_#{cart_item.product_id}"
         td
           .checkbox-inline.check-box
@@ -33,13 +63,25 @@ table class="table"
               p Комментарий
               =text_area_tag 'comment_'+cart_item.id.to_s
 
+              - row = cart_item.product.get_row
+        /- unless row.nil?
+        /  td style="width: 100px;"
+        /    .row
+        /      .progress
+        /        .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
+        /        p Ряд собран #{row.current_count.to_s+' из '+row.min_count.to_s}
+        /- else
+        /  td style="width: 100px;"
+        /    .row
+        /      p Создайте ряд для выкупа
+        /      = link_to 'Открыть ряд', rows_path(product_id: cart_item.product.id, count: cart_item.count), method: :post
         - row = cart_item.product.get_row
         - unless row.nil?
           td = link_to '('+row.min_count.to_s+'-'+row.current_count.to_s+')', row_path(row.id)
         - else
           td = link_to 'new row', rows_path(product_id: cart_item.product.id, count: cart_item.count), method: :post
 
-        td
+        td style="width: 80px;"
           = text_field_tag "price_quant[#{cart_item.id}]",cart_item.product.price, :readonly => true, :disabled => true, :class => 'price'
 
         td
@@ -53,7 +95,7 @@ table class="table"
             button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[#{cart_item.id}]"
               p +
 
-        td
+        td style="width: 80px;"
           = text_field_tag "total_price_quant[#{cart_item.id}]",cart_item.product.price.to_i * cart_item.count.to_i, :readonly => true, :disabled => true, :class => 'amount'
         td.delete = link_to 'x', cart_item, remote: true, method: :delete, class: 'delete'
 

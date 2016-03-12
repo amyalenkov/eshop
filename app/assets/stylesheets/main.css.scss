@@ -412,6 +412,31 @@ header {
             margin-left: 30px;
           }
         }
+        .favourites{
+          float: left;
+          width: 100%;
+          margin-left: 13px;
+          margin-top: -20px;
+          .favourite{
+            float: left;
+            input[type="submit"]{
+              float: left;
+              width: 15px;
+              height: 15px;
+              background: url("star.png") no-repeat;
+              border: none;
+              outline: none;
+            }
+            input[type="submit"]:hover{
+              background: url("star-hover.png") no-repeat;
+              background-size: 15px;
+            }
+            .button_bg{
+              background: url("star-hover.png") no-repeat !important;
+              background-size: 15px !important;
+            }
+          }
+        }
       }
     }
   }
@@ -477,6 +502,12 @@ header {
     border: 2px solid #ffb11a;
     border-radius: 10px;
     background: #feeaff;
+    .ok{
+      img{
+        width: 30px;
+        float: left;
+      }
+    }
     .price{
       float: left;
       width: 150px;
@@ -646,7 +677,7 @@ header {
       float: left;
       .description_cart{
         float: left;
-        width: 235px;
+        width: 215px;
         .title{
           color: #057e89;
           padding-bottom: 12px;
