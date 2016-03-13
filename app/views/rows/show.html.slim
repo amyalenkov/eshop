@@ -1,24 +1,26 @@
-h1
-  =@row.product.name
-table[style="width:100%"]
-  thead
-    tr
-      th[style="text-align:right;"]
-        | user_id
-      th[style="text-align:right;"]
-        | count
-  tbody
-    - @row.row_items.each do |row_item|
-      tr
-        td[style="text-align:right;"]
-          = row_item.user.id
-        -if row_item.user == current_user
-          = form_for row_item.row do |row|
-            td[style="text-align:right;"]
-              = text_field_tag 'count', row_item.count
-              = hidden_field_tag 'row_item_id', row_item.id
-            td[style="text-align:right;"]
-              = row.submit 'update row'
-        -else
-          td[style="text-align:right;"]
-            = row_item.count
+.container-fluid
+  .row
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.calendar
+      h5
+        | Ближайшие встречи
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
+      table
+        thead
+          tr
+            th Наименование товара
+            th Количество
+        tbody
+          - @row.row_items.each do |row_item|
+            tr
+              td #{@row.product.name}
+
+              -if row_item.user == current_user
+                = form_for row_item.row do |row|
+                  td
+                    = text_field_tag 'count', row_item.count
+                    = hidden_field_tag 'row_item_id', row_item.id
+                  td
+                    = row.submit 'update row'
+              -else
+                td
+                  = row_item.count

@@ -1,7 +1,7 @@
 * { margin:0; padding:0; }
-html, body, #wrap { height: 100%; /*background: #d8d8d8*/ scroll-behavior: smooth;}
+html, body, #wrap { height: 100%;}
 body > #wrap {height: auto; min-height: 100%;}
-#main { padding-bottom: 0px; }  /* must be same height as the footer */
+#main { padding-bottom: 380px; }  /* must be same height as the footer */
 .clearfix:after {content: ".";
   display: block;
   height: 0;
@@ -12,7 +12,6 @@ body > #wrap {height: auto; min-height: 100%;}
 * html .clearfix { height: 1%;}
 .clearfix {display: block;}
 /* End hide from IE-mac */
-
 
 .container-fluid{
   max-width: 1000px;
@@ -502,12 +501,6 @@ header {
     border: 2px solid #ffb11a;
     border-radius: 10px;
     background: #feeaff;
-    .ok{
-      img{
-        width: 30px;
-        float: left;
-      }
-    }
     .price{
       float: left;
       width: 150px;
@@ -540,6 +533,13 @@ header {
           background: url("star-hover.png") no-repeat !important;
           background-size: 15px !important;
         }
+      }
+    }
+
+    .ok{
+      img{
+        width: 30px;
+        float: left;
       }
     }
     .count_for_cart{
@@ -1288,6 +1288,13 @@ header {
 
 /*FOOTER*/
 
+#footer{
+  position: relative;
+  margin-top: -380px;
+  height: 315px;
+  clear:both;
+}
+
 .footer{
   height: 190px;
   background: #6dcff6;
@@ -1295,14 +1302,6 @@ header {
   color: #736e6e;
   padding-top: 30px;
   padding-left: 40px;
-}
-
-#footer{
-  position: relative;
-  margin-top: -250px;
-  height: 250px;
-  clear:both;
-  background: rgba(185, 185, 185, 0.2);
 }
 
 .footer_catalog{
