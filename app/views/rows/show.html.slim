@@ -12,15 +12,7 @@
         tbody
           - @row.row_items.each do |row_item|
             tr
-              td #{@row.product.name}
-
-              -if row_item.user == current_user
-                = form_for row_item.row do |row|
-                  td
-                    = text_field_tag 'count', row_item.count
-                    = hidden_field_tag 'row_item_id', row_item.id
-                  td
-                    = row.submit 'update row'
-              -else
-                td
-                  = row_item.count
+              td
+                = link_to @row.product.name, product_path(@row)
+              td
+                = row_item.count

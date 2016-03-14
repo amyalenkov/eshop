@@ -1,0 +1,9 @@
+| $('#total_price_#{@order_item.id}').html("
+= escape_javascript (render partial: 'orders/total_price')
+| ");
+| $('#counter_#{@order_item.id}').html("
+= escape_javascript (render partial: 'orders/counter')
+| ");
+| $('#row_info_#{@order_item.id}').html("
+= escape_javascript (render partial: 'orders/row_info')
+| ");

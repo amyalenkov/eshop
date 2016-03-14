@@ -26,18 +26,18 @@ class RowsController < ApplicationController
   end
 
   def update
-    row_item = RowItem.find_by_id params[:row_item_id]
+    row_item = RowItem.find_by row_id: params[:row_id], user_id: current_user.id
     old_row_count = row_item.count
     row_item.count = params[:count].to_i
     row_item.save!
-    order_item = row_item.order_item
-    order_item.count = row_item.count
-    order_item.save!
-    @row = Row.find_by_id params[:id]
+    @order_item = row_item.order_item
+    @order_item.count = row_item.count
+    @order_item.save!
+    @row = Row.find_by_id params[:row_id]
     @row.current_count = @row.current_count - old_row_count + params[:count].to_i
     @row.check_state
     @row.save!
-    redirect_to @row
+    # redirect_to @row
   end
 
 end

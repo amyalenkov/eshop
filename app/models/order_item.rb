@@ -21,11 +21,16 @@ class OrderItem < ActiveRecord::Base
   private
 
   def create_row_item row, current_user
-    row_item = RowItem.new
-    row_item.count=self.count
-    row_item.row_id=row.id
+    row_item = RowItem.find_by row_id: row.id, user_id: current_user.id
+    if row_item.nil?
+      row_item = RowItem.new
+      row_item.count=self.count
+      row_item.row_id=row.id
+      row_item.user=current_user
+    else
+      row_item.count=row_item.count + self.count
+    end
     row_item.order_item=self
-    row_item.user=current_user
     row_item.save!
   end
 

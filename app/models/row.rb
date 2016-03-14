@@ -17,7 +17,8 @@ class Row < ActiveRecord::Base
     else
       self.state = Row.states[:not_full]
       self.row_items.each do |row_item|
-        row_item.order_item.in_progress!
+        order_item = row_item.order_item
+        order_item.in_progress! unless order_item.nil?
       end
     end
   end

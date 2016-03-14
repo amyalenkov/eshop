@@ -12,11 +12,6 @@ class OrdersController < ApplicationController
 
   def create
     card_items = params[:card_items]
-    card_items.each { |cart_item|
-      id = cart_item[0]
-      count = cart_item[1][:count]
-      comment = cart_item[1][:comment]
-    }
 
     @order = current_user.get_current_order
     if @order.nil?
