@@ -60,7 +60,7 @@ body > #wrap {height: auto; min-height: 100%;}
   a{
     font-size: 12px;
     padding-left: 5px;
-    color: #000000;
+    color: #6cb2db;
     text-decoration: none;
   }
 }
@@ -70,6 +70,7 @@ body > #wrap {height: auto; min-height: 100%;}
   margin-top: -30px;
   a{
     font-size: 14px;
+    color: #6cb2db;
     text-decoration: none;
   }
   a:hover{
@@ -82,12 +83,12 @@ body > #wrap {height: auto; min-height: 100%;}
   .login{
     float: left;
     text-align: center;
-    width: 25%;
+    width: 30%;
   }
   .contacts{
     float: left;
     text-align: right;
-    width: 75%;
+    width: 70%;
     a{
       width: 100%;
       margin-right: 5px ;
@@ -1337,8 +1338,12 @@ header {
 /*END_FOOTER*/
 
 @media (min-width: 450px) and (max-width: 767px) {
-  .logo a{
-    text-align: center;
+  .logo{
+    font-size: 10px;
+    color: #056d00;
+    a{
+      text-align: center;
+    }
   }
   #imaginary_container{
     width: auto;
@@ -1379,8 +1384,12 @@ header {
 }
 
 @media (min-width: 768px) and (max-width: 930px) {
-  .menu_left{
-    margin-top: 15px;
+  .logo{
+    font-size: 10px;
+    color: #056d00;
+    a{
+      text-align: center;
+    }
   }
   .search_input {
     width: 270px;
@@ -1414,7 +1423,11 @@ header {
 }
 
 @media (min-width: 931px) {
-
+  .logo{
+    font-size: 9px;
+    color: #056d00;
+    text-align: center;
+  }
   .search_input {
     width: 140px;
   }
@@ -1447,3 +1460,5 @@ header {
     text-overflow: ellipsis;
   }
 }
+
+

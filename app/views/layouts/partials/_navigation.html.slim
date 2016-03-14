@@ -3,14 +3,14 @@ header
     .container-fluid
       .row
 
-        .col-xs-12.col-sm-1.col-md-1.col-lg-1.logo
-          a> href='/'
-            = image_tag ("logo.jpg")
+        .col-xs-2.col-sm-2.col-md-2.col-lg-2.logo
+          = link_to image_tag('logo.jpg'), '/'
+          p <i>Интернет-магазин "Узелок"</i>
 
-        .col-xs-12.col-sm-7.col-md-7.col-lg-7.menu_left
+        .col-xs-7.col-sm-7.col-md-7.col-lg-7.menu_left
           = render 'layouts/partials/menu'
 
-        .col-xs-12.col-sm-4.col-md-4.col-lg-4.menu_right
+        .col-xs-3.col-sm-3.col-md-3.col-lg-3.menu_right
           .login
             - if user_signed_in?
               = render 'layouts/partials/users_registered'
