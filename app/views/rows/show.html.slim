@@ -9,6 +9,7 @@
           tr
             th Наименование товара
             th Количество
+            th delete
         tbody
           - @row.row_items.each do |row_item|
             tr
@@ -16,3 +17,4 @@
                 = link_to @row.product.name, product_path(@row)
               td
                 = row_item.count
+              td.delete = link_to 'x', @row, remote: true, method: :delete, class: 'delete'
