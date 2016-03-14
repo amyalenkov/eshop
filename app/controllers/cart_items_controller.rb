@@ -24,6 +24,8 @@ class CartItemsController < ApplicationController
 
   def destroy
     cart_item = CartItem.find_by_id params[:id]
+    favorite = Favorite.find_by product_id: cart_item.product_id, user_id: current_user.id
+    favorite.destroy! unless favorite.nil?
     cart_item.destroy! unless cart_item.nil?
     get_cart_items
     get_current_order
