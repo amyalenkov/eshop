@@ -5,16 +5,12 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
 
   def set_state current_user
-    if count >= product.get_min_sale
+    row = get_row
+    create_row_item row, current_user
+    if row.reserving?
       self.state = OrderItem.states[:reserving]
     else
-      row = get_row
-      create_row_item row, current_user
-      if row.reserving?
-        self.state = OrderItem.states[:reserving]
-      else
-        self.state = OrderItem.states[:in_progress]
-      end
+      self.state = OrderItem.states[:in_progress]
     end
   end
 
