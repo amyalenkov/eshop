@@ -4,3 +4,6 @@
     = comment.created_at
     br
     = comment.body
+    -if comment.user == current_user
+      br
+      = link_to 'x', comment, remote: true, method: :delete, class: 'delete'
