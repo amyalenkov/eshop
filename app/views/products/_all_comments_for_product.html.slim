@@ -1,6 +1,19 @@
 - @product.comments.each do |comment|
-  div.field
-    br
-    = comment.created_at
-    br
-    = comment.body
+  .comment
+    .title
+      = (User.find_by_id comment.user_id).email
+    .body
+      = comment.body
+
+
+/<div id="top" style="height:5em;background-color:#eee;">
+/  <div id="first-child">Should not have a scroll bar (is dynamic)</div>
+/  <div id="second-child" style="margin:1ex;background-color:#f00;height:1em;overflow:auto;">
+/    Should have a scroll bar (is dynamic)<br>
+/    Too much stuff<br>
+/    Too much stuff<br>
+/    Too much stuff<br>
+/    Too much stuff<br>
+/    Too much stuff<br>
+/  </div>
+/</div>
