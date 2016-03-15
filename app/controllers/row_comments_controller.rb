@@ -9,6 +9,12 @@ class RowCommentsController < ApplicationController
     @row = Row.find_by_id params[:row_comment][:row_id]
   end
 
+  def destroy
+    comment = RowComment.find_by id: params[:id], user_id: current_user.id
+    @row = Row.find_by_id comment.row_id
+    comment.destroy! unless comment.nil?
+  end
+
   private
 
   def comment_params

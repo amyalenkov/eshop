@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     end
   end
   resources :rows, only: [:index, :create, :show, :update, :destroy]
-  resources :comments, only: [:create, :show, :update]
-  resources :row_comments, only: [:create, :show, :update]
+  resources :comments, only: [:create, :show, :update, :destroy]
+  resources :row_comments, only: [:create, :show, :update, :destroy]
   resources :favorites, only: [:index, :create, :destroy]
 
   post '/rate' => 'rater#create', :as => 'rate'
