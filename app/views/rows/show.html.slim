@@ -18,3 +18,8 @@
               td
                 = row_item.count
               td.delete = link_to 'x', @row, remote: true, method: :delete, class: 'delete'
+      - if user_signed_in?
+        .add_comment
+          = render 'add_comment_for_row'
+        .all_comments
+          = render 'all_comments_for_row'
