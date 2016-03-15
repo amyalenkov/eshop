@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :cart_items
   has_many :orders
   has_many :comments
+  has_many :row_comments
   has_many :favorites
 
   def product_in_cart? product_id

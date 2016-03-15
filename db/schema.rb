@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311115253) do
+ActiveRecord::Schema.define(version: 20160314121819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20160311115253) do
   end
 
   create_table "comments", force: true do |t|
-    t.string   "title"
     t.string   "body"
     t.integer  "user_id"
     t.integer  "product_id"
@@ -205,6 +204,17 @@ ActiveRecord::Schema.define(version: 20160311115253) do
   end
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
+
+  create_table "row_comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "row_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "row_comments", ["row_id"], name: "index_row_comments_on_row_id", using: :btree
+  add_index "row_comments", ["user_id"], name: "index_row_comments_on_user_id", using: :btree
 
   create_table "row_items", force: true do |t|
     t.integer  "count"

@@ -16,3 +16,9 @@
                 = link_to @row.product.name, product_path(@row)
               td
                 = row_item.count
+
+      - if user_signed_in?
+        .add_comment
+          = render 'add_comment_for_row'
+      .all_comments
+        = render 'all_comments_for_row'

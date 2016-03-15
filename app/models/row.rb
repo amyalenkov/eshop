@@ -7,6 +7,7 @@ class Row < ActiveRecord::Base
   belongs_to :product
 
   has_many :row_items
+  has_many :row_comments
 
   def check_state
     if current_count >= min_count
