@@ -40,4 +40,21 @@ class RowsController < ApplicationController
     # redirect_to @row
   end
 
+  def destroy
+    @row = Row.find_by_id params[:id]
+    row_item = RowItem.find_by row_id: params[:id], user_id: current_user.id
+    @row.current_count = @row.current_count - row_item.count
+    @row.check_state
+    order_item = row_item.order_item
+    CartItem.create count: order_item.count, total_price: order_item.price, user: current_user, product: order_item.product
+    order_item.destroy!
+    row_item.destroy! unless row_item.nil?
+    if @row.current_count == 0
+      @row.destroy!
+    else
+      @row.save!
+    end
+    redirect_to cart_item_path
+  end
+
 end

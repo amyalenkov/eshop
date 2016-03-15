@@ -1,14 +1,8 @@
-/.categories_menu
-  - cache @categories do
-    = render 'layouts/partials/caregories', menu: @categories
-
 .order_menu
   - if user_signed_in?
     - current_order = current_user.get_current_order
     -unless current_order.nil?
       = link_to 'Текущий заказ', order_path(current_order.id)
-    -else
-      = link_to 'нету текущего заказа :('
 
 .orders_menu
   = render 'layouts/partials/orders_menu'
@@ -20,20 +14,12 @@
   - if user_signed_in?
     = render 'layouts/partials/rows_menu'
 
-.rows_menu
-  - if user_signed_in?
-    = link_to 'favorites', favorites_path
-
 .create_question
   a> href='url3' Задать вопрос
 
 .cart_menu.pull-right
   - if user_signed_in?
     = render 'layouts/partials/cart_menu'
-
-/.favorites_menu.pull-right
-  - if user_signed_in?
-    = render 'layouts/partials/favorites'
 
 .contact_menu.pull-right
     = link_to 'Контакты', nil
