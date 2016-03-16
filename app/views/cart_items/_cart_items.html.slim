@@ -69,13 +69,9 @@ table class="table"
         td
           .counter
 
-            button type="button" class="btn btn-danger btn-number minus" data-type="minus" data-field="quant[#{cart_item.id}]" style="float:left;"
-              p -
-
+            button type="button" class="btn btn-danger btn-number minus" data-type="minus" data-field="quant[#{cart_item.id}]"
             input type="number" name="quant[#{cart_item.id}]" class="form-control input-number count_field" value="#{cart_item.count}" min="1" max="10000"
-
             button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[#{cart_item.id}]"
-              p +
 
         td style="width: 80px;"
           = text_field_tag "total_price_quant[#{cart_item.id}]",cart_item.product.price.to_i * cart_item.count.to_i, :readonly => true, :disabled => true, :class => 'amount'
