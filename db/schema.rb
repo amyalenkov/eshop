@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314121819) do
+ActiveRecord::Schema.define(version: 20160316120511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,13 @@ ActiveRecord::Schema.define(version: 20160314121819) do
 
   add_index "comments", ["product_id"], name: "index_comments_on_product_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "configures", force: true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
@@ -235,6 +242,7 @@ ActiveRecord::Schema.define(version: 20160314121819) do
     t.integer  "state",         default: 0
     t.integer  "product_id"
     t.integer  "min_count"
+    t.integer  "main_order_id"
   end
 
   create_table "subcategories", force: true do |t|

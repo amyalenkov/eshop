@@ -37,6 +37,7 @@ class OrderItem < ActiveRecord::Base
       row.product = self.product
       row.min_count = self.product.get_min_sale
       row.current_count = self.count
+      row.main_order = MainOrder.get_current_order
     else
       row.current_count = row.current_count + self.count
     end

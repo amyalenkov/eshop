@@ -16,6 +16,7 @@ class RowsController < ApplicationController
     @row.product = product
     @row.min_count = product.get_min_sale
     @row.current_count = params[:count]
+    @row.main_order = MainOrder.get_current_order
     @row.save!
     @row_item = RowItem.new
     @row_item.row = @row

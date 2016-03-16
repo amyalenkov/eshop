@@ -65,3 +65,6 @@ gem 'rake', '10.5.0'
 # for image product
 gem 'elevatezoom-rails'
 gem 'fancybox2-rails', '~> 0.2.8'
+
+# cron jobs
+gem 'whenever', :require => false

@@ -1,0 +1,22 @@
+table class="table"
+  thead
+    tr
+      th Номер СП
+      th Сроки СП
+      th Сумма СП
+      th Встречи (г. Гомель)
+      th Почта (доугие города РБ)
+      th Способ получения
+      th Статус оплаты
+  tbody
+    -main_order = MainOrder.find_by state: MainOrder.states[:stopped]
+    -rows = main_order.rows
+    - rows.each do |row|
+      tr
+        td = link_to 'row '+row.id.to_s, row_path(row.id)
+        td = row.product.name
+        td = row.product.id
+        td = row.current_count
+        td
+        td = row.state
+        td
