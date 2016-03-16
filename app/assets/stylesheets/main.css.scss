@@ -437,6 +437,31 @@ header {
             }
           }
         }
+        .favourites_in_cart{
+          float: left;
+          width: 100%;
+          margin-left: 5px;
+          margin-top: -25px;
+          .favourite{
+            float: left;
+            input[type="submit"]{
+              float: left;
+              width: 15px;
+              height: 15px;
+              background: url("star.png") no-repeat;
+              border: none;
+              outline: none;
+            }
+            input[type="submit"]:hover{
+              background: url("star-hover.png") no-repeat;
+              background-size: 15px;
+            }
+            .button_bg{
+              background: url("star-hover.png") no-repeat !important;
+              background-size: 15px !important;
+            }
+          }
+        }
       }
     }
   }
@@ -541,6 +566,7 @@ header {
       img{
         width: 30px;
         float: left;
+        margin-top: -10px !important;
       }
     }
     .count_for_cart{
@@ -558,7 +584,7 @@ header {
         margin-right: 5px;
         margin-top: 10px;
         margin-left: 10px;
-        width: 85px;
+        width: 130px;
         .field_count{
           float: left;
           input[type="number"]{
@@ -590,7 +616,8 @@ header {
           width: 29px;
           height: 24px;
           border: none;
-          margin-top: 3px;
+          margin-top: -10px;
+          margin-left: 10px;
         }
       }
     }
@@ -601,6 +628,58 @@ header {
     text-align: justify;
     font-size: 12px;
     margin-top: 25px;
+  }
+  .all_comments{
+    .all_comments_not_nil{
+      float: left;
+      width: 100%;
+      height: 150px;
+      .comments{
+        float: left;
+        overflow: auto;
+        height: 140px;
+        width: 60%;
+        .comment{
+          float: left;
+          width: 100%;
+          margin-bottom: 15px;
+          border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
+          .title, .body{
+            float: left;
+            width: 95%;
+            font-size: 16px;
+            font-weight: bold;
+            font-style: italic;
+          }
+          .body{
+            font-size: 14px;
+            font-weight: normal;
+          }
+          .delete a{
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .all_comments_nil{
+      float: left;
+      width: 100%;
+      height: 50px;
+      margin-top: 20px;
+      margin-bottom: -50px;
+      .comment{
+        float: left;
+        width: 60%;
+        border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
+        .title{
+          float: left;
+          width: 95%;
+          font-size: 18px;
+          font-weight: bold;
+          font-style: italic;
+        }
+      }
+    }
   }
   .add_comment{
     float: left;
@@ -676,9 +755,10 @@ header {
     }
     .product_cart{
       float: left;
+      width: 300px;
       .description_cart{
         float: left;
-        width: 215px;
+        width: 200px;
         .title{
           color: #057e89;
           padding-bottom: 12px;
@@ -688,6 +768,9 @@ header {
           font-size: 12px;
           color: #515151;
           line-height: 5px;
+        }
+        textarea{
+          resize: none;
         }
       }
       .image_cart{
@@ -704,6 +787,8 @@ header {
       text-align: center;
       .progress{
         margin-bottom: 5px !important;
+        width: 80%;
+        margin-left: 10px;
       }
       p{
         font-size: 10px;
@@ -731,29 +816,33 @@ header {
     .counter{
       float: left;
       text-align: center;
-      width: 130px;
+      width: 110px;
       .count_field{
         float: left;
-        width: 65px;
+        width: 50px;
+        height: 22px;
+        padding: 0 5px;
       }
       .minus, .plus{
         float: left;
-        border-radius: 50%;
-        width: 20px;
-        height: 26px;
-        margin-top: 4px;
-        margin-right: 3px;
         outline: none;
         text-align: center;
-        p{
-          font-size: 20px;
-          color: #ffffff;
-          margin-top: -8px;
-          margin-left: -6px;
-        }
+        border: none;
       }
+      .minus{
+        width: 20px;
+        height: 20px;
+        background: url("plus_minus.png") 245px;
+        background-size: cover;
+        margin-right: 4px;
+      }
+
       .plus{
-        margin-left: 3px;
+        width: 20px;
+        height: 20px;
+        background: url("plus_minus.png") 0px -220px;
+        background-size: cover;
+        margin-left: 4px;
       }
     }
     .delete{

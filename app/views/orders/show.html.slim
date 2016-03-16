@@ -7,7 +7,5 @@
       p
         | Чтобы посмотреть счета на оплату перейдите по ссылке: История заказов
       .cart_items
-        /= @order.id
-        /=@order.state
         .current_order
           = render 'order_item'

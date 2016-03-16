@@ -1,9 +1,19 @@
-- @product.comments.each do |comment|
-  div.field
-    br
-    = comment.created_at
-    br
-    = comment.body
-    -if comment.user == current_user
-      br
-      = link_to 'x', comment, remote: true, method: :delete, class: 'delete'
+- Rails.logger.warn '@product.comments: ' + @product.comments.empty?.to_s
+-if @product.comments.empty?.to_s == 'true'
+  .all_comments_nil
+    .comments
+      .comment
+        .title
+          | Для данного товара нет комментариев
+-else
+  .all_comments_not_nil
+    .comments
+      - @product.comments.each do |comment|
+        .comment
+          .title
+            = (User.find_by_id comment.user_id).email
+          - if comment.user == current_user
+            .delete
+              = link_to 'x', comment, remote: true, method: :delete, class: 'delete'
+          .body
+            = comment.body

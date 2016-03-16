@@ -5,18 +5,17 @@
       | <i>#{product.price}</i>
     .favourites
       - if user_signed_in?
-        /= render 'favorites'
         .favourite id="for_favorite_#{product.id}"
           = render 'cart_items/favorite_product', product_id: product.id
     .count_for_cart
-      /.count
+      .count
         .field_count
-          = number_field :count, :value => '1', :min => '1', disable: true
+          input type="number" max=10 min=0 disabled=true
           p
             | <i>мин. 1 шт.</i>
         = image_tag ("st.png")
-      .ok
-        = link_to image_tag('ok.png'), cart_items_path
+        .ok
+          = link_to image_tag('ok.png'), cart_items_path
   -else
     .price
       | <i>#{product.price}</i>
@@ -24,14 +23,14 @@
       - if user_signed_in?
         .favourite id="for_favorite_#{product.id}"
           = render 'cart_items/favorite_product', product_id: product.id
-  = form_for(CartItem.new, remote: true) do |f|
-    .count_for_cart
-      .count
-        .field_count
-          = f.number_field :count, :value => '1', :min => '1'
-          = f.hidden_field :product_id, :value => product.id
-          p
-            | <i>мин. 1 шт.</i>
-        = image_tag ("st.png")
-        .actions
-          = f.submit ''
+    = form_for(CartItem.new, remote: true) do |f|
+      .count_for_cart
+        .count
+          .field_count
+            = f.number_field :count, :value => '1', :min => '1'
+            = f.hidden_field :product_id, :value => product.id
+            p
+              | <i>мин. 1 шт.</i>
+          = image_tag ("st.png")
+          .actions
+            = f.submit ''
