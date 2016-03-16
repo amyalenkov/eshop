@@ -11,10 +11,15 @@ namespace :my do
       order.order_items.each do |order_item|
         CartItem.create(product_id: order_item.product_id, count: order_item.count, total_price: order_item.price * order_item.count,
                         user_id: order.user_id) if order_item.in_progress?
-        order_item.destroy! if order_item.in_progress?
+        if order_item.in_progress?
+          order_item.refusing_after_not_full_row!
+          order_item.count = 0
+        elsif order_item.reserving?
+          order_item.reserved!
+        end
       end
     end
-    rows = Row.where state: Row.states[:not_full]
+    rows = Row.all
     rows.each do |row|
       row.row_items.each do |row_item|
         row_item.destroy!
@@ -24,7 +29,6 @@ namespace :my do
       end
       row.destroy!
     end
-
   end
 
 end

@@ -19,11 +19,11 @@ $ ->
     cart_items = {}
     $('.check_box_items').each (index, element) =>
       cart_items[element.value] = get_fiesds_for_order_item(element)
-    if cart_items.length > 0
-      $.post(
-        '/orders',
-        card_items_id: cart_items
-      )
+#    if cart_items.length > 0
+    $.post(
+      '/orders',
+      card_items: cart_items
+    )
 
 get_fiesds_for_order_item = (element) ->
   cart_item = {}

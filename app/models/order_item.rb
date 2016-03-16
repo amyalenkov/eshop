@@ -1,5 +1,5 @@
 class OrderItem < ActiveRecord::Base
-  enum state: [:in_progress, :reserving, :reserved, :refusing_after_reserved]
+  enum state: [:in_progress, :reserving, :reserved, :refusing_after_not_full_row, :refusing_after_reserved]
 
   belongs_to :product
   belongs_to :order
@@ -37,7 +37,7 @@ class OrderItem < ActiveRecord::Base
       row.product = self.product
       row.min_count = self.product.get_min_sale
       row.current_count = self.count
-      row.main_order = MainOrder.get_current_order
+      row.main_order = MainOrder.find_by state: MainOrder.states[:current]
     else
       row.current_count = row.current_count + self.count
     end

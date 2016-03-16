@@ -8,10 +8,6 @@ class MainOrder < ActiveRecord::Base
 
   has_many :rows
 
-  def get_current_order
-    MainOrder.find_by state: MainOrder.states[:current]
-  end
-
   def get_current_rows
     main_order = MainOrder.find_by state: MainOrder.states[:current]
     main_order.rows

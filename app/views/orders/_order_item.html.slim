@@ -37,17 +37,26 @@ table class="table"
               =text_area_tag 'comment', order_item.comment, :disabled => true
         - row = order_item.product.get_row
         td style="width: 100px;"
-          .row_info id="row_info_#{order_item.id}"
-            =render 'row_info', order_item: order_item, row: row
+          -if order_item.refusing_after_not_full_row?
+            | не собрался ряд
+          -elsif order_item.reserved?
+            | собрался ряд
+          -else
+            .row_info id="row_info_#{order_item.id}"
+              =render 'row_info', order_item: order_item, row: row
         td
-          .counter id="counter_#{order_item.id}"
-            =render 'counter', order_item: order_item, row: row
+          -if order_item.refusing_after_not_full_row? || order_item.reserved?
+            input type="number" class="form-control input-number count_field" value="#{order_item.count}"
+          -else
+            .counter id="counter_#{order_item.id}"
+              =render 'counter', order_item: order_item, row: row
         td style="width: 80px;"
           = order_item.product.price
         td style="width: 80px;"
           .total_price id="total_price_#{order_item.id}"
             =render 'total_price', order_item: order_item
-        td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
+        -unless order_item.refusing_after_not_full_row? || order_item.reserved?
+          td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
 
 .info
   .total_amount
