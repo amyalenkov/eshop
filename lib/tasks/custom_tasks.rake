@@ -19,7 +19,7 @@ namespace :my do
         end
       end
     end
-    rows = Row.all
+    rows = Row.where state: Row.states[:not_full]
     rows.each do |row|
       row.row_items.each do |row_item|
         row_item.destroy!
@@ -29,6 +29,11 @@ namespace :my do
       end
       row.destroy!
     end
+    full_rows = Row.where state: Row.states[:full]
+    full_rows.each do |row|
+      row.reserved!
+    end
+
   end
 
 end

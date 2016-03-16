@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
   ratyrate_rateable 'rating'
 
   def get_row
-    Row.find_by product_id: id
+    Row.find_by(product_id: id, state: [Row.states[:full], Row.states[:not_full]])
   end
 
   def get_not_full_row
