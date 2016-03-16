@@ -54,14 +54,15 @@ table class="table"
 
         - row = cart_item.product.get_row
         - unless row.nil?
-          td style="width: 75px;"
+          td style="width: 110px;"
             .row
               .progress
                 .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
               p Ряд собран #{row.current_count.to_s+' из '+row.min_count.to_s}
         - else
-          td style="width: 75px;"
+          td style="width: 110px;"
             .row
+              p Создайте ряд для выкупа
               = link_to 'Открыть ряд', rows_path(product_id: cart_item.product.id, count: 0), method: :post, class: "new_row"
         td style="width: 80px;"
           = text_field_tag "price_quant[#{cart_item.id}]",cart_item.product.price, :readonly => true, :disabled => true, :class => 'price'
