@@ -48,29 +48,32 @@ table class="table"
             .row_info id="row_info_#{order_item.id}"
               =render 'row_info', row: row
         td
-          -if order_item.refusing_after_not_full_row? || order_item.reserved?
-            input type="number" class="form-control input-number count_field" value="#{order_item.count}"
-          -else
+          -if order_item.in_progress?
             .counter id="counter_#{order_item.id}"
-              =render 'counter', order_item: order_item, row: row
+              = render 'counter', order_item: order_item, row: row
+          -else
+            input type="number" class="form-control input-number count_field" value="#{order_item.count}"
         td style="width: 80px;"
           = order_item.product.price
         td style="width: 80px;"
           .total_price id="total_price_#{order_item.id}"
             =render 'total_price', order_item: order_item
-        -unless order_item.refusing_after_not_full_row? || order_item.reserved?
+        -if order_item.in_progress?
           td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
 
 .info
-  .total_amount
-    | СУММА К ОПЛАТЕ 123456
-  .total_by_cart
-    .total_items
-      p Наименований: 123456
-      p Текущих единиц: 123456
-    .total_amount_by_cart
-      p Итого в таблице: 123456
-
+  - if @order.bill?
+    .total_amount
+      | СУММА К ОПЛАТЕ #{@order.total_price}
+    .total_by_cart
+      .total_items
+        p Наименований: 123456
+        p Текущих единиц: 123456
+      .total_amount_by_cart
+        p Итого в таблице: 123456
+  - if @order.paid?
+    .total_amount
+      | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
   .info_1
   p <i>Товар в обработке</i>
   .info_2

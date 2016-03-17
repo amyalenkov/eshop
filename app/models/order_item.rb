@@ -1,5 +1,5 @@
 class OrderItem < ActiveRecord::Base
-  enum state: [:in_progress, :reserved, :refusing_after_not_full_row, :refusing_after_reserved]
+  enum state: [:in_progress, :reserved, :refusing_after_not_full_row, :refusing_after_reserved, :bill]
 
   belongs_to :product
   belongs_to :order

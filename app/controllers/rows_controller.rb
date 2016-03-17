@@ -59,4 +59,14 @@ class RowsController < ApplicationController
     end
   end
 
+  def set_bill
+    rows = params[:rows]
+    rows.each do |row_id, price|
+      row = Row.find_by_id row_id
+      row.product.price = price
+      row.bill!
+      row.save!
+    end
+  end
+
 end

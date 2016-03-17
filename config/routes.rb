@@ -25,7 +25,11 @@ Rails.application.routes.draw do
       get 'meetings'
     end
   end
-  resources :rows, only: [:index, :create, :show, :update, :destroy]
+  resources :rows, only: [:index, :create, :show, :update, :destroy] do
+    collection do
+      post 'set_bill'
+    end
+  end
   resources :comments, only: [:create, :show, :update, :destroy]
   resources :row_comments, only: [:create, :show, :update, :destroy]
   resources :favorites, only: [:index, :create, :destroy]
