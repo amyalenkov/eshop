@@ -64,8 +64,27 @@ class RowsController < ApplicationController
     rows.each do |row_id, price|
       row = Row.find_by_id row_id
       row.product.price = price
-      row.bill!
+      row.state = Row.states[:bill]
       row.save!
+      set_order_states row.row_items
+    end
+  end
+
+  private
+
+  def set_order_states row_items
+    row_items.each do |row_item|
+      p row_item
+      order_item = row_item.order_item
+      order_item.bill!
+      order = order_item.order
+      order.bill!
+      if order.total_price.nil?
+        order.total_price = order_item.count * order_item.product.price
+      else
+        order.total_price = order.total_price + order_item.count * order_item.product.price
+      end
+      order.save!
     end
   end
 

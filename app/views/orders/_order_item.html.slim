@@ -40,7 +40,7 @@ table class="table"
         td style="width: 100px;"
           -if row.nil?
             | не собрался ряд
-          -elsif row.reserved?
+          -elsif row.reserved? || row.bill?
             | собрался ряд
           -elsif row.refusing?
             | отказ

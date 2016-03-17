@@ -7,7 +7,7 @@
 #
 require File.expand_path('../environment', __FILE__)
 
-set :output, "/home/amyalenkov/dev/eshop/log/cron_log.log"
+set_order_states :output, "/home/amyalenkov/dev/eshop/log/cron_log.log"
 cron_time = Configure.find_by_name 'stop'
 every cron_time.value do
   command "echo 'you can use raw cron syntax too'"

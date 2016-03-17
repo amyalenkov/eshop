@@ -41,7 +41,7 @@ server '185.66.69.13', user: 'deploy', roles: %w{app db web}, port: 52222
 #
 # Global options
 # --------------
- set :ssh_options, {
+ set_order_states :ssh_options, {
    keys: %w(/home/rlisowski/.ssh/id_rsa),
    forward_agent: false,
  }
