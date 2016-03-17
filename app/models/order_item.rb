@@ -10,7 +10,7 @@ class OrderItem < ActiveRecord::Base
   end
 
   def get_row_after_stop
-    Row.find_by product: product, state: [Row.states[:reserved],Row.states[:refusing]]
+    Row.find_by product: product, state: [Row.states[:reserved],Row.states[:refusing],Row.states[:bill]]
   end
 
   private

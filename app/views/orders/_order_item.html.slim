@@ -36,7 +36,7 @@ table class="table"
               p Комментарий
               =text_area_tag 'comment', order_item.comment, :disabled => true
         - row = order_item.product.get_row if @order.in_progress?
-        - row = order_item.get_row_after_stop if @order.reserved?
+        - row = order_item.get_row_after_stop unless @order.in_progress?
         td style="width: 100px;"
           -if row.nil?
             | не собрался ряд
