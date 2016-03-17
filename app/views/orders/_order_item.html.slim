@@ -42,8 +42,8 @@ table class="table"
             | не собрался ряд
           -elsif row.reserved? || row.bill?
             | собрался ряд
-          -elsif row.refusing?
-            | отказ
+          -elsif row.refusing_after_reserved?
+            | отказ, нет в наличии
           -else
             .row_info id="row_info_#{order_item.id}"
               =render 'row_info', row: row

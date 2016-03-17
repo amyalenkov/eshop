@@ -35,7 +35,45 @@ namespace :my do
     full_rows.each do |row|
       row.reserved!
     end
+  end
 
+  desc 'check payment task'
+  task :check_payment_task => :environment do
+    p 'check payment task'
+    main_order = MainOrder.find_by_state MainOrder.states[:stopped]
+    orders = main_order.orders
+    orders.each do |order|
+      order_items = order.order_items
+      if order.paid?
+        state = OrderItem.states[:paid]
+      else
+        state = OrderItem.states[:refusing_after_bill]
+        order.not_paid!
+      end
+      order_items.each do |order_item|
+        order_item.state = state
+        order_item.save!
+      end
+    end
+
+    rows = Row.where(state: Row.states[:bill])
+    rows.each do |row|
+      row.row_items.each do |row_item|
+        order_item = row_item.order_item
+        if order_item.refusing_after_bill?
+          row.refusing_after_bill!
+          break
+        end
+      end
+      row.paid! if row.bill?
+      #возврат денег
+      if row.refusing_after_bill?
+        row.row_items.each do |row_item|
+          order_item = row_item.order_item
+          order_item.refund! if order_item.paid?
+        end
+      end
+    end
   end
 
 end
