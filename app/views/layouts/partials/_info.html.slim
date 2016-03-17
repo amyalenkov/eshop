@@ -3,6 +3,8 @@
     - current_order = current_user.get_current_order
     -unless current_order.nil?
       = link_to 'Текущий заказ', order_path(current_order.id)
+  - else
+    = link_to 'Текущий заказ', new_user_session_path
 
 .orders_menu
   = render 'layouts/partials/orders_menu'
@@ -20,6 +22,7 @@
 .cart_menu.pull-right
   - if user_signed_in?
     = render 'layouts/partials/cart_menu'
-
+  - else
+    = link_to image_tag('cart.png'), cart_items_path
 .contact_menu.pull-right
     = link_to 'Контакты', nil
