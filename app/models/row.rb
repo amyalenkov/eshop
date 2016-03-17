@@ -3,7 +3,7 @@ class Row < ActiveRecord::Base
   before_update :check_state, :if => :current_count_changed?
   before_save :check_state, :if => :current_count_changed?
 
-  enum state: [:not_full, :full, :reserving, :reserved, :refusing]
+  enum state: [:not_full, :full, :reserved, :refusing]
 
   belongs_to :product
   belongs_to :main_order

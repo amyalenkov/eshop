@@ -35,15 +35,18 @@ table class="table"
               p Дата добавления: <b>data</b>
               p Комментарий
               =text_area_tag 'comment', order_item.comment, :disabled => true
-        - row = order_item.product.get_row
+        - row = order_item.product.get_row if @order.in_progress?
+        - row = order_item.get_row_after_stop if @order.reserved?
         td style="width: 100px;"
-          -if order_item.refusing_after_not_full_row?
+          -if row.nil?
             | не собрался ряд
-          -elsif order_item.reserved?
+          -elsif row.reserved?
             | собрался ряд
+          -elsif row.refusing?
+            | отказ
           -else
             .row_info id="row_info_#{order_item.id}"
-              =render 'row_info', order_item: order_item, row: row
+              =render 'row_info', row: row
         td
           -if order_item.refusing_after_not_full_row? || order_item.reserved?
             input type="number" class="form-control input-number count_field" value="#{order_item.count}"

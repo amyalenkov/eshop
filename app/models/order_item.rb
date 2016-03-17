@@ -1,5 +1,5 @@
 class OrderItem < ActiveRecord::Base
-  enum state: [:in_progress, :reserving, :reserved, :refusing_after_not_full_row, :refusing_after_reserved]
+  enum state: [:in_progress, :reserved, :refusing_after_not_full_row, :refusing_after_reserved]
 
   belongs_to :product
   belongs_to :order
@@ -7,11 +7,10 @@ class OrderItem < ActiveRecord::Base
   def set_state current_user
     row = get_row
     create_row_item row, current_user
-    if row.reserving?
-      self.state = OrderItem.states[:reserving]
-    else
-      self.state = OrderItem.states[:in_progress]
-    end
+  end
+
+  def get_row_after_stop
+    Row.find_by product: product, state: [Row.states[:reserved],Row.states[:refusing]]
   end
 
   private

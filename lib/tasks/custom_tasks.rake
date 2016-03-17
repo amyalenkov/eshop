@@ -9,12 +9,14 @@ namespace :my do
     main_order.orders.each do |order|
       order.reserved!
       order.order_items.each do |order_item|
+        row = order_item.product.get_row
         CartItem.create(product_id: order_item.product_id, count: order_item.count, total_price: order_item.price * order_item.count,
-                        user_id: order.user_id) if order_item.in_progress?
-        if order_item.in_progress?
+                        user_id: order.user_id) if row.not_full?
+
+        if row.not_full?
           order_item.refusing_after_not_full_row!
           order_item.count = 0
-        elsif order_item.reserving?
+        elsif row.full?
           order_item.reserved!
         end
       end

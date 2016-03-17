@@ -1,10 +1,9 @@
-- order_item = @order_item if order_item.nil?
 - row = @row if row.nil?
 
 - progress_status='progress-bar-'
 - width='width: '
-- if order_item.product.get_row != nil
-  - pc = (order_item.product.get_row.current_count * 100)/order_item.product.get_row.min_count
+- if row != nil
+  - pc = (row.current_count * 100)/row.min_count
   - if pc > 0 and pc < 25
     - progress_status.concat('danger')
     - width.concat('25%')
