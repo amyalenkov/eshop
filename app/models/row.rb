@@ -14,7 +14,7 @@ class Row < ActiveRecord::Base
   def check_state
     p 'check_state'
     if current_count >= min_count
-      self.state = Row.states[:reserving]
+      self.state = Row.states[:full]
       self.row_items.each do |row_item|
         row_item.order_item.reserving!
       end
