@@ -1,8 +1,12 @@
 .order_menu
   - if user_signed_in?
     - current_order = current_user.get_current_order
-    -unless current_order.nil?
+
+    -if current_order != nil
       = link_to 'Текущий заказ', order_path(current_order.id)
+    -else
+      = link_to 'Текущих заказов НЕТ', cart_items_path
+
   - else
     = link_to 'Текущий заказ', new_user_session_path
 
