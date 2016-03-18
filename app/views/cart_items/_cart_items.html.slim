@@ -71,7 +71,7 @@ table class="table"
           .counter
 
             button type="button" class="btn btn-danger btn-number minus" data-type="minus" data-field="quant[#{cart_item.id}]"
-            input type="number" name="quant[#{cart_item.id}]" class="form-control input-number count_field" value="#{cart_item.count}" min="1" max="10000"
+            input name="quant[#{cart_item.id}]" class="form-control input-number count_field" value="#{cart_item.count}" min="1" max="10000"
             button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[#{cart_item.id}]"
 
         td style="width: 80px;"
