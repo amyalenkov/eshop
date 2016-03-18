@@ -40,10 +40,12 @@ table class="table"
         td style="width: 100px;"
           -if row.nil?
             | не собрался ряд
-          -elsif row.reserved? || row.bill?
+          -elsif row.reserved? || row.bill? || row.paid?
             | собрался ряд
           -elsif row.refusing_after_reserved?
             | отказ, нет в наличии
+          -elsif row.refusing_after_bill?
+            |  не собрался ряд после оплаты
           -else
             .row_info id="row_info_#{order_item.id}"
               =render 'row_info', row: row
@@ -74,6 +76,9 @@ table class="table"
   - if @order.paid?
     .total_amount
       | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
+  - if @order.not_paid?
+    .total_amount
+      | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
   .info_1
   p <i>Товар в обработке</i>
   .info_2
