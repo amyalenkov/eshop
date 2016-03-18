@@ -16,9 +16,9 @@
             td = link_to 'row '+row.id.to_s, row_path(row.id)
             td = link_to row.product.name.to_s, product_path(row.product.id)
             td = row.current_count
-            td = row.state
+            td = select_tag "rows[#{row.id}[state]]", options_for_select(Row.states, Row.states[:bill])
             td
-              input id="#{row.id}" name="rows[#{row.id}]" type="text" value="#{row.product.price}"
+              input id="#{row.id}" name="rows[#{row.id}[price]]" type="text" value="#{row.product.price}"
 
 
   =submit_tag 'выставить счета'
