@@ -1,0 +1,24 @@
+=form_tag(set_bill_rows_path, :remote => true) do
+  table class="table"
+    thead
+      tr
+        th ряд
+        th продукт
+        th количство
+        th статус
+        th цена за 1 шт.
+    tbody
+      - main_order = MainOrder.find_by state: MainOrder.states[:paid]
+      - unless main_order.nil?
+        - rows = main_order.rows
+        - rows.each do |row|
+          tr
+            td = link_to 'row '+row.id.to_s, row_path(row.id)
+            td = link_to row.product.name.to_s, product_path(row.product.id)
+            td = row.current_count
+            td = row.state
+            td
+              input id="#{row.id}" name="rows[#{row.id}]" type="text" value="#{row.product.price}"
+
+
+  =submit_tag 'выставить счета'

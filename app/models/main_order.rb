@@ -1,6 +1,6 @@
 class MainOrder < ActiveRecord::Base
 
-  enum state: [:current, :stopped, :arrived]
+  enum state: [:current, :stopped, :paid, :delivery, :arrived]
 
   has_many :orders
 

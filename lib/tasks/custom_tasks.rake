@@ -41,6 +41,7 @@ namespace :my do
   task :check_payment_task => :environment do
     p 'check payment task'
     main_order = MainOrder.find_by_state MainOrder.states[:stopped]
+    main_order.paid!
     orders = main_order.orders
     orders.each do |order|
       order_items = order.order_items
