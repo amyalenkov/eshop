@@ -63,12 +63,25 @@ class RowsController < ApplicationController
 
   def set_bill
     rows = params[:rows]
-    rows.each do |row_id, price|
+    rows.each do |row|
+      row_id = row[0]
+      state = row[1][:state]
+      price = row[1][:price]
       row = Row.find_by_id row_id
-      row.product.price = price
-      row.state = Row.states[:bill]
+      if state == Row.states[:refusing_after_reserved].to_s
+        row.state = Row.states[:refusing_after_reserved]
+        row.row_items.each do |row_item|
+          order_item = row_item.order_item
+          order_item.refusing_after_reserved!
+        end
+      elsif state == Row.states[:bill].to_s
+        product = row.product
+        product.price = price
+        product.save!
+        row.state = Row.states[:bill]
+        set_order_states row.row_items
+      end
       row.save!
-      set_order_states row.row_items
     end
   end
 
@@ -76,7 +89,6 @@ class RowsController < ApplicationController
 
   def set_order_states row_items
     row_items.each do |row_item|
-      p row_item
       order_item = row_item.order_item
       order_item.bill!
       order = order_item.order
