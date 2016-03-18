@@ -1360,9 +1360,9 @@ header {
   }
   a, p{
     float: left;
-    width: 100%;
-    padding-left: 50px;
-    padding-top: 15px;
+    width: 60%;
+    margin-left: 50px;
+    margin-top: 15px;
   }
   p{
     margin-bottom: -5px;
@@ -1372,6 +1372,7 @@ header {
     a{
       float: left;
       width: 40px;
+      margin-left: 0;
       margin-right: 15px;
       padding-left: inherit;
     }
