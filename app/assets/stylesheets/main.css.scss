@@ -48,6 +48,10 @@ body > #wrap {height: auto; min-height: 100%;}
   border: none;
 }
 
+.z-index{
+  z-index: inherit;
+}
+
 .logo a{
   font-family: Arial,serif;
   text-decoration: none !important;
@@ -1552,3 +1556,11 @@ header {
 }
 
 
+
+
+/*VALIDATOR*/
+.popover-content{
+  padding: 0 14px !important;
+  margin-top: -10px !important;
+}
+/*END_VALIDATOR*/

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'static_pages#index'
-  # root 'static_pages#faq'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -39,5 +38,10 @@ Rails.application.routes.draw do
 
   get '/subcategory/:name' => 'products#index'
   get '/category/:name' => 'products#index'
+
+  get 'static_pages/faq' => 'static_pages#faq'
+  get 'static_pages/about_us' => 'static_pages#about_us'
+  get 'static_pages/for_you' => 'static_pages#for_you'
+  get 'static_pages/review' => 'static_pages#review'
 
 end

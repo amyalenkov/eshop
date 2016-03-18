@@ -66,5 +66,8 @@ gem 'rake', '10.5.0'
 gem 'elevatezoom-rails'
 gem 'fancybox2-rails', '~> 0.2.8'
 
+# validator
+gem 'jquery-validation-rails'
+
 # cron jobs
 gem 'whenever', :require => false
