@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static_pages#index'
-  root 'static_pages#faq'
+  # root 'static_pages#faq'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
