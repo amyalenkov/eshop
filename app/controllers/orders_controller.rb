@@ -24,15 +24,15 @@ class OrdersController < ApplicationController
       cart_item_id = cart_item[0]
       count = cart_item[1][:count]
       comment = cart_item[1][:comment]
-      order_item = OrderItem.new
       cart_item = CartItem.find_by_id cart_item_id
-      order_item.product = cart_item.product
-      order_item.count = count.to_i
-      order_item.price = count.to_i * cart_item.product.price.to_i
-      order_item.comment = comment
-      order_item.order = @order
+      if check_presence_product_in_order cart_item
+        order_item = add_cart_item_to_other_order_item cart_item, count, comment
+        order_item.set_state_for_double_product_row current_user, count
+      else
+        order_item = add_cart_item_to_new_order_item cart_item, count, comment
+        order_item.set_state current_user
+      end
       cart_item.destroy!
-      order_item.set_state current_user
       order_item.save!
     }
     @order.save!
@@ -53,6 +53,34 @@ class OrdersController < ApplicationController
 
   def meetings
     @orders = current_user.get_meetings
+  end
+
+  private
+
+  def check_presence_product_in_order cart_item
+    check_presence_product_in_order = false
+    @order.order_items.each do |order_item|
+      check_presence_product_in_order = true if order_item.product == cart_item.product
+    end
+    check_presence_product_in_order
+  end
+
+  def add_cart_item_to_other_order_item cart_item, count, comment
+    order_item = OrderItem.find_by product_id: cart_item.product.id, order_id: @order.id
+    order_item.count = count.to_i + order_item.count
+    order_item.price = order_item.count * cart_item.product.price.to_i
+    order_item.comment = comment
+    order_item
+  end
+
+  def add_cart_item_to_new_order_item cart_item, count, comment
+    order_item = OrderItem.new
+    order_item.product = cart_item.product
+    order_item.count = count.to_i
+    order_item.price = count.to_i * cart_item.product.price.to_i
+    order_item.comment = comment
+    order_item.order = @order
+    order_item
   end
 
 end
