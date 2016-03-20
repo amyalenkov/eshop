@@ -4,6 +4,20 @@ ActiveAdmin.register MainOrder do
 
   filter :state
 
+  index do
+    column 'id', :id
+    column 'Дата создания', :created_at
+    column 'Статус', :state
+    column 'Пользователи' do |main_order|
+      link_to 'users', admin_ordersformainorder_path(main_order_id: main_order.id)
+    end
+    column 'Ряды' do |main_order|
+      link_to 'rows', admin_rowsformainorder_path(main_order_id: main_order.id)
+    end
+    column 'Итоговая сумма', :full_amount
+  end
+
+
   permit_params :state
 
   form do |f|

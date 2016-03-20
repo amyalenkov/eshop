@@ -1,0 +1,20 @@
+table class="table"
+  thead
+    tr
+      th id
+      th email
+      th заказ
+      th статус
+      th сумма к оплате
+      th оплаченная сумма
+  tbody
+    - @orders.each do |order|
+      tr
+        td = 'order '+order.id.to_s
+        td = order.user.email.to_s
+        td = link_to 'заказы'
+        td = select_tag "rows[#{order.id}[state]]", options_for_select(Row.states, Row.states[:bill])
+        td = order.total_price
+        td
+          input id="#{order.id}" name="rows[#{order.id}[price]]" type="text" value="#{0}"
+
