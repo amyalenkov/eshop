@@ -6,13 +6,15 @@ table class="table"
       th количство
       th статус
       th цена за 1 шт.
+      th кнопка
   tbody
     - @rows.each do |row|
-      tr
-        td = link_to 'row '+row.id.to_s, row_path(row.id)
-        td = link_to row.product.name.to_s, product_path(row.product.id)
-        td = row.current_count
-        td = select_tag "rows[#{row.id}[state]]", options_for_select(Row.states, Row.states[:bill])
-        td
-          input id="#{row.id}" name="rows[#{row.id}[price]]" type="text" value="#{row.product.price}"
-
+      =form_tag(set_bill_rows_path, :remote => true) do
+        tr
+          td = link_to 'row '+row.id.to_s, row_path(row.id)
+          td = link_to row.product.name.to_s, product_path(row.product.id)
+          td = row.current_count
+          td = select_tag "rows[#{row.id}[state]]", options_for_select(Row.states, row.state)
+          td
+            input id="#{row.id}" name="rows[#{row.id}[price]]" type="text" value="#{row.product.price}"
+          td =submit_tag 'обновить статус'

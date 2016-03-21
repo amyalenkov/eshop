@@ -55,6 +55,14 @@ class OrdersController < ApplicationController
     @orders = current_user.get_meetings
   end
 
+  def set_state_order
+
+  end
+
+  def set_state_order_item
+
+  end
+
   private
 
   def check_presence_product_in_order cart_item

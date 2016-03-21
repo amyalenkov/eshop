@@ -1,0 +1,19 @@
+table class="table"
+  thead
+    tr
+      th id
+      th продукт
+      th кол-во
+      th сумма к оплате
+      th статус
+      th
+  tbody
+    - @order_items.each do |order_item|
+      = form_tag(set_state_order_item_orders_path, :remote => true) do
+        tr
+          td = 'order_item '+order_item.id.to_s
+          td = order_item.product.name
+          td = order_item.count
+          td = order_item.price
+          td = select_tag "rows[#{order_item.id}[state]]", options_for_select(OrderItem.states, order_item.state)
+          td = submit_tag 'обновить статус'

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     end
     collection do
       get 'meetings'
+      post 'set_state_order'
+      post 'set_state_order_item'
     end
   end
   resources :rows, only: [:index, :create, :show, :update, :destroy] do

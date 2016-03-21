@@ -7,14 +7,16 @@ table class="table"
       th статус
       th сумма к оплате
       th оплаченная сумма
+      th кнопка
   tbody
     - @orders.each do |order|
-      tr
-        td = 'order '+order.id.to_s
-        td = order.user.email.to_s
-        td = link_to 'заказы'
-        td = select_tag "rows[#{order.id}[state]]", options_for_select(Row.states, Row.states[:bill])
-        td = order.total_price
-        td
-          input id="#{order.id}" name="rows[#{order.id}[price]]" type="text" value="#{0}"
-
+      = form_tag(set_state_order_orders_path, :remote => true) do
+        tr
+          td = 'order '+order.id.to_s
+          td = order.user.email.to_s
+          td = link_to 'заказы', admin_orderitemsfororder_path(order_id: order.id)
+          td = select_tag "rows[#{order.id}[state]]", options_for_select(Order.states, order.state)
+          td = order.total_price
+          td
+            input id="#{order.id}" name="rows[#{order.id}[price]]" type="text" value="#{0}"
+          td = submit_tag 'обновить статус'
