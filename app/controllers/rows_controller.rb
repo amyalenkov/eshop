@@ -61,33 +61,33 @@ class RowsController < ApplicationController
     end
   end
 
-  def set_bill
-    # rows = params[:rows]
-    # rows.each do |row|
-    #   row_id = row[0]
-    #   state = row[1][:state]
-    #   price = row[1][:price]
-    #   row = Row.find_by_id row_id
-    #   if state == Row.states[:refusing_after_reserved].to_s
-    #     row.state = Row.states[:refusing_after_reserved]
-    #     row.row_items.each do |row_item|
-    #       order_item = row_item.order_item
-    #       order_item.refusing_after_reserved!
-    #     end
-    #   elsif state == Row.states[:bill].to_s
-    #     product = row.product
-    #     product.price = price
-    #     product.save!
-    #     row.state = Row.states[:bill]
-    #     set_order_states row.row_items
-    #   end
-    #   row.save!
-    # end
+  def set_state
+    row = Row.find_by_id params[:row_id]
+    new_state = params[:state]
+    if new_state == Row.states[:reserved].to_s
+      row.reserved!
+      row.row_items.each do |row_item|
+        order_item = row_item.order_item
+        order_item.reserved!
+      end
+    elsif new_state == Row.states[:refusing_after_reserved].to_s
+      row.refusing_after_reserved!
+      row.row_items.each do |row_item|
+        order_item = row_item.order_item
+        order_item.refusing_after_reserved!
+      end
+    elsif new_state == Row.states[:bill].to_s
+      product = row.product
+      product.price = params[:price]
+      product.save!
+      row.bill!
+      set_bill_to_order row.row_items
+    end
   end
 
   private
 
-  def set_order_states row_items
+  def set_bill_to_order row_items
     row_items.each do |row_item|
       order_item = row_item.order_item
       order_item.bill!

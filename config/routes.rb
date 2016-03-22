@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
   resources :rows, only: [:index, :create, :show, :update, :destroy] do
     collection do
-      post 'set_bill'
+      post 'set_state'
     end
   end
   resources :comments, only: [:create, :show, :update, :destroy]

@@ -15,5 +15,6 @@ table class="table"
           td = order_item.product.name
           td = order_item.count
           td = order_item.price
-          td = select_tag "rows[#{order_item.id}[state]]", options_for_select(OrderItem.states, order_item.state)
+          td = select_tag 'state', options_for_select(OrderItem.states, order_item.read_attribute('state'))
+          = hidden_field_tag 'order_item_id', order_item.id
           td = submit_tag 'обновить статус'

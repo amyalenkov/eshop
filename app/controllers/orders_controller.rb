@@ -56,11 +56,25 @@ class OrdersController < ApplicationController
   end
 
   def set_state_order
-
+    order = Order.find_by_id params[:order_id]
+    new_state = params[:state]
+    if new_state == Order.states[:paid].to_s
+      paid_amount = params[:paid_amount]
+      order.paid_amount = paid_amount
+      order.state = Order.states[:paid]
+      order.save!
+      order.order_items.each do |order_item|
+        order_item.paid!
+      end
+    end
   end
 
   def set_state_order_item
-
+    order_item = OrderItem.find_by_id params[:order_item_id]
+    new_state = params[:state]
+    if new_state == OrderItem.states[:refunded].to_s
+      order_item.refunded!
+    end
   end
 
   private
@@ -68,7 +82,9 @@ class OrdersController < ApplicationController
   def check_presence_product_in_order cart_item
     check_presence_product_in_order = false
     @order.order_items.each do |order_item|
-      check_presence_product_in_order = true if order_item.product == cart_item.product
+      if order_item.in_progress?
+        check_presence_product_in_order = true if order_item.product == cart_item.product
+      end
     end
     check_presence_product_in_order
   end
