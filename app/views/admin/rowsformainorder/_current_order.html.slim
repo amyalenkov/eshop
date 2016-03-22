@@ -9,12 +9,13 @@ table class="table"
       th кнопка
   tbody
     - @rows.each do |row|
-      =form_tag(set_bill_rows_path, :remote => true) do
+      =form_tag(set_state_rows_path, :remote => true) do
         tr
           td = link_to 'row '+row.id.to_s, row_path(row.id)
           td = link_to row.product.name.to_s, product_path(row.product.id)
           td = row.current_count
-          td = select_tag "rows[#{row.id}[state]]", options_for_select(Row.states, row.state)
+          td = select_tag "state", options_for_select(Row.states, row.read_attribute('state'))
           td
-            input id="#{row.id}" name="rows[#{row.id}[price]]" type="text" value="#{row.product.price}"
+            input id="#{row.id}" name="price" type="text" value="#{row.product.price}"
+          =hidden_field_tag 'row_id', row.id
           td =submit_tag 'обновить статус'

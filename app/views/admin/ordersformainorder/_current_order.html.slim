@@ -15,8 +15,9 @@ table class="table"
           td = 'order '+order.id.to_s
           td = order.user.email.to_s
           td = link_to 'заказы', admin_orderitemsfororder_path(order_id: order.id)
-          td = select_tag "rows[#{order.id}[state]]", options_for_select(Order.states, order.state)
+          td = select_tag 'state', options_for_select(Order.states, order.read_attribute('state'))
           td = order.total_price
           td
-            input id="#{order.id}" name="rows[#{order.id}[price]]" type="text" value="#{0}"
+            input id="#{order.id}" name="paid_amount" type="text" value="#{order.paid_amount}"
+          = hidden_field_tag 'order_id', order.id
           td = submit_tag 'обновить статус'

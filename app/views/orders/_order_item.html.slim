@@ -35,20 +35,30 @@ table class="table"
               p Дата добавления: <b>data</b>
               p Комментарий
               =text_area_tag 'comment', order_item.comment, :disabled => true
-        - row = order_item.product.get_row if @order.in_progress?
-        - row = order_item.get_row_after_stop unless @order.in_progress?
         td style="width: 100px;"
-          -if row.nil?
-            | не собрался ряд
-          -elsif row.reserved? || row.bill? || row.paid?
-            | собрался ряд
-          -elsif row.refusing_after_reserved?
-            | отказ, нет в наличии
-          -elsif row.refusing_after_bill?
-            |  не собрался ряд после оплаты
-          -else
+          -if order_item.in_progress?
+            - row = order_item.product.get_row
             .row_info id="row_info_#{order_item.id}"
               =render 'row_info', row: row
+          -elsif order_item.refund?
+            | будет возврат средств
+          -elsif order_item.refunded?
+            | вернули деньги
+          -else
+            - row = order_item.get_row_after_stop
+            - if row.nil?
+              | не собрался ряд
+            - elsif row.reserved?
+              | собрался ряд, зарезервировано
+            - elsif row.paid?
+              | собрался ряд, оплачено
+            - elsif row.bill?
+              | собрался ряд, выставлен счет
+            - elsif row.refusing_after_reserved?
+              | отказ, нет в наличии
+            - elsif row.refusing_after_bill?
+              |  не собрался ряд после оплаты
+            - else
         td
           -if order_item.in_progress?
             .counter id="counter_#{order_item.id}"
