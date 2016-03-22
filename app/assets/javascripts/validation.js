@@ -3,12 +3,9 @@ $(document).ready(function () {
 });
 
 
-
-
-///* form validation plugin */
-//
-
 $.fn.goValidate = function() {
+    //$("#phone").mask("+375-(99)-999-99-99");
+
     var $form = this,
         $inputs = $form.find('input:text');
 
@@ -74,7 +71,7 @@ $.fn.goValidate = function() {
 
     $inputs.keyup(function() {
         showError($(this));
-        console.log('delete disabled')
+        console.log('delete disabled');
         button.disabled = false;
     });
 

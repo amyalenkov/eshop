@@ -91,6 +91,19 @@ body > #wrap {height: auto; min-height: 100%;}
     }
   }
 }
+/*MODAL_FORM*/
+#getCall{
+  textarea{
+    resize: vertical;
+  }
+}
+/*END_MODAL_FORM*/
+/*VALIDATOR*/
+.popover-content{
+  padding: 0 14px !important;
+  margin-top: -10px !important;
+}
+/*END_VALIDATOR*/
 
 .top_menu{
   top: 135px;
@@ -722,7 +735,6 @@ header {
 /*END_SHOW_PRODUCT*/
 
 /*CART*/
-
 .cart{
   .table th{
     text-align: center;
@@ -1005,12 +1017,10 @@ header {
 /*END_SEARCH*/
 
 /*CONTENT*/
-.content{
-  //height: 100000px;
-}
+
 /*END_CONTENT*/
 
-/*SHOW_USER_AND_CRAFTER*/
+/*SHOW_USER*/
 .avatar{
   float: left;
   width: 27%;
@@ -1561,11 +1571,3 @@ header {
 }
 
 
-
-
-/*VALIDATOR*/
-.popover-content{
-  padding: 0 14px !important;
-  margin-top: -10px !important;
-}
-/*END_VALIDATOR*/
