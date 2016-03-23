@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_menu
 
+  def order_call
+
+  end
   private
 
   def set_menu

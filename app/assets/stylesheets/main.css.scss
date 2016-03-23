@@ -97,7 +97,42 @@ body > #wrap {height: auto; min-height: 100%;}
     resize: vertical;
   }
 }
+.error{
+  margin-bottom: -25px;
+}
+
+#name-error, #email-error, #phone-error{
+  top: -50px;
+  font-size: 12px;
+  border: 1px solid #2e6da4;
+  position: relative;
+  background-color: #292929;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  font-family: sans-serif;
+  padding: 0 10px;
+}
+
+#name-error:after, #email-error:after, #phone-error:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid #292929;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+}
+
+.form-group{
+  margin-bottom: 15px;
+}
+
 /*END_MODAL_FORM*/
+
 /*VALIDATOR*/
 .popover-content{
   padding: 0 14px !important;

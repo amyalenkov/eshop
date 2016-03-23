@@ -46,4 +46,8 @@ Rails.application.routes.draw do
   get 'static_pages/for_you' => 'static_pages#for_you'
   get 'static_pages/review' => 'static_pages#review'
 
+  resources :application
+  post 'application/order_call'
+
+
 end
