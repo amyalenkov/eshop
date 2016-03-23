@@ -52,11 +52,16 @@ namespace :my do
     rows.each do |row|
       row.order_items.each do |order_item|
         if order_item.refusing_after_bill?
-          row.refusing_after_bill!
-          break
+          row.current_count = row.current_count - order_item.count
+          if row.current_count < row.min_count
+            row.state = Row.states[:refusing_after_bill]
+            break
+          end
         end
       end
-      row.paid! if row.bill?
+      row.save!
+      row.paid! if row.full?
+      row.refusing_after_bill! if row.not_full?
       #возврат денег
       if row.refusing_after_bill?
         row.order_items.each do |order_item|

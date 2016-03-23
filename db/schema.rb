@@ -106,9 +106,10 @@ ActiveRecord::Schema.define(version: 20160323085333) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "main_orders", force: true do |t|
-    t.integer  "state",      default: 0
+    t.integer  "state",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "full_amount"
   end
 
   create_table "meetings", force: true do |t|
