@@ -7,7 +7,7 @@ br
 button.btn.btn-default[type="button" data-toggle="modal" data-target="#getCall"]
   | Заказать звонок
 
-/= form_tag({:controller => :static_pages, :action => :order_call}, :id => 'orderCall') do
+= form_tag({:controller => :static_pages, :action => :order_call}, :id => 'orderCall') do
   #getCall.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
     .modal-dialog.modal-sm
       .modal-content
@@ -35,5 +35,5 @@ button.btn.btn-default[type="button" data-toggle="modal" data-target="#getCall"]
                 textarea class="form-control message" name="message" id="message" placeholder="Ваше сообщение"
 
         .modal-footer
-          button [type="submit" class="btn btn-success pull-right go" disabled="true"] Заказать звонок
+          button [type="submit" class="btn btn-success pull-right go"] Заказать звонок
           button class="btn pull-left" data-dismiss="modal" aria-hidden="true" Отмена
