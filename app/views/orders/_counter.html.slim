@@ -2,9 +2,9 @@
 - row = @row if row.nil?
 
 - minus = order_item.count - 1
-=button_to '', row_path(row_id: row.id, count: minus.to_s), method: :put, remote: true, class: "btn btn-danger btn-number minus"
+=button_to '', row_path(row_id: row.id, count: minus.to_s, order_item_id: order_item.id), method: :put, remote: true, class: "btn btn-danger btn-number minus"
 
 input name="quant[#{order_item.id}]" disabled="disabled" class="form-control input-number count_field" value="#{order_item.count}" min="1" max="10000"
 
 - plus = order_item.count + 1
-=button_to '', row_path(row_id: row.id, count: plus.to_s), method: :put, remote: true, class: "btn btn-success btn-number plus"
+=button_to '', row_path(row_id: row.id, count: plus.to_s, order_item_id: order_item.id), method: :put, remote: true, class: "btn btn-success btn-number plus"

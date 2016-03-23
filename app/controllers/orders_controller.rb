@@ -27,10 +27,13 @@ class OrdersController < ApplicationController
       cart_item = CartItem.find_by_id cart_item_id
       if check_presence_product_in_order cart_item
         order_item = add_cart_item_to_other_order_item cart_item, count, comment
-        order_item.set_state_for_double_product_row current_user, count
+        row = order_item.row
+        row.current_count = row.current_count + count.to_i
+        row.save!
       else
         order_item = add_cart_item_to_new_order_item cart_item, count, comment
-        order_item.set_state current_user
+        row = get_row cart_item.product, count
+        order_item.row = row
       end
       cart_item.destroy!
       order_item.save!
@@ -92,7 +95,6 @@ class OrdersController < ApplicationController
   def add_cart_item_to_other_order_item cart_item, count, comment
     order_item = OrderItem.find_by product_id: cart_item.product.id, order_id: @order.id
     order_item.count = count.to_i + order_item.count
-    order_item.price = order_item.count * cart_item.product.price.to_i
     order_item.comment = comment
     order_item
   end
@@ -101,10 +103,26 @@ class OrdersController < ApplicationController
     order_item = OrderItem.new
     order_item.product = cart_item.product
     order_item.count = count.to_i
-    order_item.price = count.to_i * cart_item.product.price.to_i
     order_item.comment = comment
     order_item.order = @order
     order_item
   end
+
+  def get_row product, count
+    row = product.get_row
+    if row.nil?
+      row = Row.new
+      row.product = product
+      row.min_count = product.get_min_sale
+      row.current_count = count.to_i
+      row.main_order = MainOrder.find_by state: MainOrder.states[:current]
+    else
+      row.current_count = row.current_count + count.to_i
+    end
+    row.state = Row.states[:full] if row.current_count >= product.get_min_sale
+    row.save!
+    row
+  end
+
 
 end

@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
 
-  enum state: [:in_progress, :reserved,
+  enum state: [:in_progress, :stopped,
                :refusing_after_reserved, :bill,
                :paid, :not_paid, :refund]
   enum payment_type: [:not_choice, :offline, :card]

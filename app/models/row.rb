@@ -1,6 +1,6 @@
 class Row < ActiveRecord::Base
 
-  before_save :check_state, :if => :current_count_changed?
+  # before_save :check_state, :if => :current_count_changed?
   before_update :check_state, :if => :current_count_changed?
 
   enum state: [:not_full, :full,
@@ -13,6 +13,7 @@ class Row < ActiveRecord::Base
 
   has_many :row_items
   has_many :row_comments
+  has_many :order_items
 
   def check_state
     p 'check_state'
