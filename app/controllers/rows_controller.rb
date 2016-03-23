@@ -77,16 +77,15 @@ class RowsController < ApplicationController
       product.price = params[:price]
       product.save!
       row.bill!
-      set_bill_to_order row.row_items
+      set_bill_to_order row.order_items
     end
   end
 
   private
 
-  def set_bill_to_order row_items
-    row_items.each do |row_item|
-      order_item = row_item.order_item
-      order_item.bill!
+  def set_bill_to_order order_items
+    order_items.each do |order_item|
+      order_item.bill! unless order_item.refusing_after_not_full_row?
       order = order_item.order
       order.bill!
       if order.total_price.nil?

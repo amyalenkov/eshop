@@ -119,6 +119,7 @@ class OrdersController < ApplicationController
     else
       row.current_count = row.current_count + count.to_i
     end
+    row.state = Row.states[:full] if row.current_count >= product.get_min_sale
     row.save!
     row
   end

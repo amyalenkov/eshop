@@ -7,25 +7,21 @@ namespace :my do
     main_order.stopped!
     MainOrder.create state: MainOrder.states[:current]
     main_order.orders.each do |order|
-      order.reserved!
+      order.stopped!
       order.order_items.each do |order_item|
-        row = order_item.product.get_row
-        CartItem.create(product_id: order_item.product_id, count: order_item.count, total_price: order_item.price * order_item.count,
+        row = order_item.row
+        CartItem.create(product_id: order_item.product_id, count: order_item.count,
                         user_id: order.user_id) if row.not_full?
 
         if row.not_full?
           order_item.refusing_after_not_full_row!
-          order_item.count = 0
-        elsif row.full?
+        elsif row.full? || row.reserved?
           order_item.reserved!
         end
       end
     end
     rows = Row.where state: Row.states[:not_full]
     rows.each do |row|
-      row.row_items.each do |row_item|
-        row_item.destroy!
-      end
       row.row_comments.each do |row_comment|
         row_comment.destroy!
       end
@@ -44,23 +40,17 @@ namespace :my do
     main_order.paid!
     orders = main_order.orders
     orders.each do |order|
-      order_items = order.order_items
-      if order.paid?
-        state = OrderItem.states[:paid]
-      else
-        state = OrderItem.states[:refusing_after_bill]
+      unless order.paid?
         order.not_paid!
-      end
-      order_items.each do |order_item|
-        order_item.state = state
-        order_item.save!
+        order.order_items.each do |order_item|
+          order_item.refusing_after_bill!
+        end
       end
     end
 
     rows = Row.where(state: Row.states[:bill])
     rows.each do |row|
-      row.row_items.each do |row_item|
-        order_item = row_item.order_item
+      row.order_items.each do |order_item|
         if order_item.refusing_after_bill?
           row.refusing_after_bill!
           break
@@ -69,8 +59,7 @@ namespace :my do
       row.paid! if row.bill?
       #возврат денег
       if row.refusing_after_bill?
-        row.row_items.each do |row_item|
-          order_item = row_item.order_item
+        row.order_items.each do |order_item|
           order_item.refund! if order_item.paid?
         end
       end
