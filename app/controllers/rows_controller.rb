@@ -62,14 +62,12 @@ class RowsController < ApplicationController
     new_state = params[:state]
     if new_state == Row.states[:reserved].to_s
       row.reserved!
-      row.row_items.each do |row_item|
-        order_item = row_item.order_item
+      row.order_items.each do |order_item|
         order_item.reserved!
       end
     elsif new_state == Row.states[:refusing_after_reserved].to_s
       row.refusing_after_reserved!
-      row.row_items.each do |row_item|
-        order_item = row_item.order_item
+      row.order_items.each do |order_item|
         order_item.refusing_after_reserved!
       end
     elsif new_state == Row.states[:bill].to_s
@@ -85,7 +83,7 @@ class RowsController < ApplicationController
 
   def set_bill_to_order order_items
     order_items.each do |order_item|
-      order_item.bill! unless order_item.refusing_after_not_full_row?
+      # order_item.bill! unless order_item.refusing_after_not_full_row?
       order = order_item.order
       order.bill!
       if order.total_price.nil?

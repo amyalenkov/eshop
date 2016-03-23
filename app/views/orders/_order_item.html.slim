@@ -14,13 +14,11 @@ table class="table"
 
       - if order_item.state == 'in_progress'
         - background = 'background: #6fbaa7;'
-      - elsif order_item.state == 'reserving'
-        - background = 'background: #798dbd;'
       - elsif order_item.state == 'reserved'
+        - background = 'background: #798dbd;'
+      - elsif order_item.state == 'refusing_after_not_full_row'
         - background = 'background: #a773bc;'
-      - elsif order_item.state == 'refusing_after_reserved'
-        - background = 'background: #ffffff;'
-      - elsif order_item.state == 0
+      - else
         - background = 'background: #ffffff;'
 
       tr style="#{background}"
