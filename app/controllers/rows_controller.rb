@@ -11,18 +11,17 @@ class RowsController < ApplicationController
   end
 
   def create
+
     product = Product.find_by_id params[:product_id]
-    @row = Row.new
-    @row.product = product
-    @row.min_count = product.get_min_sale
-    @row.current_count = params[:count]
-    @row.main_order = MainOrder.find_by state: MainOrder.states[:current]
-    @row.save!
-    @row_item = RowItem.new
-    @row_item.row = @row
-    @row_item.count = params[:count]
-    @row_item.user = current_user
-    @row_item.save!
+    @row = product.get_row
+    if @row.nil?
+      @row = Row.new
+      @row.product = product
+      @row.min_count = product.get_min_sale
+      @row.current_count = 0
+      @row.main_order = MainOrder.find_by state: MainOrder.states[:current]
+      @row.save!
+    end
     redirect_to @row
   end
 
