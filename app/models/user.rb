@@ -30,6 +30,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_cart_total_price
+    total_price=0
+    cart_items.each do |cart_item|
+      total_price = total_price + (Product.find_by_id cart_item.product_id).price
+    end
+    total_price
+  end
+
   def get_cart_items_in_rows
     cart_items.where.not(row_id: nil)
   end
@@ -40,6 +48,10 @@ class User < ActiveRecord::Base
 
   def get_current_order
     Order.find_by user_id: id, state: Order.states[:in_progress]
+  end
+
+  def get_current_order_size
+
   end
 
   def is_favorite_product? product_id

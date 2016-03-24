@@ -1,6 +1,12 @@
 .pull-right
   - count = current_user.get_cart_items_size
+  - total_price = current_user.get_cart_total_price
   -if count == 0
     = link_to image_tag('cart.png'), cart_items_path
+    .cart_count
+      = link_to 'Позиций <br>0 бел. руб.'.html_safe, cart_items_path, :class=>'cart_not_tull'
+
   -else
-    = link_to image_tag('cart.png')+' ('+count.to_s+')', cart_items_path
+    = link_to image_tag('cart.png'), cart_items_path
+    .cart_count
+      = link_to "Позиций <br>#{total_price.to_s}<br> бел. руб.".html_safe, cart_items_path, :class=>'cart_not_tull'
