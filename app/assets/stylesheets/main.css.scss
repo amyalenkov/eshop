@@ -190,6 +190,14 @@ header {
 /*END_VALIDATOR*/
 
 /*FIXED_MENU*/
+
+
+#nav.affix {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:200;
+}
 .fixed_menu{
   .top_menu{
     top: 105px;
@@ -201,13 +209,6 @@ header {
   /* bootstrap 3 helpers */
   .navbar-form input, .form-inline input {
     width:auto;
-  }
-
-  #nav.affix {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index:200;
   }
 
   #sidebar.affix-top {
