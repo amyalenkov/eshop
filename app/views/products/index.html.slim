@@ -3,6 +3,9 @@
     .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_list
       h5
         | Недавно просмотренные товары
+        /-unless @last_products.nil?
+        -current_user.last_products.each do |last_product|
+          = last_product.product.name
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       h5
         | Имя категории
