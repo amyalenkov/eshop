@@ -3,7 +3,9 @@ class OrderItemsController < ApplicationController
   before_action :authenticate_user!
 
   def update
-
+    order_item = OrderItem.find_by_id params[:id]
+    order_item.comment = params[:comment]
+    order_item.save!
   end
 
   def destroy

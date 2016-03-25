@@ -32,7 +32,9 @@ table class="table"
               p Артикул: <b>#{order_item.product_id}</b>
               p Дата добавления: <b>data</b>
               p Комментарий
-              =text_area_tag 'comment', order_item.comment, :disabled => true
+              =form_for order_item, remote: true do |f|
+                =text_area_tag 'comment', order_item.comment
+                =f.submit 'update'
         td style="width: 100px;"
           -if order_item.in_progress?
             - row = order_item.row
