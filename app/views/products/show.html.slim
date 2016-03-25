@@ -59,3 +59,5 @@
         p
           | Другие посетители с этим товаром смотрели:
       .products
+        -@alike_products.each do |product|
+          =product.name

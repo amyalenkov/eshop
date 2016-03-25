@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_id params[:id]
+    @alike_products = Product.where(subcategory: @product.subcategory).limit(50).order("RANDOM()")
   end
 
   def search_ajax
