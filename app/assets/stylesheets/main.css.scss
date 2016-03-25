@@ -847,6 +847,12 @@ header {
 /*END_SHOW_PRODUCT*/
 
 /*CART*/
+
+.order_price, .total_price{
+  text-align: center;
+}
+
+
 .cart{
   .table th{
     text-align: center;
@@ -856,6 +862,21 @@ header {
     color: #837f7f;
     font-style: italic;
   }
+
+  .delete p{
+    width: 22px;
+    height: 22px;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    border-radius: 50%;
+    padding-top: 10px;
+    line-height: 0;
+    font-style: inherit;
+  }
+
   .cart_items{
     position: relative;
     .table{
