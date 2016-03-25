@@ -4,9 +4,9 @@
       h5
         | Ближайшие встречи
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
-      p
-        | Чтобы посмотреть счета на оплату перейдите по ссылке:
-      /a href="orders_path" История заказов
+      .title_history
+        p Чтобы посмотреть счета на оплату перейдите по ссылке:
+        = link_to 'История заказов', orders_path
       h4 Текущий заказ
       .cart_items
         .current_order

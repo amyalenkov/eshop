@@ -857,10 +857,27 @@ header {
   .table th{
     text-align: center;
   }
-  p{
+  h4{
+    font-size: 16px;
+    color: #f2a31a;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .title_history{
+    width: 100%;
+    float: left;
     font-size: 12px;
     color: #837f7f;
     font-style: italic;
+    font-weight: bold;
+    p{
+      float: left;
+    }
+    a{
+      float: left;
+      padding-left: 10px;
+      color: #3b4381;
+    }
   }
 
   .delete p{
@@ -880,7 +897,35 @@ header {
   .cart_items{
     position: relative;
     .table{
-      margin-bottom: 60px !important;
+      margin-bottom: 125px !important;
+    }
+    .total_amount{
+      width: 300px;
+      float: right;
+      right: 0;
+      position: absolute;
+      bottom: -25px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      font-style: italic;
+      color: #000000;
+      text-transform: uppercase;
+      span{
+        color: #f2a31a;
+      }
+    }
+    .total_count{
+      width: 300px;
+      float: right;
+      right: 220px;
+      position: absolute;
+      bottom: -25px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      color: #515151;
     }
     .check-box{
       float: left;
@@ -1090,7 +1135,7 @@ header {
 
 .button_cart_left, .button_cart_right{
   position: absolute;
-  bottom: -45px;
+  bottom: -100px;
 }
 
 .button_cart_right{

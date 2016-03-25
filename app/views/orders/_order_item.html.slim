@@ -1,3 +1,5 @@
+- total_price = current_user.get_cart_total_price
+- total_count = current_user.get_cart_total_count
 table class="table"
   thead
     tr
@@ -94,7 +96,12 @@ table class="table"
             .delete
               p x
 
-.info
+.pull-right.total_amount
+  p сумма в таблице: <span>#{total_price}</span>
+.pull-right.total_count
+  p Наименований: <span>#{total_count}</span>
+
+/.info
   - if @order.bill?
     .total_amount
       | СУММА К ОПЛАТЕ #{@order.total_price}
@@ -110,6 +117,7 @@ table class="table"
   - if @order.not_paid?
     .total_amount
       | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
+
   .info_1
   p <i>Товар в обработке</i>
   .info_2
