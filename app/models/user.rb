@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :row_comments
   has_many :favorites
+  has_many :last_products
 
   def product_in_cart? product_id
     cart_item = cart_items.find_by(product_id: product_id)
@@ -60,6 +61,20 @@ class User < ActiveRecord::Base
       return false
     else
       return true, favorite
+    end
+  end
+
+  def add_last_product product
+    check_contains_product = LastProduct.find_by user_id: id, product_id: product.id
+    if check_contains_product.nil?
+      last_products = LastProduct.where user_id: id
+      if last_products.size < 5
+        LastProduct.create(product_id: product.id, user_id: id)
+      else
+        sorted_last_products = last_products .sort_by &:created_at
+        sorted_last_products[0].destroy
+        LastProduct.create(product: product, user_id: id)
+      end
     end
   end
 
