@@ -19,6 +19,8 @@
 .rows_menu
   - if user_signed_in?
     = render 'layouts/partials/rows_menu'
+  - else
+    = link_to 'Ряды', new_user_session_path
 
 .create_question
   button.btn.btn-default.create_question[type="button" data-toggle="modal" data-target="#getCall"] Задать вопрос
@@ -28,6 +30,8 @@
     = render 'layouts/partials/cart_menu'
   - else
     = link_to image_tag('cart.png'), new_user_session_path
+    .cart_count
+      = link_to 'Позиций <br>0 бел. руб.'.html_safe, new_user_session_path, :class => 'cart_not_tull'
 
 .contact_menu.pull-right
   = link_to 'Контакты', nil
@@ -42,7 +46,7 @@
         .modal-header
           button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
             | ×
-          h3 id="myModalLabel" Заказать звонок
+          h3 id="myModalLabel" Задать вопрос
         .modal-body
           .form style="height: 300px;"
             form id="contact_us" class="form-horizontal col-sm-12"
