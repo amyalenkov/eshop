@@ -36,6 +36,12 @@ class RowsController < ApplicationController
       @row.current_count = @row.current_count + (count - old_row_count)
       @row.save!
     end
+    @current_total_amount = 0
+    @current_total_count = 0
+    @order_item.order.order_items.each do |order_item|
+      @current_total_amount = @current_total_amount + order_item.count * order_item.product.price
+      @current_total_count = @current_total_count + order_item.count
+    end
   end
 
   def destroy

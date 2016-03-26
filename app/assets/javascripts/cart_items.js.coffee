@@ -11,6 +11,8 @@ $ ->
     $('#' + val).hide()
 
   $('.btn-number').click ->
+    total_amount_old = $('#total_amount').text()
+    total_count_old = $('#total_count').text()
     fieldName = $(this).attr('data-field');
     type = $(this).attr('data-type');
     input = $("input[name='" + fieldName + "']");
@@ -22,10 +24,14 @@ $ ->
         if(currentVal > input.attr('min'))
           input.val(currentVal - 1).change();
           total_price.val(price.val() * input.val())
+          $('#total_amount').text(parseInt(total_amount_old) - parseInt(price.val()) )
+          $('#total_count').text(parseInt(total_count_old) - 1)
       if(type == 'plus')
         if(currentVal < input.attr('max'))
           input.val(currentVal + 1).change();
           total_price.val(price.val() * input.val())
+          $('#total_amount').text(parseInt(total_amount_old) + parseInt(price.val()) )
+          $('#total_count').text(parseInt(total_count_old) + 1)
     else
       input.val(0);
 
@@ -35,6 +41,20 @@ $ ->
     price = $("input[name='price_" + fieldName + "']")
     total_price = $("input[name='total_price_" + fieldName + "']")
     total_price.val(price.val() * this.value)
+    total_count = 0
+    all_total_price = 0
+
+    $('.count_field').each (index, element) ->
+      current_count = parseInt($(element).val())
+      if (!isNaN(current_count))
+        total_count = current_count + total_count
+    $('#total_count').text(total_count)
+
+    $('.amount').each (index, element) ->
+      current_price = parseInt($(element).val())
+      all_total_price = current_price + current_price
+    $('#total_amount').text(all_total_price )
+
 
 check_button_disable = () ->
   disable = true
