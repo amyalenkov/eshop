@@ -2,7 +2,7 @@
   .catalog_items
     a href="/category/#{category.name}"
       - col=0
-      - category.subcategories.each do |sub|
+      /- category.subcategories.each do |sub|
         - Rails.logger.warn 'sub.id: '+sub.id.to_s
         - col = Product.all.where('subcategory_id'=> sub.id).size
         - Rails.logger.warn 'col: '+col.to_s
