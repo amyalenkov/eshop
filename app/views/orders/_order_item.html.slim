@@ -95,11 +95,8 @@ table class="table"
           td.delete
             .delete
               p x
-
-.pull-right.total_amount
-  p сумма в таблице: <span>#{total_price}</span>
-.pull-right.total_count
-  p Наименований: <span>#{total_count}</span>
+.total-amount-and-count
+  =render 'orders/total_amount_and_count'
 
 /.info
   - if @order.bill?

@@ -34,17 +34,9 @@ class User < ActiveRecord::Base
   def get_cart_total_price
     total_price=0
     cart_items.each do |cart_item|
-      total_price = total_price + (Product.find_by_id cart_item.product_id).price * (CartItem.find_by_product_id cart_item.product_id).count
+      total_price = total_price + cart_item.product.price * cart_item.count
     end
     total_price
-  end
-
-  def get_cart_total_count
-    total_count=0
-    cart_items.each do |cart_item|
-      total_count = total_count + (CartItem.find_by_product_id cart_item.product_id).count
-    end
-    total_count
   end
 
   def get_cart_items_in_rows

@@ -7,3 +7,6 @@
 | $('#row_info_#{@order_item.id}').html("
 = escape_javascript (render partial: 'orders/row_info')
 | ");
+| $('.total-amount-and-count').html("
+= escape_javascript (render partial: 'orders/total_amount_and_count')
+| ");

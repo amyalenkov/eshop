@@ -1,5 +1,3 @@
-- total_price = current_user.get_cart_total_price
-- total_count = current_user.get_cart_total_count
 table class="table"
   thead
     tr
@@ -12,7 +10,11 @@ table class="table"
       th Сумма
       th
   tbody
+    - total_price = 0
+    - total_count = 0
     - @cart_items.each do |cart_item|
+      - total_count = total_count + cart_item.count
+      - total_price = total_price + cart_item.product.price * cart_item.count
       - check_favorite, favorite_product = current_user.is_favorite_product?(cart_item.product_id)
       - tr_class = 'highlight_row_click' if check_favorite
       - tr_class = '' unless check_favorite
@@ -81,10 +83,10 @@ table class="table"
 
 
     .pull-right.total_amount
-      p сумма в таблице: <span>#{total_price}</span>
+      p сумма в таблице: <span id="total_amount">#{total_price}</span>
 
     .pull-right.total_count
-      p Наименований: <span>#{total_count}</span>
+      p Наименований: <span id="total_count">#{total_count}</span>
 
     .pull-left.button_cart_left
       = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'
