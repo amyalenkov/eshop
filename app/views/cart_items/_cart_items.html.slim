@@ -82,17 +82,17 @@ table class="table"
         td.delete = link_to 'x', cart_item, remote: true, method: :delete, class: 'delete'
 
 
-    .pull-right.total_amount
-      p сумма в таблице: <span id="total_amount">#{total_price}</span>
+.pull-right.total_amount
+  p сумма в таблице: <span id="total_amount">#{total_price}</span>
 
-    .pull-right.total_count
-      p Наименований: <span id="total_count">#{total_count}</span>
+.pull-right.total_count
+  p Наименований: <span id="total_count">#{total_count}</span>
 
-    .pull-left.button_cart_left
-      = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'
-    -if @cart_items.size == 0
-      .pull-right.button_cart_right
-        = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order_for_all_cart'
-    -else
-      .pull-right.button_cart_right
-        = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success', id: 'create_order_for_all_cart'
+.pull-left.button_cart_left
+  = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'
+-if @cart_items.size == 0
+  .pull-right.button_cart_right
+    = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order_for_all_cart'
+-else
+  .pull-right.button_cart_right
+    = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success', id: 'create_order_for_all_cart'

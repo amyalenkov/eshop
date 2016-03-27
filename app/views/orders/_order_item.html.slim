@@ -1,5 +1,3 @@
-- total_price = current_user.get_cart_total_price
-- total_count = current_user.get_cart_total_count
 table class="table"
   thead
     tr
@@ -35,7 +33,8 @@ table class="table"
               p Дата добавления: <b>data</b>
               /p Комментарий
               =form_for order_item, remote: true do |f|
-                =f.submit 'Обновить комментарий'
+                =f.submit '', class: 'ok_submit'
+                  = f.content_tag_for :span, 'Сохранить'
                 =text_area_tag 'comment', order_item.comment
         td style="width: 100px;"
           -if order_item.in_progress?
@@ -54,17 +53,17 @@ table class="table"
               - row = order_item.row
               .row_info id="row_info_#{order_item.id}"
                 =render 'orders/row_info', row: row, text: 'собран'
-              /| собрался ряд, зарезервировано
+                /| собрался ряд, зарезервировано
             - elsif row.paid?
               - row = order_item.row
               .row_info id="row_info_#{order_item.id}"
                 = render 'orders/row_info', row: row, text: 'собран'
-              /| собрался ряд, оплачено
+                /| собрался ряд, оплачено
             - elsif row.bill?
               - row = order_item.row
               .row_info id="row_info_#{order_item.id}"
                 = render 'orders/row_info', row: row, text: 'собран'
-              /| собрался ряд, выставлен счет
+                /| собрался ряд, выставлен счет
             - elsif row.refusing_after_reserved?
               /| отказ, нет в наличии
             - elsif row.refusing_after_bill?
@@ -89,16 +88,16 @@ table class="table"
           .total_price id="total_price_#{order_item.id}"
             =render 'orders/total_price', order_item: order_item
 
-        -if order_item.in_progress? && !order_item.row.reserved?
-          td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
-        -else
-          td.delete
-            .delete
-              p x
+            -if order_item.in_progress? && !order_item.row.reserved?
+              td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
+            -else
+              td.delete
+                .delete
+                  p x
 .total-amount-and-count
   =render 'orders/total_amount_and_count'
 
-/.info
+.info
   - if @order.bill?
     .total_amount
       | СУММА К ОПЛАТЕ #{@order.total_price}
@@ -108,12 +107,12 @@ table class="table"
         p Текущих единиц: 123456
       .total_amount_by_cart
         p Итого в таблице: 123456
-  - if @order.paid?
-    .total_amount
-      | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
-  - if @order.not_paid?
-    .total_amount
-      | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
+    - if @order.paid?
+      .total_amount
+        | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
+      - if @order.not_paid?
+        .total_amount
+          | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
 
   .info_1
   p <i>Товар в обработке</i>
@@ -121,3 +120,14 @@ table class="table"
   p <i>Товар забронирован</i>
   .info_3
   p <i>Не собрался ряд</i>
+
+.info_description
+  p
+    | Оплатить за СП 12 до
+    span class='span1'  1 февраля 2016г включительно!
+    br
+    span class='span2' внимание!!!
+    |  Если Ваш чек не будет отправлен нам
+    span class='span3'  до 10 часов утра 2февраля 2016г
+    |  Ваш заказ будет
+    span class='span2'  отменен!

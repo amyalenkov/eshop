@@ -29,4 +29,5 @@
 //= require orders
 //= require validation
 //= require products
+//= require slider_content
 

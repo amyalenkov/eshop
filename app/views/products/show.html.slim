@@ -59,5 +59,29 @@
         p
           | Другие посетители с этим товаром смотрели:
       .products
-        -@alike_products.each do |product|
-          =product.name
+        #slideshow
+          #slidesContainer
+            -@alike_products.each do |product|
+              - product_picture = ProductPicture.where('product_id' => product.id).first
+              - if product_picture != nil
+                - product_image = product_picture.url
+              - else
+                - product_image = 'no_images.png'
+
+              - product_name = product.name.gsub('&quot;', '')
+              - product_id = product.id
+              - product_price = product.price
+
+
+              .product.slide
+                .image
+                  a href="#{product_path(product_id)}"
+                    = image_tag ("#{product_image.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+                .title
+                  = link_to product_name, product_path(product_id)
+                .info
+                  .sale
+                    = product_price
+                  .cart
+                    .add_in_cart_index id="#{product_id}"
+                      = render 'products/add_in_cart', product: product
