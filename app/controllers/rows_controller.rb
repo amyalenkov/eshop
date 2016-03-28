@@ -81,6 +81,8 @@ class RowsController < ApplicationController
       product.save!
       row.bill!
       set_bill_to_order row.order_items
+    elsif new_state == Row.states[:ordered].to_s
+      row.ordered!
     end
   end
 

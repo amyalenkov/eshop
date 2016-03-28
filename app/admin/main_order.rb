@@ -17,6 +17,18 @@ ActiveAdmin.register MainOrder do
     column 'Итоговая сумма', :full_amount
   end
 
+  show do
+    attributes_table do
+      row :id
+      row :state
+      row 'Пользователи' do |main_order|
+        link_to 'users', admin_ordersformainorder_path(main_order_id: main_order.id)
+      end
+      row 'Ряды' do |main_order|
+        link_to 'rows', admin_rowsformainorder_path(main_order_id: main_order.id)
+      end
+    end
+  end
 
   permit_params :state
 
