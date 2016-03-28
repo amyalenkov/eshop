@@ -6,7 +6,8 @@ class Row < ActiveRecord::Base
   enum state: [:not_full, :full,
                :reserved,
                :refusing_after_reserved, :bill,
-               :paid, :refusing_after_bill]
+               :paid, :not_full_after_bill,
+               :refusing_after_bill, :ordered]
 
   belongs_to :product
   belongs_to :main_order

@@ -54,14 +54,14 @@ namespace :my do
         if order_item.refusing_after_bill?
           row.current_count = row.current_count - order_item.count
           if row.current_count < row.min_count
-            row.state = Row.states[:refusing_after_bill]
+            row.state = Row.states[:not_full_after_bill]
             break
           end
         end
       end
       row.save!
-      row.paid! if row.full?
-      row.refusing_after_bill! if row.not_full?
+      row.paid! if row.bill?
+      row.not_full_after_bill! if row.not_full?
       #возврат денег
       if row.refusing_after_bill?
         row.order_items.each do |order_item|
