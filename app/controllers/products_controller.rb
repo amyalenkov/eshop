@@ -39,7 +39,6 @@ class ProductsController < ApplicationController
     arr = Array.new
     get_subs_requrs id, arr
   end
-
   def get_subs_requrs id, arr
     new_arr = get_subs_by_id id
     first_arr = new_arr

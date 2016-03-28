@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
     check_contains_product = LastProduct.find_by user_id: id, product_id: product.id
     if check_contains_product.nil?
       last_products = LastProduct.where user_id: id
-      if last_products.size < 5
+      if last_products.size < 4
         LastProduct.create(product_id: product.id, user_id: id)
       else
         sorted_last_products = last_products .sort_by &:created_at

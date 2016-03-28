@@ -1,14 +1,20 @@
 .container-fluid
   .row
-    .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_list
-      h5
-        | Недавно просмотренные товары
-        /-unless @last_products.nil?
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_info
+      .title
+        p Недавно просмотренные товары
+      .last_visited_products
         -current_user.last_products.each do |last_product|
-          = last_product.product.name
+          .last_visited_product
+            a href="#{product_path(last_product.product.id)}"
+              = image_tag ("#{last_product.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+              p = last_product.product.name.gsub('&quot;', '')
+      = render 'layouts/partials/calendar'
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
-      h5
-        | Имя категории
+      .address_link
+        = link_to 'Главная / ', '/'
+        =link_to "#{params[:name]}", "/category/#{params[:name]}"
+      h4 #{params[:name]}
       - if @subcategories != nil
         .list_categories
           - @subcategories.each do |subcategory|
