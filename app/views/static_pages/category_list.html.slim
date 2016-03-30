@@ -1,0 +1,21 @@
+.container-fluid
+  .row
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_info
+      .title
+        p Каталог товаров
+        = render 'layouts/partials/categories_list', menu: @categories
+      = render 'layouts/partials/calendar'
+    .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog_list
+      .address_link
+        =link_to 'Главная / ', '/'
+        =link_to "#{params[:name]}", "/category/#{params[:name]}"
+
+      .catalog_items
+        a href="/category/#{params[:name]}"
+          p #{params[:name]}
+          = image_tag ("categories/#{params[:name]}.png")
+        br
+        - if @subcategories != nil
+          - @subcategories.each do |subcategory|
+            = link_to subcategory.name, "/subcategory/#{subcategory.name}", class: 'link'
+            br

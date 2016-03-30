@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
 
   get '/subcategory/:name' => 'products#index'
-  get '/category/:name' => 'products#index'
+  # get '/category/:name' => 'products#index'
+  get '/category/:name' => 'static_pages#category_list'
 
   get 'static_pages/faq' => 'static_pages#faq'
   get 'static_pages/about_us' => 'static_pages#about_us'
