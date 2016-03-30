@@ -25,4 +25,12 @@ class Row < ActiveRecord::Base
     end
   end
 
+  def get_paid_count
+    count = 0
+    order_items.each do |order_item|
+       count = count + order_item.count if order_item.paid?
+    end
+    count
+  end
+
 end

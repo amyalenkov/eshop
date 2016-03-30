@@ -3,6 +3,7 @@ table class="table"
     tr
       th ряд
       th продукт
+      th минимум
       th количство
       th статус
       th цена за 1 шт.
@@ -13,7 +14,8 @@ table class="table"
         tr
           td = link_to 'row '+row.id.to_s, row_path(row.id)
           td = link_to row.product.name.to_s, product_path(row.product.id)
-          td = row.current_count
+          td = row.min_count
+          td = "All: #{row.current_count.to_s}; paid: #{row.get_paid_count}"
           td = select_tag "state", options_for_select(Row.states, row.read_attribute('state'))
           td
             input id="#{row.id}" name="price" type="text" value="#{row.product.price}"
