@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328083708) do
+ActiveRecord::Schema.define(version: 20160330074158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,24 @@ ActiveRecord::Schema.define(version: 20160328083708) do
     t.datetime "updated_at"
   end
 
+  create_table "delivery_couriers", force: true do |t|
+    t.integer  "order_id"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delivery_couriers", ["order_id"], name: "index_delivery_couriers_on_order_id", using: :btree
+
+  create_table "delivery_posts", force: true do |t|
+    t.integer  "order_id"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delivery_posts", ["order_id"], name: "index_delivery_posts_on_order_id", using: :btree
+
   create_table "favorites", force: true do |t|
     t.integer  "user_id"
     t.integer  "product_id"
@@ -117,6 +135,23 @@ ActiveRecord::Schema.define(version: 20160328083708) do
 
   create_table "main_orders", force: true do |t|
     t.integer  "state",      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meeting_deliveries", force: true do |t|
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "meeting_item_id"
+  end
+
+  add_index "meeting_deliveries", ["meeting_item_id"], name: "index_meeting_deliveries_on_meeting_item_id", using: :btree
+  add_index "meeting_deliveries", ["order_id"], name: "index_meeting_deliveries_on_order_id", using: :btree
+
+  create_table "meeting_items", force: true do |t|
+    t.text     "location"
+    t.time     "time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

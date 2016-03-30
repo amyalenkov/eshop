@@ -1,0 +1,8 @@
+h1
+  | встречи
+= form_tag(choice_delivery_order_path(@order.id)) do
+  = hidden_field_tag :delivery, Order.deliveries[:meeting]
+  =collection_radio_buttons :order, :meeting, MeetingItem.all, :id, :location  do |b|
+    =b.label
+    =b.radio_button
+  =submit_tag 'Выбрать'

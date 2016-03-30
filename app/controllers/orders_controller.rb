@@ -48,20 +48,26 @@ class OrdersController < ApplicationController
     render js: "document.location = '#{order_path(@order)}'"
   end
 
-  def choice_payment
+  def choice_delivery
+    delivery_type = params[:delivery]
     @order = Order.find_by_id params[:id]
-    payment_type = params[:order][:payment_type]
-    if payment_type == Order.payment_types[:offline].to_s
-      @order.offline!
-      @order.will_paid_offline!
-    elsif payment_type == Order.payment_types[:card].to_s
-      @order.card!
-      @order.payment_in_progress!
+    if delivery_type == Order.deliveries[:courier].to_s
+      @order.delivery = Order.deliveries[:courier]
+      DeliveryCourier.create order_id: @order.id, address: params[:address]
+    elsif delivery_type == Order.deliveries[:post]
+      @order.delivery = Order.deliveries[:courier].to_s
+      DeliveryPost.create order_id: @order.id, address: params[:address]
+    elsif delivery_type == Order.deliveries[:meeting].to_s
+      @order.delivery = Order.deliveries[:meeting]
+      MeetingDelivery.create order_id: @order.id, meeting_item_id: params[:order][:meeting]
     end
+    @order.state=Order.states[:delivering]
+    @order.save!
+    redirect_to @order
   end
 
   def meetings
-    @orders = current_user.get_meetings
+    @order = Order.find_by user_id: current_user.id, state: Order.states[:choice_delivery]
   end
 
   def set_state_order

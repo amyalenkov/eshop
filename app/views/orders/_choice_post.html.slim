@@ -1,0 +1,6 @@
+h1
+  | почта
+= form_tag(choice_delivery_order_path(@order.id)) do
+  = hidden_field_tag :delivery, Order.deliveries[:post]
+  =text_field_tag :address
+  =submit_tag 'Выбрать'

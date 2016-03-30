@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :order_items, only: [:update, :destroy]
   resources :orders, only: [:index, :create, :show] do
     member do
-      post 'choice_payment'
+      post 'choice_delivery'
     end
     collection do
       get 'meetings'
