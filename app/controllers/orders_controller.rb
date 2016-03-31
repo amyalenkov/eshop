@@ -79,7 +79,12 @@ class OrdersController < ApplicationController
       order.state = Order.states[:paid]
       order.save!
       order.order_items.each do |order_item|
-        order_item.paid!
+        order_item.paid! unless order_item.refusing_after_not_full_row?
+      end
+    elsif new_state == Order.states[:delivered].to_s
+      order.delivered!
+      order.order_items.each do |order_item|
+        order_item.delivered! if order_item.paid?
       end
     end
   end

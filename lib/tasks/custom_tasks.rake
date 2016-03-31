@@ -51,9 +51,10 @@ namespace :my do
     rows = Row.where(state: Row.states[:bill])
     rows.each do |row|
       row.order_items.each do |order_item|
+        current_count = row.current_count
         if order_item.refusing_after_bill?
-          row.current_count = row.current_count - order_item.count
-          if row.current_count < row.min_count
+          current_count = current_count - order_item.count
+          if current_count < row.min_count
             row.not_full_after_bill!
             break
           end

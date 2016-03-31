@@ -3,7 +3,8 @@ class OrderItem < ActiveRecord::Base
                :reserved, :refusing_after_not_full_row,
                :bill, :refusing_after_reserved,
                :paid,:refusing_after_bill,
-               :refund,:refunded]
+               :refund,:refunded,
+               :delivered]
 
   belongs_to :product
   belongs_to :order
