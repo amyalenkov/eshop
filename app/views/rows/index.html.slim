@@ -4,20 +4,51 @@
       h5
         | Ближайшие встречи
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
-      - @rows.each do |row|
-        table class="table"
-          thead
-            tr
-              th id
-              th product
-              th state
-              th current_count
-              th min_count
-              th user_id
-              th user_count
-          tbody
-            tr
-              th = row.id
+      .tabs
+        .menu1
+          br#all
+          br#ok
+          br#partially
+          br#bad
+          a href="#all" Создано рядов
+          a href="#ok" Собранных рядов
+          a href="#partially" Частично собранных
+          a href="#bad" Несобранных рядов
+          .div
+            - @rows.each do |row|
+              .row_item
+                .title
+                  =link_to row.product.name.gsub('&quot;', ''), product_path(row.product)
+                .img
+                  =image_tag ("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+          .div
+            - @rows.each do |row|
+              - unless row.state == 'full'
+                .row_item
+                  .title
+                    = link_to row.product.name.gsub('&quot;', ''), product_path(row.product)
+                  .img
+                    =image_tag ("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+          .div
+            - @rows.each do |row|
+              - unless row.state == 'not_full'
+                .row_item
+                  .title
+                    = link_to row.product.name.gsub('&quot;', ''), product_path(row.product)
+                  .img
+                    =image_tag ("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+
+          .div
+            - @rows.each do |row|
+              -unless row.state == 'not_full_after_bill'
+                .row_item
+                  .title
+                    = link_to row.product.name.gsub('&quot;', ''), product_path(row.product)
+                  .img
+                    =image_tag ("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+
+      /- @rows.each do |row|
+            th = row.id
               th = link_to row.product.name, product_path(row.product)
               th = row.state
               th = row.current_count
