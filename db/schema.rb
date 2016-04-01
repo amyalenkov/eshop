@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330074158) do
+ActiveRecord::Schema.define(version: 20160401123918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 20160330074158) do
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "day_of_week", default: 0
+    t.time     "time"
   end
 
   create_table "delivery_couriers", force: true do |t|
