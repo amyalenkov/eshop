@@ -4,7 +4,7 @@ table class="table"
       th id
       th продукт
       th кол-во
-      th сумма к оплате
+      th сумма возврата
       th статус
       th
   tbody
@@ -14,7 +14,10 @@ table class="table"
           td = 'order_item '+order_item.id.to_s
           td = order_item.product.name
           td = order_item.count
-          td = order_item.price
+          - if order_item.refund? || order_item.refunded?
+            td = order_item.product.price * order_item.count
+          -else
+            td
           td = select_tag 'state', options_for_select(OrderItem.states, order_item.read_attribute('state'))
           = hidden_field_tag 'order_item_id', order_item.id
           td = submit_tag 'обновить статус'

@@ -54,8 +54,8 @@ class OrdersController < ApplicationController
     if delivery_type == Order.deliveries[:courier].to_s
       @order.delivery = Order.deliveries[:courier]
       DeliveryCourier.create order_id: @order.id, address: params[:address]
-    elsif delivery_type == Order.deliveries[:post]
-      @order.delivery = Order.deliveries[:courier].to_s
+    elsif delivery_type == Order.deliveries[:post].to_s
+      @order.delivery = Order.deliveries[:post]
       DeliveryPost.create order_id: @order.id, address: params[:address]
     elsif delivery_type == Order.deliveries[:meeting].to_s
       @order.delivery = Order.deliveries[:meeting]
@@ -95,6 +95,27 @@ class OrdersController < ApplicationController
     if new_state == OrderItem.states[:refunded].to_s
       order_item.refunded!
     end
+  end
+
+  def filter
+    state = params[:state] if params[:state_check_box] == 'on'
+    delivery = params[:delivery] if params[:delivery_check_box] == 'on'
+    if !state.nil? && !delivery.nil?
+      @orders = Order.where(main_order_id: params[:main_order_id], state: state, delivery: delivery).page(params[:page])
+    elsif !state.nil?
+      @orders = Order.where(main_order_id: params[:main_order_id], state: state).page(params[:page])
+    elsif !delivery.nil?
+      @orders = Order.where(main_order_id: params[:main_order_id], delivery: delivery).page(params[:page])
+    else
+      @orders = Order.where(main_order_id: params[:main_order_id]).page(params[:page])
+    end
+    # if params[:refund_check_box] == 'on'
+    #   @orders.each do |order|
+    #     order.order_items do |order_items|
+    #       if order_items.redund?
+    #     end
+    #   end
+    # end
   end
 
   private

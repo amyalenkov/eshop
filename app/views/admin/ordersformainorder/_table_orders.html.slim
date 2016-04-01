@@ -1,0 +1,37 @@
+table class="table"
+  thead
+    tr
+      th id
+      th email
+      th заказ
+      th статус
+      th доставка
+      th сумма к оплате
+      th оплаченная сумма
+      th кнопка
+  tbody
+    - @orders.each do |order|
+      = form_tag(set_state_order_orders_path, :remote => true) do
+        tr
+          td = 'order '+order.id.to_s
+          td = order.user.email.to_s
+          td = link_to "заказы: #{order.order_items.length}; возвратов: #{order.get_refunding}; возвращено: #{order.get_refunded}", admin_orderitemsfororder_path(order_id: order.id)
+          td = select_tag 'state', options_for_select(Order.states, order.read_attribute('state'))
+          - if order.meeting?
+            - meeting_delivery = MeetingDelivery.find_by_order_id order.id
+            - meeting_item = MeetingItem.find_by_id meeting_delivery.meeting_item_id
+            td = link_to "#{meeting_item.location}", admin_meeting_item_path(meeting_item)
+          - if order.post?
+            - post_delivery = DeliveryPost.find_by_order_id order.id
+            td = link_to 'доставка почтой', admin_delivery_post_path(post_delivery)
+          - if order.courier?
+            - courier_delivery = DeliveryCourier.find_by_order_id order.id
+            td = link_to 'доставка курьером', admin_delivery_courier_path(courier_delivery)
+          - if order.not_choice_delivery?
+            td
+              | not_choice_delivery
+          td = order.total_price
+          td
+            input id="#{order.id}" name="paid_amount" type="text" value="#{order.paid_amount}"
+          = hidden_field_tag 'order_id', order.id
+          td = submit_tag 'обновить статус'

@@ -25,11 +25,13 @@ Rails.application.routes.draw do
       get 'meetings'
       post 'set_state_order'
       post 'set_state_order_item'
+      post 'filter'
     end
   end
   resources :rows, only: [:index, :create, :show, :update, :destroy] do
     collection do
       post 'set_state'
+      post 'filter'
     end
   end
   resources :comments, only: [:create, :show, :update, :destroy]

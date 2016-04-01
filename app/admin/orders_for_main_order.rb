@@ -5,6 +5,7 @@ ActiveAdmin.register_page "OrdersForMainOrder" do
 
   controller do
     def index
+      @main_order_id = params[:main_order_id]
       @orders = Order.where(main_order_id: params[:main_order_id]).page(params[:page])
     end
   end

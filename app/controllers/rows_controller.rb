@@ -83,6 +83,20 @@ class RowsController < ApplicationController
       set_bill_to_order row.order_items
     elsif new_state == Row.states[:ordered].to_s
       row.ordered!
+    elsif new_state == Row.states[:refusing_after_bill].to_s
+      row.refusing_after_bill!
+      row.order_items.each do |order_item|
+        order_item.refund! if order_item.paid?
+      end
+    end
+  end
+
+  def filter
+    state = params[:state] if params[:state_check_box] == 'on'
+    if !state.nil?
+      @rows = Row.where(main_order_id: params[:main_order_id], state: state).page(params[:page])
+    else
+      @rows = Row.where(main_order_id: params[:main_order_id]).page(params[:page])
     end
   end
 

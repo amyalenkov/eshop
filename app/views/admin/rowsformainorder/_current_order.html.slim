@@ -1,23 +1,10 @@
-table class="table"
-  thead
-    tr
-      th ряд
-      th продукт
-      th минимум
-      th количство
-      th статус
-      th цена за 1 шт.
-      th кнопка
-  tbody
-    - @rows.each do |row|
-      =form_tag(set_state_rows_path, :remote => true) do
-        tr
-          td = link_to 'row '+row.id.to_s, row_path(row.id)
-          td = link_to row.product.name.to_s, product_path(row.product.id)
-          td = row.min_count
-          td = "All: #{row.current_count.to_s}; paid: #{row.get_paid_count}"
-          td = select_tag "state", options_for_select(Row.states, row.read_attribute('state'))
-          td
-            input id="#{row.id}" name="price" type="text" value="#{row.product.price}"
-          =hidden_field_tag 'row_id', row.id
-          td =submit_tag 'обновить статус'
+= form_tag(filter_rows_path, :remote => true) do
+  = hidden_field_tag :main_order_id, @main_order_id
+  | state
+  br
+  = check_box_tag :state_check_box, nil, false
+  = select_tag :state, options_for_select(Row.states)
+  br
+  = submit_tag 'применить фильтр'
+.table_rows
+  = render 'table_rows'
