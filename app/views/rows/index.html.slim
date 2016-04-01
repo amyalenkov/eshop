@@ -10,10 +10,12 @@
           br#ok
           br#partially
           br#bad
-          a href="#all" Создано рядов
-          a href="#ok" Собранных рядов
-          a href="#partially" Частично собранных
-          a href="#bad" Несобранных рядов
+          br#your
+          a href="#all" class="all" Создано рядов ()
+          a href="#ok" class="full" Собранных рядов ()
+          a href="#partially" class="not_full" Частично собранных ()
+          a href="#bad" class="not_full_after_bill" Несобранных рядов ()
+          a href="#your" class="your" Ваших рядов ()
           .div
             - @rows.each do |row|
               .row_item
