@@ -7,14 +7,26 @@
 #
 require File.expand_path('../environment', __FILE__)
 
-set_order_states :output, "/home/amyalenkov/dev/eshop/log/cron_log.log"
-cron_time = Configure.find_by_name 'stop'
-every cron_time.value do
-  command "echo 'you can use raw cron syntax too'"
-end
-#
-# every 4.days do
-#   runner "AnotherModel.prune_old_records"
-# end
+set :output, "/home/amyalenkov/dev/eshopNew/log/cron_log.log"
 
-# Learn more: http://github.com/javan/whenever
+stop_record = Configure.find_by_name 'stop'
+stop_time = stop_record.time
+stop_day_of_week = stop_record.read_attribute('day_of_week')
+stop_hour = stop_time.strftime('%H')
+stop_minutes = stop_time.strftime('%M')
+stop_cron = stop_minutes.to_s + ' ' + stop_hour.to_s + ' * * ' + stop_day_of_week.to_s
+
+check_payment_record = Configure.find_by_name 'check_payment'
+check_payment_time = check_payment_record.time
+check_payment_day_of_week = check_payment_record.read_attribute('day_of_week')
+check_payment_hour = check_payment_time.strftime('%H')
+check_payment_minutes = check_payment_time.strftime('%M')
+check_payment_cron = check_payment_minutes.to_s + ' ' + check_payment_hour.to_s + ' * * ' + check_payment_day_of_week.to_s
+
+every stop_cron do
+  rake "my:stop_task"
+end
+
+every check_payment_cron do
+  rake "my:check_payment_task"
+end

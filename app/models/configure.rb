@@ -1,8 +1,8 @@
 class Configure < ActiveRecord::Base
 
-  enum day_of_week: [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+  enum day_of_week: [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday]
 
-  after_update :set_cron
+  after_commit :set_cron
 
   def set_cron
     system 'bundle exec whenever -i'
