@@ -1,0 +1,44 @@
+.row_item
+  .title
+    =link_to row.product.name.gsub('&quot;', ''), '#', :data => {:toggle=> 'modal', :target=>'#getRow'}
+  .img
+    .row_info id="row_info_#{row.order_items}"
+      = render 'orders/row_info', row: row
+      =link_to image_tag("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}"), row_path(row.id), class: 'block'
+  .info
+    dl
+      dt Цена
+      dd #{row.product.price}
+      dt Мин. к выкупу
+      dd #{10}
+
+
+#getRow.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
+          | ×
+        h3 id="myModalLabel" Задать вопрос
+      .modal-body
+        .form style="height: 300px;"
+          form id="contact_us" class="form-horizontal col-sm-12"
+            .form-group
+              label [class="pull-left"] Имя
+              input class="form-control required name" name="name" id="name" placeholder="Ваше имя" type="text"
+
+            .form-group
+              label [class="pull-left"] E-Mail
+              input class="form-control required email" name="email" id="email" placeholder="email@you.com" type="text"
+
+            .form-group
+              label [class="pull-left"] Номер телефона
+              input class="form-control required phone" name="phone" id="phone" placeholder="+375-29-937-99-92" type="text"
+
+            .form-group
+              label [class="pull-left"] Комментарий
+              textarea class="form-control message" name="message" id="message" placeholder="Ваше сообщение"
+
+      .modal-footer
+        button [type="submit" class="btn btn-success pull-right go"] Заказать звонок
+        button class="btn pull-left" data-dismiss="modal" aria-hidden="true" Отмена
