@@ -7,7 +7,7 @@
 #
 require File.expand_path('../environment', __FILE__)
 
-set :output, "/home/amyalenkov/dev/eshopNew/log/cron_log.log"
+set :output, "#{Rails.root}/log/cron_log.log"
 
 stop_record = Configure.find_by_name 'stop'
 stop_time = stop_record.time
@@ -25,8 +25,10 @@ check_payment_cron = check_payment_minutes.to_s + ' ' + check_payment_hour.to_s 
 
 every stop_cron do
   rake "my:stop_task RAILS_ENV=production"
+  # rake "my:stop_task"
 end
 
 every check_payment_cron do
   rake "my:check_payment_task RAILS_ENV=production"
+  # rake "my:check_payment_task"
 end
