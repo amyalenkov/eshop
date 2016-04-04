@@ -15,18 +15,18 @@
                   th Количество
                   th delete
               tbody
-                - @row.row_items.each do |row_item|
+                - row.order_items.each do |row_item|
                   tr
                     td
-                      = link_to @row.product.name, product_path(@row.product.id)
+                      = link_to row.product.name, product_path(row.product.id)
                     td
                       = row_item.count
-                    td.delete = link_to 'x', @row, remote: true, method: :delete, class: 'delete'
+                    td.delete = link_to 'x', row, remote: true, method: :delete, class: 'delete'
                     - if user_signed_in?
               .add_comment
-                = render 'add_comment_for_row'
+                = render 'add_comment_for_row', row: row
               .all_comments
-                = render 'all_comments_for_row'
+                = render 'all_comments_for_row', row: row
 
     .modal-footer
       button [type="submit" class="btn btn-success pull-right go"] Заказать звонок
