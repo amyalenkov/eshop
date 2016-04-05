@@ -100,22 +100,24 @@ class OrdersController < ApplicationController
   def filter
     state = params[:state] if params[:state_check_box] == 'on'
     delivery = params[:delivery] if params[:delivery_check_box] == 'on'
+    search = params[:search] if params[:search_check_box] == 'on'
     if !state.nil? && !delivery.nil?
-      @orders = Order.where(main_order_id: params[:main_order_id], state: state, delivery: delivery).page(params[:page])
+      orders = Order.where(main_order_id: params[:main_order_id], state: state, delivery: delivery).page(params[:page])
     elsif !state.nil?
-      @orders = Order.where(main_order_id: params[:main_order_id], state: state).page(params[:page])
+      orders = Order.where(main_order_id: params[:main_order_id], state: state).page(params[:page])
     elsif !delivery.nil?
-      @orders = Order.where(main_order_id: params[:main_order_id], delivery: delivery).page(params[:page])
+      orders = Order.where(main_order_id: params[:main_order_id], delivery: delivery).page(params[:page])
     else
-      @orders = Order.where(main_order_id: params[:main_order_id]).page(params[:page])
+      orders = Order.where(main_order_id: params[:main_order_id]).page(params[:page])
     end
-    # if params[:refund_check_box] == 'on'
-    #   @orders.each do |order|
-    #     order.order_items do |order_items|
-    #       if order_items.redund?
-    #     end
-    #   end
-    # end
+    if search.nil?
+      @orders = orders
+    else
+      @orders = Array.new
+      orders.each do |order|
+        @orders.push(order) if order.user.name.to_s.include?(search)
+      end
+    end
   end
 
   private
