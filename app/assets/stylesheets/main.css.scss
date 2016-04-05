@@ -1286,33 +1286,65 @@ header {
     }
     .row_item{
       float: left;
-      width: 90px;
-      height: 100px;
-      border-radius: 3px;
-      border: 1px solid #2E2F30;
+      width: 110px;
+      height: 200px;
       text-align: center;
-      margin-top: 20px;
-      margin-left: 20px;
+      margin-top: 5px;
+      margin-left: 5px;
+      padding: 40px 10px 10px 10px;
       .title{
         font-size: 9px;
         display: none;
+        margin-top: -35px;
+        height: 35px;
+        font-weight: bold;
         a {
           color: #060606;
         }
       }
       .img{
+        border: 1px solid;
+        padding-top: 12px;
+        padding-bottom: 16px;
+        border-radius: 3px;
+        background: #ffffff;
         img{
           max-height: 70px;
         }
+        .row_info{
+          .progress{
+            height: 10px;
+            width: 40%;
+            margin-left: 25px;
+          }
+          p, a{display: none;}
+          .block{display: block;}
+        }
       }
       .info{
-
+        display: none;
+        float: left;
+        dt{
+          float: left;
+          font-size: 9px;
+          font-weight: bold;
+          color: #16274c;
+          margin-right: 5px;
+        }
+        dd{
+          float: left;
+          font-size: 9px;
+          color: #f53b3b;
+        }
       }
     }
     .row_item:hover{
-      .title{
-        display: block;
-      }
+      border-radius: 3px;
+      border: 1px solid #2E2F30;
+      padding: 40px 10px 10px 10px;
+      background: #feeaff;
+      .title{display: block;}
+      .info{display: block;}
     }
 
     .all{background: #56a7d7;}

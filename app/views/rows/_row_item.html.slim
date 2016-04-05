@@ -1,0 +1,17 @@
+.row_item
+  .title
+    =link_to row.product.name.gsub('&quot;', ''), '#', :data => {:toggle=> 'modal', :target=>'#getRow'}
+  .img
+    .row_info id="row_info_#{row.order_items}"
+      = render 'orders/row_info', row: row
+      =link_to image_tag("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}"), row_path(row.id), class: 'block'
+  .info
+    dl
+      dt Цена
+      dd #{row.product.price}
+      dt Мин. к выкупу
+      dd #{10}
+
+
+#getRow.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+  = render 'rows/show_item_row', row: row

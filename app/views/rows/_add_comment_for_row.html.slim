@@ -5,6 +5,6 @@
     br
     = comment.text_area :comment, class: 'form-control', placeholder: 'Комментарий'
     br
-    = comment.hidden_field :row_id, :value =>  @row.id
+    = comment.hidden_field :row_id, :value =>  row.id
   div.actions
     = comment.submit 'Оставить комментарий', class: 'btn btn-success pull-right'
