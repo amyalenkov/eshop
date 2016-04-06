@@ -3,6 +3,8 @@ table class="table"
     tr
       th id
       th email
+      th name
+      th phone
       th заказ
       th статус
       th доставка
@@ -15,6 +17,8 @@ table class="table"
         tr
           td = 'order '+order.id.to_s
           td = order.user.email.to_s
+          td = order.user.name
+          td = order.user.phone
           td = link_to "заказы: #{order.order_items.length}; возвратов: #{order.get_refunding}; возвращено: #{order.get_refunded}", admin_orderitemsfororder_path(order_id: order.id)
           td = select_tag 'state', options_for_select(Order.states, order.read_attribute('state'))
           - if order.meeting?

@@ -9,9 +9,9 @@
   br
   = check_box_tag :delivery_check_box, nil, false
   = select_tag :delivery, options_for_select(Order.deliveries)
-  /br
-  /= check_box_tag :refund_check_box, nil, false
-  /| возвраты
+  br
+  = check_box_tag :search_check_box, nil, false
+  = text_field_tag 'search', nil, :placeholder => 'Найти...', :autocomplete => 'off', :class => 'search_input'
   br
   = submit_tag 'применить фильтр'
 .table_orders
