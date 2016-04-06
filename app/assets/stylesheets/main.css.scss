@@ -1203,6 +1203,14 @@ header {
 .cart{
   width: 800px;
   padding: 0;
+  .table thead{
+    border: 2px solid #DDDDDD;
+    background: #edf8f7;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+    color: #837f7f;
+  }
   .table th{
     text-align: center;
   }
@@ -1751,6 +1759,43 @@ header {
 }
 /*END_CALENDAR*/
 
+/*ORDERS*/
+.orders{
+  padding: 0;
+  .table thead{
+    border: 2px solid #DDDDDD;
+    background: #edf8f7;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+    color: #837f7f;
+  }
+  .table th{
+    text-align: center;
+  }
+  .table td{
+    text-align: center;
+  }
+  .table .title a{
+    color: #057e89;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .table .text{
+    color: #837f7f;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  h4{
+    font-size: 16px;
+    color: #f2a31a;
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+/*END_ORDERS*/
 
 /*SEARCH*/
 .search_crafter_title{

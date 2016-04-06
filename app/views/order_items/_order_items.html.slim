@@ -5,16 +5,20 @@ table class="table"
       th Сроки СП
       th Сумма СП
       th Встречи (г. Гомель)
-      th Почта (доугие города РБ)
       th Способ получения
       th Статус оплаты
   tbody
     - @orders.each do |order|
       tr
-        td = link_to 'order '+order.id.to_s, order_path(order.id)
-        td = order.state
+        td
+          .title
+            = link_to 'Счет на оплату СП №'+order.id.to_s, order_path(order.id)
         td
         td
+          .text
+            | 100500
         td
+          .text
+            | 23 апреля 2016
         td = order.payment_type
-        td
+        td = order.state
