@@ -33,7 +33,7 @@ table class="table"
               p Дата добавления: <b>data</b>
               /p Комментарий
               =form_for order_item, remote: true do |f|
-                =f.submit '', class: 'ok_submit'
+                =f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'
                   = f.content_tag_for :span, 'Сохранить'
                 =text_area_tag 'comment', order_item.comment
         td style="width: 100px;"
