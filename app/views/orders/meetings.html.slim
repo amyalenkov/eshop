@@ -1,18 +1,67 @@
+/-unless @order.nil?
+  /table[style="width:100%"]
+  /  thead
+  /    tr
+  /      th[style="text-align:right;"]
+  /        | id
+  /      th[style="text-align:right;"]
+  /        | state
+  /  tbody
+  /    tr
+  /      td[style="text-align:right;"]
+  /        = link_to '@order '+@order.id.to_s, order_path(@order.id)
+  /      td[style="text-align:right;"]
+  /        = @order.state
+  /
+  /=render 'choice_meeting'
+  /=render 'choice_post'
+  /=render 'choice_courier'
 -unless @order.nil?
-  table[style="width:100%"]
-    thead
-      tr
-        th[style="text-align:right;"]
-          | id
-        th[style="text-align:right;"]
-          | state
-    tbody
-      tr
-        td[style="text-align:right;"]
-          = link_to '@order '+@order.id.to_s, order_path(@order.id)
-        td[style="text-align:right;"]
-          = @order.state
+  .container-fluid
+    .row
+      .col-xs-2.col-sm-2.col-md-2.col-lg-2.calendar
+        h5
+          | Ближайшие встречи
+      .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
+        .tabs
+          .menu1
+            br#all
+            br#ok
+            br#partially
+            a href="#all" class="all" Выбрать встречу
+            a href="#ok" class="full" Доставка почтой
+            a href="#partially" class="not_full" Доставка курьером
+            .div
+              /=render 'choice_meeting'
+              h1
+                | встречи
+              /= form_tag(choice_delivery_order_path(@order.id)) do
+                = hidden_field_tag :delivery, Order.deliveries[:meeting]
+                = collection_radio_buttons :order, :meeting, MeetingItem.all, :id, :location  do |b|
+                  = b.label
+                  =b.radio_button
+                =submit_tag 'Выбрать'
+              = collection_radio_buttons :order_view, :meeting, MeetingItem.all, :id, :location  do |b|
+                = b.label
+                =b.radio_button
+              =link_to 'выбрать', '#', :data => {:toggle => 'modal', :target => '#getMeeting'}, id: 'get_meeting'
+            .div
+              =render 'choice_post'
+            .div
+              = render 'choice_courier'
 
-  =render 'choice_meeting'
-  =render 'choice_post'
-  =render 'choice_courier'
+#getMeeting.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
+          | ×
+        h3 Подтвердить выбор встречи
+      .modal-body
+        = form_tag(choice_delivery_order_path(@order.id)) do
+          = hidden_field_tag :delivery, Order.deliveries[:meeting]
+          = collection_radio_buttons :order, :meeting, MeetingItem.all, :id, :location  do |b|
+            = b.label
+            =b.radio_button
+          =submit_tag 'Выбрать'
+      .modal-footer.pull-left

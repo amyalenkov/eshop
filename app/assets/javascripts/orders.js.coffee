@@ -25,6 +25,13 @@ $ ->
       card_items: cart_items
     )
 
+  $('#get_meeting').click ->
+    $('input[name*=order_view]').each (index, element) =>
+      if element.checked == true
+        console.log(element.value)
+        $('#order_meeting_'+element.value).attr('checked', 'checked')
+
+
 get_fiesds_for_order_item = (element) ->
   cart_item = {}
   input = $("input[name='quant[" + element.value + "]']");
