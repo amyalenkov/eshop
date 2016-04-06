@@ -1,33 +1,49 @@
-.modal-dialog.modal-sm
+.modal-dialog.modal-lg
   .modal-content
     .modal-header
       button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
         | ×
-      h3 id="myModalLabel" Задать вопрос
+      h3 Ряд на товар: #{row.product.name.gsub('&quot;', '')}
+
     .modal-body
       .container-fluid
         .row
-          .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
-            table
-              thead
-                tr
-                  th Наименование товара
-                  th Количество
-                  th delete
-              tbody
-                - row.order_items.each do |row_item|
-                  tr
-                    td
-                      = link_to row.product.name, product_path(row.product.id)
-                    td
-                      = row_item.count
-                    td.delete = link_to 'x', row, remote: true, method: :delete, class: 'delete'
-                    - if user_signed_in?
+          .column_product
+            - row.order_items.each do |row_item|
+              - row_item.count
+            .img
+              = image_tag("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+              br
+              = link_to 'Подробнее о данном товаре...', product_path(row.product.id)
+            .description
+              dl
+                dt <i>Цена Росс. руб.:</i>
+                dd <i><b>#{row.product.price}</b></i>
+                dt <i>Артикул</i>:
+                dd <i><b>#{row.product.id}</b></i>
+                dt <i>Остаток на складе:</i>
+                dd <i><b>#{row.product.product_params.find_by_name('stock_balance')[:value]}</b></i>
+                dt <i>Страна-производитель:</i>
+                dd <i><b>НЕТ ДАННЫХ</b></i>
+                dt <i>Размер:</i>
+                dd <i><b>#{row.product.product_params.find_by_name('size')[:value]}</b></i>
+                dt <i>Материал:</i>
+                dd <i><b>#{row.product.product_params.find_by_name('material')[:value]}</b></i>
+                dt <i>В боксе:</i>
+                dd <i><b>НЕТ ДАННЫХ</b></i>
+                dt <i>Упаковано в:</i>
+                dd <i><b>#{row.product.product_params.find_by_name('box_type')[:value]}</b></i>
+                dt <i>Сертификат:</i>
+                dd <i><b>#{row.product.product_params.find_by_name('certificate')[:value]}</b></i>
+                dt <i>Вес:</i>
+                dd <i><b>#{row.product.product_params.find_by_name('weight')[:value]}</b></i>
+
+              = render 'orders/row_info', row: row
+          .column_comment
+            .all_comments
+              = render 'all_comments_for_row', row: row
+            - if user_signed_in?
               .add_comment
                 = render 'add_comment_for_row', row: row
-              .all_comments
-                = render 'all_comments_for_row', row: row
 
-    .modal-footer
-      button [type="submit" class="btn btn-success pull-right go"] Заказать звонок
-      button class="btn pull-left" data-dismiss="modal" aria-hidden="true" Отмена
+    .modal-footer.pull-left

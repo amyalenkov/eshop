@@ -31,3 +31,7 @@
             - @rows.each do |row|
               -unless row.state == 'not_full_after_bill'
                 = render 'rows/row_item', row: row
+          /.div
+            - @rows.each do |row|
+              -unless row.state == 'not_full_after_bill'
+                = render 'rows/row_item', row: row

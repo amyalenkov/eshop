@@ -1347,6 +1347,98 @@ header {
       .info{display: block;}
     }
 
+    /*ROW POP_UP*/
+    #getRow{
+      .column_product, .column_comment{
+        float: left;
+      }
+      .column_product{
+        width: 70%;
+        .img{
+          float: left;
+          img{width: 350px;}
+        }
+        .description{
+          float: left;
+          dl{
+            font-size: 12px;
+            width: 240px;
+            dt {
+              float: left;
+              width: 155px;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+      .column_comment{
+        width: 30%;
+        .all_comments{
+          float: left;
+          height: 270px;
+          .all_comments_not_nil{
+            float: left;
+            width: 100%;
+            .comments{
+              float: left;
+              overflow: auto;
+              height: 270px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              width: 100%;
+              .comment{
+                float: left;
+                width: 100%;
+                margin-bottom: 15px;
+                border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
+                .title, .body{
+                  float: left;
+                  width: 95%;
+                  font-size: 16px;
+                  font-weight: bold;
+                  font-style: italic;
+                  padding-left: 10px;
+                }
+                .body{
+                  font-size: 14px;
+                  font-weight: normal;
+                }
+                .delete a{
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+          .all_comments_nil{
+            float: left;
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+            margin-bottom: -50px;
+            .comment{
+              float: left;
+              width: 60%;
+              border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
+              .title{
+                float: left;
+                width: 95%;
+                font-size: 18px;
+                font-weight: bold;
+                font-style: italic;
+              }
+            }
+          }
+        }
+        .add_comment{
+          float: left;
+          width: 100%;
+          height: 130px;
+          margin-top: 15px;
+        }
+      }
+    }
+    /*END ROW POP_UP*/
+
     .all{background: #56a7d7;}
     .full{background: #3add41;}
     .not_full{background: #ffb11a;}
