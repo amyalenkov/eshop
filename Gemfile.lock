@@ -84,6 +84,8 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    domain_name (0.5.20160310)
+      unf (>= 0.0.5, < 1.0.0)
     elevatezoom-rails (1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -99,6 +101,8 @@ GEM
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -127,6 +131,9 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.16.14.13)
+    ltree_hierarchy (0.0.8)
+      activerecord (>= 3.1.0)
+      pg
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -139,6 +146,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
+    netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -179,6 +187,10 @@ GEM
     ref (2.0.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     riddle (1.5.12)
     rorvswild (0.3.5)
     sass (3.2.19)
@@ -236,6 +248,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     warden (1.2.6)
       rack (>= 1.0)
     whenever (0.9.4)
@@ -262,6 +277,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-validation-rails
   kaminari
+  ltree_hierarchy
   mysql2 (~> 0.3.18)
   nokogiri
   pg (= 0.15.1)
@@ -269,6 +285,7 @@ DEPENDENCIES
   rails (= 4.1.0)
   rake (= 10.5.0)
   ratyrate
+  rest-client
   rorvswild
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

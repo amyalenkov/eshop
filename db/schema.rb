@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401123918) do
+ActiveRecord::Schema.define(version: 20160407074234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "ltree"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -75,7 +76,16 @@ ActiveRecord::Schema.define(version: 20160401123918) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "logo_image"
+    t.string   "slug"
+    t.integer  "total_count_products"
+    t.integer  "sid"
+    t.boolean  "is_leaf"
+    t.integer  "level"
+    t.integer  "parent_id"
+    t.ltree    "path"
   end
+
+  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "body"

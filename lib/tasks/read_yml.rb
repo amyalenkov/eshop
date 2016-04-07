@@ -1,74 +1,34 @@
-require 'nokogiri'
+require 'csv'
 # require 'models/category'
 # require 'models/subcategory'
-class ReadYml
-
-  def get_all_files
-    Dir["/home/amyalenkov/dev/eshop/db/yml_db/*.xml"]
-  end
+class ReadCSV
 
   def read_file
-    file = File.open("/home/amyalenkov/dev/eshop/db/yml_db/avto.xml")
-    Nokogiri::Slop(file)
-    # cat = doc.xpath("//categories//category")
-    # offers = doc.xpath("//offers//offer")
-    # p cat.size
-    # p offers.size
-    # file.close
+    File.read("/home/amyalenkov/dev/eshop/db/csv_db/CSV.csv").gsub(/\"/, "").gsub(/;/, ",")
   end
 
-  def save_categories_and_subcategories
-    document = read_file
-    document.xpath("//categories//category").each { |category|
-      if category['parentId'].nil?
-        category = Category.new
-        category.id = category['id']
-        category.name = category.content
-        category.save!
-      else
-        subcategory = Subcategory.new
-        subcategory.id = category['id']
-        subcategory.category_id = category['parentId']
-        subcategory.name = category.content
-        subcategory.save!
-      end
-    }
-  end
-
-  def save_products
-    document = read_file
-    document.xpath("//offers//offer").each { |products|
-      p offers[0]['id']
-      p offers[0]['available']
-      p offers[0]['bid']
-      p offers[0].price.content
-      p offers[0].currencyid.content
-      p offers[0].categoryid.content
-      p offers[0].delivery.content
-      p offers[0].local_delivery_cost.content
-      p offers[0].sales_notes.content
-      p 'picture ---'
-      offers[0].picture.each { |picture|
-        p picture.content
-      }
-
-      offers[0].children.each { |child|
-        if child.name == 'description'
-          p child.content
-        end
-        if child.name == 'name'
-          p child.content
-        end
-        if child.name == 'param'
-          child['name']
-          child.next.content
-        end
-      }
-    }
+  def get_rows
+    # CSV.parse(read_file, :headers => true) do |row|
+    #   puts row[1]
+    #   break
+    # end
+    CSV.parse(read_file, :headers => true)
+    # CSV.foreach(read_file, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
+    #   data << row.to_hash
+    #   p date
+    # end
 
   end
 
 end
-
-read_xml = ReadYml.new
-read_xml.get_all_files.each { |file| p file }
+categories = Array['Авто','Хозтовары','Праздники']
+read_xml = ReadCSV.new
+count = 0
+read_xml.get_rows
+read_xml.get_rows.each do |row|
+  count = count + 1
+  hash = row.to_hash
+  p hash["﻿name"]
+  p hash["Артикул"]
+  break if count == 6
+end

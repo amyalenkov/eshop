@@ -71,3 +71,8 @@ gem 'jquery-validation-rails'
 
 # cron jobs
 gem 'whenever', :require => false
+
+gem 'rest-client'
+
+#using PostgreSQL's ltree datatype
+gem 'ltree_hierarchy'

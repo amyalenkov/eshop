@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def index
+    @categories = Category.where level: 1
   end
 
   def order_call
@@ -16,8 +17,10 @@ class StaticPagesController < ApplicationController
   end
 
   def category_list
-    category = Category.find_by_name params[:name]
-    all_subcategories,@subcategories = get_subs(category.id)
+    @categories = Category.where level: 1
+    @category = Category.find_by_name params[:name]
+    # all_subcategories,@subcategories = get_subs(category.id)
+    @subcategories = @category.children
   end
 
   private

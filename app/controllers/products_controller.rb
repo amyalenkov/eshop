@@ -5,12 +5,12 @@ class ProductsController < ApplicationController
       category = Category.find_by_name params[:name]
       all_subcategories,@subcategories = get_subs(category.id)
     elsif request.url.to_s.include? '/subcategory/'
-      subcategory = Subcategory.find_by_name params[:name]
+      subcategory = Category.find_by_name params[:name]
       # @subcategories = Subcategory.where :category_id => subcategory.id
-      all_subcategories,@subcategories = get_subs(subcategory.id)
-      all_subcategories.push subcategory
+      @subcategories = subcategory.children
+
       @products = Product.includes(:subcategory).joins(:product_pictures).references(all_subcategories).
-          where(subcategory_id: all_subcategories).page(params[:page])
+          where(subcategory_id: @subcategories).page(params[:page])
     else
       @products = Product.all.page(params[:page])
     end

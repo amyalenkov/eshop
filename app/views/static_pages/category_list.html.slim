@@ -13,9 +13,10 @@
       .catalog_items
         a href="/category/#{params[:name]}"
           p #{params[:name]}
-          = image_tag ("categories/#{params[:name]}.png")
+          = image_tag (@category.logo_image)
         br
         - if @subcategories != nil
           - @subcategories.each do |subcategory|
             = link_to subcategory.name, "/subcategory/#{subcategory.name}", class: 'link'
             br
+            = image_tag (subcategory.logo_image)
