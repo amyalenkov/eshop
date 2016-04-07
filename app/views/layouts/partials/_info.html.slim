@@ -3,7 +3,7 @@
     - current_order = current_user.get_current_order
 
     -if current_order != nil
-      = link_to ('Текущий заказ').html_safe, order_path(current_order.id)
+      = link_to ('Текущий заказ').html_safe, current_order_order_path(current_order)
     -else
       = link_to 'Пусто', cart_items_path
 

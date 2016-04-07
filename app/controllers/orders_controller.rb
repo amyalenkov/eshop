@@ -16,6 +16,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def current_order
+    @order = Order.find_by_id params[:id]
+  end
+
   def create
     card_items = params[:card_items]
 

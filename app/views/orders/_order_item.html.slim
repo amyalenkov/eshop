@@ -1,27 +1,28 @@
 table class="table"
   thead
     tr
-      /th state
-      th Наименование продукта
-      th Ряд
-      th Количество
-      th Цена
-      /th min
-      th Сумма
       th
+      th Наименование продукта
+      th Артикул
+      th Цена
+      th Количество
+      th Сумма
+      th Мин. к выкупу
+      th Комментарии
   tbody
     - @order.order_items.each_with_index do |order_item, index|
 
-      - if order_item.state == 'in_progress'
-        - background = 'background: #6fbaa7;'
-      - elsif order_item.state == 'reserved'
-        - background = 'background: #798dbd;'
+      - if order_item.state == 'reserved'
+        - background = 'background: #c3cfeb;'
       - elsif order_item.state == 'refusing_after_not_full_row'
-        - background = 'background: #a773bc;'
+        - background = 'background: #d1c1d8;'
       - else
         - background = 'background: #ffffff;'
 
       tr style="#{background}"
+        td
+          .checkbox-inline.check-box
+            = check_box_tag 'card_items_id['+order_item.id.to_s+']', order_item.id.to_s, false, class: 'check_box_items'
         td
           .product_cart
             .image_cart
@@ -29,105 +30,45 @@ table class="table"
             .description_cart
               .title
                 = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)
-              p Артикул: <b>#{order_item.product_id}</b>
               p Дата добавления: <b>data</b>
-              /p Комментарий
-              =form_for order_item, remote: true do |f|
-                =f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'
-                  = f.content_tag_for :span, 'Сохранить'
-                =text_area_tag 'comment', order_item.comment
-        td style="width: 100px;"
-          -if order_item.in_progress?
-            - row = order_item.row
-            .row_info id="row_info_#{order_item.id}"
-              =render 'orders/row_info', row: row, text: 'собран'
-          -elsif order_item.refund?
-            | будет возврат средств
-          -elsif order_item.refunded?
-            | вернули деньги
-          -else
-            - row = order_item.get_row_after_stop
-            - if row.nil?
-              /| не собрался ряд
-            - elsif row.reserved?
-              - row = order_item.row
-              .row_info id="row_info_#{order_item.id}"
-                =render 'orders/row_info', row: row, text: 'собран'
-                /| собрался ряд, зарезервировано
-            - elsif row.paid?
-              - row = order_item.row
-              .row_info id="row_info_#{order_item.id}"
-                = render 'orders/row_info', row: row, text: 'собран'
-                /| собрался ряд, оплачено
-            - elsif row.bill?
-              - row = order_item.row
-              .row_info id="row_info_#{order_item.id}"
-                = render 'orders/row_info', row: row, text: 'собран'
-                /| собрался ряд, выставлен счет
-            - elsif row.refusing_after_reserved?
-              /| отказ, нет в наличии
-            - elsif row.refusing_after_bill?
-              /|  не собрался ряд после оплаты
-            - else
-
         td
-          -if order_item.in_progress? && !order_item.row.reserved?
-            .counter id="counter_#{order_item.id}"
-              = render 'orders/counter', order_item: order_item, row: row
-          -else
-            .counter
-              input class="btn btn-danger btn-number minus" type="submit" value="" disabled="true"
-              input type="number" class="form-control input-number count_field" value="#{order_item.count}" disabled="true"
-              input class="btn btn-danger btn-number plus" type="submit" value="" disabled="true"
-
-        td style="width: 80px;"
-          .order_price
-            = order_item.product.price
-
+          p <b>#{order_item.product_id}</b>
+        td
+          = order_item.product.price
+        td
+          = order_item.count
         td style="width: 80px;"
           .total_price id="total_price_#{order_item.id}"
             =render 'orders/total_price', order_item: order_item
+        td
+          = order_item.product.sales_notes.gsub('Минимальная партия', '')
+        td
+          = form_for order_item, remote: true do |f|
+            = f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'
+              /= f.content_tag_for :span, 'Сохранить'
+            =text_area_tag 'comment', order_item.comment
 
-            -if order_item.in_progress? && !order_item.row.reserved?
-              td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
-            -else
-              td.delete
-                .delete
-                  p x
 .total-amount-and-count
   =render 'orders/total_amount_and_count'
 
 .info
-  - if @order.bill?
-    .total_amount
-      | СУММА К ОПЛАТЕ #{@order.total_price}
-    .total_by_cart
-      .total_items
-        p Наименований: 123456
-        p Текущих единиц: 123456
-      .total_amount_by_cart
-        p Итого в таблице: 123456
-    - if @order.paid?
+  .amount
+    - if @order.bill?
       .total_amount
-        | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
-      - if @order.not_paid?
+        | СУММА К ОПЛАТЕ #{@order.total_price}
+      - if @order.paid?
         .total_amount
-          | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
+          | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
+        - if @order.not_paid?
+          .total_amount
+            | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
 
-  .info_1
-  p <i>Товар в обработке</i>
-  .info_2
-  p <i>Товар забронирован</i>
-  .info_3
-  p <i>Не собрался ряд</i>
+  .pull-left.button_cart_left
+    = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ в КОРЗИНУ', class: 'btn btn-success disabled', id: 'create_order'
 
-.info_description
-  p
-    | Оплатить за СП 12 до
-    span class='span1'  1 февраля 2016г включительно!
-    br
-    span class='span2' внимание!!!
-    |  Если Ваш чек не будет отправлен нам
-    span class='span3'  до 10 часов утра 2февраля 2016г
-    |  Ваш заказ будет
-    span class='span2'  отменен!
+  .description
+    .info_1
+      p <span></span> <i>Товар забронирован</i>
+    .info_2
+      p <span></span> <i>Не собрался ряд</i>
+

@@ -85,7 +85,7 @@ header {
 
 .menu_right{
   float: right;
-  width: 300px;
+  width: 310px;
   margin-top: -30px;
   padding-left: 0;
   padding-right: 0;
@@ -104,7 +104,7 @@ header {
   .login{
     float: left;
     text-align: center;
-    width: 50%;
+    width: 30%;
     color: #6cb2db;
     margin-top: 15px;
     .login_href{
@@ -115,9 +115,8 @@ header {
   .contacts{
     float: left;
     text-align: right;
-    width: 50%;
+    width: 70%;
     .velcom, .viber, .mts, .life{
-      //float: left;
       float: right;
       width: 75%;
       color: #6cb2db;
@@ -505,7 +504,7 @@ header {
     margin-top: 25px;
     .timer{
       float: left;
-      width: 200px;
+      width: 185px;
       height: 75px;
       background: #e5e5e5;
     }
@@ -1474,7 +1473,7 @@ header {
       margin-bottom: 30px !important;
     }
     .total_amount, .total_count{
-      width: 300px;
+      width: 220px;
       right: 0;
       //margin-top: 50px;
       text-align: center;
@@ -1683,23 +1682,29 @@ header {
       font-size: 15px;
       color: #000;
     }
-    .info_1, .info_2, .info_3{
-      float: left;
-      width: 50px;
-      height: 22px;
-      margin-right: 15px;
-    }
-    .info_1{
-      background: #6fbaa7;
-    }
-    .info_2{
-      background: #798dbd;
-    }
-    .info_3{
-      background: #a773bc;
+    .description{
+      width: 250px;
+      .info_1, .info_2, .info_3{
+        float: left;
+      }
+      .info_1 span, .info_2 span, .info_3 span{
+        float: left;
+        width: 50px;
+        height: 22px;
+        margin-right: 10px;
+      }
+      .info_1 span{
+        background: #6fbaa7;
+      }
+      .info_2 span{
+        background: #798dbd;
+      }
+      .info_3 span{
+        background: #a773bc;
+      }
     }
   }
-  .info_description{
+  .date_description{
     float: left;
     margin-top: 15px;
     margin-bottom: 25px;
@@ -1788,12 +1793,175 @@ header {
     font-style: italic;
     font-weight: bold;
   }
+  .table .date_on, .date_off{
+    color: #19760a;
+    width: 100%;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .table .date_off{
+    color: #dc2921;
+  }
   h4{
     font-size: 16px;
     color: #f2a31a;
     font-weight: bold;
     font-style: italic;
   }
+
+  .product_cart{
+    float: left;
+    width: 285px;
+    .description_cart{
+      float: left;
+      width: 205px;
+      .title{
+        color: #057e89;
+        padding-bottom: 12px;
+        line-height: 13px;
+      }
+      p{
+        font-size: 12px;
+        color: #515151;
+        line-height: 5px;
+      }
+      textarea{
+        resize: none;
+        height: 22px;
+        width: 100%;
+        margin-top: -1px;
+        z-index: 5;
+        float: left;
+      }
+      .ok_submit{
+        float: right;
+        background: url("ok.png");
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        border: none;
+        background-size: cover;
+        margin-left: 184px;
+        span{
+          visibility: hidden;
+        }
+        span:hover{
+          visibility: visible;
+        }
+      }
+    }
+    .image_cart{
+      width: 75px;
+      float: left;
+      text-align: center;
+      padding-right: 10px;
+      img{
+        max-height: 65px;
+      }
+    }
+  }
+  .row{
+    text-align: center;
+    .progress{
+      margin-bottom: 5px !important;
+      width: 80%;
+      margin-left: 10px;
+    }
+    p{
+      font-size: 10px;
+      color: #000;
+    }
+    .new_row{
+      text-decoration: none;
+      font-style: italic;
+      padding: 5px 10px;
+      background: #ffff00;
+    }
+    a{
+
+    }
+  }
+  .row_cart{
+    text-align: center;
+  }
+  .price, .amount{
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+  }
+  .total_amount, .total_count{
+    width: 220px;
+    right: 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    color: #000000;
+    text-transform: uppercase;
+    span{
+      color: #f2a31a;
+    }
+  }
+  .total_count {
+    font-size: 14px;
+    color: #515151;
+    text-transform: none;
+  }
+  .info{
+    .total_amount{
+      float: left;
+      width: 40%;
+      font-size: 16px;
+      color: #000;
+      font-weight: bold;
+      font-style: italic;
+      margin-bottom: 60px;
+    }
+    .total_by_cart{
+      float: right;
+      width: 60%;
+      margin-bottom: 60px;
+      p {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 14px;
+        color: #515151;
+        line-height: 15px;
+      }
+      .total_items, .total_amount_by_cart{
+        float: left;
+        width: 50%;
+      }
+    }
+    p{
+      font-size: 15px;
+      color: #000;
+    }
+    .description{
+      width: 250px;
+      .info_1, .info_2, .info_3{
+        float: left;
+      }
+      .info_1 span, .info_2 span, .info_3 span{
+        float: left;
+        width: 50px;
+        height: 22px;
+        margin-right: 10px;
+      }
+      .info_1 span{
+        background: #6fbaa7;
+      }
+      .info_2 span{
+        background: #798dbd;
+      }
+      .info_3 span{
+        background: #a773bc;
+      }
+    }
+  }
+
 }
 /*END_ORDERS*/
 
@@ -1885,6 +2053,7 @@ header {
   text-overflow: ellipsis;
   /*end ограничение текста*/
   .link{
+    text-align: center;
     font-size: 13px;
     color: #000000;
     font-weight: bold;
@@ -1892,9 +2061,6 @@ header {
 }
 
 .exit{
-  float: right;
-  color: gray;
-  padding: 2px;
 }
 
 .avatar_button{

@@ -1,3 +1,4 @@
 .name_right_menu
   = link_to current_user.email, current_user, :class=> 'link link_email'
+  br
   = link_to 'Выйти', destroy_user_session_path, :method=>'delete', :class=> 'exit'
