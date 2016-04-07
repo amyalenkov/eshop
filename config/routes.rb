@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :create, :show] do
     member do
       post 'choice_delivery'
+      get 'current_order'
     end
     collection do
       get 'meetings'
@@ -41,7 +42,6 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
 
   get '/subcategory/:name' => 'products#index'
-  # get '/category/:name' => 'products#index'
   get '/category/:name' => 'static_pages#category_list'
 
   get 'static_pages/faq' => 'static_pages#faq'

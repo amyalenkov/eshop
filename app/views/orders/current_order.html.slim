@@ -1,0 +1,140 @@
+.container-fluid
+  .row
+    .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_info
+      = render 'layouts/partials/calendar'
+    .col-xs-9.col-sm-9.col-md-9.col-lg-9.cart
+      .title_history
+        p Чтобы посмотреть счета на оплату перейдите по ссылке:
+        = link_to 'История заказов', orders_path
+      h4 Текущий заказ
+      .cart_items
+        .current_order
+          table class="table"
+            thead
+              tr
+                /th state
+                th Наименование продукта
+                th Ряд
+                th Количество
+                th Цена
+                /th min
+                th Сумма
+                th
+            tbody
+              - @order.order_items.each_with_index do |order_item, index|
+
+                - if order_item.state == 'in_progress'
+                  - background = 'background: #6fbaa7;'
+                - elsif order_item.state == 'reserved'
+                  - background = 'background: #798dbd;'
+                - elsif order_item.state == 'refusing_after_not_full_row'
+                  - background = 'background: #a773bc;'
+                - else
+                  - background = 'background: #ffffff;'
+
+                tr style="#{background}"
+                  td
+                    .product_cart
+                      .image_cart
+                        = link_to image_tag(order_item.product.product_pictures.first.url.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl"))
+                      .description_cart
+                        .title
+                          = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)
+                        p Артикул: <b>#{order_item.product_id}</b>
+                        p Дата добавления: <b>data</b>
+                        /p Комментарий
+                        =form_for order_item, remote: true do |f|
+                          =f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'
+                            =f.content_tag_for :span, 'Сохранить'
+                          =text_area_tag 'comment', order_item.comment
+                  td style="width: 100px;"
+                    -if order_item.in_progress?
+                      - row = order_item.row
+                      .row_info id="row_info_#{order_item.id}"
+                        =render 'orders/row_info', row: row, text: 'собран'
+                    -elsif order_item.refund?
+                      | будет возврат средств
+                    -elsif order_item.refunded?
+                      | вернули деньги
+                    -else
+                      - row = order_item.get_row_after_stop
+                      - if row.nil?
+                        /| не собрался ряд
+                      - elsif row.reserved?
+                        - row = order_item.row
+                        .row_info id="row_info_#{order_item.id}"
+                          =render 'orders/row_info', row: row, text: 'собран'
+                            /| собрался ряд, зарезервировано
+                      - elsif row.paid?
+                        - row = order_item.row
+                        .row_info id="row_info_#{order_item.id}"
+                          = render 'orders/row_info', row: row, text: 'собран'
+                            /| собрался ряд, оплачено
+                      - elsif row.bill?
+                        - row = order_item.row
+                        .row_info id="row_info_#{order_item.id}"
+                          = render 'orders/row_info', row: row, text: 'собран'
+                            /| собрался ряд, выставлен счет
+                      - elsif row.refusing_after_reserved?
+                        /| отказ, нет в наличии
+                      - elsif row.refusing_after_bill?
+                        /|  не собрался ряд после оплаты
+                      - else
+
+                  td
+                    -if order_item.in_progress? && !order_item.row.reserved?
+                      .counter id="counter_#{order_item.id}"
+                        = render 'orders/counter', order_item: order_item, row: row
+                    -else
+                      .counter
+                        input class="btn btn-danger btn-number minus" type="submit" value="" disabled="true"
+                        input type="number" class="form-control input-number count_field" value="#{order_item.count}" disabled="true"
+                        input class="btn btn-danger btn-number plus" type="submit" value="" disabled="true"
+
+                  td style="width: 80px;"
+                    .order_price
+                      = order_item.product.price
+
+                  td style="width: 80px;"
+                    .total_price id="total_price_#{order_item.id}"
+                      =render 'orders/total_price', order_item: order_item
+
+                      -if order_item.in_progress? && !order_item.row.reserved?
+                        td.delete = link_to 'x', order_item, remote: true, method: :delete, class: 'delete'
+                      -else
+                        td.delete
+                          .delete
+                            p x
+          .total-amount-and-count
+            =render 'orders/total_amount_and_count'
+
+          .info
+            .amount
+              - if @order.bill?
+                .total_amount
+                  | СУММА К ОПЛАТЕ #{@order.total_price}
+                - if @order.paid?
+                  .total_amount
+                    | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
+                  - if @order.not_paid?
+                    .total_amount
+                      | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
+
+            .description
+              .info_1
+                p <span></span> <i>Товар в обработке</i>
+              .info_2
+                p <span></span> <i>Товар забронирован</i>
+              .info_3
+                p <span></span> <i>Не собрался ряд</i>
+
+          .date_description
+            p
+              | Оплатить за СП 12 до
+              span class='span1'  1 февраля 2016г включительно!
+              br
+              span class='span2' внимание!!!
+              |  Если Ваш чек не будет отправлен нам
+              span class='span3'  до 10 часов утра 2февраля 2016г
+              |  Ваш заказ будет
+              span class='span2'  отменен!
