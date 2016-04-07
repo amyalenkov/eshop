@@ -98,30 +98,26 @@ table class="table"
   =render 'orders/total_amount_and_count'
 
 .info
-  - if @order.bill?
-    .total_amount
-      | СУММА К ОПЛАТЕ #{@order.total_price}
-    .total_by_cart
-      .total_items
-        p Наименований: 123456
-        p Текущих единиц: 123456
-      .total_amount_by_cart
-        p Итого в таблице: 123456
-    - if @order.paid?
+  .amount
+    - if @order.bill?
       .total_amount
-        | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
-      - if @order.not_paid?
+        | СУММА К ОПЛАТЕ #{@order.total_price}
+      - if @order.paid?
         .total_amount
-          | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
+          | СУММА К ОПЛАТЕ #{@order.total_price} ОПЛАЧЕНО
+        - if @order.not_paid?
+          .total_amount
+            | СУММА К ОПЛАТЕ #{@order.total_price} НЕ ОПЛАЧЕНО
 
-  .info_1
-  p <i>Товар в обработке</i>
-  .info_2
-  p <i>Товар забронирован</i>
-  .info_3
-  p <i>Не собрался ряд</i>
+  .description
+    .info_1
+      p <span></span> <i>Товар в обработке</i>
+    .info_2
+      p <span></span> <i>Товар забронирован</i>
+    .info_3
+      p <span></span> <i>Не собрался ряд</i>
 
-.info_description
+.date_description
   p
     | Оплатить за СП 12 до
     span class='span1'  1 февраля 2016г включительно!

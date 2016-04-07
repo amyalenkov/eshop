@@ -85,7 +85,7 @@ header {
 
 .menu_right{
   float: right;
-  width: 300px;
+  width: 310px;
   margin-top: -30px;
   padding-left: 0;
   padding-right: 0;
@@ -104,7 +104,7 @@ header {
   .login{
     float: left;
     text-align: center;
-    width: 50%;
+    width: 30%;
     color: #6cb2db;
     margin-top: 15px;
     .login_href{
@@ -115,9 +115,8 @@ header {
   .contacts{
     float: left;
     text-align: right;
-    width: 50%;
+    width: 70%;
     .velcom, .viber, .mts, .life{
-      //float: left;
       float: right;
       width: 75%;
       color: #6cb2db;
@@ -505,7 +504,7 @@ header {
     margin-top: 25px;
     .timer{
       float: left;
-      width: 200px;
+      width: 185px;
       height: 75px;
       background: #e5e5e5;
     }
@@ -1474,7 +1473,7 @@ header {
       margin-bottom: 30px !important;
     }
     .total_amount, .total_count{
-      width: 300px;
+      width: 220px;
       right: 0;
       //margin-top: 50px;
       text-align: center;
@@ -1683,23 +1682,29 @@ header {
       font-size: 15px;
       color: #000;
     }
-    .info_1, .info_2, .info_3{
-      float: left;
-      width: 50px;
-      height: 22px;
-      margin-right: 15px;
-    }
-    .info_1{
-      background: #6fbaa7;
-    }
-    .info_2{
-      background: #798dbd;
-    }
-    .info_3{
-      background: #a773bc;
+    .description{
+      width: 250px;
+      .info_1, .info_2, .info_3{
+        float: left;
+      }
+      .info_1 span, .info_2 span, .info_3 span{
+        float: left;
+        width: 50px;
+        height: 22px;
+        margin-right: 10px;
+      }
+      .info_1 span{
+        background: #6fbaa7;
+      }
+      .info_2 span{
+        background: #798dbd;
+      }
+      .info_3 span{
+        background: #a773bc;
+      }
     }
   }
-  .info_description{
+  .date_description{
     float: left;
     margin-top: 15px;
     margin-bottom: 25px;
@@ -1787,6 +1792,16 @@ header {
     font-size: 14px;
     font-style: italic;
     font-weight: bold;
+  }
+  .table .date_on, .date_off{
+    color: #19760a;
+    width: 100%;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .table .date_off{
+    color: #dc2921;
   }
   h4{
     font-size: 16px;
@@ -1885,6 +1900,7 @@ header {
   text-overflow: ellipsis;
   /*end ограничение текста*/
   .link{
+    text-align: center;
     font-size: 13px;
     color: #000000;
     font-weight: bold;
@@ -1892,9 +1908,6 @@ header {
 }
 
 .exit{
-  float: right;
-  color: gray;
-  padding: 2px;
 }
 
 .avatar_button{
