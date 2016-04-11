@@ -14,5 +14,6 @@
       dd #{10}
 
 
-div [id = "getRow#{row.id.to_s + index}" class = "modal fade"]
-  = render 'rows/show_item_row', row: row
+#getRowId
+  div [id="getRow#{row.id.to_s + index}" class="modal fade"]
+    = render 'rows/show_item_row', row: row

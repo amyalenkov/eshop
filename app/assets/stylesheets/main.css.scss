@@ -106,7 +106,7 @@ header {
     text-align: center;
     width: 30%;
     color: #6cb2db;
-    margin-top: 15px;
+    //margin-top: 15px;
     .login_href{
       width: 100%;
       float: left;
@@ -417,7 +417,7 @@ header {
   }
   .review{
     height: 330px;
-    width: 200px;
+    width: 180px;
     background: #2e3192;
     margin-bottom: 20px;
     color: #ffffff;
@@ -435,7 +435,7 @@ header {
     }
     .body{
       width: 170px;
-      padding-left: 30px;
+      padding-left: 10px;
       text-align: justify;
       float: left;
     }
@@ -1198,6 +1198,9 @@ header {
   text-align: center;
 }
 
+.full_width{
+  width: 1000px !important;
+}
 
 .cart{
   width: 800px;
@@ -1280,7 +1283,8 @@ header {
     .menu1 #your:target ~ div:nth-of-type(5) {
       display: block;
       float: left;
-      width: 830px;
+      //width: 830px;
+      width: 100%;
       padding-bottom: 30px;
     }
 
@@ -1355,7 +1359,7 @@ header {
     }
 
     /*ROW POP_UP*/
-    #getRow{
+    #getRowId{
       .column_product, .column_comment{
         float: left;
       }
@@ -1383,6 +1387,7 @@ header {
         .all_comments{
           float: left;
           height: 270px;
+          width: 100%;
           .all_comments_not_nil{
             float: left;
             width: 100%;
@@ -1424,7 +1429,7 @@ header {
             margin-bottom: -50px;
             .comment{
               float: left;
-              width: 60%;
+              width: 90%;
               border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
               .title{
                 float: left;
@@ -1442,6 +1447,9 @@ header {
           height: 130px;
           margin-top: 15px;
         }
+      }
+      .description .row a, p{
+        display: none;
       }
     }
     /*END ROW POP_UP*/
@@ -2299,8 +2307,8 @@ header {
     text-align: -webkit-center;
   }
   .menu_right{
-    margin-top: 15px;
-    //    text-align: center;
+   margin-top: 15px;
+    // text-align: center;
     text-align: left;
     position: inherit;
   }
