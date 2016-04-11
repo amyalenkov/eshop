@@ -5,7 +5,7 @@
     -if current_order != nil
       = link_to ('Текущий заказ').html_safe, current_order_order_path(current_order)
     -else
-      = link_to 'Пусто', cart_items_path
+      = link_to ('Текущий заказ').html_safe, cart_items_path
 
   - else
     = link_to 'Текущий заказ', new_user_session_path

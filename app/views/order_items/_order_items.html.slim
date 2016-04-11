@@ -12,7 +12,7 @@ table class="table"
       tr
         td
           .title
-            = link_to 'Счет на оплату СП №'+order.id.to_s, order_path(order.id)
+            = link_to 'Счет на оплату СП №'+order.main_order_id.to_s, order_path(order.id)
         td
           .date_on
             | 01.01.2016
