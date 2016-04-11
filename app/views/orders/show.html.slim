@@ -1,6 +1,6 @@
 .container-fluid
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.orders
-      h4 История заказов - СП № #{@order.id}
+      h4 История заказов - СП № #{@order.main_order_id.to_s}
       .order_items
         = render 'order_item'

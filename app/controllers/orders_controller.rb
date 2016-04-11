@@ -49,7 +49,8 @@ class OrdersController < ApplicationController
       order_item.save!
     }
     @order.save!
-    render js: "document.location = '#{order_path(@order)}'"
+    # render js: "document.location = '#{order_path(@order)}'"
+    render js: "document.location = '#{current_order_order_path(@order)}'"
   end
 
   def choice_delivery
