@@ -1,4 +1,5 @@
-- if row.row_comments.empty?.to_s == 'true'
+-row = @row if row.nil?
+- if row.row_comments.empty?
   .all_comments_nil
     .comments
       .comment
