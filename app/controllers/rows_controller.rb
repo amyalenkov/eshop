@@ -3,7 +3,25 @@ class RowsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rows = Row.all
+    @rows = Row.where(state: [Row.states[:full], Row.states[:not_full]])
+    @full_rows = Row.where(state: Row.states[:full])
+    not_full_rows = Row.where(state: Row.states[:not_full])
+    @more_part_not_full_rows = Array.new
+    @less_part_not_full_rows = Array.new
+    @user_rows = Array.new
+    not_full_rows.each do |row|
+      if row.current_count > row.product.get_min_sale
+        @more_part_not_full_rows.push row
+      else
+        @less_part_not_full_rows.push row
+      end
+    end
+    current_order = current_user.get_current_order
+    unless current_order.nil?
+      current_order.order_items.each do |order_item|
+        @user_rows.push order_item.row
+      end
+    end
   end
 
   def show
