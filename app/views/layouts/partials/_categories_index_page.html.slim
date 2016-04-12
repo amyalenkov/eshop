@@ -5,7 +5,6 @@
         a href="/category/#{category.name}"
           p
             | #{category.name}
-          /= image_tag ("categories/#{category.name}.png")
           = image_tag (category.logo_image)
 
           /- category.subcategories.each do |subcategory|

@@ -118,7 +118,7 @@ header {
     width: 70%;
     .velcom, .viber, .mts, .life{
       float: right;
-      width: 75%;
+      width: 77%;
       color: #6cb2db;
       margin-bottom: -5px;
       img{
@@ -749,6 +749,8 @@ header {
 }
 
 .catalog_list{
+  width: 800px;
+  padding: 0;
   .address_link{
     float: left;
     width: 100%;
@@ -764,19 +766,19 @@ header {
     display: inline-block;
     vertical-align: top;
     zoom: 1;
-    width: 32%;
     margin-bottom: 50px;
+    .sub_category{
+      float: left;
+      width: 33%;
+      height: 190px;
+      text-align: center;
+    }
     p{
       font-size: 16px;
       color: #7a7a7b;
       font-style: italic;
       font-weight: bold;
       text-align: center;
-    }
-    img{
-      margin-top: -10px;
-      margin-left: 55px;
-      margin-bottom: 20px;
     }
     .link{
       color: #07c9da;

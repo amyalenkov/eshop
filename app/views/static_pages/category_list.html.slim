@@ -11,12 +11,16 @@
         =link_to "#{params[:name]}", "/category/#{params[:name]}"
 
       .catalog_items
-        a href="/category/#{params[:name]}"
+        /a href="/category/#{params[:name]}"
           p #{params[:name]}
           = image_tag (@category.logo_image)
-        br
+        /br
         - if @subcategories != nil
           - @subcategories.each do |subcategory|
-            = link_to subcategory.name, "/subcategory/#{subcategory.name}", class: 'link'
-            br
-            = image_tag (subcategory.logo_image)
+            .sub_category
+              a href="/subcategory/#{subcategory.name}"
+                p #{subcategory.name}
+                = image_tag (subcategory.logo_image)
+            /= link_to subcategory.name, "/subcategory/#{subcategory.name}", class: 'link'
+            /br
+            /= image_tag (subcategory.logo_image)
