@@ -12,7 +12,7 @@
             - row.order_items.each do |row_item|
               - row_item.count
             .img
-              = image_tag("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+              = image_tag("#{row.product.image+'0/700.jpg')}")
               br
               = link_to 'Подробнее о данном товаре...', product_path(row.product.id)
             .description

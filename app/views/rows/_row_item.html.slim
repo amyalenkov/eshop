@@ -4,8 +4,7 @@
   .img
     .row_info id="row_info_#{row.order_items}"
       = render 'orders/row_info', row: row
-      =link_to image_tag("#{row.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}"), '#',
-                                                  :data => {:toggle=> 'modal', :target=>"#getRow#{row.id.to_s+index}"}, class: 'block'
+      =link_to image_tag("#{row.product.image+'0/700.jpg')}"), '#', :data => {:toggle=> 'modal', :target=>"#getRow#{row.id.to_s+index}"}, class: 'block'
   .info
     dl
       dt Цена
