@@ -6,12 +6,16 @@ class ProductsController < ApplicationController
       all_subcategories,@subcategories = get_subs(category.id)
     elsif request.url.to_s.include? '/subcategory/'
       subcategory = Category.find_by_name params[:name]
-      # @subcategories = Subcategory.where :category_id => subcategory.id
       @subcategories = subcategory.children
-      all_subcategory = subcategory.descendants.where(is_leaf: true)
-      @products = Product.includes(:subcategory).references(all_subcategories).
-          where(subcategory_id: all_subcategories).page(params[:page])
-      @products = Product.first(10)
+      if subcategory.is_leaf?
+        @products = Product.where subcategory_id: subcategory.sid
+      else
+        all_sid = Array.new
+        subcategory.descendants.where(is_leaf: true).each do |sub|
+          all_sid.push sub.sid
+        end
+        @products = Product.where(subcategory_id: all_sid).page(params[:page])
+      end
     else
       @products = Product.all.page(params[:page])
     end
