@@ -7,7 +7,7 @@
         -current_user.last_products.each do |last_product|
           .last_visited_product
             a href="#{product_path(last_product.product.id)}"
-              = image_tag ("#{last_product.product.product_pictures.first.url.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+              = image_tag ("#{last_product.product.image+'0/700.jpg')}")
               p = last_product.product.name.gsub('&quot;', '')
       = render 'layouts/partials/calendar'
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
@@ -23,7 +23,7 @@
           - @products.in_groups_of(3, false) do |products|
             .row_products
               - for product in products
-                - product_image = product.image
+                - product_image = product.image+'0/700.jpg'
                 - product_name = product.name.gsub('&quot;', '')
                 - product_material = product.materials_text
                 - product_size = product.size_text
@@ -34,7 +34,7 @@
                 .product
                   .image
                     a href="#{product_path(product_id)}"
-                      = image_tag (product_image+'0/700.jpg')
+                      = image_tag product_image
                   .title
                     = link_to product_name, product_path(product_id)
                     p
@@ -55,4 +55,4 @@
                       .add_in_cart_index id="#{product_id}"
                         = render 'products/add_in_cart', product: product
 
-          /=paginate @products
+          =paginate @products
