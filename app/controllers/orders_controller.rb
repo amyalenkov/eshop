@@ -18,6 +18,14 @@ class OrdersController < ApplicationController
 
   def current_order
     @order = Order.find_by_id params[:id]
+
+    @order = Order.find_by_id params[:id]
+    @current_total_amount = 0
+    @current_total_count = 0
+    @order.order_items.each do |order_item|
+      @current_total_amount = @current_total_amount + order_item.count * order_item.product.price
+      @current_total_count = @current_total_count + order_item.count
+    end
   end
 
   def create

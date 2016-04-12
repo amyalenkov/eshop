@@ -36,7 +36,7 @@
                   td
                     .product_cart
                       .image_cart
-                        = link_to image_tag(order_item.product.product_pictures.first.url.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl"))
+                        = link_to image_tag(order_item.product.image+'0/700.jpg')
                       .description_cart
                         .title
                           = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)

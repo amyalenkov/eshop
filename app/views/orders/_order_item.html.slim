@@ -26,7 +26,7 @@ table class="table"
         td
           .product_cart
             .image_cart
-              = link_to image_tag(order_item.product.product_pictures.first.url.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl"))
+              = link_to image_tag(order_item.product.image+'0/700.jpg')
             .description_cart
               .title
                 = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)
@@ -41,7 +41,7 @@ table class="table"
           .total_price id="total_price_#{order_item.id}"
             =render 'orders/total_price', order_item: order_item
         td
-          = order_item.product.min_qty.gsub('Минимальная партия', '')
+          = order_item.product.min_qty.to_s
         td
           = form_for order_item, remote: true do |f|
             = f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'
