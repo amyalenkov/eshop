@@ -47,13 +47,13 @@ table class="table"
         td
           .product_cart
             .image_cart
-              = link_to image_tag(cart_item.product.product_pictures.first.url.gsub("simaland-st.cdn.ngenix", "st-cdn.r.worldssl"))
+              = link_to image_tag(cart_item.product.image+'0/700.jpg')
             .description_cart
               .title
                 = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
               p Артикул: <b>#{cart_item.product_id}</b>
               p Дата добавления: <b>data</b>
-              p Комментарий
+              /p Комментарий
               =text_area_tag 'comment_'+cart_item.id.to_s
 
         - row = cart_item.product.get_row

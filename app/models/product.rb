@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
   end
 
   def get_min_sale
-    result = /\d+/.match sales_notes.to_s
+    result = /\d+/.match min_qty.to_s
     result[0].to_i
   end
 
