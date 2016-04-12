@@ -8,9 +8,10 @@ class ProductsController < ApplicationController
       subcategory = Category.find_by_name params[:name]
       # @subcategories = Subcategory.where :category_id => subcategory.id
       @subcategories = subcategory.children
-
-      @products = Product.includes(:subcategory).joins(:product_pictures).references(all_subcategories).
-          where(subcategory_id: @subcategories).page(params[:page])
+      all_subcategory = subcategory.descendants.where(is_leaf: true)
+      @products = Product.includes(:subcategory).references(all_subcategories).
+          where(subcategory_id: all_subcategories).page(params[:page])
+      @products = Product.first(10)
     else
       @products = Product.all.page(params[:page])
     end

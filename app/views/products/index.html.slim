@@ -23,18 +23,18 @@
           - @products.in_groups_of(3, false) do |products|
             .row_products
               - for product in products
-                - product_image = product.product_pictures.first.url
+                - product_image = product.image
                 - product_name = product.name.gsub('&quot;', '')
-                - product_material = (product.product_params.find_by_name 'material')[:value]
-                - product_size = (product.product_params.find_by_name 'size')[:value]
-                - product_stock_availability = (product.product_params.find_by_name 'stock_balance')[:value]
+                - product_material = product.materials_text
+                - product_size = product.size_text
+                - product_stock_availability = product.balance_text
                 - product_id = product.id
                 - product_price = product.price
 
                 .product
                   .image
                     a href="#{product_path(product_id)}"
-                      = image_tag ("#{product_image.gsub('simaland-st.cdn.ngenix', 'st-cdn.r.worldssl')}")
+                      = image_tag (product_image+'0/700.jpg')
                   .title
                     = link_to product_name, product_path(product_id)
                     p
@@ -55,4 +55,4 @@
                       .add_in_cart_index id="#{product_id}"
                         = render 'products/add_in_cart', product: product
 
-          =paginate @products
+          /=paginate @products
