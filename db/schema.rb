@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407074234) do
+ActiveRecord::Schema.define(version: 20160412065954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -239,16 +239,27 @@ ActiveRecord::Schema.define(version: 20160407074234) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "available"
-    t.string   "currency"
-    t.decimal  "price"
-    t.boolean  "delivery"
-    t.integer  "local_delivery_cost"
     t.text     "description"
-    t.string   "sales_notes"
-    t.integer  "bid"
     t.integer  "subcategory_id"
-    t.string   "vendor"
+    t.string   "depth"
+    t.string   "width"
+    t.string   "height"
+    t.integer  "sid"
+    t.integer  "country_id"
+    t.integer  "color_id"
+    t.integer  "trademark_id"
+    t.boolean  "k_min"
+    t.boolean  "is_hit"
+    t.integer  "min_qty"
+    t.integer  "photo_count"
+    t.string   "balance_text"
+    t.string   "box_size_text"
+    t.string   "materials_text"
+    t.string   "size_text"
+    t.string   "unit"
+    t.string   "image"
+    t.float    "price"
+    t.integer  "weight"
   end
 
   create_table "rates", force: true do |t|

@@ -10,7 +10,7 @@ class ProductSima
   def get_all_products_for_category category_id, page
     products = JSON.parse(RestClient.get(@basic_url+'item',
                               {:params => {:category_id => category_id.to_s, :expand => 'photo, description',
-                                           :per_page => 50, :page => page},
+                                           :per_page => 150, :page => page},
                                :accept => 'application/json', :timeout => 10, :open_timeout => 10}))
     return products['items'], products['_meta']
   end

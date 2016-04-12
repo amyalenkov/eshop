@@ -21,7 +21,8 @@ class CategorySima
   end
 
   def get_all_products_for_category category_id
-    JSON.parse(RestClient.get(@basic_url+'item', {:params => {:category_id => category_id.to_s, :expand => 'photo'}, :accept => 'application/json'}))
+    JSON.parse(RestClient.get(@basic_url+'item', {:params => {:category_id => category_id.to_s, :expand => 'photo'},
+                                                  :accept => 'application/json', :timeout => 10, :open_timeout => 10}))
   end
 
   def get_children_for_category category_id
@@ -44,7 +45,6 @@ class CategorySima
 
 
   def create_subcategories category
-    sleep 2
     get_children_for_category(category.sid)['items'].each do |subcategory|
       new_subcategory = create_subcategory subcategory, category
       add_subs_for_category new_subcategory
