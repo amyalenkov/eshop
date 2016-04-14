@@ -26,7 +26,7 @@
         - else box_size_text=@product.box_size_text
         - product_id=@product.id
         - product_balance_text=@product.balance_text
-        - product_country_id=@product.country_id
+        - product_country_id=Country.find_by_id(@product.country_id).name
         - product_size_text=@product.size_text
         - product_materials_text=@product.materials_text
         /- product_box_type=@product.box_type

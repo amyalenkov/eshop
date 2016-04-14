@@ -40,7 +40,7 @@
                     p
                       | Материал: <b>#{product_material}</b>
                     p
-                      | Производитель: <b>нет</b>
+                      | Производитель: <b>#{Country.find_by_id(product.country_id).name}</b>
                   .info
                     .params
                       p

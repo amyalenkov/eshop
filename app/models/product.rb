@@ -7,6 +7,8 @@ class Product < ActiveRecord::Base
   has_many :favorites
 
   belongs_to :subcategory
+  has_one :country
+  has_one :trademark
 
   ratyrate_rateable 'rating'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412065954) do
+ActiveRecord::Schema.define(version: 20160414072821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,13 @@ ActiveRecord::Schema.define(version: 20160412065954) do
     t.datetime "updated_at"
     t.integer  "day_of_week", default: 0
     t.time     "time"
+  end
+
+  create_table "countries", force: true do |t|
+    t.string   "alpha2"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "delivery_couriers", force: true do |t|
@@ -328,6 +335,13 @@ ActiveRecord::Schema.define(version: 20160412065954) do
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+
+  create_table "trademarks", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -9,7 +9,7 @@ namespace :db do
   desc 'delete all data from tables Subcategory,Category,Product,ProductParam,ProductPicture'
   task :delete_all_data_from_db => :environment do
     # [Category].each(&:delete_all)
-    [Product].each(&:delete_all)
+    # [Product].each(&:delete_all)
     # [Subcategory, Category].each(&:delete_all)
     # [Subcategory, Category, Product, ProductParam, ProductPicture].each(&:delete_all)
   end
@@ -53,6 +53,42 @@ namespace :db do
         current_page = current_page + 1
       end
     end
+  end
+
+  desc 'load_countries'
+  task :load_countries => :environment do
+    require "#{Rails.root}/lib/api/country"
+
+      current_page = 1
+      page_count = 1
+      while page_count >= current_page
+        country_sima = CountrySima.new 'https://www.sima-land.ru/api/v2/'
+        countries, meta = country_sima.get_all_countries current_page
+        page_count = meta['pageCount']
+        countries.each do |country|
+          Country.create( alpha2: country['alpha2'], name: country['name'])
+        end
+        current_page = current_page + 1
+      end
+
+  end
+
+  desc 'load_trademarks'
+  task :load_trademarks => :environment do
+    require "#{Rails.root}/lib/api/trademark"
+
+      current_page = 1
+      page_count = 1
+      while page_count >= current_page
+        trademark_sima = TrademarkSima.new 'https://www.sima-land.ru/api/v2/'
+        trademarks, meta = trademark_sima.get_all_trademarks current_page
+        page_count = meta['pageCount']
+        trademarks.each do |trademark|
+          Trademark.create( slug: trademark['slug'], name: trademark['name'])
+        end
+        current_page = current_page + 1
+      end
+
   end
 
 
