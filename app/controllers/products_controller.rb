@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
       subcategory = Category.find_by_name params[:name]
       @subcategories = subcategory.children
       if subcategory.is_leaf?
-        @products = Product.where subcategory_id: subcategory.sid
+        @products = Product.where(subcategory_id: subcategory.sid).page(params[:page])
       else
         all_sid = Array.new
         subcategory.descendants.where(is_leaf: true).each do |sub|
