@@ -29,8 +29,8 @@
         - product_country_id=Country.find_by_id(@product.country_id).name
         - product_size_text=@product.size_text
         - product_materials_text=@product.materials_text
-        /- product_box_type=@product.box_type
-        /- product_certificate_type=@product.certificate_type
+        - product_box_type=@product.box_type
+        - product_certificate_type=@product.certificate_type
         - product_weight=@product.weight
       .info
         dl
