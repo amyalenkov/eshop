@@ -1314,7 +1314,36 @@ header {
         a {
           color: #060606;
         }
+        overflow: hidden;
       }
+
+      .title:before {
+        content: "";
+        float: left;
+        width: 5px;
+        height: 200px;
+      }
+
+      .title > *:first-child {
+        float: right;
+        width: 100%;
+        margin-left: -5px;
+      }
+
+      .title:after {
+        content: "\02026";
+        box-sizing: content-box;
+        float: right;
+        position: relative;
+        top: -25px;
+        left: 100%;
+        width: 3em;
+        margin-left: -3em;
+        padding-right: 5px;
+        text-align: right;
+      }
+
+
       .img{
         border: 1px solid;
         padding-top: 12px;
@@ -1483,7 +1512,7 @@ header {
       margin-bottom: 30px !important;
     }
     .total_amount, .total_count{
-      width: 220px;
+      width: 260px;
       right: 0;
       //margin-top: 50px;
       text-align: center;
@@ -1497,6 +1526,7 @@ header {
       }
     }
     .total_count{
+      width: 180px;
       font-size: 14px;
       color: #515151;
       text-transform: none;
@@ -2310,7 +2340,7 @@ header {
     text-align: -webkit-center;
   }
   .menu_right{
-   margin-top: 15px;
+    margin-top: 15px;
     // text-align: center;
     text-align: left;
     position: inherit;
