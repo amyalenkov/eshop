@@ -8,4 +8,4 @@
         .field
           = link_to favorite.product.name, product_path(favorite.product.id)
           br
-          = favorite.product.price
+          = favorite.product.get_price

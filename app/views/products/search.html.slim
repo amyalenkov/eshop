@@ -11,5 +11,5 @@ table[style="width:100%"]
         td[style="text-align:right;"]
           = link_to product.name, product_path(product.id)
         td[style="text-align:right;"]
-          = product.price
+          = product.get_price
 =paginate @search_products

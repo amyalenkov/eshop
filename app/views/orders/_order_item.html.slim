@@ -34,7 +34,7 @@ table class="table"
         td
           p <b>#{order_item.product_id}</b>
         td
-          = order_item.product.price
+          = order_item.product.get_price
         td
           = order_item.count
         td style="width: 80px;"

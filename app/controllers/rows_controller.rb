@@ -57,7 +57,7 @@ class RowsController < ApplicationController
     @current_total_amount = 0
     @current_total_count = 0
     @order_item.order.order_items.each do |order_item|
-      @current_total_amount = @current_total_amount + order_item.count * order_item.product.price
+      @current_total_amount = @current_total_amount + order_item.count * order_item.product.get_price
       @current_total_count = @current_total_count + order_item.count
     end
   end
@@ -126,9 +126,9 @@ class RowsController < ApplicationController
       order = order_item.order
       order.bill!
       if order.total_price.nil?
-        order.total_price = order_item.count * order_item.product.price
+        order.total_price = order_item.count * order_item.product.get_price
       else
-        order.total_price = order.total_price + order_item.count * order_item.product.price
+        order.total_price = order.total_price + order_item.count * order_item.product.get_price
       end
       order.save!
     end

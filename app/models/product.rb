@@ -21,6 +21,13 @@ class Product < ActiveRecord::Base
     result[0].to_i
   end
 
+  def get_price
+    course = Configure.find_by_name('course').value
+    markup = Configure.find_by_name('markup').value
+    result_price = price.to_f * course.to_f * (markup.to_f/100 +1)
+    result_price
+  end
+
   def get_favorite user
     Favorite.find_by(user_id: user.id, product_id: id)
   end

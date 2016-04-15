@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
       cart_item = CartItem.new
       cart_item.product_id = @product.id
       cart_item.count = count
-      cart_item.total_price = count * @product.price
+      cart_item.total_price = count * @product.get_price
       cart_item.user_id = current_user.id
       cart_item.save!
     end

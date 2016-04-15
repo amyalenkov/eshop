@@ -2,7 +2,7 @@
 - if user_signed_in?
   -if current_user.product_in_cart?(product)
     .price
-      | <i>#{product.price}</i>
+      | <i>#{product.get_price}</i>
     .favourites
       - if user_signed_in?
         .favourite id="for_favorite_#{product.id}"
@@ -18,7 +18,7 @@
           = link_to image_tag('ok.png'), cart_items_path
   -else
     .price
-      | <i>#{product.price}</i>
+      | <i>#{product.get_price}</i>
     .favourites
       - if user_signed_in?
         .favourite id="for_favorite_#{product.id}"

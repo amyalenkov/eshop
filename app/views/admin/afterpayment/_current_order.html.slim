@@ -18,7 +18,7 @@
             td = row.current_count
             td = row.state
             td
-              input id="#{row.id}" name="rows[#{row.id}]" type="text" value="#{row.product.price}"
+              input id="#{row.id}" name="rows[#{row.id}]" type="text" value="#{row.product.get_price}"
 
 
   =submit_tag 'выставить счета'

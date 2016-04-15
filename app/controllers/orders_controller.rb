@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     @current_total_amount = 0
     @current_total_count = 0
     @order.order_items.each do |order_item|
-      @current_total_amount = @current_total_amount + order_item.count * order_item.product.price
+      @current_total_amount = @current_total_amount + order_item.count * order_item.product.get_price
       @current_total_count = @current_total_count + order_item.count
     end
   end
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     @current_total_amount = 0
     @current_total_count = 0
     @order.order_items.each do |order_item|
-      @current_total_amount = @current_total_amount + order_item.count * order_item.product.price
+      @current_total_amount = @current_total_amount + order_item.count * order_item.product.get_price
       @current_total_count = @current_total_count + order_item.count
     end
   end
