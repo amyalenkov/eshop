@@ -231,7 +231,7 @@ header {
   #imaginary_container{
     float: left;
     width: 265px;
-    margin-top: -5px;
+    margin-top: -7px;
     padding-left: 0;
     padding-right: 0;
     .search_input{
@@ -318,8 +318,10 @@ header {
 
   .info{
     float: left;
-    margin-left: 55px;
+    //margin-left: 55px;
+    margin-left: 25px;
     margin-top: -5px;
+    width: 680px;
 
     .order_menu, .categories_menu, .meeting_menu,
     .cart_menu, .rows_menu, .orders_menu, .create_question{
