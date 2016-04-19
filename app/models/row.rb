@@ -19,7 +19,8 @@ class Row < ActiveRecord::Base
   def check_state
     p 'check_state'
     if current_count >= min_count
-      self.state = Row.states[:full]
+      p self.state
+      self.state = Row.states[:full] unless self.state == 'reserved'
     else
       self.state = Row.states[:not_full]
     end

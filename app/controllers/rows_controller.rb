@@ -84,9 +84,22 @@ class RowsController < ApplicationController
     row = Row.find_by_id params[:row_id]
     new_state = params[:state]
     if new_state == Row.states[:reserved].to_s
-      row.reserved!
-      row.order_items.each do |order_item|
-        order_item.reserved!
+      row.state = Row.states[:reserved]
+      unless row.product.k_min?
+        row.order_items.each do |order_item|
+          order_item.reserved!
+        end
+      else
+        multiple = row.current_count / row.product.min_qty
+        if multiple * row.product.min_qty == row.current_count
+          row.order_items.each do |order_item|
+            order_item.reserved!
+          end
+        else
+          set_state_for_refused_orders row, multiple
+        end
+        row.current_count = multiple * row.product.min_qty
+        row.save!
       end
     elsif new_state == Row.states[:refusing_after_reserved].to_s
       row.refusing_after_reserved!
@@ -131,6 +144,40 @@ class RowsController < ApplicationController
         order.total_price = order.total_price + order_item.count * order_item.product.get_price
       end
       order.save!
+    end
+  end
+
+  def set_state_for_refused_orders row, multiple
+    reserved = multiple * row.product.min_qty
+    refused = row.current_count - reserved
+    new_row = Row.new
+    new_row.product = row.product
+    new_row.min_count = row.product.get_min_sale
+    new_row.current_count = refused
+    new_row.main_order = MainOrder.find_by state: MainOrder.states[:current]
+    new_row.save!
+    sorted_order_items = row.order_items.order(count: :desc)
+    sorted_order_items.each do |order_item|
+      reserved = reserved - order_item.count
+      if reserved >= 0
+        order_item.state = OrderItem.states[:reserved]
+        order_item.save!
+      else
+        if order_item.count > (reserved).abs
+          order_item.state = OrderItem.states[:reserved]
+          order_item.count = (reserved).abs
+          order_item.save!
+          order_item_new = OrderItem.new
+          order_item_new.product = row.product
+          order_item_new.count = (reserved).abs
+          order_item_new.order_id = order_item.order_id
+          order_item_new.row_id = new_row.id
+          order_item_new.save!
+        else
+          order_item.row_id = new_row.id
+          order_item.save!
+        end
+      end
     end
   end
 
