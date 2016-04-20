@@ -2,16 +2,16 @@ class ProductsController < ApplicationController
 
   def index
     if request.url.to_s.include? '/category/'
-      category = Category.find_by name: params[:name], level: 1
-      @subcategories = category.children
+      @subcategory = Category.find_by id: params[:name]
+      @subcategories = @subcategory.children
     elsif request.url.to_s.include? '/subcategory/'
-      subcategory = Category.find_by_name params[:name]
-      @subcategories = subcategory.children
-      if subcategory.is_leaf?
-        @products = Product.where(subcategory_id: subcategory.sid).page(params[:page])
+      @subcategory = Category.find_by_id params[:name]
+      @subcategories = @subcategory.children
+      if @subcategory.is_leaf?
+        @products = Product.where(subcategory_id: @subcategory.sid).page(params[:page])
       else
         all_sid = Array.new
-        subcategory.descendants.where(is_leaf: true).each do |sub|
+        @subcategory.descendants.where(is_leaf: true).each do |sub|
           all_sid.push sub.sid
         end
         @products = Product.where(subcategory_id: all_sid).page(params[:page])

@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
 
   def category_list
     @categories = Category.where level: 1
-    @category = Category.find_by_name params[:name]
+    @category = Category.find_by_id params[:name]
     # all_subcategories,@subcategories = get_subs(category.id)
     @subcategories = @category.children
   end

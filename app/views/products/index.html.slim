@@ -13,8 +13,8 @@
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       .address_link
         = link_to 'Главная / ', '/'
-        =link_to "#{params[:name]}", "/category/#{params[:name]}"
-      h4 #{params[:name]}
+        =link_to "#{@subcategory.name}", "/category/#{@subcategory.id}"
+      h4 #{@subcategory.name}
       - if @subcategories != nil
         .list_categories
           - @subcategories.each do |subcategory|

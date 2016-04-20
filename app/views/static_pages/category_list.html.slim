@@ -8,7 +8,7 @@
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog_list
       .address_link
         =link_to 'Главная / ', '/'
-        =link_to "#{params[:name]}", "/category/#{params[:name]}"
+        =link_to "#{@category.name}", "/category/#{@category.id}"
 
       .catalog_items
         /a href="/category/#{params[:name]}"
@@ -18,7 +18,7 @@
         - if @subcategories != nil
           - @subcategories.each do |subcategory|
             .sub_category
-              a href="/subcategory/#{subcategory.name}"
+              a href="/subcategory/#{subcategory.id}"
                 p #{subcategory.name}
                 = image_tag (subcategory.logo_image)
             /= link_to subcategory.name, "/subcategory/#{subcategory.name}", class: 'link'
