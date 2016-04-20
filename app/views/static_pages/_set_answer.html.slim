@@ -1,0 +1,13 @@
+/-if @product.comments.empty?.to_s == 'true'
+.all_comments_nil
+  .comments
+    .comment
+      .title
+        | Для данного вопроса нет комментариев
+/-else
+.all_comments_not_nil
+  .comments
+    .comment
+      .title
+        .delete
+      .body

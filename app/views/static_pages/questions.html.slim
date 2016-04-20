@@ -1,12 +1,14 @@
 .container-fluid
   .row
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12.catalog
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.question
       .questions
         h4 Уже спрашивали
         input type="checkbox" id="hd-1" class="hide"
           label for="hd-1" Нажмите здесь, чтобы увидеть Вопрос №1
         div
           p HTML — стандартный язык разметки документов во Всемирной паутине. Большинство веб-страниц содержат описание разметки на языке HTML (или XHTML). Язык HTML интерпретируется браузерами и отображается в виде документа в удобной для человека форме..
+          .add_comment
+            = render 'static_pages/set_answer'
         br
 
         input type="checkbox" id="hd-2" class="hide"
