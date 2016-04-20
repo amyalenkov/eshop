@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
   def get_price
     course = Configure.find_by_name('course').value
     markup = Configure.find_by_name('markup').value
-    result_price = price.to_f * course.to_f * (markup.to_f/100 +1)
+    result_price = (price.to_f * course.to_f * (markup.to_f/100 +1)).round 2
     result_price
   end
 
