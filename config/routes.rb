@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get 'static_pages/about_us' => 'static_pages#about_us'
   get 'static_pages/for_you' => 'static_pages#for_you'
   get 'static_pages/review' => 'static_pages#review'
+  get 'static_pages/questions' => 'static_pages#questions'
 
   resources :application
   post 'static_pages/order_call'
