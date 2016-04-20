@@ -39,8 +39,9 @@
                     = link_to product_name, product_path(product_id)
                     p
                       | Материал: <b>#{product_material}</b>
+                    - country = IsoCountryCodes.find(product.country_id)
                     p
-                      | Производитель: <b>#{Country.find_by_id(product.country_id).name}</b>
+                    | Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
                   .info
                     .params
                       p

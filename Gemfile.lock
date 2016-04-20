@@ -110,6 +110,7 @@ GEM
       railties (>= 3.2, < 5)
       responders
     innertube (1.1.0)
+    iso_country_codes (0.7.4)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -272,6 +273,7 @@ DEPENDENCIES
   elevatezoom-rails
   fancybox2-rails (~> 0.2.8)
   html2slim
+  iso_country_codes
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

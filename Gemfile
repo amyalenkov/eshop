@@ -76,3 +76,6 @@ gem 'rest-client'
 
 #using PostgreSQL's ltree datatype
 gem 'ltree_hierarchy'
+
+#countries codes
+gem 'iso_country_codes'

@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
 
   def index
     if request.url.to_s.include? '/category/'
-      category = Category.find_by_name params[:name]
-      all_subcategories,@subcategories = get_subs(category.id)
+      category = Category.find_by name: params[:name], level: 1
+      @subcategories = category.children
     elsif request.url.to_s.include? '/subcategory/'
       subcategory = Category.find_by_name params[:name]
       @subcategories = subcategory.children
