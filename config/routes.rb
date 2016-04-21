@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: [:create, :show, :update, :destroy]
+  resources :questions, only: [:create, :show, :update, :destroy]
+  resources :answers, only: [:create, :show, :update, :destroy]
   resources :row_comments, only: [:create, :show, :update, :destroy]
   resources :favorites, only: [:index, :create, :destroy]
 
@@ -48,7 +50,7 @@ Rails.application.routes.draw do
   get 'static_pages/about_us' => 'static_pages#about_us'
   get 'static_pages/for_you' => 'static_pages#for_you'
   get 'static_pages/review' => 'static_pages#review'
-  get 'static_pages/questions' => 'static_pages#questions'
+  # get 'static_pages/show' => 'static_pages#show'
 
   resources :application
   post 'static_pages/order_call'

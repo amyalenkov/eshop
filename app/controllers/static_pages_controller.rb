@@ -23,6 +23,10 @@ class StaticPagesController < ApplicationController
     @subcategories = @category.children
   end
 
+  # def questions
+  #   @questions = Question.all
+  # end
+
   private
   def get_subs id
     arr = Array.new
