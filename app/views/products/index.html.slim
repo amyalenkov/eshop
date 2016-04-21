@@ -4,11 +4,15 @@
       .title
         p Недавно просмотренные товары
       .last_visited_products
-        -current_user.last_products.each do |last_product|
+        - if user_signed_in?
+          -current_user.last_products.each do |last_product|
+            .last_visited_product
+              a href="#{product_path(last_product.product.id)}"
+                = image_tag ("#{last_product.product.image+'0/700.jpg'}")
+                p = last_product.product.name.gsub('&quot;', '')
+        - else
           .last_visited_product
-            a href="#{product_path(last_product.product.id)}"
-              = image_tag ("#{last_product.product.image+'0/700.jpg'}")
-              p = last_product.product.name.gsub('&quot;', '')
+
       = render 'layouts/partials/calendar'
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       .address_link
@@ -35,6 +39,7 @@
                 - product_stock_availability = product.balance_text
                 - product_id = product.id
                 - product_price = product.get_price
+                - country = IsoCountryCodes.find(product.country_id)
 
                 .product
                   .image
@@ -44,7 +49,6 @@
                     = link_to product_name, product_path(product_id)
                     p
                       | Материал: <b>#{product_material}</b>
-                    - country = IsoCountryCodes.find(product.country_id)
                     p
                     | Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
                   .info
