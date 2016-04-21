@@ -22,12 +22,12 @@ class CategorySima
 
   def get_all_products_for_category category_id
     JSON.parse(RestClient.get(@basic_url+'item', {:params => {:category_id => category_id.to_s, :expand => 'photo'},
-                                                  :accept => 'application/json', :timeout => 10, :open_timeout => 10}))
+                                                  :accept => 'application/json', :timeout => 20, :open_timeout => 20}))
   end
 
   def get_children_for_category category_id
     JSON.parse(RestClient.get(@basic_url+'category', {:params => {:expand => 'photo', :children => category_id.to_s},
-                                                      :accept => 'application/json', :timeout => 10, :open_timeout => 10}))
+                                                      :accept => 'application/json', :timeout => 20, :open_timeout => 20}))
   end
 
   def create_category category
