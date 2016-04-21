@@ -332,8 +332,20 @@ header {
       color: #ffffff;
     }
 
-    .rows_menu{
-      margin-right: 10px;
+    .order_menu a, .categories_menu a, .meeting_menu a,
+    .rows_menu a, .orders_menu a, .create_question a{
+      color: #ffffff;
+      padding: 5px;
+    }
+
+    .order_menu a:hover, .categories_menu a:hover, .meeting_menu a:hover,
+    .rows_menu a:hover, .orders_menu a:hover, .create_question a:hover{
+      background: #ffffff;
+      color: #000000;
+      padding: 5px;
+      border-radius: 3px;
+      transition: 0.2s;
+      text-decoration: none;
     }
 
     .cart_menu{
@@ -366,7 +378,7 @@ header {
 
     .contact_menu{
       font-size: 16px;
-      margin-left: 20px;
+      margin-left: 15px;
     }
 
     .cart_menu{

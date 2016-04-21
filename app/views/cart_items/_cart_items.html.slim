@@ -54,7 +54,7 @@ table class="table"
               p Артикул: <b>#{cart_item.product_id}</b>
               p Дата добавления: <b>data</b>
               /p Комментарий
-              =text_area_tag 'comment_'+cart_item.id.to_s
+              =text_area_tag 'comment_'+cart_item.id.to_s, placeholder: 'Комментарий'
 
         - row = cart_item.product.get_row
         - unless row.nil?
@@ -83,7 +83,7 @@ table class="table"
 
 
 .pull-right.total_amount
-  p сумма в таблице: <span id="total_amount">#{total_price}</span>
+  p К оплате: <span id="total_amount">#{total_price}</span>
 
 .pull-right.total_count
   p Наименований: <span id="total_count">#{total_count}</span>
