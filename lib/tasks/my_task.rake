@@ -1,14 +1,15 @@
 namespace :db do
 
   desc 'general task for prepare db'
-  task :prepare_db => [:delete_all_data_from_db,
-                       # :load_categories
-                       :load_products,
+  task :prepare_db => [
+      :delete_all_data_from_db,
+                       :load_categories
+                       # :load_products
   ]
 
   desc 'delete all data from tables Subcategory,Category,Product,ProductParam,ProductPicture'
   task :delete_all_data_from_db => :environment do
-    # [Category].each(&:delete_all)
+    [Category].each(&:delete_all)
     # [Product].each(&:delete_all)
     # [Subcategory, Category].each(&:delete_all)
     # [Subcategory, Category, Product, ProductParam, ProductPicture].each(&:delete_all)
@@ -27,7 +28,7 @@ namespace :db do
   desc 'load_products'
   task :load_products => :environment do
     require "#{Rails.root}/lib/api/product"
-    category = Category.find_by_name 'Бижутерия'
+    category = Category.find_by_sid 1913
     count = 0
     category.descendants.where(is_leaf: true).each do |subcategory|
       p count.to_s + ' - ' + subcategory.sid.to_s

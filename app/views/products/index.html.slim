@@ -16,8 +16,13 @@
       = render 'layouts/partials/calendar'
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       .address_link
+        - ancestors = @subcategory.ancestors
         = link_to 'Главная / ', '/'
-        =link_to "#{@subcategory.name}", "/category/#{@subcategory.id}"
+        =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
+        - @subcategory.ancestors.each_with_index do| sub, index|
+          -unless index==0
+            | /
+            =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
       h4 #{@subcategory.name}
       - if @subcategories != nil
         .list_categories
