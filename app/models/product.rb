@@ -24,8 +24,18 @@ class Product < ActiveRecord::Base
   def get_price
     course = Configure.find_by_name('course').value
     markup = Configure.find_by_name('markup').value
-    result_price = (price.to_f * course.to_f * (markup.to_f/100 +1)).round 2
-    result_price
+    result_price = ((price.to_f * course.to_f * (markup.to_f/100 +1)).round 2).to_i
+    str_result_price = result_price.to_s
+    second_part = str_result_price[-3, 3].to_i.round -2
+    first_part = str_result_price.gsub( /.{3}$/, '' )
+    if second_part == 0
+      second_part = '000'
+    end
+    first_part + ' ' + second_part.to_s
+  end
+
+  def get_price_int
+    get_price.gsub(/\s+/, '').to_i
   end
 
   def get_favorite user

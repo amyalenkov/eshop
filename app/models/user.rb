@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   def get_cart_total_price
     total_price=0
     cart_items.each do |cart_item|
-      total_price = total_price + cart_item.product.get_price * cart_item.count
+      total_price = total_price + cart_item.product.get_price_int * cart_item.count
     end
     total_price
   end
