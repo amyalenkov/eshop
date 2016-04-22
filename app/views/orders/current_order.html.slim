@@ -93,7 +93,7 @@
 
                   td style="width: 80px;"
                     .order_price
-                      = order_item.product.price
+                      = order_item.product.get_price
 
                   td style="width: 80px;"
                     .total_price id="total_price_#{order_item.id}"
