@@ -41,7 +41,7 @@
                         .title
                           = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)
                         p Артикул: <b>#{order_item.product_id}</b>
-                        p Дата добавления: <b>data</b>
+                        p Дата добавления: <b>#{order_item.created_at.strftime("%F")}</b>
                         /p Комментарий
                         =form_for order_item, remote: true do |f|
                           =f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'

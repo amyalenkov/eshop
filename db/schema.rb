@@ -278,7 +278,7 @@ ActiveRecord::Schema.define(version: 20160421123700) do
     t.string   "box_type"
   end
 
-  create_table "show", force: true do |t|
+  create_table "questions", force: true do |t|
     t.string   "name"
     t.string   "body"
     t.datetime "created_at"
