@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
   def current_order
     @order = Order.find_by_id params[:id]
 
-    @order = Order.find_by_id params[:id]
     @current_total_amount = 0
     @current_total_count = 0
     @order.order_items.each do |order_item|

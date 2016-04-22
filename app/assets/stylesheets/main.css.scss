@@ -1235,6 +1235,7 @@ header {
 
 .order_price, .total_price{
   text-align: center;
+  margin-top: 31px;
 }
 
 .full_width{
@@ -2797,3 +2798,32 @@ header {
   }
 
 }
+
+/*DOWN_TOP*/
+.go-up, .go-down {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 15%;
+  background: #4F4F4F;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  font: normal normal 42px/42px sans-serif;
+  text-shadow: 0 1px 2px #000;
+  opacity: .5;
+  padding: 3px;
+  margin-bottom: 5px;
+  width: 42px;
+  height: 42px;
+}
+.go-up { bottom: 60px; }
+.go-down { bottom: 10px; }
+.go-down:hover,
+.go-up:hover {
+  opacity: 1;
+  box-shadow: 0 5px 0.5em -1px #666;
+}
+/*END_DOWN_TOP*/

@@ -30,4 +30,5 @@
 //= require validation
 //= require products
 //= require slider_content
+//= require downTop
 
