@@ -71,8 +71,15 @@ header {
   a{
     color: #6cb2db;
     float: left;
-    margin-right: 15px;
+    margin-right: 5px;
     text-decoration: none;
+    border: 1px solid #ffffff;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  a:hover{
+    border: 1px solid #9EA3A9;
+    border-radius: 2px;
   }
   .course{
     float: left;
@@ -597,8 +604,19 @@ header {
       font-style: italic;
       font-weight: bold;
     }
-    //img{}
+    a{
+      float: left;
+      width: 100%;
+      border: 1px solid #ffffff;
+    }
+    a:hover{
+      transition: 0.2s;
+      border: 1px solid #2E2F30;
+      border-radius: 4px;
+      text-decoration: none;
+    }
   }
+
   .product{
     float: left;
     width: 33%;
