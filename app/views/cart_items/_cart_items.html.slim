@@ -53,8 +53,7 @@ table class="table"
                 = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
               p Артикул: <b>#{cart_item.product_id}</b>
               p Дата добавления: <b>data</b>
-              /p Комментарий
-              =text_area_tag 'comment_'+cart_item.id.to_s, placeholder: 'Комментарий'
+              =text_area_tag 'comment_'+cart_item.id.to_s, nil, placeholder: ' Комментарий'
 
         - row = cart_item.product.get_row
         - unless row.nil?

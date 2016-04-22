@@ -1617,12 +1617,20 @@ header {
         }
       }
       .image_cart{
-        width: 75px;
         float: left;
+        width: 75px;
+        height: 90px;
         text-align: center;
         padding-right: 10px;
         img{
           max-height: 65px;
+        }
+        img:hover{
+          max-height: 140px;
+          max-width: 140px;
+          transition: 0.2s;
+          position: absolute;
+          margin-left: -112px;
         }
       }
     }
@@ -1655,11 +1663,13 @@ header {
       border: none;
       background: none;
       text-align: center;
+      margin-top: 31px;
     }
     .counter{
       float: left;
       text-align: center;
       width: 110px;
+      margin-top: 31px;
       .count_field{
         float: left;
         width: 50px;
