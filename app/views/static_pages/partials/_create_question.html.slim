@@ -5,4 +5,7 @@
     br
     = comment.text_area :body, placeholder: 'Комментарий', class: 'form-control comment'
   .actions
-    = comment.submit 'Создать вопрос', class: 'btn btn-success pull-right'
+    -if user_signed_in?
+      = comment.submit 'Создать вопрос', class: 'btn btn-success pull-right'
+    -else
+      = comment.submit 'Создать вопрос', class: 'btn btn-success pull-right', disabled: 'disabled'
