@@ -27,7 +27,7 @@
       - if @subcategories != nil
         .list_categories
           - @subcategories.each do |subcategory|
-            = link_to subcategory.name, "/subcategory/#{subcategory.id}"
+            = link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
         - unless @products.nil?
           - @products.in_groups_of(3, false) do |products|
             .row_products
