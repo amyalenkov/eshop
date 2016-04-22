@@ -9,8 +9,11 @@
     dl
       dt Цена
       dd #{row.product.get_price}
-      dt Мин. к выкупу
-      dd #{10}
+      -if row.product.k_min?
+        dt К выкупу по
+      -else
+        dt Мин. к выкупу:
+      dd #{row.product.min_qty}
 
 
 #getRowId
