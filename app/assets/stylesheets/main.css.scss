@@ -472,7 +472,8 @@ header {
       width: 45%;
       margin-top: 10px;
       margin-left: 5px;
-      height: 150px;
+      height: 135px;
+      border: 1px solid #CACACA;
       img{
         width: 80%;
       }
@@ -480,6 +481,12 @@ header {
         font-size: 8px;
         color: #057e89;
       }
+    }
+    .last_visited_product:hover{
+      cursor: pointer;
+      transition: 0.3s;
+      transform: scale(1.5);
+      background: #ffffff;
     }
   }
   .calendar_info{
