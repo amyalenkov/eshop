@@ -23,7 +23,7 @@
     = link_to 'Ряды', new_user_session_path
 
 .create_question
-  = link_to 'Задать вопрос', 'show/show'
+  = link_to '<abbr title="Задать вопрос по товару">Задать вопрос</abbr>'.html_safe, '/questions/show'
   /button.btn.btn-default.create_question[type="button" data-toggle="modal" data-target="#getCall"] Задать вопрос
 
 .cart_menu.pull-right
