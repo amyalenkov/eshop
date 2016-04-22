@@ -11,7 +11,7 @@
   .all_comments
     .all_comments_not_nil
       .comments
-        - (Answer.all.where('id_question'==id_question)).each do |answer|
+        - (Answer.where(id_question: id_question)).each do |answer|
           .comment
             .title
               = (User.find_by_id answer.user_id).email

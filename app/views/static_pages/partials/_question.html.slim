@@ -1,9 +1,11 @@
 input type="checkbox" id="hd-#{question.id}" class="hide"
-  label for="hd-#{question.id}" Нажмите здесь, чтобы увидеть вопрос: #{question.body}
+  label for="hd-#{question.id}" Нажмите здесь, чтобы увидеть вопрос: #{question.name}
+
 div
   p #{question.body}
   .set_answer
-    = render 'static_pages/partials/set_answer', id_question: question.id
+    div id='_question__#{question.id}'
+      = render 'static_pages/partials/set_answer', id_question: question.id
 
     - if user_signed_in?
       = form_for(Answer.new, remote: true) do |answer|

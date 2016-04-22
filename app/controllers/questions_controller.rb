@@ -6,7 +6,6 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-
   def create
     question = Question.create comment_params
     question.user_id = current_user.id

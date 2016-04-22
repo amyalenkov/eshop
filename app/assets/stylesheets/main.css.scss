@@ -2637,6 +2637,7 @@ header {
     padding: 0;
     cursor: pointer;
     display: inline-block;
+    width: 100%;
   }
 
   /* вид текста label при активном переключателе */
@@ -2660,10 +2661,10 @@ header {
     padding-bottom: 50px;
     padding-right: 5%;
 
-    [id^="_question__"]{
-      div{
-        .set_answer{
-          width: 100%;
+    div{
+      .set_answer{
+        width: 100%;
+        [id^="_question__"]{
           .all_comments{
             .all_comments_not_nil{
               float: left;
