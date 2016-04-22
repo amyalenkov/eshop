@@ -1,0 +1,15 @@
+input type="checkbox" id="hd-#{question.id}" class="hide"
+  label for="hd-#{question.id}" Нажмите здесь, чтобы увидеть вопрос: #{question.name}
+
+div
+  p #{question.body}
+  .set_answer
+    div id='_question__#{question.id}'
+      = render 'static_pages/partials/set_answer', id_question: question.id
+
+    - if user_signed_in?
+      = form_for(Answer.new, remote: true) do |answer|
+        .add_comment
+          = answer.text_area :body, class: 'form-control comment', placeholder: 'Комментарий'
+          = answer.hidden_field :id_question, :value => question.id
+          = button_tag 'Оставить комментарий', class: 'btn btn-success pull-right'

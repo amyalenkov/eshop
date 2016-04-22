@@ -1,0 +1,22 @@
+- id_question = @id_question if id_question.nil?
+- answer = Answer.find_by_id_question id_question
+-if answer.nil?
+  .all_comments
+    .all_comments_nil
+      .comments
+        .comment
+          .title
+            | Для данного вопроса нет комментариев
+-else
+  .all_comments
+    .all_comments_not_nil
+      .comments
+        - (Answer.where(id_question: id_question)).each do |answer|
+          .comment
+            .title
+              = (User.find_by_id answer.user_id).email
+            - if answer.user_id == current_user.id
+              .delete
+                = link_to 'x', answer, remote: true, method: :delete, class: 'delete'
+            .body
+              =answer.body

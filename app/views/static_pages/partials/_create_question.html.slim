@@ -1,7 +1,7 @@
-= form_for(Comment.new, remote: true) do |comment|
+= form_for(Question.new, remote: true) do |comment|
   .field
     br
-    = comment.text_field :product_id, placeholder: 'Укажите артикул продукта', class: 'id'
+    = comment.text_field :name, placeholder: 'Укажите артикул продукта', class: 'form-control id'
     br
     = comment.text_area :body, placeholder: 'Комментарий', class: 'form-control comment'
   .actions

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415082030) do
+ActiveRecord::Schema.define(version: 20160421123700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20160415082030) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "answers", force: true do |t|
+    t.string  "name"
+    t.string  "body"
+    t.integer "id_question"
+    t.integer "user_id"
+  end
 
   create_table "average_caches", force: true do |t|
     t.integer  "rater_id"
@@ -269,6 +276,14 @@ ActiveRecord::Schema.define(version: 20160415082030) do
     t.integer  "weight"
     t.string   "certificate_type"
     t.string   "box_type"
+  end
+
+  create_table "show", force: true do |t|
+    t.string   "name"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "rates", force: true do |t|

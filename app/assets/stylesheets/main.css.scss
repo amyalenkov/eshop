@@ -71,8 +71,15 @@ header {
   a{
     color: #6cb2db;
     float: left;
-    margin-right: 15px;
+    margin-right: 5px;
     text-decoration: none;
+    border: 1px solid #ffffff;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  a:hover{
+    border: 1px solid #9EA3A9;
+    border-radius: 2px;
   }
   .course{
     float: left;
@@ -332,8 +339,20 @@ header {
       color: #ffffff;
     }
 
-    .rows_menu{
-      margin-right: 10px;
+    .order_menu a, .categories_menu a, .meeting_menu a,
+    .rows_menu a, .orders_menu a, .create_question a{
+      color: #ffffff;
+      padding: 5px;
+    }
+
+    .order_menu a:hover, .categories_menu a:hover, .meeting_menu a:hover,
+    .rows_menu a:hover, .orders_menu a:hover, .create_question a:hover{
+      background: #ffffff;
+      color: #000000;
+      padding: 5px;
+      border-radius: 3px;
+      transition: 0.2s;
+      text-decoration: none;
     }
 
     .cart_menu{
@@ -366,7 +385,7 @@ header {
 
     .contact_menu{
       font-size: 16px;
-      margin-left: 20px;
+      margin-left: 15px;
     }
 
     .cart_menu{
@@ -585,8 +604,19 @@ header {
       font-style: italic;
       font-weight: bold;
     }
-    //img{}
+    a{
+      float: left;
+      width: 100%;
+      border: 1px solid #ffffff;
+    }
+    a:hover{
+      transition: 0.2s;
+      border: 1px solid #2E2F30;
+      border-radius: 4px;
+      text-decoration: none;
+    }
   }
+
   .product{
     float: left;
     width: 33%;
@@ -1205,6 +1235,7 @@ header {
 
 .order_price, .total_price{
   text-align: center;
+  margin-top: 31px;
 }
 
 .full_width{
@@ -1605,12 +1636,20 @@ header {
         }
       }
       .image_cart{
-        width: 75px;
         float: left;
+        width: 75px;
+        height: 90px;
         text-align: center;
         padding-right: 10px;
         img{
           max-height: 65px;
+        }
+        img:hover{
+          max-height: 140px;
+          max-width: 140px;
+          transition: 0.2s;
+          position: absolute;
+          margin-left: -112px;
         }
       }
     }
@@ -1643,11 +1682,13 @@ header {
       border: none;
       background: none;
       text-align: center;
+      margin-top: 31px;
     }
     .counter{
       float: left;
       text-align: center;
       width: 110px;
+      margin-top: 31px;
       .count_field{
         float: left;
         width: 50px;
@@ -2625,6 +2666,7 @@ header {
     padding: 0;
     cursor: pointer;
     display: inline-block;
+    width: 100%;
   }
 
   /* вид текста label при активном переключателе */
@@ -2641,12 +2683,94 @@ header {
   }
 
   /* demo контейнер */
-  .questions {
+  .questions{
     float: left;
     width: 70%;
     padding-left: 15px;
     padding-bottom: 50px;
     padding-right: 5%;
+
+    div{
+      .set_answer{
+        width: 100%;
+        [id^="_question__"]{
+          .all_comments{
+            .all_comments_not_nil{
+              float: left;
+              width: 100%;
+              height: 150px;
+              margin-top: 15px;
+              .comments{
+                float: left;
+                overflow: auto;
+                height: 140px;
+                width: 100%;
+                .comment{
+                  float: left;
+                  width: 100%;
+                  margin-bottom: 15px;
+                  border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
+                  .title, .body{
+                    float: left;
+                    width: 96%;
+                    font-size: 14px;
+                    font-weight: bold;
+                    font-style: italic;
+                  }
+                  .body{
+                    font-size: 16px;
+                    font-weight: normal;
+                  }
+                  .delete a{
+                    text-decoration: none;
+                  }
+                }
+              }
+            }
+            .all_comments_nil{
+              float: left;
+              width: 100%;
+              height: 50px;
+              margin-top: 15px;
+              .comment{
+                float: left;
+                border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
+                .title{
+                  float: left;
+                  font-size: 18px;
+                  font-weight: bold;
+                  font-style: italic;
+                }
+              }
+            }
+          }
+          //.answers{
+          .add_comment{
+            float: left;
+            width: 100%;
+            .id, .comment{
+              float: left;
+              width: 100%;
+              padding-left: 5px;
+              margin-bottom: 10px;
+            }
+            .id{
+              margin-top: -20px;
+            }
+            .comment{
+              height: 70px;
+              resize: vertical;
+              margin-bottom: 10px;
+            }
+            .actions{
+              margin-bottom: 25px;
+              float: right;
+            }
+          }
+          //}
+        }
+      }
+    }
   }
 
   .create_questions{
@@ -2673,58 +2797,33 @@ header {
     }
   }
 
-  .set_answer{
-    .all_comments{
-      .all_comments_not_nil{
-        float: left;
-        width: 100%;
-        height: 150px;
-        .comments{
-          float: left;
-          overflow: auto;
-          height: 140px;
-          width: 60%;
-          .comment{
-            float: left;
-            width: 100%;
-            margin-bottom: 15px;
-            border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
-            .title, .body{
-              float: left;
-              width: 95%;
-              font-size: 16px;
-              font-weight: bold;
-              font-style: italic;
-            }
-            .body{
-              font-size: 14px;
-              font-weight: normal;
-            }
-            .delete a{
-              text-decoration: none;
-            }
-          }
-        }
-      }
-      .all_comments_nil{
-        float: left;
-        width: 100%;
-        height: 50px;
-        margin-top: 20px;
-        margin-bottom: -50px;
-        .comment{
-          float: left;
-          width: 60%;
-          border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
-          .title{
-            float: left;
-            width: 95%;
-            font-size: 18px;
-            font-weight: bold;
-            font-style: italic;
-          }
-        }
-      }
-    }
-  }
 }
+
+/*DOWN_TOP*/
+.go-up, .go-down {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 15%;
+  background: #4F4F4F;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  font: normal normal 42px/42px sans-serif;
+  text-shadow: 0 1px 2px #000;
+  opacity: .5;
+  padding: 3px;
+  margin-bottom: 5px;
+  width: 42px;
+  height: 42px;
+}
+.go-up { bottom: 60px; }
+.go-down { bottom: 10px; }
+.go-down:hover,
+.go-up:hover {
+  opacity: 1;
+  box-shadow: 0 5px 0.5em -1px #666;
+}
+/*END_DOWN_TOP*/

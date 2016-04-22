@@ -63,8 +63,7 @@
         = render 'products/add_in_cart_from_show'
 
       .description
-        p
-          | #{@product.description}
+        p #{@product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '')}
 
       .all_comments
         = render 'all_comments_for_product'
