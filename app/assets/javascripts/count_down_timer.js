@@ -1,5 +1,3 @@
-var deadline = '2016-05-1';
-
 function getTimeRemaining(endtime){
     var t = Date.parse(endtime) - Date.parse(new Date());
     var seconds = Math.floor( (t/1000) % 60 );
@@ -22,7 +20,6 @@ function initializeClock(idElem, endtime){
     var daysSpan = document.getElementsByClassName('days');
     var hoursSpan = clock.querySelector('.hours');
     var minutesSpan = clock.querySelector('.minutes');
-    var secondsSpan = clock.querySelector('.seconds');
 
     function updateClock(){
         var t = getTimeRemaining(endtime);
@@ -34,7 +31,6 @@ function initializeClock(idElem, endtime){
         daysSpan.innerHTML = t.days;
         hoursSpan.innerHTML = t.hours;
         minutesSpan.innerHTML = t.minutes;
-        secondsSpan.innerHTML = t.seconds;
 
         if(t.total<=0){
             clearInterval(timeinterval);
@@ -45,5 +41,14 @@ function initializeClock(idElem, endtime){
 }
 
 window.onload = function() {
-    initializeClock('clock', deadline);
+    $.ajax({
+        type: 'get',
+        url: '/static_pages/get_datetime_for_stop',
+        response: 'text',
+        dataType: "text",
+        success: function (data) {
+            data;
+            initializeClock('clock', data);
+        }
+    });
 };
