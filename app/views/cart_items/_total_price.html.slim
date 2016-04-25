@@ -1,0 +1,2 @@
+- cart_item = @cart_item if cart_item.nil?
+= text_field_tag "total_price_quant[#{cart_item.id}]",cart_item.product.get_price.gsub(/\s+/,'').to_i * cart_item.count.to_i, :readonly => true, :disabled => true, :class => 'amount'

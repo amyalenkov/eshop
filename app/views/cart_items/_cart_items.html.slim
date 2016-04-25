@@ -10,11 +10,7 @@ table class="table"
       th Сумма
       th
   tbody
-    - total_price = 0
-    - total_count = 0
     - @cart_items.each do |cart_item|
-      - total_count = total_count + cart_item.count
-      - total_price = total_price + cart_item.product.get_price_int * cart_item.count
       - check_favorite, favorite_product = current_user.is_favorite_product?(cart_item.product_id)
       - tr_class = 'highlight_row_click' if check_favorite
       - tr_class = '' unless check_favorite
@@ -71,21 +67,15 @@ table class="table"
           = text_field_tag "price_quant[#{cart_item.id}]",cart_item.product.get_price, :readonly => true, :disabled => true, :class => 'price'
 
         td
-          .counter
-            button type="button" class="btn btn-danger btn-number minus" data-type="minus" data-field="quant[#{cart_item.id}]"
-            input name="quant[#{cart_item.id}]" class="form-control input-number count_field" value="#{cart_item.count}" min="1" max="10000"
-            button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[#{cart_item.id}]"
-
+          .counter id="counter_#{cart_item.id}"
+            = render 'cart_items/counter', cart_item: cart_item
         td style="width: 80px;"
-          = text_field_tag "total_price_quant[#{cart_item.id}]",cart_item.product.get_price.to_i * cart_item.count.to_i, :readonly => true, :disabled => true, :class => 'amount'
+          .total_price id="total_price_#{cart_item.id}"
+            = render 'cart_items/total_price', cart_item: cart_item
         td.delete = link_to 'x', cart_item, remote: true, method: :delete, class: 'delete'
 
-
-.pull-right.total_amount
-  p К оплате: <span id="total_amount">#{total_price}</span>
-
-.pull-right.total_count
-  p Наименований: <span id="total_count">#{total_count}</span>
+.total-amount-and-count
+  = render 'cart_items/total_amount_and_count'
 
 .pull-left.button_cart_left
   = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'

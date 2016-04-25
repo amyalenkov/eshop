@@ -31,10 +31,29 @@ class CartItemsController < ApplicationController
     get_current_order
   end
 
+  def update
+    count = params[:count].to_i
+    @cart_item = CartItem.find_by id: params[:id]
+    if count > 0
+      @cart_item.count = count
+      @cart_item.save!
+    end
+    get_cart_items
+  end
+
   private
 
   def get_cart_items
     @cart_items = current_user.cart_items
+    @current_total_amount = 0
+    @current_total_count = 0
+    @cart_items.each do |cart_item|
+      price = cart_item.product.get_price.gsub(/\s+/,'').to_i
+      p price
+      @current_total_amount = @current_total_amount + cart_item.count * price
+      @current_total_count = @current_total_count + cart_item.count
+    end
+
   end
 
   def get_current_order

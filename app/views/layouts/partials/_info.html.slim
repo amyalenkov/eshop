@@ -28,11 +28,12 @@
 
 .cart_menu.pull-right
   - if user_signed_in?
-    = render 'layouts/partials/cart_menu'
+    .cart_menu_for_update
+      = render 'layouts/partials/cart_menu'
   - else
     = link_to image_tag('cart.png'), new_user_session_path
     .cart_count
-      = link_to 'Позиций <br>0 бел. руб.'.html_safe, new_user_session_path, :class => 'cart_not_tull'
+      = link_to 'Позиций 0<br>0 бел. руб.'.html_safe, new_user_session_path, :class => 'cart_not_tull'
 
 .contact_menu.pull-right
   = link_to 'Контакты', nil

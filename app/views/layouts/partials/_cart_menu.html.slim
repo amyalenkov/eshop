@@ -9,4 +9,4 @@
   -else
     = link_to image_tag('cart.png'), cart_items_path
     .cart_count
-      = link_to "Позиций <br>#{total_price.to_s}<br> бел. руб.".html_safe, cart_items_path, :class=>'cart_not_tull'
+      = link_to "Позиций #{count.to_s}<br>#{total_price.to_s}<br> бел. руб.".html_safe, cart_items_path, :class=>'cart_not_tull'
