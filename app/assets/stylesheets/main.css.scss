@@ -539,6 +539,24 @@ header {
       width: 185px;
       height: 75px;
       background: #e5e5e5;
+      #clock{
+        width: 185px;
+        text-align: center;
+        .blockTimer{
+          float: left;
+          font-size: 36px;
+          font-style: normal;
+          color: #000000;
+          font-weight: normal;
+          width: 33%;
+          .desc{
+            font-size: 12px;
+            float: left;
+            padding-left: 7px;
+            color: rgba(0, 0, 0, 0.5);
+          }
+        }
+      }
     }
   }
 }
@@ -1811,10 +1829,12 @@ header {
   }
   .date_description{
     float: left;
+    width: 100%;
     margin-top: 15px;
     margin-bottom: 25px;
     line-height: 20px;
     color: #010101;
+    text-align: center;
     font-size: 12px;
     font-style: italic;
     font-weight: bold;
