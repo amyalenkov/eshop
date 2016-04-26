@@ -45,8 +45,7 @@ table class="table"
         td
           = form_for order_item, remote: true do |f|
             = f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'
-              /= f.content_tag_for :span, 'Сохранить'
-            =text_area_tag 'comment', order_item.comment
+            =text_area_tag 'comment', order_item.comment, placeholder: ' Комментарий'
 
 .total-amount-and-count
   =render 'orders/total_amount_and_count'
