@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
       @subcategories = @subcategory.children
     elsif request.url.to_s.include? '/subcategory/'
       @subcategory = Category.find_by_id params[:name]
-      @subcategories = @subcategory.children
+      @subcategories = @subcategory.children.order(:name)
       if @subcategory.is_leaf?
         @products = Product.where(subcategory_id: @subcategory.sid).page(params[:page])
       else

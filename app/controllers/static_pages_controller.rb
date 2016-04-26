@@ -2,7 +2,7 @@ require 'date'
 class StaticPagesController < ApplicationController
 
   def index
-    @categories = Category.where level: 1
+    get_categories
   end
 
   def order_call
@@ -18,9 +18,9 @@ class StaticPagesController < ApplicationController
   end
 
   def category_list
-    @categories = Category.where level: 1
+    get_categories
     @category = Category.find_by_id params[:name]
-    @subcategories = @category.children
+    @subcategories = @category.children.order(:name)
   end
 
   def get_datetime_for_stop
@@ -31,24 +31,9 @@ class StaticPagesController < ApplicationController
   end
 
   private
-  def get_subs id
-    arr = Array.new
-    get_subs_requrs id, arr
+
+  def get_categories
+    @categories = Category.where(level: 1).order(:name)
   end
 
-  def get_subs_requrs id, arr
-    new_arr = get_subs_by_id id
-    first_arr = new_arr
-    unless new_arr.size == 0
-      (arr << new_arr).flatten!
-      new_arr.each do |sub|
-        get_subs_requrs sub.id, arr
-      end
-    end
-    return arr, first_arr
-  end
-
-  def get_subs_by_id id
-    Subcategory.where :category_id => id
-  end
 end
