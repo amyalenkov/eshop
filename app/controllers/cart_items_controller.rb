@@ -41,6 +41,12 @@ class CartItemsController < ApplicationController
     get_cart_items
   end
 
+  def add_comment
+    @cart_item = CartItem.find_by id: params[:id]
+    @cart_item.comment = params[:comment]
+    @cart_item.save!
+  end
+
   private
 
   def get_cart_items

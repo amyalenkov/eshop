@@ -15,7 +15,11 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :cart_items, only: [:index, :create, :destroy, :update]
+  resources :cart_items, only: [:index, :create, :destroy, :update] do
+    member do
+      post 'add_comment'
+    end
+  end
   resources :order_items, only: [:update, :destroy]
   resources :orders, only: [:index, :create, :show] do
     member do

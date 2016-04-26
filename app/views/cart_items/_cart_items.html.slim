@@ -49,7 +49,11 @@ table class="table"
                 = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
               p Артикул: <b>#{cart_item.product_id}</b>
               p Дата добавления: <b>#{cart_item.created_at.strftime("%F")}</b>
-              =text_area_tag 'comment_'+cart_item.id.to_s, nil, placeholder: ' Комментарий'
+              /=text_area_tag 'comment_'+cart_item.id.to_s, nil, placeholder: ' Комментарий'
+              =form_tag add_comment_cart_item_path(cart_item.id), remote: true
+                =submit_tag '', class: 'ok_submit', title: 'Сохранить комметарий'
+                  =content_tag_for :span, 'Сохранить'
+                =text_area_tag 'comment', cart_item.comment
 
         - row = cart_item.product.get_row
         - unless row.nil?
