@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
   def index
     get_categories
+    @comment_of_day = Configure.find_by_name('comment_of_day').value
   end
 
   def order_call
