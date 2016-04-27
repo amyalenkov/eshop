@@ -1,124 +1,7 @@
 container
   table class="cal"
-    caption
-      span class="prev"
-        a href="#" ←
-      span class="next"
-        a href="#" →
-      January 2012
-    thead
-      tr
-        th Mon
-        th Tue
-        th Wed
-        th Thu
-        th Fri
-        th Sat
-        th Sun
-    tbody
-      tr
-        td
-          off
-            a href="#" 26
-        td
-          off
-            a href="#" 27
-        td
-          off
-            a href="#" 28
-        td
-          off
-            a href="#" 29
-        td
-          off
-            a href="#" 30
-        td
-          off
-            a href="#" 31
-        td
-          a href="#" 1
-
-      tr
-        td
-          a href="#" 2
-        td
-          a href="#" 3
-        td
-          a href="#" 4
-        td
-          a href="#" 5
-        td
-          a href="#" 6
-        td
-          a href="#" 7
-        td
-          a href="#" 8
-      tr
-        td
-          a href="#" 9
-        td
-          a href="#" 10
-        td
-          a href="#" 11
-        td
-          a href="#" 12
-        td
-          a href="#" 13
-        td
-          a href="#" 14
-        td
-          a href="#" 15
-      tr
-        td
-          a href="#" 16
-        td
-          a href="#" 17
-        td
-          a href="#" 18
-        td
-          a href="#" 19
-        td
-          a href="#" 20
-        td
-          a href="#" 21
-        td
-          a href="#" 22
-      tr
-        td
-          a href="#" 23
-        td
-          a href="#" 24
-        td
-          a href="#" 25
-        td
-          a href="#" 26
-        td
-          a href="#" 27
-        td
-          active
-            a href="#" 28
-        td
-          a href="#" 29
-      tr
-        td
-          a href="#" 30
-        td
-          a href="#" 31
-        td
-          off
-            a href="#" 1
-        td
-          off
-            a href="#" 2
-        td
-          off
-            a href="#" 3
-        td
-          off
-            a href="#" 4
-        td
-          off
-            a href="#" 5
+    = month_calendar do |date|
+      = date.day
 
 .calendar_info
   .info_1
@@ -130,6 +13,7 @@ container
   .info_3
     span
     p - ближайшая ВСТРЕЧА
+
 .calendar_stop
   p До СТОПА осталось
   .timer

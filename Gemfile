@@ -79,3 +79,6 @@ gem 'ltree_hierarchy'
 
 #countries codes
 gem 'iso_country_codes'
+
+#simple_calendar
+gem 'simple_calendar', '~> 2.0'
