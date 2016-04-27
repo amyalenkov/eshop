@@ -32,4 +32,5 @@
 //= require slider_content
 //= require downTop
 //= require count_down_timer
+//= require jivosite
 
