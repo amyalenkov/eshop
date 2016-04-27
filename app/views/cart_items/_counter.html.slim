@@ -1,6 +1,6 @@
 -cart_item = @cart_item if cart_item.nil?
 - minus = cart_item.count - 1
 =button_to '', cart_item_path(id: cart_item.id, count: minus.to_s), method: :put, remote: true, class: "btn btn-danger btn-number minus"
-input name="quant[#{cart_item.id}]" class="form-control input-number count_field" value="#{cart_item.count}" min="1" max="10000"
+input name="quant[#{cart_item.id}]" class="form-control input-number count_field" value="#{cart_item.count}" min="1" max="10000" disabled="true"
 - plus = cart_item.count + 1
 =button_to '', cart_item_path(id: cart_item.id, count: plus.to_s), method: :put, remote: true, class: "btn btn-success btn-number plus"
