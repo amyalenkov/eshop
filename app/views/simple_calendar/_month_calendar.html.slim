@@ -1,7 +1,7 @@
 .simple-calendar
   = link_to 'Пред', calendar.url_for_previous_view
-  = I18n.t('date.month_names')[start_date.month]
-  = start_date.year
+  = I18n.t("date.month_names")[start_date.month]
+  /= start_date.year
   = link_to 'След', calendar.url_for_next_view
   table.table.table-striped
     thead
