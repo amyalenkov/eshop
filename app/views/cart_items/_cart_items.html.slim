@@ -53,7 +53,7 @@ table class="table"
               =form_tag add_comment_cart_item_path(cart_item.id), remote: true
                 =submit_tag '', class: 'ok_submit', title: 'Сохранить комметарий'
                   =content_tag_for :span, 'Сохранить'
-                =text_area_tag 'comment', cart_item.comment
+                =text_area_tag 'comment', cart_item.comment, placeholder: ' Комментарий'
 
         - row = cart_item.product.get_row
         - unless row.nil?
