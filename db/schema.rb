@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426084448) do
+ActiveRecord::Schema.define(version: 20160427094931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 20160426084448) do
     t.integer  "rateable_id"
     t.string   "rateable_type"
     t.float    "avg",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "calendar_dates", force: true do |t|
+    t.string   "name"
+    t.datetime "start_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

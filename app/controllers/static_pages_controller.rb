@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   def index
     get_categories
     @comment_of_day = Configure.find_by_name('comment_of_day').value
+    @meetings_for_calendar = CalendarDate.all
   end
 
   def order_call
