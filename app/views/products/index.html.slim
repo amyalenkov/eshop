@@ -40,6 +40,9 @@
               - product_stock_availability = product.balance_text
               - product_id = product.id
               - product_price = product.get_price
+              - new_product_price = product.get_new_price
+              - first_part_new_price = new_product_price.to_s.scan( /(\w+)\./).last.first
+              - second_part_new_price = new_product_price.to_s.scan( /(\.\w+)/).last.first
               - country = IsoCountryCodes.find(product.country_id)
 
               .product
@@ -48,10 +51,15 @@
                     = image_tag product_image
                 .title
                   = link_to product_name, product_path(product_id)
-                  p
-                    | Материал: <b>#{product_material}</b>
-                  p
-                  | Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
+                  p Материал: <b>#{product_material}</b>
+                  p Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
+                .sale
+                  = product_price
+                  span Бел.руб.
+                  br
+                  .second_part_new_price
+                    = first_part_new_price
+                    span #{second_part_new_price}р
                 .info
                   .params
                     p
@@ -60,8 +68,6 @@
                       | Артикул: <b>#{product_id}</b>
                     p
                       | На складе: <b>#{product_stock_availability}</b>
-                  .sale
-                    = product_price
                   .cart
                     .add_in_cart_index id="#{product_id}"
                       = render 'products/add_in_cart', product: product

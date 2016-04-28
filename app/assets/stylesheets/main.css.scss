@@ -505,7 +505,7 @@ header {
 
   .cal > .simple-calendar{
     text-align: center;
-    .next_meeting{
+    .next_meetings{
       background: #e12a2a;
       color: #ffffff;
     }
@@ -704,10 +704,36 @@ header {
         float: left;
         color: #057e89;
         margin-bottom: 15px;
-        line-height: 15px;
+        line-height: 10px;
       }
       p{
         line-height: 10px;
+        margin-bottom: 3px;
+        display: none;
+      }
+    }
+    .sale{
+      float: left;
+      width: 50%;
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      color: #f28709;
+      font-size: 16px;
+      font-style: italic;
+      font-weight: bold;
+      span{
+        color: #000000;
+        font-size: 10px;
+        margin-left: 10px;
+      }
+      .second_part_new_price{
+        font-size: 12px;
+        span{
+          color: #000000;
+          font-size: 12px;
+          margin-left: 2px;
+        }
       }
     }
     .info{
@@ -727,17 +753,6 @@ header {
           line-height: 5px;
           font-style: italic;
         }
-      }
-      .sale{
-        float: left;
-        width: 20%;
-        font-size: 16px;
-        position:absolute;
-        left:50%;
-        bottom:10px;
-        font-style: italic;
-        font-weight: bold;
-        color: #f28709;
       }
       .cart{
         float: left;
@@ -829,7 +844,13 @@ header {
     background: #ffffff;
     position: relative;
     z-index: 150;
-    //transform: scale(1.1, 1.1);
+    transform: scale(1.2);
+    .title {
+      p{
+        display: block;
+      }
+    }
+      //transform: scale(1.1, 1.1);
     //-webkit-transition: 0.1s;
     //-moz-transition: 0.1s;
     //-ms-transition: 0.1s;
@@ -1396,7 +1417,7 @@ header {
     }
     .row_item{
       float: left;
-      width: 110px;
+      width: 135px;
       height: 200px;
       text-align: center;
       margin-top: 5px;
