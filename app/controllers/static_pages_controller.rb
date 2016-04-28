@@ -28,9 +28,13 @@ class StaticPagesController < ApplicationController
 
   def get_datetime_for_stop
     stop = Configure.find_by_name 'stop'
+    meeting = (CalendarDate.find_by_name 'next_meeting').start_time
+    next_bringing = (CalendarDate.find_by_name 'next_bringing').start_time
     date = Date.parse(stop.day_of_week)
     delta = date >= Date.today ? 0 : 7
-    render :text => (date + delta).strftime('%Y-%m-%d')
+    # render :text => (date + delta).strftime('%Y-%m-%d')
+    render :json => {'stop'=>(date + delta).strftime('%Y-%m-%d'), 'next_meeting'=>meeting.strftime('%Y-%m-%d'), 'next_bringing'=>next_bringing.strftime('%Y-%m-%d')}
+
   end
 
   private

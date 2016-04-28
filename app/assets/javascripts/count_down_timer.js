@@ -14,9 +14,7 @@ function getTimeRemaining(endtime){
 }
 
 function initializeClock(idElem, endtime){
-
     var clock = document.getElementById(idElem);
-
     var daysSpan = document.getElementsByClassName('days');
     var hoursSpan = clock.querySelector('.hours');
     var minutesSpan = clock.querySelector('.minutes');
@@ -40,6 +38,46 @@ function initializeClock(idElem, endtime){
     var timeinterval = setInterval(updateClock, 1);
 }
 
+function colorForDateCalendar(data){
+    var t = JSON.parse(data);
+    var events = document.getElementsByClassName('has-events');
+
+    var stop = t['stop'].slice(-2);
+    var next_meeting = t['next_meeting'].slice(-2);
+    var next_bringing = t['next_bringing'].slice(-2);
+
+    if(stop.charAt(0)==0){
+        stop = stop.substring(1, 2);
+    }
+
+    if(next_meeting.charAt(0)==0){
+        next_meeting = next_meeting.substring(1, 2);
+    }
+
+    if(next_bringing.charAt(0)==0){
+        next_bringing = next_bringing.substring(1, 2);
+    }
+
+    for(i=0; i<3; i++){
+        if(events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == stop){
+            events[i].className += ' next_stop';
+        }
+    }
+
+    for(i=0; i<3; i++){
+        if(events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_meeting){
+            events[i].className += ' next_meeting';
+        }
+    }
+
+    for(i=0; i<3; i++){
+        if(events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_bringing){
+            events[i].className += ' next_bringing';
+        }
+    }
+
+}
+
 window.onload = function() {
     $.ajax({
         type: 'get',
@@ -47,8 +85,9 @@ window.onload = function() {
         response: 'text',
         dataType: "text",
         success: function (data) {
-            data;
-            initializeClock('clock', data);
+            var t = JSON.parse(data);
+            initializeClock('clock', t['stop']);
+            colorForDateCalendar(data);
         }
     });
 };
