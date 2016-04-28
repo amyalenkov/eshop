@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :calendar_dates
 
   def index
     @orders = current_user.orders.where.not(state: Order.states[:in_progress])
@@ -135,6 +135,11 @@ class OrdersController < ApplicationController
   end
 
   private
+
+
+  def calendar_dates
+    @meetings_for_calendar = CalendarDate.all
+  end
 
   def check_presence_product_in_order cart_item
     check_presence_product_in_order = false

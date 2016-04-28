@@ -16,53 +16,54 @@
       = render 'layouts/partials/calendar'
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       .address_link
-        - ancestors = @subcategory.ancestors
         = link_to 'Главная / ', '/'
-        =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
-        - @subcategory.ancestors.each_with_index do| sub, index|
-          -unless index==0
-            | /
-            =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
-      h4 #{@subcategory.name}
+        -unless @subcategory.nil?
+          - ancestors = @subcategory.ancestors
+          =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
+          - @subcategory.ancestors.each_with_index do| sub, index|
+            -unless index==0
+              | /
+              =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
+          h4 #{@subcategory.name}
       - if @subcategories != nil
         .list_categories
           - @subcategories.each do |subcategory|
             = link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
-        - unless @products.nil?
-          - @products.in_groups_of(3, false) do |products|
-            .row_products
-              - for product in products
-                - product_image = product.image+'0/700.jpg'
-                - product_name = product.name.gsub('&quot;', '')
-                - product_material = product.materials_text
-                - product_size = product.size_text
-                - product_stock_availability = product.balance_text
-                - product_id = product.id
-                - product_price = product.get_price
-                - country = IsoCountryCodes.find(product.country_id)
+      - unless @products.nil?
+        - @products.in_groups_of(3, false) do |products|
+          .row_products
+            - for product in products
+              - product_image = product.image+'0/700.jpg'
+              - product_name = product.name.gsub('&quot;', '')
+              - product_material = product.materials_text
+              - product_size = product.size_text
+              - product_stock_availability = product.balance_text
+              - product_id = product.id
+              - product_price = product.get_price
+              - country = IsoCountryCodes.find(product.country_id)
 
-                .product
-                  .image
-                    a href="#{product_path(product_id)}"
-                      = image_tag product_image
-                  .title
-                    = link_to product_name, product_path(product_id)
+              .product
+                .image
+                  a href="#{product_path(product_id)}"
+                    = image_tag product_image
+                .title
+                  = link_to product_name, product_path(product_id)
+                  p
+                    | Материал: <b>#{product_material}</b>
+                  p
+                  | Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
+                .info
+                  .params
                     p
-                      | Материал: <b>#{product_material}</b>
+                      | Размер: <b>#{product_size}</b>
                     p
-                    | Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
-                  .info
-                    .params
-                      p
-                        | Размер: <b>#{product_size}</b>
-                      p
-                        | Артикул: <b>#{product_id}</b>
-                      p
-                        | На складе: <b>#{product_stock_availability}</b>
-                    .sale
-                      = product_price
-                    .cart
-                      .add_in_cart_index id="#{product_id}"
-                        = render 'products/add_in_cart', product: product
+                      | Артикул: <b>#{product_id}</b>
+                    p
+                      | На складе: <b>#{product_stock_availability}</b>
+                  .sale
+                    = product_price
+                  .cart
+                    .add_in_cart_index id="#{product_id}"
+                      = render 'products/add_in_cart', product: product
 
-          =paginate @products
+        =paginate @products

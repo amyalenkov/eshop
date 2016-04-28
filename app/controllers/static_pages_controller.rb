@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   def index
     get_categories
     @comment_of_day = Configure.find_by_name('comment_of_day').value
-    @meetings_for_calendar = CalendarDate.all
+    calendar_dates
   end
 
   def order_call
@@ -20,6 +20,7 @@ class StaticPagesController < ApplicationController
   end
 
   def category_list
+    calendar_dates
     get_categories
     @category = Category.find_by_id params[:name]
     @subcategories = @category.children.order(:name)
@@ -33,6 +34,10 @@ class StaticPagesController < ApplicationController
   end
 
   private
+
+  def calendar_dates
+    @meetings_for_calendar = CalendarDate.all
+  end
 
   def get_categories
     @categories = Category.where(level: 1).order(:name)

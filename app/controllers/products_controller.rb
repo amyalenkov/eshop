@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
+    calendar_dates
     if request.url.to_s.include? '/category/'
       @subcategory = Category.find_by id: params[:name]
       @subcategories = @subcategory.children
@@ -17,7 +18,19 @@ class ProductsController < ApplicationController
         @products = Product.where(subcategory_id: all_sid).page(params[:page])
       end
     else
-      @products = Product.all.page(params[:page])
+      if !params[:is_hit].nil?
+        @products = Product.where(is_hit: true).page(params[:page])
+      elsif !params[:min_sum].nil?
+        course = Configure.find_by_name('course').value.to_i
+        markup = Configure.find_by_name('markup').value.to_i
+        min = params[:min_sum].to_i
+        max = params[:max_sum].to_i
+        min_sum = (min/ course) * ((100 + markup)/100)
+        max_sum = (max/ course) * ((100 + markup)/100)
+        @products = Product.where(price: min_sum..max_sum).page(params[:page])
+      else
+        @products = Product.all.page(params[:page])
+      end
     end
   end
 
@@ -39,6 +52,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def calendar_dates
+    @meetings_for_calendar = CalendarDate.all
+  end
 
   def get_subs id
     arr = Array.new

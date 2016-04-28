@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :calendar_dates
 
   def index
     get_cart_items
@@ -48,6 +48,10 @@ class CartItemsController < ApplicationController
   end
 
   private
+
+  def calendar_dates
+    @meetings_for_calendar = CalendarDate.all
+  end
 
   def get_cart_items
     @cart_items = current_user.cart_items
