@@ -505,6 +505,19 @@ header {
 
   .cal > .simple-calendar{
     text-align: center;
+    .next_meeting{
+      background: #e12a2a;
+      color: #ffffff;
+    }
+    .next_stop{
+      background: #2e3192;
+      color: #ffffff;
+    }
+    .next_bringing{
+      background: #00bff3;
+      color: #ffffff;
+    }
+
   }
 
   .calendar_info{
