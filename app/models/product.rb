@@ -34,6 +34,12 @@ class Product < ActiveRecord::Base
     first_part + ' ' + second_part.to_s
   end
 
+  def get_new_price
+    course = Configure.find_by_name('course').value
+    markup = Configure.find_by_name('markup').value
+    (((price.to_f * course.to_f * (markup.to_f/100 +1)).round 2)/10000).round 2
+  end
+
   def get_price_int
     get_price.gsub(/\s+/, '').to_i
   end
