@@ -28,9 +28,14 @@
 //= require cart_items
 //= require orders
 //= require validation
+//= require validations/validation
 //= require products
 //= require slider_content
 //= require downTop
 //= require count_down_timer
 //= require jivosite
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.date.extensions
 
