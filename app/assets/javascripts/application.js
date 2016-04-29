@@ -34,8 +34,9 @@
 //= require downTop
 //= require count_down_timer
 //= require jivosite
-//= require jquery.inputmask
-//= require jquery.inputmask.extensions
-//= require jquery.inputmask.numeric.extensions
-//= require jquery.inputmask.date.extensions
+//= require sort_by
+// require jquery.inputmask
+// require jquery.inputmask.extensions
+// require jquery.inputmask.numeric.extensions
+// require jquery.inputmask.date.extensions
 
