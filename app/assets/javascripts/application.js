@@ -27,8 +27,8 @@
 //= require select_row_by_checkbox_in_cart_items
 //= require cart_items
 //= require orders
-//= require validation
-//= require validations/validation
+// require validation
+// require validations/validation
 //= require products
 //= require slider_content
 //= require downTop
