@@ -618,13 +618,101 @@ header {
   .list_categories{
     float: left;
     width: 100%;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    border-bottom: 1px dotted rgba(46, 47, 48, 0.5);
+    //padding-bottom: 15px;
+    //padding-top: 15px;
+    //border-bottom: 1px dotted rgba(46, 47, 48, 0.5);
     a{
       float: left;
       width: 25%;
       text-align: center;
+    }
+  }
+  .head_products{
+    float: left;
+    width: 100%;
+    height: 30px;
+    background: #c2e5e2;
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    .sort, .show, .paginate{
+      float: left;
+      width: 33%;
+      text-align: center;
+    }
+    .sort{
+      color: #837f7f;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: bold;
+      p{
+        float: left;
+        margin-left: 25px;
+        margin-top: 5px;
+      }
+      select{
+        float: left;
+        margin-top: 5px;
+        margin-left: 5px;
+        color: #080808;
+        font-size: 10px;
+      }
+    }
+    .show{
+      a{
+        margin-right: 5px;
+      }
+
+      .by_line{
+        float: left;
+        width: 17px;
+        height: 15px;
+        margin-top: 5px;
+        margin-left: 110px;
+        background-image: url("sort_icons/sort_by_line.png");
+      }
+      .by_line:hover{
+        transition: 0.1s;
+        background-image: url("sort_icons/sort_by_line_2.png");
+      }
+
+      .by_two{
+        float: left;
+        width: 19px;
+        height: 15px;
+        margin-top: 5px;
+        background-image: url("sort_icons/sort_by_two.png");
+      }
+      .by_two:hover{
+        transition: 0.1s;
+        background-image: url("sort_icons/sort_by_two_2.png");
+      }
+
+      .by_three{
+        float: left;
+        width: 16px;
+        height: 15px;
+        margin-top: 5px;
+        background-image: url("sort_icons/sort_by_three.png");
+      }
+      .by_three:hover{
+        transition: 0.1s;
+        background-image: url("sort_icons/sort_by_three_2.png");
+      }
+
+    }
+    .paginate{
+      color: #080808;
+      font-size: 10px;
+      font-style: italic;
+      font-weight: bold;
+      margin-top: 5px;
+      p{
+        float: left;
+        margin-left: 70px;
+      }
+      a{
+        float: left;
+        margin-left: 7px;
+      }
     }
   }
   .row_products{
@@ -690,7 +778,6 @@ header {
       img{
         max-height: 100px;
         max-width: 100px;
-        //width: 100%;
       }
     }
     .title{
@@ -2904,8 +2991,8 @@ header {
   opacity: .5;
   padding: 3px;
   margin-bottom: 5px;
-  width: 42px;
-  height: 42px;
+  width: 45px;
+  height: 45px;
 }
 .go-up { bottom: 60px; }
 .go-down { bottom: 10px; }
