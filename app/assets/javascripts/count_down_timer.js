@@ -59,19 +59,19 @@ function colorForDateCalendar(data){
     }
 
     for(i=0; i<3; i++){
-        if(events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == stop){
+        if(events[i] != undefined && events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == stop){
             events[i].className += ' next_stop';
         }
     }
 
     for(i=0; i<3; i++){
-        if(events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_meeting){
+        if(events[i] != undefined && events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_meeting){
             events[i].className += ' next_meeting';
         }
     }
 
     for(i=0; i<3; i++){
-        if(events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_bringing){
+        if(events[i] != undefined && events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_bringing){
             events[i].className += ' next_bringing';
         }
     }
@@ -87,7 +87,6 @@ window.onload = function() {
         success: function (data) {
             var t = JSON.parse(data);
             initializeClock('clock', t['stop']);
-            console.log(data)
             colorForDateCalendar(data);
         }
     });
