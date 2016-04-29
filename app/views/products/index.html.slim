@@ -30,6 +30,23 @@
           - @subcategories.each do |subcategory|
             = link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
       - unless @products.nil?
+        .head_products
+          .sort
+            p Сотрировка по
+            select
+              option value="Убыванию цены" Убыванию цены
+              option value="Возрастанию цены" Возрастанию цены
+          .show
+            =link_to '', '', class: 'by_line'
+            =link_to '', '', class: 'by_two'
+            =link_to '', '', class: 'by_three'
+          .paginate
+            p Показывать по
+            =link_to '20', '', class: 'index_paginate'
+            =link_to '50', '', class: 'index_paginate'
+            =link_to '100', '', class: 'index_paginate'
+            =link_to 'Все', '', class: 'index_paginate'
+
         - @products.in_groups_of(3, false) do |products|
           .row_products
             - for product in products
