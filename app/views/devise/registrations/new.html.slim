@@ -37,7 +37,7 @@
 
 .login_title
   h2
-    | Регистрация
+    | Регистрация ЫВЫВА
 .login_form
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
@@ -45,12 +45,12 @@
       .field
         = f.label :Имя, class: 'label_login'
         br
-        = f.text_field :name, class: 'form-control', autofocus: true
+        = f.text_field :name, class: 'form-control crafter_registration', autofocus: true
 
       .field
         = f.label :Номер_телефона, class: 'label_login'
         br
-        = f.text_field :phone, class: 'form-control', autofocus: true
+        = f.text_field :phone, class: 'form-control crafter_registration', autofocus: true
 
       .field
         = f.label :email, class: 'label_login'
