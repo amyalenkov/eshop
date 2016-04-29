@@ -87,6 +87,7 @@ window.onload = function() {
         success: function (data) {
             var t = JSON.parse(data);
             initializeClock('clock', t['stop']);
+            console.log(data)
             colorForDateCalendar(data);
         }
     });

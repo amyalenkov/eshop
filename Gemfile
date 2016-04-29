@@ -82,3 +82,5 @@ gem 'iso_country_codes'
 
 #simple_calendar
 gem 'simple_calendar', '~> 2.0'
+
+gem 'just-datetime-picker'
