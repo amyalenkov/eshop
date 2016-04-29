@@ -30,63 +30,8 @@
           - @subcategories.each do |subcategory|
             = link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
       - unless @products.nil?
-        .head_products
-          .sort
-            p Сотрировка по
-            select
-              option value="Убыванию цены" Убыванию цены
-              option value="Возрастанию цены" Возрастанию цены
-          .show
-            =link_to '', '', class: 'by_line'
-            =link_to '', '', class: 'by_two'
-            =link_to '', '', class: 'by_three'
-          .paginate
-            p Показывать по
-            =link_to '20', '', class: 'index_paginate'
-            =link_to '50', '', class: 'index_paginate'
-            =link_to '100', '', class: 'index_paginate'
-            =link_to 'Все', '', class: 'index_paginate'
 
-        - @products.in_groups_of(3, false) do |products|
-          .row_products
-            - for product in products
-              - product_image = product.image+'0/700.jpg'
-              - product_name = product.name.gsub('&quot;', '')
-              - product_material = product.materials_text
-              - product_size = product.size_text
-              - product_stock_availability = product.balance_text
-              - product_id = product.id
-              - product_price = product.get_price
-              - new_product_price = product.get_new_price
-              - first_part_new_price = new_product_price.to_s.scan( /(\w+)\./).last.first
-              - second_part_new_price = new_product_price.to_s.scan( /(\.\w+)/).last.first
-              - country = IsoCountryCodes.find(product.country_id)
-
-              .product
-                .image
-                  a href="#{product_path(product_id)}"
-                    = image_tag product_image
-                .title
-                  = link_to product_name, product_path(product_id)
-                  p Материал: <b>#{product_material}</b>
-                  p Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
-                .sale
-                  = product_price
-                  span Бел.руб.
-                  br
-                  .second_part_new_price
-                    = first_part_new_price
-                    span #{second_part_new_price}р
-                .info
-                  .params
-                    p
-                      | Размер: <b>#{product_size}</b>
-                    p
-                      | Артикул: <b>#{product_id}</b>
-                    p
-                      | На складе: <b>#{product_stock_availability}</b>
-                  .cart
-                    .add_in_cart_index id="#{product_id}"
-                      = render 'products/add_in_cart', product: product
+        = render 'products/sort_by'
+        = render 'products/show_products_list'
 
         =paginate @products

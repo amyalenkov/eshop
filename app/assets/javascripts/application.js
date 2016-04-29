@@ -33,4 +33,5 @@
 //= require downTop
 //= require count_down_timer
 //= require jivosite
+//= require sort_by
 
