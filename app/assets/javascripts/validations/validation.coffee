@@ -10,4 +10,4 @@ jQuery ->
     login_user.check_field(@.name)
     login_user.validate_login_user_form()
 
-  $("input[name=user[phone]]").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+  $("#user_phone").inputmask("+375-99-9999999");

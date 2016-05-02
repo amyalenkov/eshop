@@ -27,16 +27,16 @@
 //= require select_row_by_checkbox_in_cart_items
 //= require cart_items
 //= require orders
-// require validation
-// require validations/validation
+//= require validation
+//= require validations/validation
 //= require products
 //= require slider_content
 //= require downTop
 //= require count_down_timer
 //= require jivosite
 //= require sort_by
-// require jquery.inputmask
-// require jquery.inputmask.extensions
-// require jquery.inputmask.numeric.extensions
-// require jquery.inputmask.date.extensions
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.date.extensions
 

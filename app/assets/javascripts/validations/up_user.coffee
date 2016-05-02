@@ -14,6 +14,10 @@ class @UpUser
   check_field: (field_name) ->
     @utils.check_field(field_name)
 
+$.validator.addMethod "LowserCase", ((value, element, regexp) ->
+  return this.optional(element) || /\+375-29-\d{7}/.test(value);
+), "Password should have atleast one lowercase letter"
+
 init_validation_for_registered_user = () ->
   $('.new_user').validate({
     rules:
@@ -24,9 +28,7 @@ init_validation_for_registered_user = () ->
         maxlength: 30
       'user[phone]':
         required: true,
-#        matches: "[0-9]+",
-        minlength:9,
-        maxlength:9
+#        LowserCase: true,
       'user[password]':
         required: true,
         minlength: 8
@@ -42,9 +44,7 @@ init_validation_for_registered_user = () ->
         maxlength: 'Максимальная длина имени 30 символов'
       'user[phone]':
         required: 'Введите номер телефона'
-        matches: 'Номер телефона должен содержать только цифры'
-        minlength: 'Номер телефона должен содержать 9 цифр'
-        maxlength: 'Номер телефона должен содержать 9 цифр'
+        LowserCase: 'Введите корректный номер телефона'
       'user[password]':
         required: 'Для регистрации необходим пароль'
         minlength: 'Минимальная длина пароля 8 символов'
