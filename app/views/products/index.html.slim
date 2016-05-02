@@ -29,9 +29,6 @@
         .list_categories
           - @subcategories.each do |subcategory|
             = link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
-      - unless @products.nil?
-
-        = render 'products/sort_by'
+      = render 'products/sort_by'
+      .show_products_list
         = render 'products/show_products_list'
-
-        =paginate @products

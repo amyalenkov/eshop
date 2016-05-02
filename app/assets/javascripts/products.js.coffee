@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
 
+  $('#sorted_by').on 'change', ->
+    $.ajax
+      type: 'POST'
+      url: '/products/sorted_by'
+      data:
+        sorted_by: @.value
+        subcategoryid: $(@).attr('subcategoryid')
+
   $('#search').on 'keyup', ->
     search_string = @.value
     if search_string.length >= 3

@@ -1,7 +1,7 @@
 .head_products
   .sort
     p Сотрировка по
-    select
+    select id="sorted_by" subcategoryid="#{@subcategory.id}"
       option value="Убыванию цены" Убыванию цены
       option value="Возрастанию цены" Возрастанию цены
       option value="Алфавиту" Алфавиту

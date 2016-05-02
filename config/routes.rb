@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       post 'search_ajax'
       get 'search'
+      post 'sorted_by'
     end
   end
   resources :cart_items, only: [:index, :create, :destroy, :update] do

@@ -7,16 +7,8 @@ class ProductsController < ApplicationController
       @subcategories = @subcategory.children
     elsif request.url.to_s.include? '/subcategory/'
       @subcategory = Category.find_by_id params[:name]
-      @subcategories = @subcategory.children.order(:name)
-      if @subcategory.is_leaf?
-        @products = Product.where(subcategory_id: @subcategory.sid).page(params[:page])
-      else
-        all_sid = Array.new
-        @subcategory.descendants.where(is_leaf: true).each do |sub|
-          all_sid.push sub.sid
-        end
-        @products = Product.where(subcategory_id: all_sid).page(params[:page])
-      end
+      get_products @subcategory
+      @products = @products.order(:price)
     else
       if !params[:is_hit].nil?
         @products = Product.where(is_hit: true).page(params[:page])
@@ -51,30 +43,35 @@ class ProductsController < ApplicationController
                                               :page => params[:page], :per_page => 25
   end
 
+  def sorted_by
+    subcategory = Category.find_by_id params[:subcategoryid]
+    get_products subcategory
+    if params[:sorted_by] == 'Алфавиту'
+      @products = @products.order(:name)
+    elsif params[:sorted_by] == 'Возрастанию цены'
+      @products = @products.order(:price)
+    elsif params[:sorted_by] == 'Убыванию цены'
+      @products = @products.order(price: :desc)
+    end
+  end
+
   private
+
+  def get_products subcategory
+    @subcategories = subcategory.children.order(:name)
+    if subcategory.is_leaf?
+      @products = Product.where(subcategory_id: subcategory.sid).page(params[:page])
+    else
+      all_sid = Array.new
+      subcategory.descendants.where(is_leaf: true).each do |sub|
+        all_sid.push sub.sid
+      end
+      @products = Product.where(subcategory_id: all_sid).page(params[:page])
+    end
+  end
 
   def calendar_dates
     @meetings_for_calendar = CalendarDate.all
-  end
-
-  def get_subs id
-    arr = Array.new
-    get_subs_requrs id, arr
-  end
-  def get_subs_requrs id, arr
-    new_arr = get_subs_by_id id
-    first_arr = new_arr
-    unless new_arr.size == 0
-      (arr << new_arr).flatten!
-      new_arr.each do |sub|
-        get_subs_requrs sub.id, arr
-      end
-    end
-    return arr, first_arr
-  end
-
-  def get_subs_by_id id
-    Subcategory.where :category_id => id
   end
 
 end
