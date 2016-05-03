@@ -11,11 +11,12 @@ class ProductsController < ApplicationController
       @products = @products.order(:price)
     else
       if !params[:is_hit].nil?
-        @products = Product.where(is_hit: true).page(params[:page])
+        @products = Product.where(is_hit: true).order(:price).page(params[:page])
       elsif !params[:min_sum].nil?
         products_for_range params[:min_sum], params[:max_sum]
       elsif !params[:news].nil?
-        @products = Product.where(new_type_id: 1).page(params[:page])
+        @products = Product.where(new_type_id: 1).order(:price).page(params[:page])
+        @products = @products.order(:price)
       else
         @products = Product.all.page(params[:page])
       end
@@ -62,12 +63,12 @@ class ProductsController < ApplicationController
   private
 
   def products_for_range param_min_sum, param_max_sum
-    course = Configure.find_by_name('course').value.to_i
-    markup = Configure.find_by_name('markup').value.to_i
-    min = param_min_sum.to_i
-    max = param_max_sum.to_i
-    min_sum = (min/ course) * ((100 + markup)/100)
-    max_sum = (max/ course) * ((100 + markup)/100)
+    course = Configure.find_by_name('course').value.to_f
+    markup = Configure.find_by_name('markup').value.to_f
+    min = param_min_sum.to_f
+    max = param_max_sum.to_f
+    min_sum = (min/ course) * ((100 - markup + 5)/100)
+    max_sum = (max/ course) * ((100 - markup)/100)
     @products = Product.where(price: min_sum..max_sum).page(params[:page])
   end
 
