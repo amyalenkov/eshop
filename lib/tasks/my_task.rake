@@ -2,14 +2,14 @@ namespace :db do
 
   desc 'general task for prepare db'
   task :prepare_db => [
-      :delete_all_data_from_db,
-                       :load_categories
-                       # :load_products
+      # :delete_all_data_from_db,
+      #                  :load_categories
+                       :load_products
   ]
 
   desc 'delete all data from tables Subcategory,Category,Product,ProductParam,ProductPicture'
   task :delete_all_data_from_db => :environment do
-    [Category].each(&:delete_all)
+    # [Category].each(&:delete_all)
     # [Product].each(&:delete_all)
     # [Subcategory, Category].each(&:delete_all)
     # [Subcategory, Category, Product, ProductParam, ProductPicture].each(&:delete_all)
@@ -28,7 +28,7 @@ namespace :db do
   desc 'load_products'
   task :load_products => :environment do
     require "#{Rails.root}/lib/api/product"
-    category = Category.find_by_sid 1913
+    category = Category.find_by_sid 136
     count = 0
     category.descendants.where(is_leaf: true).each do |subcategory|
       p count.to_s + ' - ' + subcategory.sid.to_s
@@ -47,7 +47,8 @@ namespace :db do
                          k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
                          name: product['name'], photo_count: product['photo_count'], price: product['price'],
                          size_text: product['size_text'], trademark_id: product['trademark_id'], unit: product['unit'],
-                         description: product['description'], image: product['photo']['base_url']
+                         description: product['description'], image: product['photo']['base_url'],
+                         new_type_id: product['new_type_id']
 
           )
         end
