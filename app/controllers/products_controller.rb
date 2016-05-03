@@ -13,13 +13,9 @@ class ProductsController < ApplicationController
       if !params[:is_hit].nil?
         @products = Product.where(is_hit: true).page(params[:page])
       elsif !params[:min_sum].nil?
-        course = Configure.find_by_name('course').value.to_i
-        markup = Configure.find_by_name('markup').value.to_i
-        min = params[:min_sum].to_i
-        max = params[:max_sum].to_i
-        min_sum = (min/ course) * ((100 + markup)/100)
-        max_sum = (max/ course) * ((100 + markup)/100)
-        @products = Product.where(price: min_sum..max_sum).page(params[:page])
+        products_for_range params[:min_sum], params[:max_sum]
+      elsif !params[:news].nil?
+        @products = Product.where(new_type_id: 1).page(params[:page])
       else
         @products = Product.all.page(params[:page])
       end
@@ -44,8 +40,16 @@ class ProductsController < ApplicationController
   end
 
   def sorted_by
-    subcategory = Category.find_by_id params[:subcategoryid]
-    get_products subcategory
+    if  !params[:subcategoryid].nil?
+      subcategory = Category.find_by_id params[:subcategoryid]
+      get_products subcategory
+    elsif !params[:is_hit].nil?
+      @products = Product.where(is_hit: true).page(params[:page])
+    elsif !params[:news].nil?
+      @products = Product.where(new_type_id: 1).page(params[:page])
+    elsif !params[:min_sum].nil?
+      products_for_range params[:min_sum], params[:max_sum]
+    end
     if params[:sorted_by] == 'Алфавиту'
       @products = @products.order(:name)
     elsif params[:sorted_by] == 'Возрастанию цены'
@@ -56,6 +60,16 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def products_for_range param_min_sum, param_max_sum
+    course = Configure.find_by_name('course').value.to_i
+    markup = Configure.find_by_name('markup').value.to_i
+    min = param_min_sum.to_i
+    max = param_max_sum.to_i
+    min_sum = (min/ course) * ((100 + markup)/100)
+    max_sum = (max/ course) * ((100 + markup)/100)
+    @products = Product.where(price: min_sum..max_sum).page(params[:page])
+  end
 
   def get_products subcategory
     @subcategories = subcategory.children.order(:name)

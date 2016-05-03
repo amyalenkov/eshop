@@ -13,7 +13,7 @@
       .block_links.table_border
         = link_to 'Каталог', '/'
         br
-        = link_to 'Новинки'
+        = link_to 'Новинки',  products_path(news: true)
         br
         = link_to 'Хиты продаж', products_path(is_hit: true)
         br

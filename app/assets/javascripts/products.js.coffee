@@ -10,6 +10,10 @@ $ ->
       data:
         sorted_by: @.value
         subcategoryid: $(@).attr('subcategoryid')
+        is_hit: $(@).attr('is_hit')
+        min_sum: $(@).attr('min_sum')
+        max_sum: $(@).attr('max_sum')
+        news: $(@).attr('news')
 
   $('#search').on 'keyup', ->
     search_string = @.value

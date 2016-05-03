@@ -1,10 +1,26 @@
 .head_products
   .sort
-    p Сотрировка по
-    select id="sorted_by" subcategoryid="#{@subcategory.id}"
-      option value="Убыванию цены" Убыванию цены
-      option value="Возрастанию цены" Возрастанию цены
-      option value="Алфавиту" Алфавиту
+    -if !@subcategory.nil?
+      p Сотрировка по
+      select id="sorted_by" subcategoryid="#{@subcategory.id}"
+        option value="Убыванию цены" Убыванию цены
+        option value="Возрастанию цены" Возрастанию цены
+        option value="Алфавиту" Алфавиту
+    -elsif !params[:is_hit].nil?
+      select id="sorted_by" is_hit="true"
+        option value="Убыванию цены" Убыванию цены
+        option value="Возрастанию цены" Возрастанию цены
+        option value="Алфавиту" Алфавиту
+    -elsif !params[:min_sum].nil?
+      select id="sorted_by" min_sum="#{params[:min_sum]}" max_sum="#{params[:max_sum]}"
+        option value="Убыванию цены" Убыванию цены
+        option value="Возрастанию цены" Возрастанию цены
+        option value="Алфавиту" Алфавиту
+    -elsif !params[:news].nil?
+      select id="sorted_by" news="true"
+        option value="Убыванию цены" Убыванию цены
+        option value="Возрастанию цены" Возрастанию цены
+        option value="Алфавиту" Алфавиту
   .show
     =link_to '', '', class: 'by_line', onclick: "sortBy('by_line')"
     =link_to '', '', class: 'by_two', onclick: "sortBy('by_two')"
