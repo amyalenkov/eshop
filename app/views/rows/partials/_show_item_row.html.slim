@@ -41,9 +41,9 @@
               = render 'orders/row_info', row: row
           .column_comment
             .all_comments
-              = render 'all_comments_for_row', row: row
+              = render 'rows/partials/all_comments_for_row', row: row
             - if user_signed_in?
               .add_comment
-                = render 'add_comment_for_row', row: row
+                = render 'rows/partials/add_comment_for_row', row: row
 
     /.modal-footer.pull-left
