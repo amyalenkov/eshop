@@ -1,34 +1,7 @@
 .container-fluid
   .row
-    /.col-xs-2.col-sm-2.col-md-2.col-lg-2.calendar
-      h5
-        | Ближайшие встречи
-    /.col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12.cart.full_width
-      .tabs
-        .menu1
-          br#all
-          br#ok
-          br#partially
-          br#bad
-          br#your
-          a href="#all" class="all" Создано рядов (#{@rows.size})
-          a href="#ok" class="full" Собранных рядов (#{@full_rows.size})
-          a href="#partially" class="not_full" Частично собранных (#{@more_part_not_full_rows.size})
-          a href="#bad" class="not_full_after_bill" Несобранных рядов (#{@less_part_not_full_rows.size})
-          a href="#your" class="your" Ваших рядов (#{@user_rows.size})
-          .div
-            - @rows.each do |row|
-              = render 'rows/row_item', row: row, index: 'all'
-          .div
-            - @full_rows.each do |row|
-              = render 'rows/row_item', row: row, index: 'full'
-          .div
-            - @more_part_not_full_rows.each do |row|
-              = render 'rows/row_item', row: row, index: 'more_part'
-          .div
-            - @less_part_not_full_rows.each do |row|
-              = render 'rows/row_item', row: row, index: 'less_part'
-          .div
-            - @user_rows.each do |row|
-              = render 'rows/row_item', row: row, index: 'user_row'
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.calendar
+      =render 'rows/partials/list_categories_for_row'
+
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart.not_full_width
+      =render 'rows/partials/tabs_for_rows'

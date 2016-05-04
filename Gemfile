@@ -86,3 +86,5 @@ gem 'simple_calendar', '~> 2.0'
 gem 'just-datetime-picker'
 
 gem 'jquery-inputmask-rails'
+
+gem 'pace-rails'

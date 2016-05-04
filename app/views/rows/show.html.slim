@@ -24,9 +24,9 @@
                     td.delete = link_to 'x', @row, remote: true, method: :delete, class: 'delete'
                     - if user_signed_in?
               .add_comment
-                = render 'add_comment_for_row', row: @row
+                = render 'rows/partials/add_comment_for_row', row: @row
               .all_comments
-                = render 'all_comments_for_row', row: @row
+                = render 'rows/partials/all_comments_for_row', row: @row
 
     .modal-footer
       button [type="submit" class="btn btn-success pull-right go"] Заказать звонок
