@@ -57,6 +57,8 @@ class ProductsController < ApplicationController
       @products = @products.order(:price)
     elsif params[:sorted_by] == 'Убыванию цены'
       @products = @products.order(price: :desc)
+    elsif params[:sorted_by] == 'Артикулу'
+      @products = @products.order(:sid)
     end
   end
 

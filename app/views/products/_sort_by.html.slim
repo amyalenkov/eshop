@@ -6,21 +6,25 @@
         option value="Убыванию цены" Убыванию цены
         option value="Возрастанию цены" Возрастанию цены
         option value="Алфавиту" Алфавиту
+        option value="Артикулу" Артикулу
     -elsif !params[:is_hit].nil?
       select id="sorted_by" is_hit="true"
         option value="Убыванию цены" Убыванию цены
         option value="Возрастанию цены" Возрастанию цены
         option value="Алфавиту" Алфавиту
+        option value="Артикулу" Артикулу
     -elsif !params[:min_sum].nil?
       select id="sorted_by" min_sum="#{params[:min_sum]}" max_sum="#{params[:max_sum]}"
         option value="Убыванию цены" Убыванию цены
         option value="Возрастанию цены" Возрастанию цены
         option value="Алфавиту" Алфавиту
+        option value="Артикулу" Артикулу
     -elsif !params[:news].nil?
       select id="sorted_by" news="true"
         option value="Убыванию цены" Убыванию цены
         option value="Возрастанию цены" Возрастанию цены
         option value="Алфавиту" Алфавиту
+        option value="Артикулу" Артикулу
   .show
     =link_to '', '', class: 'by_line', onclick: "sortBy('by_line')"
     =link_to '', '', class: 'by_two', onclick: "sortBy('by_two')"
