@@ -4,7 +4,7 @@
       .review
         .title
           p отзыв дня
-          img
+          =image_tag @img_for_comment_of_day
         .body
           p #{@comment_of_day}
       = render 'layouts/partials/calendar'

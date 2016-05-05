@@ -3,7 +3,8 @@ class StaticPagesController < ApplicationController
 
   def index
     get_categories
-    @comment_of_day = Configure.find_by_name('comment_of_day').value
+    @comment_of_day = Additional.find_by_name('comment_of_day').value
+    @img_for_comment_of_day = Additional.find_by_name('comment_url').value
     calendar_dates
   end
 
