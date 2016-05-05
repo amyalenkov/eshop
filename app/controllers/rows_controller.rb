@@ -3,25 +3,13 @@ class RowsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rows = Row.where(state: [Row.states[:full], Row.states[:not_full]])
-    @full_rows = Row.where(state: Row.states[:full])
-    not_full_rows = Row.where(state: Row.states[:not_full])
-    @more_part_not_full_rows = Array.new
-    @less_part_not_full_rows = Array.new
-    @user_rows = Array.new
-    not_full_rows.each do |row|
-      if row.current_count > row.product.get_min_sale
-        @more_part_not_full_rows.push row
-      else
-        @less_part_not_full_rows.push row
-      end
+    get_all_rows
+    @list_categories = Array.new
+    @rows.each do |row|
+      cat = Category.find_by_sid row.product.subcategory_id
+      @list_categories.push cat.root
     end
-    current_order = current_user.get_current_order
-    unless current_order.nil?
-      current_order.order_items.each do |order_item|
-        @user_rows.push order_item.row
-      end
-    end
+    @list_categories.uniq!
   end
 
   def show
@@ -132,6 +120,28 @@ class RowsController < ApplicationController
   end
 
   private
+
+  def get_all_rows
+    @rows = Row.where(state: [Row.states[:full], Row.states[:not_full]])
+    @full_rows = Row.where(state: Row.states[:full])
+    not_full_rows = Row.where(state: Row.states[:not_full])
+    @more_part_not_full_rows = Array.new
+    @less_part_not_full_rows = Array.new
+    @user_rows = Array.new
+    not_full_rows.each do |row|
+      if row.current_count > row.product.get_min_sale
+        @more_part_not_full_rows.push row
+      else
+        @less_part_not_full_rows.push row
+      end
+    end
+    current_order = current_user.get_current_order
+    unless current_order.nil?
+      current_order.order_items.each do |order_item|
+        @user_rows.push order_item.row
+      end
+    end
+  end
 
   def set_bill_to_order order_items
     order_items.each do |order_item|

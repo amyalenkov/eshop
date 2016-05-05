@@ -1,3 +1,4 @@
 h5 Ваши ряды в категориях
-= check_box_tag 'all-categories'
-= label_tag 'all-categories', 'Бижутерия'
+- @list_categories.each do |category|
+  = check_box_tag 'all-categories', "#{category.sid}", true, class: 'check_category'
+  = label_tag 'all-categories', "#{category.name}"
