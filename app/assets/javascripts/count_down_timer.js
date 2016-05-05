@@ -16,15 +16,22 @@ function getTimeRemaining(endtime){
 function initializeClock(idElem, endtime){
     var clock = document.getElementById(idElem);
     var daysSpan = document.getElementsByClassName('days');
-    var hoursSpan = clock.querySelector('.hours');
-    var minutesSpan = clock.querySelector('.minutes');
+    var hoursSpan;
+    var minutesSpan;
+    if(clock !=null){
+        hoursSpan = clock.querySelector('.hours');
+    }
+    if(clock !=null){
+        minutesSpan = clock.querySelector('.minutes');
+    }
 
     function updateClock(){
         var t = getTimeRemaining(endtime);
+
         clock.innerHTML =
-            '<div class="blockTimer"><span>'+t.days+' : '+'</span><br>'+'<span class="desc">Дней</span></div>'+
-            '<div class="blockTimer"><span>'+t.hours+' : '+'</span><br>'+'<span class="desc">Часов</span></div>' +
-            '<div class="blockTimer"><span>'+t.minutes+'</span><br>'+'<span class="desc">Минут</span></div>';
+            '<div class="blockTimer"><span>' + t.days + ' : ' + '</span><br>' + '<span class="desc">Дней</span></div>' +
+            '<div class="blockTimer"><span>' + t.hours + ' : ' + '</span><br>' + '<span class="desc">Часов</span></div>' +
+            '<div class="blockTimer"><span>' + t.minutes + '</span><br>' + '<span class="desc">Минут</span></div>';
 
         daysSpan.innerHTML = t.days;
         hoursSpan.innerHTML = t.hours;
