@@ -21,23 +21,38 @@
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
       .title
         = @product.name.gsub('&quot;', '')
+
         - if @product.box_size_text==nil
           - box_size_text='Не достаточно данных'
         - else box_size_text=@product.box_size_text
+
         - product_id=@product.id
-        - product_balance_text=@product.balance_text
         - product_country_id=Country.find_by_alpha2(IsoCountryCodes.find(@product.country_id).alpha2).name
-        - product_size_text=@product.size_text
-        - product_materials_text=@product.materials_text
+
+        -if @product.balance_text==nil
+          - product_balance_text='Не достаточно данных'
+        -else product_balance_text=@product.balance_text
+
+        -if @product.size_text==nil || @product.size_text=='f'
+          - product_size_text='Не достаточно данных'
+        -else product_size_text=@product.size_text
+
+        -if @product.materials_text==nil
+          - product_materials_text='Не достаточно данных'
+        -else product_materials_text=@product.materials_text
+
         -if @product.box_type==nil
           - product_box_type='Не достаточно данных'
-        -else
-          - product_box_type=@product.box_type
+        -else product_box_type=@product.box_type
+
         -if @product.certificate_type==nil
           - product_certificate_type='Не достаточно данных'
-        -else
-          - product_certificate_type=@product.certificate_type
-        - product_weight=@product.weight
+        -else product_certificate_type=@product.certificate_type
+
+        -if @product.weight==nil
+          - product_weight='Не достаточно данных'
+        -else product_weight=@product.weight
+
       .info
         dl
           dt <i>Артикул</i>:
@@ -57,7 +72,7 @@
           dt <i>Сертификат:</i>
           dd <i><b>#{product_certificate_type}</b></i>
           dt <i>Вес:</i>
-          dd <i><b>#{@product.weight}</b></i>
+          dd <i><b>#{product_weight} г</b></i>
 
       .add_in_cart id="show_add_in_cart"
         = render 'products/add_in_cart_from_show'
@@ -88,6 +103,10 @@
               - product_id = product.id
               - product_price = product.get_price
 
+              - new_product_price = product.get_new_price
+              - first_part_new_price = new_product_price.to_s.scan(/(\w+)\./).last.first
+              - second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
+
 
               .product.slide
                 .image
@@ -98,6 +117,11 @@
                 .info
                   .sale
                     = product_price
+                    br
+                    .second_part_new_price
+                      = first_part_new_price
+                      span #{second_part_new_price} р
+
                   .cart
                     .add_in_cart_index id="#{product_id}"
                       = render 'products/add_in_cart', product: product

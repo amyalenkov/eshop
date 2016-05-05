@@ -1,8 +1,16 @@
 - product = @product if product.nil?
+- new_product_price = product.get_new_price
+- first_part_new_price = new_product_price.to_s.scan(/(\w+)\./).last.first
+- second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
 - if user_signed_in?
   -if current_user.product_in_cart?(product)
     .price
-      | <i>#{product.get_price}</i>
+      .old_price
+        i #{product.get_price} р
+      .new_price
+        .second_part_new_price
+          = first_part_new_price
+          span #{second_part_new_price} р
     .favourites
       - if user_signed_in?
         .favourite id="for_favorite_#{product.id}"
@@ -14,13 +22,18 @@
           - k_min = 'по' if product.k_min?
           - k_min = 'мин.' unless product.k_min?
           p
-            | <i>#{k_min} #{product.min_qty} шт.</i>
+            i #{k_min} #{product.min_qty} шт.
         = image_tag ("st.png")
         .ok
           = link_to image_tag('ok.png'), cart_items_path
   -else
     .price
-      | <i>#{product.get_price}</i>
+      .old_price
+        i #{product.get_price} р
+      .new_price
+        .second_part_new_price
+          = first_part_new_price
+          span #{second_part_new_price} р
     .favourites
       - if user_signed_in?
         .favourite id="for_favorite_#{product.id}"
