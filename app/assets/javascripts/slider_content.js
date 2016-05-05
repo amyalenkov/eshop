@@ -17,8 +17,8 @@ $(document).ready(function(){
     $('#slideInner').css('width', slideWidth * numberOfSlides);
     // Вставляем элементы контроля в DOM
     $('#slideshow')
-        .prepend('<span class="control" id="leftControl">Move left</span>')
-        .append('<span class="control" id="rightControl">Move right</span>');
+        .prepend('<span class="control" id="leftControl"></span>')
+        .append('<span class="control" id="rightControl"></span>');
     // Прячем правую стрелку при загрузке скрипта
     manageControls(currentPosition);
     // Отлавливаем клик на класс .controls
