@@ -44,7 +44,7 @@ namespace :db do
           Product.create(subcategory_id: subcategory_id, sid: product['sid'],
                          country_id: product['country_id'], is_hit: product['is_hit'], weight: product['weight'],
                          color_id: product['color_id'], balance_text: product['balance_text'], box_size_text: product['box_size_text'],
-                         k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
+                         box_type: product['box_type'],k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
                          name: product['name'], photo_count: product['photo_count'], price: product['price'],
                          size_text: product['size_text'], trademark_id: product['trademark_id'], unit: product['unit'],
                          description: product['description'], image: product['photo']['base_url'],
