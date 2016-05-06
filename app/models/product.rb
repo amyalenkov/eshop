@@ -30,6 +30,9 @@ class Product < ActiveRecord::Base
     first_part = str_result_price.gsub( /.{3}$/, '' )
     if second_part == 0
       second_part = '000'
+    elsif second_part == 1000
+      second_part = '000'
+      first_part = (first_part.to_i + 1).to_s
     end
     first_part + ' ' + second_part.to_s
   end
