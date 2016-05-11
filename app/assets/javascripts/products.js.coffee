@@ -41,7 +41,8 @@ live_search = (data,search_request) ->
         "href":"/products/#{data[index].id}",
         "class": "a_class"
       })
-#      add_image_tag(li, data[index].avatar.url)
+      console.log(data[index].image)
+      add_image_tag(li, data[index].image+"0/700.jpg".replace("/assets/", ""))
       create_new_li(li, 'name', data[index].name)
 #      create_new_li(li, 'description_search', data[index].description)
 #      create_new_li(li, 'address', data[index].address)
@@ -66,6 +67,6 @@ create_new_li = (li, div_class_name, data) ->
 
 add_image_tag = (li, image_src) ->
   image = $('<img/>', {
-    "src": "/assets/" + image_src,
+    "src": image_src,
     "class": "company_logo"
   }).appendTo(li)
