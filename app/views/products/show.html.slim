@@ -26,7 +26,7 @@
           - box_size_text='Не достаточно данных'
         - else box_size_text=@product.box_size_text
 
-        - product_id=@product.id
+        - product_sid=@product.sid
         - product_country_id=Country.find_by_alpha2(IsoCountryCodes.find(@product.country_id).alpha2).name
 
         -if @product.balance_text==nil
@@ -56,7 +56,7 @@
       .info
         dl
           dt <i>Артикул</i>:
-          dd <i><b>#{product_id}</b></i>
+          dd <i><b>#{product_sid}</b></i>
           dt <i>Остаток на складе:</i>
           dd <i><b>#{product_balance_text}</b></i>
           dt <i>Страна-производитель:</i>
@@ -100,7 +100,7 @@
               -else product_image = product_picture
 
               - product_name = product.name.gsub('&quot;', '')
-              - product_id = product.id
+              - product_sid = product.sid
               - product_price = product.get_price
 
               - new_product_price = product.get_new_price
@@ -110,10 +110,10 @@
 
               .product.slide
                 .image
-                  a href="#{product_path(product_id)}"
+                  a href="#{product_path(product)}"
                     = image_tag (product_image)
                 .title
-                  = link_to product_name, product_path(product_id)
+                  = link_to product_name, product_path(product)
                 .info
                   .sale
                     = product_price
@@ -123,5 +123,5 @@
                       span #{second_part_new_price} р
 
                   .cart
-                    .add_in_cart_index id="#{product_id}"
+                    .add_in_cart_index id="#{product}"
                       = render 'products/add_in_cart', product: product
