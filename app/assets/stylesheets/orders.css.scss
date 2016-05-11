@@ -1,3 +1,205 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*ORDERS*/
+.orders{
+  padding: 0;
+  .table thead{
+    border: 2px solid #DDDDDD;
+    background: #edf8f7;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+    color: #837f7f;
+  }
+  .table th{
+    text-align: center;
+  }
+  .table td{
+    text-align: center;
+  }
+  .table .title a{
+    color: #057e89;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .table .text{
+    color: #837f7f;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .table .date_on, .date_off{
+    color: #19760a;
+    width: 100%;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .table .date_off{
+    color: #dc2921;
+  }
+  h4{
+    font-size: 16px;
+    color: #f2a31a;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .product_cart{
+    float: left;
+    width: 285px;
+    .description_cart{
+      float: left;
+      width: 205px;
+      .title{
+        color: #057e89;
+        padding-bottom: 12px;
+        line-height: 13px;
+      }
+      p{
+        font-size: 12px;
+        color: #515151;
+        line-height: 5px;
+      }
+      textarea{
+        resize: none;
+        height: 22px;
+        width: 100%;
+        margin-top: -1px;
+        z-index: 5;
+        float: left;
+      }
+      .ok_submit{
+        float: right;
+        background: url("ok.png");
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        border: none;
+        background-size: cover;
+        margin-left: 184px;
+        span{
+          visibility: hidden;
+        }
+        span:hover{
+          visibility: visible;
+        }
+      }
+    }
+    .image_cart{
+      width: 75px;
+      float: left;
+      text-align: center;
+      padding-right: 10px;
+      img{
+        max-height: 65px;
+      }
+    }
+  }
+  .row{
+    text-align: center;
+    .progress{
+      margin-bottom: 5px !important;
+      width: 80%;
+      margin-left: 10px;
+    }
+    p{
+      font-size: 10px;
+      color: #000;
+    }
+    .new_row{
+      text-decoration: none;
+      font-style: italic;
+      padding: 5px 10px;
+      background: #ffff00;
+    }
+    a{
+
+    }
+  }
+  .row_cart{
+    text-align: center;
+  }
+  .price, .amount{
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+  }
+  .total_amount, .total_count{
+    width: 220px;
+    right: 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    color: #000000;
+    text-transform: uppercase;
+    span{
+      color: #f2a31a;
+    }
+  }
+  .total_count {
+    font-size: 14px;
+    color: #515151;
+    text-transform: none;
+  }
+  .info{
+    .total_amount{
+      float: left;
+      width: 40%;
+      font-size: 16px;
+      color: #000;
+      font-weight: bold;
+      font-style: italic;
+      margin-bottom: 60px;
+    }
+    .total_by_cart{
+      float: right;
+      width: 60%;
+      margin-bottom: 60px;
+      p {
+        font-style: italic;
+        font-weight: bold;
+        font-size: 14px;
+        color: #515151;
+        line-height: 15px;
+      }
+      .total_items, .total_amount_by_cart{
+        float: left;
+        width: 50%;
+      }
+    }
+    p{
+      font-size: 15px;
+      color: #000;
+    }
+    .description{
+      width: 250px;
+      .info_1, .info_2, .info_3{
+        float: left;
+      }
+      .info_1 span, .info_2 span, .info_3 span{
+        float: left;
+        width: 50px;
+        height: 22px;
+        margin-right: 10px;
+      }
+      .info_1 span{
+        background: #6fbaa7;
+      }
+      .info_2 span{
+        background: #798dbd;
+      }
+      .info_3 span{
+        background: #a773bc;
+      }
+    }
+  }
+
+}
+/*END_ORDERS*/
