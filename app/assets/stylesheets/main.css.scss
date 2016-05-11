@@ -790,8 +790,12 @@ header {
       a {
         float: left;
         color: #057e89;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         line-height: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
       p{
         line-height: 10px;
@@ -1177,58 +1181,6 @@ header {
 }
 /*END_CATALOG_INDEX*/
 
-
-/*CALENDAR*/
-.calendar{
-}
-/*END_CALENDAR*/
-
-
-/*SEARCH*/
-.search_crafter_title{
-  float: left;
-  width: 25%;
-  border-right: solid 1px #d8d8d8;
-  padding: 10px;
-  .search_criterion{
-    width: 100%;
-    float: left;
-    .subcategories_title{
-      float: left;
-      width: 100%;
-      font-size: 16px;
-      font-weight: 100;
-      padding-top: 5px;
-      padding-bottom: 5px;
-    }
-    .categories, label{
-      float: right;
-      width: 100%;
-    }
-    .subcategories, label{
-      float: right;
-      width: 90%;
-    }
-    .city, label{
-      float: right;
-      width: 90%;
-    }
-    .checkbox{
-      float: left;
-    }
-  }
-}
-.search_crafter_result{
-  float: left;
-  width: 65%;
-}
-
-/*END_SEARCH*/
-
-/*CONTENT*/
-
-/*END_CONTENT*/
-
 /*SHOW_USER*/
 .avatar{
   float: left;
@@ -1266,11 +1218,11 @@ header {
 }
 
 .name_right_menu{
-  /*ограничение текста*/
+  /*ограничение текста многоточие*/
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /*end ограничение текста*/
+  /*end ограничение текста многоточие*/
   .link{
     text-align: center;
     font-size: 13px;

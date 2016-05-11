@@ -1,0 +1,40 @@
+/*SEARCH*/
+.search_crafter_title{
+  float: left;
+  width: 25%;
+  border-right: solid 1px #d8d8d8;
+  padding: 10px;
+  .search_criterion{
+    width: 100%;
+    float: left;
+    .subcategories_title{
+      float: left;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 100;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    .categories, label{
+      float: right;
+      width: 100%;
+    }
+    .subcategories, label{
+      float: right;
+      width: 90%;
+    }
+    .city, label{
+      float: right;
+      width: 90%;
+    }
+    .checkbox{
+      float: left;
+    }
+  }
+}
+.search_crafter_result{
+  float: left;
+  width: 65%;
+}
+
+/*END_SEARCH*/
