@@ -618,15 +618,20 @@ header {
   .list_categories{
     float: left;
     width: 100%;
-    //padding-bottom: 15px;
-    //padding-top: 15px;
-    //border-bottom: 1px dotted rgba(46, 47, 48, 0.5);
     a{
       float: left;
+      height: 170px;
       width: 25%;
       text-align: center;
     }
+    a:hover{
+      transition: 0.2s;
+      border: 1px solid #2E2F30;
+      border-radius: 4px;
+      text-decoration: none;
+    }
   }
+
   .head_products{
     float: left;
     width: 100%;
