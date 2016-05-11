@@ -15,6 +15,17 @@ $ ->
         max_sum: $(@).attr('max_sum')
         news: $(@).attr('news')
 
+# click by 'x'
+  $(document).on 'click', '.search_result span', ->
+    container = $('#search_result')
+    $(container).hide()
+
+# click another
+  $(document).on "click", ->
+    container = $('#search_result')
+    if (container.has(event.target).length == 0)
+      $(container).hide()
+
   $('#search').on 'keyup', ->
     search_string = @.value
     if search_string.length >= 3
@@ -28,6 +39,8 @@ $ ->
         success: (data, textStatus, jqXHR) ->
           console.log('success search')
           live_search(data, search_string)
+    else
+      $('#search_result').hide()
 
 live_search = (data,search_request) ->
   ul = $('#result_search_ul').empty()
@@ -41,12 +54,11 @@ live_search = (data,search_request) ->
         "href":"/products/#{data[index].id}",
         "class": "a_class"
       })
-      console.log(data[index].image)
       add_image_tag(li, data[index].image+"0/700.jpg".replace("/assets/", ""))
       create_new_li(li, 'name', data[index].name)
-#      create_new_li(li, 'description_search', data[index].description)
-#      create_new_li(li, 'address', data[index].address)
-#      create_new_li(li, 'city', data[index].city)
+      #      create_new_li(li, 'description_search', data[index].description)
+      #      create_new_li(li, 'address', data[index].address)
+      #      create_new_li(li, 'city', data[index].city)
 
       a.append(li)
 
