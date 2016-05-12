@@ -51,14 +51,18 @@ class ProductsController < ApplicationController
     elsif !params[:min_sum].nil?
       products_for_range params[:min_sum], params[:max_sum]
     end
-    if params[:sorted_by] == 'Алфавиту'
+    if params[:sorted_by] == 'Алфавиту>'
       @products = @products.order(:name)
+    elsif params[:sorted_by] == 'Алфавиту<'
+      @products = @products.order(name: :desc)
     elsif params[:sorted_by] == 'Возрастанию цены'
       @products = @products.order(:price)
     elsif params[:sorted_by] == 'Убыванию цены'
       @products = @products.order(price: :desc)
-    elsif params[:sorted_by] == 'Артикулу'
+    elsif params[:sorted_by] == 'Артикулу>'
       @products = @products.order(:sid)
+    elsif params[:sorted_by] == 'Артикулу<'
+      @products = @products.order(sid: :desc)
     end
   end
 
