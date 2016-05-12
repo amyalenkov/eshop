@@ -1,4 +1,7 @@
 ActiveAdmin.register_page "OrderItemsForOrder" do
+
+  menu label: 'Пункты заказов для текущей СП'
+
   content do
     render partial: 'current_order'
   end

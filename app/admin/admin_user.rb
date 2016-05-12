@@ -1,4 +1,7 @@
 ActiveAdmin.register AdminUser do
+
+  menu label: 'Настройка пользователей для админки'
+
   permit_params :email, :password, :password_confirmation
 
   index do

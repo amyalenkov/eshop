@@ -1,5 +1,7 @@
 ActiveAdmin.register Order do
 
+  menu label: 'Заказы'
+
   permit_params :state, :total_price
 
   config.per_page = 30

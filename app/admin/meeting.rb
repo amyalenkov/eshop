@@ -1,5 +1,7 @@
 ActiveAdmin.register Meeting do
 
+  menu label: 'Встречи'
+
   permit_params :description, :main_order_id, :meeting_date, :registered_time
 
   config.per_page = 30

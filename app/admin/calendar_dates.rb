@@ -1,5 +1,7 @@
 ActiveAdmin.register CalendarDate do
 
+  menu label: 'Даты для календаря'
+
   permit_params :name, :time, :date, :updated_at
 
   config.per_page = 30

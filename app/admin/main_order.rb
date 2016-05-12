@@ -1,5 +1,7 @@
 ActiveAdmin.register MainOrder do
 
+  menu label: 'СП'
+
   config.per_page = 30
 
   filter :state
