@@ -85,7 +85,7 @@ function colorForDateCalendar(data){
 
 }
 
-window.onload = function() {
+function get_dates(){
     $.ajax({
         type: 'get',
         url: '/static_pages/get_datetime_for_stop',
@@ -97,4 +97,18 @@ window.onload = function() {
             colorForDateCalendar(data);
         }
     });
+}
+
+window.onload = function() {
+    get_dates()
 };
+
+$(document).on('page:load', function() {
+    get_dates()
+});
+$(document).on('page:unload', function() {
+    get_dates()
+});
+$(document).on('page:ready', function() {
+    get_dates()
+});
