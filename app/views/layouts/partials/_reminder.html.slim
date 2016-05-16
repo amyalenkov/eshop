@@ -1,0 +1,45 @@
+-data = Reminder.find_by_name('reminder')
+
+-start_date=data.start_date
+-stop_date=data.stop_date
+-remind_text=data.value
+
+-order=Order.find_by state: Order.states[:choice_delivery], user_id: current_user.id
+-current_date=Time.now
+
+-current_time=current_date.strftime('%H:%M')
+-time_now=''
+-user_name=''
+
+-if '04:00'.to_time.strftime('%H:%M') <= current_time && current_time < '10:00'.to_time.strftime('%H:%M')
+  - time_now='Доброе утро'
+-elsif '10:00'.to_time.strftime('%H:%M') <= current_time && current_time < '16:00'.to_time.strftime('%H:%M')
+  - time_now='Добрый день'
+-elsif '16:00'.to_time.strftime('%H:%M') <= current_time && current_time < '21:00'.to_time.strftime('%H:%M')
+  - time_now='Добрый вечер'
+-elsif '21:00'.to_time.strftime('%H:%M') <= current_time && current_time < '04:00'.to_time.strftime('%H:%M')
+  - time_now='Доброй ночи'
+
+-if current_user.name!=nil
+  -user_name = current_user.name
+-else
+  - user_name = current_user.email
+
+-if !order.nil? && order.not_choice_delivery?
+  -if start_date <= current_date && current_date <= stop_date
+
+    script type="text/javascript"
+      | $(document).ready(function(){
+        $("#reminderModal").modal('show');
+      | });
+
+    #reminderModal class="modal" role="dialog"
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button type="button" class="close" data-dismiss="modal" &times;
+            h4 class="modal-title" #{time_now}, #{user_name}
+          .modal-body
+            p #{remind_text}
+          .modal-footer
+            button type="button" class="btn btn-default" data-dismiss="modal" Закрыть
