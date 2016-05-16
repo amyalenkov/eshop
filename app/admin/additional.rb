@@ -1,5 +1,7 @@
 ActiveAdmin.register Additional do
 
+  permit_params :name, :value
+
   menu label: 'Конфигурация'
 
   index :title => 'Конфигурация' do
