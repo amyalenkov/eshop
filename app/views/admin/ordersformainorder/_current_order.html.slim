@@ -1,6 +1,6 @@
 = form_tag(filter_orders_path, :remote => true) do
   =hidden_field_tag :main_order_id, @main_order_id
-  | state
+  | статус
   br
   = check_box_tag :state_check_box, nil, false
   = select_tag :state, options_for_select(Order.states)

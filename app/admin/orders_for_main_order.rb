@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "OrdersForMainOrder" do
 
-  menu label: 'Заказы для текущей СП'
+  menu label: ''
 
   content do
     render partial: 'current_order'

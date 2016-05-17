@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "RowsForMainOrder" do
 
-  menu label: 'Ряды для текущей СП'
+  menu label: ''
 
   content do
     render partial: 'current_order'
