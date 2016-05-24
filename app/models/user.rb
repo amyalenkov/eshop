@@ -36,7 +36,9 @@ class User < ActiveRecord::Base
     cart_items.each do |cart_item|
       total_price = total_price + cart_item.product.get_price_int * cart_item.count
     end
-    total_price
+    second_part = total_price.to_s[-3, 3]
+    first_part = total_price.to_s.gsub( /.{3}$/, '' )
+    first_part + ' ' + second_part.to_s
   end
 
   def get_cart_items_in_rows
