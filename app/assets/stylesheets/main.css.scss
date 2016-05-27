@@ -151,6 +151,11 @@ header {
   textarea{
     resize: vertical;
   }
+  .thin{
+    font-weight: 100;
+    margin-left: 10px;
+  }
+
 }
 .error{
   margin-bottom: -25px;
@@ -203,6 +208,7 @@ header {
   top: 0;
   width: 100%;
   z-index:200;
+  //overflow-y: scroll;
 }
 .fixed_menu{
   .top_menu{
@@ -390,6 +396,12 @@ header {
     .contact_menu{
       font-size: 16px;
       margin-left: 15px;
+      button{
+        border: none;
+        background: none;
+        outline: none;
+        color: #ffffff;
+      }
     }
 
     .cart_menu{
@@ -412,6 +424,14 @@ header {
 
 
 }
+//.modal-open .modal{
+//  overflow-y: scroll;
+//}
+.modal-open{
+  overflow: visible;
+  padding-right: 0;
+}
+
 /*END_FIXED_MENU*/
 
 /*END_HEADER*/

@@ -13,6 +13,34 @@
   margin-top: 31px;
 }
 
+.price{
+  float: left;
+  width: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f28709;
+  padding-top: 35px;
+  padding-left: 40px;
+  .old_price{
+    float: left;
+    width: 100%;
+    margin-top: -10px;
+  }
+  .new_price{
+    float: left;
+    width: 100%;
+    .second_part_new_price{
+      font-size: 14px;
+      font-style: italic;
+      span{
+        color: #000000;
+        font-size: 14px;
+        margin-left: 2px;
+      }
+    }
+  }
+}
+
 .full_width{
   width: 1000px !important;
 }
@@ -455,6 +483,7 @@
       p{
         font-size: 10px;
         color: #000;
+        margin-top: 7px;
       }
       .new_row{
         text-decoration: none;
@@ -621,7 +650,7 @@
   border: 1px solid #6fbaa7;
 }
 .highlight_row {
-  background: #6fbaa7;
+  background: #6fbaa7 !important;
 }
 .highlight_row_click {
   background: #798dbd;
