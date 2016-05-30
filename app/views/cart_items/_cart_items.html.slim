@@ -68,9 +68,11 @@ table class="table"
               p Создайте ряд для выкупа
               = link_to 'Открыть ряд', rows_path(product_id: cart_item.product.id, count: 0), method: :post, class: "new_row"
         td style="width: 80px;"
-          = text_field_tag "price_quant[#{cart_item.id}]",cart_item.product.get_price, :readonly => true, :disabled => true, :class => 'price'
-          = text_field_tag "price_quant[#{cart_item.id}]",cart_item.product.get_new_price, :readonly => true, :disabled => true, :class => 'price'
-
+          .price
+            .old_price id="price_quant[#{cart_item.id}]"
+              i #{cart_item.product.get_price}
+            .new_price id="price_quant[#{cart_item.id}]"
+              i #{cart_item.product.get_new_price}
         td
           .counter id="counter_#{cart_item.id}"
             = render 'cart_items/counter', cart_item: cart_item

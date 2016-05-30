@@ -77,9 +77,15 @@ table class="table"
               input type="number" class="form-control input-number count_field" value="#{order_item.count}" disabled="true"
               input class="btn btn-danger btn-number plus" type="submit" value="" disabled="true"
 
-        td style="width: 80px;"
+        /td style="width: 80px;"
           .order_price
             = order_item.product.get_price
+        td style="width: 80px;"
+          .price
+            .old_price id="price_quant[#{order_item.id}]"
+              i #{order_item.product.get_price}
+            .new_price id="price_quant[#{order_item.id}]"
+              i #{order_item.product.get_new_price}
 
         td style="width: 80px;"
           .total_price id="total_price_#{order_item.id}"

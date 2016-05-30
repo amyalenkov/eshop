@@ -7,6 +7,7 @@
 
 .order_price, .total_price{
   text-align: center;
+  font-style: italic;
 }
 
 .order_price{
@@ -15,29 +16,17 @@
 
 .price{
   float: left;
-  width: 150px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #f28709;
-  padding-top: 35px;
-  padding-left: 40px;
+  width: 80px;
+  font-size: 14px;
+  padding-top: 0;
   .old_price{
     float: left;
     width: 100%;
-    margin-top: -10px;
   }
   .new_price{
     float: left;
     width: 100%;
-    .second_part_new_price{
-      font-size: 14px;
-      font-style: italic;
-      span{
-        color: #000000;
-        font-size: 14px;
-        margin-left: 2px;
-      }
-    }
+    font-size: 12px;
   }
 }
 
