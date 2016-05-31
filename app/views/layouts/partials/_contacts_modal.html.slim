@@ -1,0 +1,31 @@
+#getCall.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
+          | ×
+        h3 id="myModalLabel" Контакты
+      .modal-body
+        .form style="height: 300px;"
+          form id="contact_us" class="form-horizontal col-sm-12"
+            .form-group
+              label class="pull-left" Телефон:
+              label class="pull-left thin" +375 (44) 700-66-11
+            .form-group
+              label class="pull-left" Прием заказов через сайт:
+              label class="pull-left thin" круглосуточно
+            .form-group
+              label class="pull-left" Прием звонков:
+              label class="pull-left thin" пн.-пт.: с 09-00 до 20-00
+              label class="pull-left thin" сб.-вс.: с 10-00 до 18-00
+            .form-group
+              label class="pull-left" Адрес склада:
+              label class="pull-left thin" ул.Совестская 95/2
+
+            /.form-group
+              label [class="pull-left"] Комментарий
+              textarea class="form-control message" name="message" id="message" placeholder="Ваше сообщение"
+
+        /.modal-footer
+          button [type="submit" class="btn btn-success pull-right go"] Заказать звонок
+          button class="btn pull-left" data-dismiss="modal" aria-hidden="true" Отмена

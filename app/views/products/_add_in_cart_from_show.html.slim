@@ -4,6 +4,7 @@
 - second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
 - if user_signed_in?
   -if current_user.product_in_cart?(product)
+    - count_product = CartItem.find_by user_id: current_user.id, product_id: product.id
     .price
       .old_price
         i #{product.get_price} р
@@ -18,7 +19,7 @@
     .count_for_cart
       .count
         .field_count
-          input type="number" max=10 min=0 disabled=true
+          input type="number" value="#{count_product.count.to_s}" disabled=true
           - k_min = 'по' if product.k_min?
           - k_min = 'мин.' unless product.k_min?
           p

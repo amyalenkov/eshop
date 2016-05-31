@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     elsif request.url.to_s.include? '/subcategory/'
       @subcategory = Category.find_by_id params[:name]
       get_products @subcategory
-      @products = @products.order(:price)
+      @products = @products.order(:price).page(params[:page]).per(params[:paginate])
     else
       if !params[:is_hit].nil?
         @products = Product.where(is_hit: true).order(:price).page(params[:page])
@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
       else
         @products = Product.all.page(params[:page])
       end
+      @products = @products.per(params[:paginate])
     end
   end
 

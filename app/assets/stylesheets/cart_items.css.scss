@@ -7,10 +7,27 @@
 
 .order_price, .total_price{
   text-align: center;
+  font-style: italic;
 }
 
 .order_price{
   margin-top: 31px;
+}
+
+.price{
+  float: left;
+  width: 80px;
+  font-size: 14px;
+  padding-top: 0;
+  .old_price{
+    float: left;
+    width: 100%;
+  }
+  .new_price{
+    float: left;
+    width: 100%;
+    font-size: 12px;
+  }
 }
 
 .full_width{
@@ -455,6 +472,7 @@
       p{
         font-size: 10px;
         color: #000;
+        margin-top: 7px;
       }
       .new_row{
         text-decoration: none;
@@ -621,7 +639,7 @@
   border: 1px solid #6fbaa7;
 }
 .highlight_row {
-  background: #6fbaa7;
+  background: #6fbaa7 !important;
 }
 .highlight_row_click {
   background: #798dbd;
