@@ -9,6 +9,7 @@ namespace :db do
 
   desc 'delete all data from tables Subcategory,Category,Product,ProductParam,ProductPicture'
   task :delete_all_data_from_db => :environment do
+    # [LastProduct, CartItem, OrderItem, Order, Row].each(&:delete_all)
     # [Category].each(&:delete_all)
     # [Product].each(&:delete_all)
     # [Subcategory, Category].each(&:delete_all)

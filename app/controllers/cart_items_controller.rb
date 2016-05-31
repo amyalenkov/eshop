@@ -54,10 +54,16 @@ class CartItemsController < ApplicationController
   end
 
   def get_cart_items
-    @cart_items = current_user.cart_items
+    cart_items = current_user.cart_items
     @current_total_amount = 0
     @current_total_count = 0
-    @cart_items.each do |cart_item|
+    @cart_items = Array.new
+    cart_items.each do |cart_item|
+      if current_user.is_favorite_product?(cart_item.product_id)
+        @cart_items.unshift cart_item
+      else
+        @cart_items.push cart_item
+      end
       price = cart_item.product.get_price.gsub(/\s+/,'').to_i
       p price
       @current_total_amount = @current_total_amount + cart_item.count * price
