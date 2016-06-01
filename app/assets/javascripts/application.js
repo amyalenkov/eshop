@@ -9,6 +9,9 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
+
+// require pace/pace
+// require paceLoad
 //
 //= require jquery
 //= require jquery_ujs
@@ -39,5 +42,3 @@
 //= require jquery.inputmask.extensions
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.date.extensions
-// require pace/pace
-// require paceLoad

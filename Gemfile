@@ -87,4 +87,4 @@ gem 'just-datetime-picker'
 
 gem 'jquery-inputmask-rails'
 
-gem 'pace-rails'
+# gem 'pace-rails'
