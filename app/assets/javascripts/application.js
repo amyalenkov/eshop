@@ -12,7 +12,6 @@
 
 // require pace/pace
 // require paceLoad
-//
 //= require jquery
 //= require jquery_ujs
 //= require jquery.raty
