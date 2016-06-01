@@ -4,10 +4,10 @@ default: &default
   database: eshop_development
   host: localhost
   pool: 5
-#  username: sushi
-#  password: 1234
-  username: amyalenkov
-  password: 2102
+  username: sushi_new
+  password: 1234
+#  username: amyalenkov
+#  password: 2102
 
 development:
   <<: *default
@@ -21,4 +21,4 @@ production:
   <<: *default
   database: eshop_production
   username: eshop_db
-  password: <%= Rails.application.secrets.db_password  %>
+  password: <%= Rails.application.secrets.db_password %>
