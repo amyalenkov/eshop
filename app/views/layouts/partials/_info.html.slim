@@ -23,7 +23,10 @@
     = link_to 'Ряды', new_user_session_path
 
 .create_question
-  = link_to '<abbr title="Задать вопрос по товару">Задать вопрос</abbr>'.html_safe, '/questions/show'
+  = link_to '<abbr title="По товару">Задать вопрос</abbr>'.html_safe, '/questions/show'
+
+.rows_menu
+  button type="button" data-toggle="modal" data-target="#getCall" Контакты
 
 .cart_menu.pull-right
   - if user_signed_in?
@@ -34,7 +37,5 @@
     .cart_count
       = link_to 'Позиций 0<br>0 бел. руб.'.html_safe, new_user_session_path, :class => 'cart_not_tull'
 
-.contact_menu.pull-right
-  /= link_to 'Контакты', nil, data-target="#getCall"
-  button type="button" data-toggle="modal" data-target="#getCall" Контакты
+/.contact_menu.pull-right
 

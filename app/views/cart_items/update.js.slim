@@ -1,12 +1,15 @@
 | $('#total_price_#{@cart_item.id}').html("
 = escape_javascript (render partial: 'cart_items/total_price')
 | ");
+
 | $('#counter_#{@cart_item.id}').html("
 = escape_javascript (render partial: 'cart_items/counter')
 | ");
+
 | $('.cart_menu_for_update').html("
 = escape_javascript (render partial: 'layouts/partials/cart_menu')
 | ");
+
 | $('.total-amount-and-count').html("
 = escape_javascript (render partial: 'orders/total_amount_and_count')
 | ");

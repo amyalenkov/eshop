@@ -5,10 +5,12 @@
       select id="sorted_by" subcategoryid="#{@subcategory.id}"
         option value="Убыванию цены" Убыванию цены
         option value="Возрастанию цены" Возрастанию цены
-        option value="Алфавиту>" Алфавиту ⇩
-        option value="Алфавиту<" Алфавиту ⇧
-        option value="Артикулу>" Артикулу ⇩
-        option value="Артикулу<" Артикулу ⇧
+        /option value="Алфавиту>" Алфавиту ⇩
+        option value="Алфавиту>" От А-Я
+        /option value="Алфавиту<" Алфавиту ⇧
+        option value="Алфавиту<" От Я-А
+        option value="Артикулу>" Убыванию артикула
+        option value="Артикулу<" Возрастанию артикула
     -elsif !params[:is_hit].nil?
       select id="sorted_by" is_hit="true"
         option value="Убыванию цены" Убыванию цены

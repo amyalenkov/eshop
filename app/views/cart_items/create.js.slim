@@ -5,10 +5,12 @@
 | $('##{@product.id}').html("
 = escape_javascript (render partial: 'products/add_in_cart')
 | ");
+
 | $('##{@product.id}').show();
 
 | $('#show_add_in_cart').html("
 = escape_javascript (render partial: 'products/add_in_cart_from_show')
 | ");
+
 | $('#show_add_in_cart').show();
 

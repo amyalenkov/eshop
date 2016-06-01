@@ -346,13 +346,20 @@ header {
     }
 
     .order_menu a, .categories_menu a, .meeting_menu a,
-    .rows_menu a, .orders_menu a, .create_question a{
+    .rows_menu a, .orders_menu a, .create_question a, .rows_menu button{
       color: #ffffff;
       padding: 5px;
+      border: none;
+      background: none;
+    }
+    .rows_menu button{
+      padding-top: 5px;
+      outline: none;
+      margin-top: -5px;
     }
 
     .order_menu a:hover, .categories_menu a:hover, .meeting_menu a:hover,
-    .rows_menu a:hover, .orders_menu a:hover, .create_question a:hover{
+    .rows_menu a:hover, .orders_menu a:hover, .create_question a:hover, .rows_menu button:hover{
       background: #ffffff;
       color: #000000;
       padding: 5px;
@@ -363,6 +370,7 @@ header {
 
     .create_question abbr{
       border: none;
+      cursor: pointer !important;
     }
 
     .cart_menu{
@@ -660,7 +668,7 @@ header {
     border: solid 1px rgba(0, 0, 0, 0.5);
     .sort, .show, .paginate{
       float: left;
-      width: 33%;
+      width: 32%;
       text-align: center;
     }
     .sort{
@@ -668,6 +676,7 @@ header {
       font-size: 12px;
       font-style: italic;
       font-weight: bold;
+      width: 35%;
       p{
         float: left;
         margin-left: 25px;
@@ -1610,7 +1619,7 @@ header {
   display: none;
   position: fixed;
   z-index: 9999;
-  left: 15%;
+  right: 1%;
   background: #4F4F4F;
   border: 1px solid #ccc;
   border-radius: 5px;

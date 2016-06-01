@@ -351,7 +351,7 @@
     line-height: 0;
     font-style: inherit;
   }
-
+  //.cart .cart_items .total_amount span, .cart .cart_items .total_count span
   .cart_items{
     position: relative;
     .table{
@@ -362,7 +362,8 @@
       width: 260px;
       right: 0;
       //margin-top: 50px;
-      text-align: center;
+      //text-align: center;
+      text-align: right;
       font-size: 16px;
       font-weight: bold;
       font-style: italic;
@@ -372,6 +373,7 @@
         color: #f2a31a;
       }
     }
+
     .total_count{
       width: 180px;
       font-size: 14px;
@@ -487,12 +489,17 @@
     .row_cart{
       text-align: center;
     }
-    .price, .amount{
+    .price, .amount, .new_amount{
       width: 100%;
       border: none;
       background: none;
       text-align: center;
       margin-top: 31px;
+    }
+    .new_amount{
+      margin-top: 0;
+      font-size: 12px;
+      float: left;
     }
     .counter{
       float: left;
@@ -656,6 +663,7 @@
 
 .button_cart_left{
   left: 0;
-  margin-top: 60px;
+  margin-top: 93px;
+  //margin-top: 60px;
 }
 /*END_CART*/

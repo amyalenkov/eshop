@@ -1,8 +1,9 @@
 -second_part = @current_total_amount.to_s[-3, 3]
 -first_part = @current_total_amount.to_s.gsub(/.{3}$/, '')
 -all_amount = first_part + ' ' + second_part.to_s
+-new_amount = (((@current_total_amount).round 2)/10000).round 2
 .pull-right.total_amount
   p К оплате: <span id="total_amount">#{all_amount}</span>
-
+  p <span id="total_amount" class="new_total_amount">#{new_amount}</span>
 .pull-right.total_count
   p Наименований: <span id="total_count">#{@current_total_count}</span>
