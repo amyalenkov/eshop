@@ -1,6 +1,13 @@
+@font-face {
+  font-family: Chevin; /* Гарнитура шрифта */
+  //src: url("../fonts/Chevin_Cyrillic_Light.ttf");
+  //src: url("../fonts/Chevin-Cyrillic-Light-Italic_10487.ttf");
+}
+
+
 * { margin:0; padding:0; }
-html, body, #wrap { height: 100%;}
-body > #wrap {height: auto; min-height: 100%;}
+html, body, #wrap { height: 100%; /*font-family: Chevin, serif;*/}
+body > #wrap {height: auto; min-height: 100%; min-width: 1000px;}
 #main { padding-bottom: 380px; }  /* must be same height as the footer */
 .clearfix:after {content: ".";
   display: block;
@@ -68,7 +75,7 @@ header {
   padding-right: 0;
   color: #6cb2db;
   font-size: 13px;
-  a{
+  a, span{
     color: #6cb2db;
     float: left;
     margin-right: 5px;
@@ -158,7 +165,7 @@ header {
 
 }
 .error{
-  margin-bottom: -25px;
+  //margin-bottom: -25px;
 }
 
 #name-error, #email-error, #phone-error{
@@ -180,11 +187,35 @@ header {
   position: absolute;
   width: 0;
   height: 0;
-  border: 10px solid transparent;
-  border-top: 10px solid #292929;
-  top: 100%;
-  left: 50%;
-  margin-left: -10px;
+  border: 20px solid transparent;
+  border-bottom: 20px solid #292929;
+  bottom: 25px;
+  left: 0;
+}
+#user_name-error, #user_email-error, #user_password-error, #user_password_confirmation-error, #user_phone-error{
+  //top: 40px;
+  top: 15px;
+  font-size: 12px;
+  border: 1px solid #2e6da4;
+  position: relative;
+  background-color: #292929;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  font-family: sans-serif;
+  padding: 0 10px;
+}
+
+#user_name-error:after, #user_email-error:after, #user_password-error:after, #user_password_confirmation-error:after, #user_phone-error:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-bottom: 20px solid #292929;
+  bottom: 25px;
+  left: 0;
 }
 
 .form-group{
@@ -244,9 +275,9 @@ header {
   #imaginary_container{
     float: left;
     width: 265px;
-    margin-top: -7px;
-    padding-left: 0;
+    margin-top: -6px;
     padding-right: 0;
+    margin-left: 15px;
     .search_input{
       width: 200px;
     }
@@ -331,8 +362,7 @@ header {
 
   .info{
     float: left;
-    //margin-left: 55px;
-    margin-left: 25px;
+    margin-left: 10px;
     margin-top: -5px;
     width: 680px;
 
@@ -646,11 +676,13 @@ header {
   .list_categories{
     float: left;
     width: 100%;
+    padding-bottom: 10px;
     a{
       float: left;
       height: 170px;
       width: 25%;
       text-align: center;
+      border: 1px solid #ffffff;
     }
     a:hover{
       transition: 0.2s;
@@ -680,11 +712,11 @@ header {
       p{
         float: left;
         margin-left: 25px;
-        margin-top: 5px;
+        margin-top: 7px;
       }
       select{
         float: left;
-        margin-top: 5px;
+        margin-top: 7px;
         margin-left: 5px;
         color: #080808;
         font-size: 10px;
@@ -695,11 +727,14 @@ header {
         margin-right: 5px;
       }
 
-      .by_line{
+      .by_line, .by_two, .by_three{
         float: left;
         width: 17px;
         height: 15px;
-        margin-top: 5px;
+        margin-top: 7px;
+      }
+
+      .by_line, .by_two{
         margin-left: 110px;
         background-image: url("sort_icons/sort_by_line.png");
       }
@@ -709,10 +744,7 @@ header {
       }
 
       .by_two{
-        float: left;
         width: 19px;
-        height: 15px;
-        margin-top: 5px;
         background-image: url("sort_icons/sort_by_two.png");
       }
       .by_two:hover{
@@ -721,10 +753,7 @@ header {
       }
 
       .by_three{
-        float: left;
         width: 16px;
-        height: 15px;
-        margin-top: 5px;
         background-image: url("sort_icons/sort_by_three.png");
       }
       .by_three:hover{
@@ -738,7 +767,7 @@ header {
       font-size: 10px;
       font-style: italic;
       font-weight: bold;
-      margin-top: 5px;
+      margin-top: 7px;
       p{
         float: left;
         margin-left: 70px;
@@ -1194,6 +1223,18 @@ header {
       width: 33%;
       height: 190px;
       text-align: center;
+      a{
+        float: left;
+        width: 100%;
+        border: 1px solid #ffffff;
+      }
+      a:hover {
+        transition: 0.2s;
+        border: 1px solid #2E2F30;
+        border-radius: 4px;
+        text-decoration: none;
+      }
+
     }
     p{
       font-size: 16px;
@@ -1213,6 +1254,7 @@ header {
     }
   }
 }
+
 /*END_CATALOG_INDEX*/
 
 /*SHOW_USER*/
@@ -1260,7 +1302,8 @@ header {
   .link{
     text-align: center;
     font-size: 13px;
-    color: #000000;
+    //color: #000000;
+    color: #6cb2db;
     font-weight: bold;
   }
 }
@@ -1366,6 +1409,10 @@ header {
 
 .register-btn{
   /*float: left;*/
+  background: #2e3192 !important;
+  border-radius: 0;
+  border: none;
+  outline: none;
 }
 
 .login_form #check_box, .reg_form #check_box{
@@ -1450,6 +1497,7 @@ header {
   margin-top: -380px;
   height: 315px;
   clear:both;
+  min-width: 1000px;
   //.modal {
   //  display:block;
   //}

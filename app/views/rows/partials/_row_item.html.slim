@@ -1,4 +1,7 @@
-.sid[class="subcategory_id_#{Category.find_by_sid(row.product.subcategory_id).root.sid}"]
+/-if Category.find_by_sid(row.product.subcategory_id).root.sid
+/-category = Category.find_by_sid(row.product.subcategory_id).root.sid
+
+.sid[class="subcategory_id_#{category}"]
   .row_item
     .title
       =link_to row.product.name.gsub('&quot;', ''), '#', :data => {:toggle=> 'modal', :target=>"#getRow#{row.id.to_s+index}"}

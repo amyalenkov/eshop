@@ -1,74 +1,37 @@
-/.container-fluid
-  .row
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12
-      h2
-        | Sign up 1
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .field
-          = f.label :name
-          br
-          = f.text_field :name, autofocus: true
-        .field
-          = f.label :email
-          br
-          = f.email_field :email
-        .field
-          = f.label :phone
-          br
-          = f.text_field :phone
-        .field
-          = f.label :password
-          - if @minimum_password_length
-            em
-              | (
-              = @minimum_password_length
-              |  characters minimum)
-          br
-          = f.password_field :password, autocomplete: 'off'
-        .field
-          = f.label :password_confirmation
-          br
-          = f.password_field :password_confirmation, autocomplete: 'off'
-        .actions
-          = f.submit 'Sign up'
-      = render 'devise/shared/links'
-
-
 .login_title
   h2
-    | Регистрация ЫВЫВА
+    | Регистрация
 .login_form
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
     .form-group
       .field
-        = f.label :Имя, class: 'label_login'
+        /= f.label :Имя, class: 'label_login'
         br
-        = f.text_field :name, class: 'form-control crafter_registration', autofocus: true
+        = f.text_field :name, class: 'form-control crafter_registration', autofocus: true, placeholder: 'Имя'
 
       .field
-        = f.label :Номер_телефона, class: 'label_login'
+        /= f.label :Номер_телефона, class: 'label_login'
         br
-        = f.text_field :phone, class: 'form-control crafter_registration', autofocus: true
+        = f.text_field :phone, class: 'form-control crafter_registration', placeholder: 'Номер телефона'
 
       .field
-        = f.label :email, class: 'label_login'
+        /= f.label :email, class: 'label_login'
         br
-        = f.email_field :email, class: 'form-control crafter_registration'
+        = f.email_field :email, class: 'form-control crafter_registration', placeholder: 'E-mail'
       .field
-        = f.label :Пароль, class: 'label_login'
+        /= f.label :Пароль, class: 'label_login'
         - if @validatable
           em
             | (
             = @minimum_password_length
             |  characters minimum)
         br
-        = f.password_field :password, class: 'form-control crafter_registration', autocomplete: 'off'
+        = f.password_field :password, class: 'form-control crafter_registration', autocomplete: 'off', placeholder: 'Пароль'
       .field
-        = f.label :Подтверждение_пароля, class: 'label_login'
+        /= f.label :Подтверждение_пароля, class: 'label_login'
         br
-        = f.password_field :password_confirmation, class: 'form-control crafter_registration', autocomplete: 'off'
+        = f.password_field :password_confirmation, class: 'form-control crafter_registration', autocomplete: 'off', placeholder: 'Подтверждение пароля'
         br
       button.btn.btn-success.register-btn.register-btn-crafter[type="submit"]
         | Зарегистрироваться

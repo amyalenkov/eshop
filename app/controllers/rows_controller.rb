@@ -17,7 +17,6 @@ class RowsController < ApplicationController
   end
 
   def create
-
     product = Product.find_by_id params[:product_id]
     @row = product.get_row
     if @row.nil?
@@ -28,7 +27,8 @@ class RowsController < ApplicationController
       @row.main_order = MainOrder.find_by state: MainOrder.states[:current]
       @row.save!
     end
-    redirect_to @row
+    # redirect_to @row
+    redirect_to 'rows'
   end
 
   def update
