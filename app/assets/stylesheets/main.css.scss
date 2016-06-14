@@ -180,6 +180,7 @@ header {
   border-radius: 5px;
   font-family: sans-serif;
   padding: 0 10px;
+  float: left;
 }
 
 #name-error:after, #email-error:after, #phone-error:after {
@@ -187,24 +188,24 @@ header {
   position: absolute;
   width: 0;
   height: 0;
-  border: 20px solid transparent;
-  border-bottom: 20px solid #292929;
-  bottom: 25px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #292929;
+  bottom: 20px;
   left: 0;
 }
 #user_name-error, #user_email-error, #user_password-error, #user_password_confirmation-error, #user_phone-error{
-  //top: 40px;
-  top: 15px;
+  top: 10px;
   font-size: 12px;
   border: 1px solid #2e6da4;
   position: relative;
   background-color: #292929;
-  line-height: 30px;
+  line-height: 25px;
   color: white;
   text-align: center;
   border-radius: 5px;
   font-family: sans-serif;
   padding: 0 10px;
+  float: left;
 }
 
 #user_name-error:after, #user_email-error:after, #user_password-error:after, #user_password_confirmation-error:after, #user_phone-error:after {
@@ -212,9 +213,9 @@ header {
   position: absolute;
   width: 0;
   height: 0;
-  border: 20px solid transparent;
-  border-bottom: 20px solid #292929;
-  bottom: 25px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #292929;
+  bottom: 20px;
   left: 0;
 }
 
@@ -1400,6 +1401,9 @@ header {
 .login_form, .reg_form{
   margin: 0 auto;
   width: 365px;
+  .form-control{
+    margin-top: 10px;
+  }
 }
 
 .reg_form{
@@ -1407,16 +1411,25 @@ header {
   padding-top: 25px;
 }
 
-.register-btn{
+.register-btn, .btn-login-crafter{
   /*float: left;*/
   background: #2e3192 !important;
   border-radius: 0;
   border: none;
   outline: none;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .login_form #check_box, .reg_form #check_box{
   margin-left: 0 !important;
+}
+
+.login_crafter{
+  .checkbox, .radio {
+    float: left;
+    width: 100%;
+  }
 }
 
 .login_form .label_login, .reg_form .label_login{
@@ -1543,10 +1556,8 @@ header {
 
 @media (min-width: 450px) and (max-width: 767px) {
   .logo{
-    font-size: 10px;
-    a{
-      text-align: center;
-    }
+    font-size: 8px;
+    text-align: center;
   }
   #imaginary_container{
     width: auto;
@@ -1588,10 +1599,8 @@ header {
 
 @media (min-width: 768px) and (max-width: 930px) {
   .logo{
-    font-size: 10px;
-    a{
-      text-align: center;
-    }
+    font-size: 9px;
+    text-align: center;
   }
   .search_input {
     width: 270px;

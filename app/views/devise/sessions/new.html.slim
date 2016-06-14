@@ -27,13 +27,13 @@
   = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login_crafter'}) do |f|
     .form-group
       .field
-        = f.label :email, class: 'label_login'
-        br
-        = f.email_field :email, class: 'form-control login_crafter', autofocus: true
+        /= f.label :email, class: 'label_login'
+        /br
+        = f.email_field :email, class: 'form-control login_crafter', autofocus: true, placeholder: 'E-mail'
       .field
-        = f.label :Пароль, class: 'label_login'
-        br
-        = f.password_field :password, class: 'form-control login_crafter', autocomplete: 'off'
+        /= f.label :Пароль, class: 'label_login'
+        /br
+        = f.password_field :password, class: 'form-control login_crafter', autocomplete: 'off', placeholder: 'Пароль'
       - if devise_mapping.rememberable?
         .checkbox.field
           = f.check_box :remember_me, id: 'check_box'

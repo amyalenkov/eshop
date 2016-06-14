@@ -7,17 +7,17 @@
     .form-group
       .field
         /= f.label :Имя, class: 'label_login'
-        br
+        /br
         = f.text_field :name, class: 'form-control crafter_registration', autofocus: true, placeholder: 'Имя'
 
       .field
         /= f.label :Номер_телефона, class: 'label_login'
-        br
+        /br
         = f.text_field :phone, class: 'form-control crafter_registration', placeholder: 'Номер телефона'
 
       .field
         /= f.label :email, class: 'label_login'
-        br
+        /br
         = f.email_field :email, class: 'form-control crafter_registration', placeholder: 'E-mail'
       .field
         /= f.label :Пароль, class: 'label_login'
@@ -26,13 +26,13 @@
             | (
             = @minimum_password_length
             |  characters minimum)
-        br
+        /br
         = f.password_field :password, class: 'form-control crafter_registration', autocomplete: 'off', placeholder: 'Пароль'
       .field
         /= f.label :Подтверждение_пароля, class: 'label_login'
-        br
+        /br
         = f.password_field :password_confirmation, class: 'form-control crafter_registration', autocomplete: 'off', placeholder: 'Подтверждение пароля'
-        br
+        /br
       button.btn.btn-success.register-btn.register-btn-crafter[type="submit"]
         | Зарегистрироваться
     = render 'devise/shared/links'
