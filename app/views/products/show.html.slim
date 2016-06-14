@@ -85,6 +85,8 @@
       - if user_signed_in?
         .add_comment
           = render 'add_comment_for_product'
+      - else
+        .add_comment_user_signed_in
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.other_product
       .title

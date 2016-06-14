@@ -1,7 +1,7 @@
 = form_for(Comment.new, remote: true) do |comment|
   .field
     br
-    = comment.text_area :body, class: 'form-control', placeholder: 'Комментарий'
+    = comment.text_area :body, class: 'form-control comment_add', id: 'comment_add', placeholder: 'Комментарий'
     br
     = comment.hidden_field :product_id, :value =>  @product.id
   .actions
