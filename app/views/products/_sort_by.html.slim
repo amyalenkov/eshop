@@ -35,7 +35,8 @@
     =link_to '', '', class: 'by_three', onclick: "sortBy('by_three')"
   .paginate
     p Показывать по
-    =link_to '20', @subcategory.id.to_s+'?paginate=20', class: 'index_paginate'
-    =link_to '50', @subcategory.id.to_s+'?paginate=50', class: 'index_paginate'
-    =link_to '100', @subcategory.id.to_s+'?paginate=100', class: 'index_paginate'
-    =link_to 'Все', @subcategory.id.to_s+'?paginate=200', class: 'index_paginate'
+    =link_to '20', '?paginate=20', class: 'index_paginate'
+    =link_to '50', '?paginate=50', class: 'index_paginate'
+    =link_to '100', '?paginate=100', class: 'index_paginate'
+    =link_to 'Все', '?paginate=200', class: 'index_paginate'
+    /=link_to 'Все', @subcategory.id.to_s+'?paginate=200', class: 'index_paginate'
