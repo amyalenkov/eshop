@@ -60,6 +60,7 @@ gem 'thinking-sphinx', '3.1.4'
 #rating
 gem 'ratyrate'
 
+# old version 10.4.2
 gem 'rake', '10.5.0'
 
 # for image product
