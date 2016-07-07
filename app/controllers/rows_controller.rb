@@ -28,7 +28,7 @@ class RowsController < ApplicationController
       @row.save!
     end
     # redirect_to @row
-    redirect_to 'rows'
+    redirect_to '/rows'
   end
 
   def update
