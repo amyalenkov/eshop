@@ -1,12 +1,12 @@
 @font-face {
   font-family: Chevin; /* Гарнитура шрифта */
-  src: url("../fonts/Chevin-Cyrillic-Bold-Italic_10485.ttf");
+  //src: url("../fonts/Chevin-Cyrillic-Bold-Italic_10485.ttf");
   //src: url("../fonts/Chevin-Cyrillic-Light-Italic_10487.ttf");
 }
 
 
 * { margin:0; padding:0; }
-html, body, #wrap { height: 100%; font-family: Chevin, serif;}
+html, body, #wrap { height: 100%; /*font-family: Chevin, serif;*/}
 body > #wrap {height: auto; min-height: 100%; min-width: 1000px;}
 #main { padding-bottom: 380px; }  /* must be same height as the footer */
 .clearfix:after {content: ".";
