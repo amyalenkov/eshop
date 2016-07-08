@@ -13,9 +13,8 @@
           = first_part_new_price
           span #{second_part_new_price} р
     .favourites
-      - if user_signed_in?
-        .favourite id="for_favorite_#{product.id}"
-          = render 'cart_items/favorite_product', product_id: product.id
+      .favourite id="for_favorite_#{product.id}"
+        = render 'cart_items/favorite_product', product_id: product.id
     .count_for_cart
       .count
         .field_count
