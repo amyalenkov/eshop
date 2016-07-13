@@ -1,6 +1,6 @@
 h1
   | курьер
-= form_tag(choice_delivery_order_path(@order.id)) do
+= form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
   = hidden_field_tag :delivery, Order.deliveries[:courier]
   =text_field_tag :address
   =submit_tag 'Выбрать'

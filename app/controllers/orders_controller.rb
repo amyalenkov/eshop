@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
   end
 
   def meetings
-    @order = Order.find_by user_id: current_user.id, state: Order.states[:choice_delivery]
+    @order_for_meetings = Order.find_by user_id: current_user.id, state: Order.states[:choice_delivery]
   end
 
   def set_state_order
