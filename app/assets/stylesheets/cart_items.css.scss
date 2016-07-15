@@ -136,13 +136,23 @@
   }
 
   /*MEETINGS*/
-  .tabs {
+  .tabs_meetings {
+    margin-bottom: 20px;
+
+    input[type="submit"]{
+      margin-left: 0px;
+      background: #2e3192;
+      color: white;
+      border: none;
+      padding: 2px 5px 2px 5px;
+    }
+
     #meetings, #post, #courier{
+      float: left;
       position: fixed;
     }
 
     .menu1 > a,
-    //.menu1 #meetings:target ~ a:nth-of-type(1),
     .menu1 #post:target ~ a:nth-of-type(1),
     .menu1 #courier:target ~ a:nth-of-type(1),
     .menu1 > div {
@@ -161,18 +171,15 @@
       text-decoration: none;
     }
 
-    //#meetings,
     #post,
     #courier,
     .menu1 > div,
-    //.menu1 #meetings:target ~ div:nth-of-type(1),
     .menu1 #post:target ~ div:nth-of-type(1),
     .menu1 #courier:target ~ div:nth-of-type(1){
       display: none;
     }
 
     .menu1 > div:nth-of-type(1),
-    //.menu1 #meetings:target ~ div:nth-of-type(2),
     .menu1 #post:target ~ div:nth-of-type(2),
     .menu1 #courier:target ~ div:nth-of-type(3){
       display: block;
@@ -183,14 +190,13 @@
     }
 
     .menu1 > a:nth-of-type(1),
-    //.menu1 #meetings:target ~ a:nth-of-type(2),
     .menu1 #post:target ~ a:nth-of-type(2),
     .menu1 #courier:target ~ a:nth-of-type(3){
       border-bottom: 2px solid #fff;
     }
   }
-
   /*END TABS*/
+
   .row_item{
     float: left;
     width: 135px;

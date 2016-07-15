@@ -1,6 +1,5 @@
-h1
-  | курьер
+h4 Доставка курьером
 = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
   = hidden_field_tag :delivery, Order.deliveries[:courier]
-  =text_field_tag :address
+  =text_field_tag :address, nil, placeholder: 'Введите адрес доставки'
   =submit_tag 'Выбрать'

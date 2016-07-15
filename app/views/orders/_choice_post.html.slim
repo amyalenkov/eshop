@@ -1,6 +1,5 @@
-h1
-  | почта
+h4 Доставка почтой
 = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
   = hidden_field_tag :delivery, Order.deliveries[:post]
-  =text_field_tag :address
+  =text_field_tag :address, nil, placeholder: 'Введите адрес доставки'
   =submit_tag 'Выбрать'
