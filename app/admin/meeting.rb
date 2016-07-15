@@ -19,6 +19,8 @@ ActiveAdmin.register Meeting do
   end
 
   form do |f|
+    MainOrder.where(state: MainOrder.states[:paid]).map{ |tech|  Rails.logger.info([tech.id.to_s+'-'+tech.state.to_s, tech.id]) }
+
     f.inputs 'Edit Main Order' do
       f.input :main_order, as: :select, collection: MainOrder.where(state: MainOrder.states[:paid]).map{ |tech|  [tech.id.to_s+'-'+tech.state.to_s, tech.id] }
       f.input :meeting_date
