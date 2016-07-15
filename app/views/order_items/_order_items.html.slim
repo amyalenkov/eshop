@@ -1,3 +1,10 @@
+/:in_progress, :stopped,
+/  :refusing_after_reserved, :bill,
+/  :paid, :not_paid, :refund,
+/  :choice_delivery, :delivering, :delivered
+
+  not_choice, :offline, :card
+
 table class="table"
   thead
     tr
@@ -9,20 +16,58 @@ table class="table"
       th Статус оплаты
   tbody
     - @orders.each do |order|
+
+      - if order.payment_type == 'not_choice'
+        - payment_type = 'Не выбран'
+      - elsif order.payment_type == 'offline'
+        - payment_type = 'Наличными'
+      - elsif order.payment_type == 'card'
+        - payment_type = 'Карта'
+      - else
+        - payment_type = ''
+
+      - if order.state == 'in_progress'
+        - state_translate = 'В процессе'
+      - elsif order.state == 'stopped'
+        - state_translate = 'Остановлен'
+      - elsif order.state == 'refusing_after_reserved'
+        - state_translate = 'Возврат после резервирования'
+      - elsif order.state == 'bill'
+        - state_translate = 'Счет'
+      - elsif order.state == 'paid'
+        - state_translate = 'Оплачено'
+      - elsif order.state == 'not_paid'
+        - state_translate = 'Не оплачено'
+      - elsif order.state == 'refund'
+        - state_translate = 'Возврат'
+      - elsif order.state == 'choice_delivery'
+        - state_translate = 'Выбор доставки'
+      - elsif order.state == 'delivering'
+        - state_translate = 'Доставка'
+      - elsif order.state == 'delivered'
+        - state_translate = 'Доставлено'
+      - else
+        - state_translate = ''
+
       tr
         td
           .title
             = link_to 'Счет на оплату СП №'+order.main_order_id.to_s, order_path(order.id)
         td
           .date_on
-            | 01.01.2016
+            | #{order.created_at.strftime('%d.%m.%Y').to_s}
           .date_off
             | 03.01.2016
         td
           .text
-            | 100500
+            | #{order.total_price.to_s}
         td
           .text
-            | 23 апреля 2016
-        td = order.payment_type
-        td = order.state
+            /next_meeting
+            | #{(CalendarDate.find_by_name 'next_meeting').date.strftime('%d.%m.%Y').to_s}
+        td
+          .text
+            | #{state_translate}
+        td
+          .text
+            | #{payment_type}
