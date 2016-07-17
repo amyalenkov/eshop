@@ -41,3 +41,6 @@
 //= require jquery.inputmask.extensions
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.date.extensions
+
+//= require nprogress
+//= require nprogress-turbolinks

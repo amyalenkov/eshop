@@ -16,6 +16,7 @@
   - @products.in_groups_of(index_products, false) do |products|
     .row_products
       - for product in products
+        - product_id = product.id
         - product_image = product.image+'0/700.jpg'
         - product_name = product.name.gsub('&quot;', '')
         - product_material = product.materials_text
@@ -55,7 +56,7 @@
               p Артикул: <b>#{product_sid}</b>
               p На складе: <b>#{product_stock_availability}</b>
             .cart
-              .add_in_cart_index id="#{product_sid}"
+              .add_in_cart_index id="#{product_id}"
                 = render 'products/add_in_cart', product: product
 
   =paginate @products

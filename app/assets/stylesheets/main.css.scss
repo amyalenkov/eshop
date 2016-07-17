@@ -1,12 +1,12 @@
 @font-face {
   font-family: Chevin; /* Гарнитура шрифта */
-  //src: url("../fonts/Chevin_Cyrillic_Light.ttf");
+  src: url("../fonts/Chevin-Cyrillic-Bold-Italic_10485.ttf");
   //src: url("../fonts/Chevin-Cyrillic-Light-Italic_10487.ttf");
 }
 
 
 * { margin:0; padding:0; }
-html, body, #wrap { height: 100%; /*font-family: Chevin, serif;*/}
+html, body, #wrap { height: 100%; font-family: 'Roboto', sans-serif; /*font-family: Chevin, serif;*/}
 body > #wrap {height: auto; min-height: 100%; min-width: 1000px;}
 #main { padding-bottom: 380px; }  /* must be same height as the footer */
 .clearfix:after {content: ".";
@@ -1554,6 +1554,35 @@ header {
 
 /*END_FOOTER*/
 
+/*DOWN_TOP*/
+.go-up, .go-down {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  right: 1%;
+  background: #4F4F4F;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  font: normal normal 42px/42px sans-serif;
+  text-shadow: 0 1px 2px #000;
+  opacity: .5;
+  padding: 3px;
+  margin-bottom: 5px;
+  width: 45px;
+  height: 45px;
+}
+.go-up { bottom: 60px; }
+.go-down { bottom: 10px; }
+.go-down:hover,
+.go-up:hover {
+  opacity: 1;
+  box-shadow: 0 5px 0.5em -1px #666;
+}
+/*END_DOWN_TOP*/
+
 @media (min-width: 450px) and (max-width: 767px) {
   .logo{
     font-size: 8px;
@@ -1595,7 +1624,18 @@ header {
     padding: 5px 5px 5px 0;
     text-overflow: ellipsis;
   }
+
+  /*LEFT COLUMN*/
+  .catalog_info{
+    display: none;
+  }
+  /*END LEFT COLUMN*/
 }
+
+/*PAGE LOADER STATUS*/
+
+
+/*END PAGE LOADER STATUS*/
 
 @media (min-width: 768px) and (max-width: 930px) {
   .logo{
@@ -1671,34 +1711,7 @@ header {
   }
 }
 
-/*DOWN_TOP*/
-.go-up, .go-down {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  right: 1%;
-  background: #4F4F4F;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #fff;
-  text-align: center;
-  font: normal normal 42px/42px sans-serif;
-  text-shadow: 0 1px 2px #000;
-  opacity: .5;
-  padding: 3px;
-  margin-bottom: 5px;
-  width: 45px;
-  height: 45px;
-}
-.go-up { bottom: 60px; }
-.go-down { bottom: 10px; }
-.go-down:hover,
-.go-up:hover {
-  opacity: 1;
-  box-shadow: 0 5px 0.5em -1px #666;
-}
-/*END_DOWN_TOP*/
+
 
 
 

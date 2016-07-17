@@ -11,8 +11,4 @@ class CartItem < ActiveRecord::Base
     Row.find_by(product: product, state: Row.states[:not_full])
   end
 
-  def get_not_full_product_row
-    Row.find_by(product: product, state: Row.states[:not_full])
-  end
-
 end
