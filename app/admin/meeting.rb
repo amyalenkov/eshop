@@ -23,8 +23,8 @@ ActiveAdmin.register Meeting do
 
     f.inputs 'Edit Main Order' do
       f.input :main_order, as: :select, collection: MainOrder.where(state: MainOrder.states[:paid]).map{ |tech|  [tech.id.to_s+'-'+tech.state.to_s, tech.id] }
-      f.input :meeting_date
-      f.input :registered_time
+      f.input :meeting_date, :as => :datepicker
+      f.input :registered_time, :as => :time_picker
       f.input :description
     end
     f.actions
