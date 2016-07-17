@@ -94,5 +94,14 @@ namespace :db do
 
   end
 
+  desc 'update products'
+  task :update_products => :environment do
+    Product.find_each do |product|
+      product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
+      product_new = product_sima.get_product_by_sid product.sid
+      Product.update product.id, :certificate_type => product_new['certificate_type']
+    end
+  end
+
 
 end
