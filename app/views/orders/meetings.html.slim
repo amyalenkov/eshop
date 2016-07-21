@@ -18,22 +18,25 @@
             .div
               = render 'choice_courier'
 
-      #getMeeting.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
-        .modal-dialog.modal-lg
-          .modal-content
-            .modal-header
-              button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
-                | ×
-              h3 Подтвердить выбор встречи
-            .modal-body
-              = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
-                = hidden_field_tag :delivery, Order.deliveries[:meeting]
-                = collection_radio_buttons :order, :meeting, MeetingItem.all, :id, :location  do |b|
-                  = b.label
-                  = b.radio_button
-                  br
-                  = submit_tag 'Выбрать'
-            .modal-footer.pull-left
+        #getMeeting.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+          .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
+                  | ×
+                h3 Подтвердить выбор встречи
+              .modal-body
+                = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
+                  = hidden_field_tag :delivery, Order.deliveries[:meeting]
+                  = collection_radio_buttons :order, :meeting, MeetingItem.all, :id, :location  do |b|
+                    = b.label
+                    = b.radio_button
+                    br
+                    = submit_tag 'Выбрать'
+              .modal-footer.pull-left
+
+/ Todo
+  вывести инфу если уже был выбран способ доставки
 
 /      p ОТКРЫТА ЗАПИСЬ НА ВСТРЕЧИ ПО РАЗДАЧЕ СП: #{MainOrder.find_by(state: MainOrder.states[:current]).id.to_s}
 /      p ВСТРЕЧИ СОСТОЯТСЯ число. Месяц. День недели

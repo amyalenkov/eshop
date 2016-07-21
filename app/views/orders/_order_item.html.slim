@@ -7,17 +7,20 @@ table class="table"
       th Цена
       th Количество
       th Сумма
-      th Мин. к выкупу
-      th Комментарии
+      /th Мин. к выкупу
+      /th Комментарии
   tbody
     - @order.order_items.each_with_index do |order_item, index|
 
-      - if order_item.state == 'reserved'
-        - background = 'background: #c3cfeb;'
-      - elsif order_item.state == 'refusing_after_not_full_row'
-        - background = 'background: #d1c1d8;'
-      - else
-        - background = 'background: #ffffff;'
+      - case order_item.state
+        - when 'reserved'
+          - background = 'background: #798dbd;'
+        - when 'refusing_after_not_full_row'
+          - background = 'background: #6fbaa7;'
+        /- when 'not_full'
+        /  - background = 'background: #d1c1d8;'
+        - else
+          - background = 'background: #ffffff;'
 
       tr style="#{background}"
         td
@@ -30,7 +33,7 @@ table class="table"
             .description_cart
               .title
                 = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)
-              p Дата добавления: <b>#{order_item.created_at.strftime("%F")}</b>
+              p Дата добавления: <b>#{order_item.created_at.strftime('%F')}</b>
         td
           p <b>#{order_item.product_id}</b>
         td
@@ -40,9 +43,9 @@ table class="table"
         td style="width: 80px;"
           .total_price id="total_price_#{order_item.id}"
             =render 'orders/total_price', order_item: order_item
-        td
+        /td
           = order_item.product.min_qty.to_s
-        td
+        /td
           = form_for order_item, remote: true do |f|
             = f.submit '', class: 'ok_submit', title: 'Сохранить комметарий'
             =text_area_tag 'comment', order_item.comment, placeholder: ' Комментарий'
