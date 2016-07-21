@@ -15,6 +15,14 @@ class ProductSima
     return products['items'], products['_meta']
   end
 
+  def get_product_by_sid sid
+    products = JSON.parse(RestClient.get(@basic_url+'item',
+                                         {:params => {:sid => sid.to_s,
+                                                      :per_page => 150, :page => page},
+                                          :accept => 'application/json', :timeout => 10, :open_timeout => 10}))
+    return products['items']
+  end
+
 
 end
 
