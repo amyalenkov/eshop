@@ -52,9 +52,16 @@ function colorForDateCalendar(data){
     var stop = t['stop'].slice(-2);
     var next_meeting = t['next_meeting'].slice(-2);
     var next_bringing = t['next_bringing'].slice(-2);
+    var next_stop = t['next_stop'].slice(-2);
+
+    //console.log(data);
 
     if(stop.charAt(0)==0){
         stop = stop.substring(1, 2);
+    }
+
+    if(next_stop.charAt(0)==0){
+        next_stop = next_stop.substring(1, 2);
     }
 
     if(next_meeting.charAt(0)==0){
@@ -83,6 +90,12 @@ function colorForDateCalendar(data){
         }
     }
 
+    for(i=0; i<3; i++){
+        if(events[i] != undefined && events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_stop){
+            events[i].className += ' next_stop';
+        }
+    }
+
 }
 
 function get_dates(){
@@ -93,7 +106,8 @@ function get_dates(){
         dataType: "text",
         success: function (data) {
             var t = JSON.parse(data);
-            initializeClock('clock', t['stop']);
+            //initializeClock('clock', t['stop']);
+            initializeClock('clock', t['next_stop']);
             colorForDateCalendar(data);
         }
     });
