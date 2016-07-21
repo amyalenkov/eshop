@@ -510,6 +510,7 @@ header {
     label{
       color: #616161;
       padding-top: 5px;
+      margin-bottom: -3px;
     }
   }
   .border_for_rows{
@@ -517,6 +518,7 @@ header {
     margin-top: 56px;
     border: 1px solid #A1A6AB;
     border-radius: 3px;
+    min-height: 210px;
     .check_category{
       float: left;
       margin-left: 5px;
