@@ -1,6 +1,6 @@
 h4 Доставка почтой
 
-=link_to 'Согласно тарифам почты', 'http://belpost.by/services/calc/'
+=link_to 'Согласно тарифам почты', 'http://belpost.by/services/calc/', target: '_blank'
 
 = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
   = hidden_field_tag :delivery, Order.deliveries[:post]
