@@ -1,9 +1,5 @@
-/:in_progress, :stopped,
-/  :refusing_after_reserved, :bill,
-/  :paid, :not_paid, :refund,
-/  :choice_delivery, :delivering, :delivered
-
-  not_choice, :offline, :card
+- next_stop = (CalendarDate.find_by_name 'next_stop').date.strftime('%d.%m.%Y').to_s
+- next_meeting = (CalendarDate.find_by_name 'next_meeting').date.strftime('%d.%m.%Y').to_s
 
 table class="table"
   thead
@@ -57,17 +53,16 @@ table class="table"
           .date_on
             | #{order.created_at.strftime('%d.%m.%Y').to_s}
           .date_off
-            | 03.01.2016
+            | #{next_stop}
         td
           .text
             | #{order.total_price.to_s}
         td
           .text
-            /next_meeting
-            | #{(CalendarDate.find_by_name 'next_meeting').date.strftime('%d.%m.%Y').to_s}
+            | #{next_meeting}
         td
-          .text
-            | #{state_translate}
+          .link
+            =link_to (state_translate), meetings_orders_path
         td
           .text
             | #{payment_type}

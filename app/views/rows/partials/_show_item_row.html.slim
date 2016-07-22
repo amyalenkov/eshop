@@ -42,25 +42,25 @@
 
             .description
               dl
-                dt <i>Цена Бел. руб.:</i>
-                dd <i><b>#{row.product.get_price}</b></i>
-                dt <i>Артикул</i>:
+                dt.red Цена Бел. руб.:
+                dd.red <i><b>#{row.product.get_price}</b></i>
+                dt Артикул:
                 dd <i><b>#{row.product.id}</b></i>
-                dt <i>Остаток на складе:</i>
+                dt Остаток на складе:
                 dd <i><b>#{product_balance_text}</b></i>
-                dt <i>Страна-производитель:</i>
+                dt Страна-производитель:
                 dd <i><b>#{Country.find_by_alpha2(IsoCountryCodes.find(row.product.country_id).alpha2).name}</b></i>
-                dt <i>Размер:</i>
+                dt Размер:
                 dd <i><b>#{product_size_text}</b></i>
-                dt <i>Материал:</i>
+                dt Материал:
                 dd <i><b>#{product_materials_text}</b></i>
                 /dt <i>В боксе:</i>
                 /dd <i><b>НЕТ ДАННЫХ</b></i>
-                dt <i>Упаковано в:</i>
+                dt Упаковано в:
                 dd <i><b>#{product_box_type}</b></i>
-                dt <i>Сертификат:</i>
+                dt Сертификат:
                 dd <i><b>#{product_certificate_type}</b></i>
-                dt <i>Вес:</i>
+                dt Вес:
                 dd <i><b>#{product_weight} г</b></i>
             .row_progress_bar
               = render 'orders/row_info', row: row

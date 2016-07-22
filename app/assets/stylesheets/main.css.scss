@@ -20,6 +20,10 @@ body > #wrap {height: auto; min-height: 100%; min-width: 1000px;}
 .clearfix {display: block;}
 /* End hide from IE-mac */
 
+.red{
+  color: red;
+}
+
 .container-fluid{
   max-width: 1000px;
   background: #ffffff;
@@ -494,9 +498,30 @@ header {
     font-weight: bold;
     line-height: 15px;
     margin-bottom: 10px;
-    a{
+    a, label{
       font-size: 12px !important;
       font-weight: bold;
+    }
+    p{
+      padding-top: 15px;
+      padding-left: 10px;
+      font-size: 14px;
+    }
+    label{
+      color: #616161;
+      padding-top: 5px;
+      margin-bottom: -3px;
+    }
+  }
+  .border_for_rows{
+    width: 215px;
+    margin-top: 56px;
+    border: 1px solid #A1A6AB;
+    border-radius: 3px;
+    min-height: 210px;
+    .check_category{
+      float: left;
+      margin-left: 5px;
     }
   }
   .review{
@@ -516,6 +541,7 @@ header {
         width: 120px;
         height: 120px;
       }
+
     }
     .body{
       width: 170px;

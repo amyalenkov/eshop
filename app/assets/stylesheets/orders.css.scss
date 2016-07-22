@@ -26,11 +26,14 @@
     font-style: italic;
     font-weight: bold;
   }
-  .table .text{
+  .table .text, .link{
     color: #837f7f;
     font-size: 14px;
     font-style: italic;
     font-weight: bold;
+  }
+  .table .link{
+    text-decoration: underline;
   }
   .table .date_on, .date_off{
     color: #19760a;
@@ -51,10 +54,10 @@
 
   .product_cart{
     float: left;
-    width: 285px;
+    width: 100%;
     .description_cart{
       float: left;
-      width: 205px;
+      width: 80%;
       .title{
         color: #057e89;
         padding-bottom: 12px;
@@ -91,7 +94,7 @@
       }
     }
     .image_cart{
-      width: 75px;
+      width: 18%;
       float: left;
       text-align: center;
       padding-right: 10px;
