@@ -3,7 +3,7 @@ class @InUser
     @button_class_name = button_class_name
     @utils = new Utils()
     init_validation_for_login_user()
-    @utils.disable_button(@button_class_name)
+#    @utils.disable_button(@button_class_name)
 
   validate_login_user_form: () ->
     if @utils.check_field('user[email]') && @utils.check_field('user[password]')

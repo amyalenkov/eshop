@@ -9,7 +9,8 @@
         = f.text_field :name, class: 'form-control crafter_registration', autofocus: true, placeholder: 'Имя'
 
       .field
-        = f.text_field :phone, class: 'form-control crafter_registration', placeholder: 'Номер телефона', type: 'tell'
+        /= f.text_field :phone, class: 'form-control crafter_registration', placeholder: 'Номер телефона', type: 'tell'
+        = f.text_field :phone, class: 'form-control crafter_registration', placeholder: 'Номер телефона', type: 'tell', maxlength: '20'
 
       .field
         = f.email_field :email, class: 'form-control crafter_registration', placeholder: 'E-mail'
