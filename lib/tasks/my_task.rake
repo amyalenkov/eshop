@@ -96,6 +96,7 @@ namespace :db do
 
   desc 'update products'
   task :update_products => :environment do
+    require "#{Rails.root}/lib/api/product"
     Product.find_each do |product|
       product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
       product_new = product_sima.get_product_by_sid product.sid
