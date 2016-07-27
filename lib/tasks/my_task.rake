@@ -4,7 +4,7 @@ namespace :db do
   task :prepare_db => [
       # :delete_all_data_from_db,
       #                  :load_categories
-                       :load_products
+      :load_products
   ]
 
   desc 'delete all data from tables Subcategory,Category,Product,ProductParam,ProductPicture'
@@ -32,7 +32,7 @@ namespace :db do
     category = Category.find_by_sid 136
     count = 0
     category.descendants.where(is_leaf: true).each do |subcategory|
-      p count.to_s + ' - ' + subcategory.sid.to_s
+      p count.to_s + ' - ' + subcategory.sid.to_s + '\n'
       count += 1
       subcategory_id = subcategory.sid
       current_page = 1
@@ -62,17 +62,17 @@ namespace :db do
   task :load_countries => :environment do
     require "#{Rails.root}/lib/api/country"
 
-      current_page = 1
-      page_count = 1
-      while page_count >= current_page
-        country_sima = CountrySima.new 'https://www.sima-land.ru/api/v2/'
-        countries, meta = country_sima.get_all_countries current_page
-        page_count = meta['pageCount']
-        countries.each do |country|
-          Country.create( alpha2: country['alpha2'], name: country['name'])
-        end
-        current_page = current_page + 1
+    current_page = 1
+    page_count = 1
+    while page_count >= current_page
+      country_sima = CountrySima.new 'https://www.sima-land.ru/api/v2/'
+      countries, meta = country_sima.get_all_countries current_page
+      page_count = meta['pageCount']
+      countries.each do |country|
+        Country.create( alpha2: country['alpha2'], name: country['name'])
       end
+      current_page = current_page + 1
+    end
 
   end
 
@@ -80,29 +80,36 @@ namespace :db do
   task :load_trademarks => :environment do
     require "#{Rails.root}/lib/api/trademark"
 
-      current_page = 1
-      page_count = 1
-      while page_count >= current_page
-        trademark_sima = TrademarkSima.new 'https://www.sima-land.ru/api/v2/'
-        trademarks, meta = trademark_sima.get_all_trademarks current_page
-        page_count = meta['pageCount']
-        trademarks.each do |trademark|
-          Trademark.create( slug: trademark['slug'], name: trademark['name'])
-        end
-        current_page = current_page + 1
+    current_page = 1
+    page_count = 1
+    while page_count >= current_page
+      trademark_sima = TrademarkSima.new 'https://www.sima-land.ru/api/v2/'
+      trademarks, meta = trademark_sima.get_all_trademarks current_page
+      page_count = meta['pageCount']
+      trademarks.each do |trademark|
+        Trademark.create( slug: trademark['slug'], name: trademark['name'])
       end
+      current_page = current_page + 1
+    end
 
   end
 
   desc 'update products'
   task :update_products => :environment do
     require "#{Rails.root}/lib/api/product"
+    count = 0
     Product.find_each do |product|
+      count+=1
       product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
       product_new = product_sima.get_product_by_sid product.sid
-      Product.update product.id, :certificate_type => product_new['certificate_type']
+
+      if product_new
+        puts '---------------------------'
+        puts count
+        puts product_new['id'].to_s
+        Product.update product.id, :certificate_type => product_new['certificate_type']
+      end
     end
   end
-
 
 end
