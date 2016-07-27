@@ -46,7 +46,7 @@
         -else product_box_type=@product.box_type
 
         -if @product.certificate_type==nil
-          - product_certificate_type='Не достаточно данных'
+          - product_certificate_type='Не требует сертификации'
         -else product_certificate_type=@product.certificate_type
 
         -if @product.weight==nil
