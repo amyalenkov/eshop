@@ -20,7 +20,7 @@ class ProductSima
                                          {:params => {:sid => sid.to_s,
                                                       :per_page => 150, :page => 1},
                                           :accept => 'application/json', :timeout => 10, :open_timeout => 10}))
-    p products
+    # p products
     return products['items'][0]
   end
 

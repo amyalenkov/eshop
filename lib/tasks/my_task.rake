@@ -103,7 +103,7 @@ namespace :db do
       product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
       product_new = product_sima.get_product_by_sid product.sid
 
-      if product_new
+      if product_new && !product_new['certificate_type']
         puts '---------------------------'
         puts count
         puts product_new['id'].to_s
