@@ -19,6 +19,8 @@
         = link_to 'Главная/', '/'
         -unless @subcategory.nil?
           - ancestors = @subcategory.ancestors
+          -Rails.logger.warn 'ancestors'
+          -Rails.logger.warn ancestors.size
           =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
           - @subcategory.ancestors.each_with_index do| sub, index|
             -unless index==0

@@ -5,8 +5,10 @@ class ProductsController < ApplicationController
     if request.url.to_s.include? '/category/'
       @subcategory = Category.find_by id: params[:name]
       @subcategories = @subcategory.children
+      Rails.logger.warn @subcategory.id
     elsif request.url.to_s.include? '/subcategory/'
       @subcategory = Category.find_by_id params[:name]
+      Rails.logger.warn @subcategory.id
       get_products @subcategory
       @products = @products.order(:price).page(params[:page]).per(params[:paginate])
     else
@@ -29,10 +31,14 @@ class ProductsController < ApplicationController
     @alike_products = Product.where(subcategory: @product.subcategory).limit(50).order('RANDOM()')
     current_user.add_last_product @product if user_signed_in?
 
-    @subcategory = Category.find_by id: @product.subcategory
-    @subcategories = @subcategory.children
+    @subcategory = Subcategory.find_by_id @product.subcategory_id.to_s
 
-    Rails.logger.warn 'category: '+@product.subcategory.to_s
+    Rails.logger.warn 'subcategory_name: '+@subcategory.name
+    path = (Category.find_by name: @subcategory.name).path.split('.')
+
+    @category_path = Hash.new
+    path.each {|id| @category_path[id]=[id, (Category.find_by_id id).name]}
+
   end
 
   def search_ajax

@@ -2,15 +2,14 @@
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.address_link
       = link_to 'На главную/', '/'
-      /-Rails.logger.warn '@subcategory: '+@subcategory
-      - unless @subcategory.nil?
-        - ancestors = @subcategory.ancestors
-        =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
-        - @subcategory.ancestors.each_with_index do |sub, index|
-          - unless index==0
+      -if @category_path
+        = link_to "#{@category_path.first[1][1]}", "/category/#{@category_path.first[1][0]}"
+      -unless @category_path.nil?
+        - @category_path.each_with_index do |sub, index|
+          -unless index == 2
             | /
-            = link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
-        h4 #{@subcategory.name}
+            = link_to "#{sub[1][1]}", "/subcategory/#{sub[1][0]}"
+
   .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.zoom_list
       - pictures_hash = Hash.new
