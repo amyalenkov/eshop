@@ -16,7 +16,7 @@
       = render 'layouts/partials/calendar'
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
       .address_link
-        = link_to 'Главная / ', '/'
+        = link_to 'Главная/', '/'
         -unless @subcategory.nil?
           - ancestors = @subcategory.ancestors
           =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"

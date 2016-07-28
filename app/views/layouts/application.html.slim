@@ -2,9 +2,10 @@ doctype html
 html
   head
     title
-      | uzelok4you
+      /| uzelok4you
+      = yield(:title)
+    meta name='description' content="#{yield(:description)}"
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    /= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900'
     = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true, :async => true
     = csrf_meta_tags

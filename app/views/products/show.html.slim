@@ -1,5 +1,17 @@
 .container-fluid
   .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.address_link
+      = link_to 'На главную/', '/'
+      /-Rails.logger.warn '@subcategory: '+@subcategory
+      - unless @subcategory.nil?
+        - ancestors = @subcategory.ancestors
+        =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
+        - @subcategory.ancestors.each_with_index do |sub, index|
+          - unless index==0
+            | /
+            = link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
+        h4 #{@subcategory.name}
+  .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.zoom_list
       - pictures_hash = Hash.new
       - key = pictures_hash.keys
@@ -21,6 +33,12 @@
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.description_product
       .title
         = @product.name.gsub('&quot;', '')
+
+        = content_for :title do
+          - @product.name.gsub('&quot;', '') + ' Купить в Гомеле'
+
+        = content_for :description do
+          - @product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '').gsub('<li>', '').gsub('</li>', '').gsub('<i>', '').gsub('</i>', '')[0..159]
 
         - if @product.box_size_text==nil
           - box_size_text='Не достаточно данных'
@@ -78,7 +96,7 @@
         = render 'products/add_in_cart_from_show'
 
       .description
-        p #{@product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '')}
+        p #{@product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '').gsub('<li>', '').gsub('</li>', '').gsub('<i>', '').gsub('</i>', '')}
 
       .all_comments
         = render 'all_comments_for_product'

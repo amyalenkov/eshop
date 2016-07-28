@@ -26,8 +26,13 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_id params[:id]
-    @alike_products = Product.where(subcategory: @product.subcategory).limit(50).order("RANDOM()")
+    @alike_products = Product.where(subcategory: @product.subcategory).limit(50).order('RANDOM()')
     current_user.add_last_product @product if user_signed_in?
+
+    @subcategory = Category.find_by id: @product.subcategory
+    @subcategories = @subcategory.children
+
+    Rails.logger.warn 'category: '+@product.subcategory.to_s
   end
 
   def search_ajax
@@ -94,6 +99,10 @@ class ProductsController < ApplicationController
 
   def calendar_dates
     @meetings_for_calendar = CalendarDate.all
+  end
+
+  def get_category_by_sid(sid)
+    Product.find_by_sid sid
   end
 
 end
