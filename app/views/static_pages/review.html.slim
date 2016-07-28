@@ -1,6 +1,10 @@
 .container-fluid
   .row
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_list
-      p Каталог товаров
-    .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog
-      p Отзывы
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.question
+      .questions
+        = render 'static_pages/partials/reviews'
+
+      .create_questions
+        h4 Оставить комментарий
+        .add_comment
+          = render 'static_pages/partials/create_review'

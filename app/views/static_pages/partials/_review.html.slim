@@ -1,0 +1,15 @@
+input type="checkbox" id="hd-#{review.id}" class="hide"
+  label for="hd-#{review.id}" Нажмите здесь, чтобы увидеть вопрос: #{review.name}
+
+div
+  p #{review.body}
+  .set_answer
+    div id='_review__#{review.id}'
+      = render 'static_pages/partials/set_answer', id_review: review.id
+
+    - if user_signed_in?
+      = form_for(Answer.new, remote: true) do |answer|
+        .add_comment
+          = answer.text_area :body, class: 'form-control comment', placeholder: 'Комментарий'
+          = answer.hidden_field :id_review, :value => review.id
+          = button_tag 'Оставить комментарий', class: 'btn btn-success pull-right'

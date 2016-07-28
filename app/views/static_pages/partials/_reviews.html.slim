@@ -1,0 +1,4 @@
+h4 Отзывы
+-if @reviews
+  - @reviews.each do |review|
+    =render 'static_pages/partials/review', review: review

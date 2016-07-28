@@ -1,0 +1,15 @@
+- if user_signed_in?
+  = form_for(Review.new, remote: true) do |comment|
+    .field
+      br
+      = comment.text_field :name, placeholder: 'Укажите артикул продукта', class: 'form-control id'
+      br
+      = comment.text_area :body, placeholder: 'Комментарий', class: 'form-control comment'
+    .actions
+      -if user_signed_in?
+        = comment.submit 'Создать вопрос', class: 'btn btn-success pull-right'
+      -else
+        = comment.submit 'Создать вопрос', class: 'btn btn-success pull-right', disabled: 'disabled'
+-else
+  h5
+    i Чтобы оставить отзыв, необходимо авторизоваться
