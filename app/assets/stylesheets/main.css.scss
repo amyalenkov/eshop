@@ -157,6 +157,20 @@ header {
     }
   }
 }
+
+
+.address_link{
+  float: left;
+  width: 100%;
+  font-style: italic;
+  margin-bottom: 15px;
+  a{
+    color: #3b4381;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}
+
 /*MODAL_FORM*/
 #getCall{
   textarea{
