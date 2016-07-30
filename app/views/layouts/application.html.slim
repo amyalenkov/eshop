@@ -2,9 +2,12 @@ doctype html
 html
   head
     title
-      /| uzelok4you
-      = yield(:title)
+      =yield(:title)
     meta name='description' content="#{yield(:description)}"
+
+    = content_for :title do
+      - (MetaTag.find_by_name 'index').title
+
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true, :async => true

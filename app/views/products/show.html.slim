@@ -36,7 +36,7 @@
         = @product.name.gsub('&quot;', '')
 
         = content_for :title do
-          - @product.name.gsub('&quot;', '') + ' Купить в Гомеле'
+          - @product.name.gsub('&quot;', '') +' '+ (MetaTag.find_by_name 'product').title
 
         = content_for :description do
           - @product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '').gsub('<li>', '').gsub('</li>', '').gsub('<i>', '').gsub('</i>', '')[0..159]
