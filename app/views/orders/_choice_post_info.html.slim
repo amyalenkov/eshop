@@ -1,0 +1,13 @@
+h4 Доставка почтой
+
+-if @order
+  - post = DeliveryPost.find_by_order_id @order.id
+  -if post
+    | Вы указали доставку почтой на адрес:
+    = post.address
+
+-else
+  | Доставка почтой не выбрана
+br
+=link_to 'Согласно тарифам почты', 'http://belpost.by/services/calc/', target: '_blank'
+

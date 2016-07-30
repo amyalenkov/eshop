@@ -1,4 +1,4 @@
-ActiveAdmin.register DeliveryMeeting do
+ActiveAdmin.register MeetingDelivery do
 
   menu label: 'Доставка на встречу'
 

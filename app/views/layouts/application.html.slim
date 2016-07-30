@@ -6,7 +6,7 @@ html
     meta name='description' content="#{yield(:description)}"
 
     = content_for :title do
-      - (MetaTag.find_by_name 'index').title
+      - if (MetaTag.find_by_name 'index').title
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto'

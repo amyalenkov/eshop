@@ -1,7 +1,7 @@
 .container-fluid
   .row
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12.cart
-      - unless @order_for_meetings.nil?
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.meetings
+      - if @order_for_meetings
         h4 Выберите способ доставки
         .tabs_meetings
           .menu1
@@ -35,41 +35,21 @@
                     = submit_tag 'Выбрать'
               .modal-footer.pull-left
 
-      - unless @order_for_meetings.nil?
-        h4 Выберите способ доставки
+      - else
+        h4 Способ доставки
         .tabs_meetings
           .menu1
             br#meetings
             br#post
             br#courier
-            a href="#meetings" class="all" Выбрать встречу
-            a href="#post" class="full" Доставка почтой
-            a href="#courier" class="not_full" Доставка курьером
+            a href="#meetings" class="meetings" Выбрать встречу
+            a href="#post" class="post" Доставка почтой
+            a href="#courier" class="courier" Доставка курьером
             .div
-              =render 'choice_meeting'
+              =render 'choice_meeting_info'
             .div
-              =render 'choice_post'
+              =render 'choice_post_info'
             .div
-              = render 'choice_courier'
-
-        #getMeeting.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
-          .modal-dialog.modal-lg
-            .modal-content
-              .modal-header
-                button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
-                  | ×
-                h3 Подтвердить выбор встречи
-              .modal-body
-                = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
-                  = hidden_field_tag :delivery, Order.deliveries[:meeting]
-                  = collection_radio_buttons :order, :meeting, MeetingItem.all, :id, :location  do |b|
-                    = b.label
-                    = b.radio_button
-                    br
-                    = submit_tag 'Выбрать'
-              .modal-footer.pull-left
-
-/ Todo
-  вывести инфу если уже был выбран способ доставки
+              = render 'choice_courier_info'
 
 

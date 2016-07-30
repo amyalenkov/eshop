@@ -1,0 +1,12 @@
+h4 Доставка курьером
+
+-if @order
+  - courier = DeliveryCourier.find_by_order_id @order.id
+  -if courier
+    | Вы указали доставку курьером на адрес: 
+    = courier.address
+-else
+   | Доставка курьером не выбрана
+
+p
+  | *доставка курьером - 3 рубля

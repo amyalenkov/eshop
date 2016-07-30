@@ -1754,7 +1754,77 @@ header {
 
 
 
+.meetings {
+  width: 100%;
+  h4{
+    font-size: 16px;
+    color: #f2a31a;
+    font-weight: bold;
+    font-style: italic;
+  }
+  /*MEETINGS*/
+  .tabs_meetings {
+    margin-bottom: 20px;
 
+    input[type="submit"] {
+      margin-left: 0;
+      background: #2e3192;
+      color: white;
+      border: none;
+      padding: 2px 5px 2px 5px;
+    }
 
+    #meetings, #post, #courier {
+      float: left;
+      position: fixed;
+    }
 
+    .menu1 > a,
+    .menu1 #post:target ~ a:nth-of-type(1),
+    .menu1 #courier:target ~ a:nth-of-type(1),
+    .menu1 > div {
+      padding: 5px;
+      border: 1px solid #aaa;
+    }
+
+    .menu1 > a {
+      line-height: 26px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+      font-style: italic;
+      padding-left: 7px;
+      padding-right: 7px;
+      text-decoration: none;
+    }
+
+    #post,
+    #courier,
+    .menu1 > div,
+    .menu1 #post:target ~ div:nth-of-type(1),
+    .menu1 #courier:target ~ div:nth-of-type(1) {
+      display: none;
+    }
+
+    .menu1 > div:nth-of-type(1),
+    .menu1 #post:target ~ div:nth-of-type(2),
+    .menu1 #courier:target ~ div:nth-of-type(3) {
+      display: block;
+      float: left;
+      width: 100%;
+      padding-bottom: 30px;
+      margin-bottom: 15px;
+    }
+
+    .menu1 > a:nth-of-type(1),
+    .menu1 #post:target ~ a:nth-of-type(2),
+    .menu1 #courier:target ~ a:nth-of-type(3) {
+      border-bottom: 2px solid #fff;
+    }
+    .meetings{background: #56a7d7;}
+    .post{background: #3add41;}
+    .courier{background: #ffb11a;}
+  }
+  /*END TABS*/
+}
 
