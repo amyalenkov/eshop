@@ -1,8 +1,42 @@
 .container-fluid
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.cart
-      h4 Выберите способ доставки
       - unless @order_for_meetings.nil?
+        h4 Выберите способ доставки
+        .tabs_meetings
+          .menu1
+            br#meetings
+            br#post
+            br#courier
+            a href="#meetings" class="all" Выбрать встречу
+            a href="#post" class="full" Доставка почтой
+            a href="#courier" class="not_full" Доставка курьером
+            .div
+              =render 'choice_meeting'
+            .div
+              =render 'choice_post'
+            .div
+              = render 'choice_courier'
+
+        #getMeeting.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+          .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                button [type="button" class="close" data-dismiss="modal" aria-hidden="true"]
+                  | ×
+                h3 Подтвердить выбор встречи
+              .modal-body
+                = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
+                  = hidden_field_tag :delivery, Order.deliveries[:meeting]
+                  = collection_radio_buttons :order, :meeting, MeetingItem.all, :id, :location  do |b|
+                    = b.label
+                    = b.radio_button
+                    br
+                    = submit_tag 'Выбрать'
+              .modal-footer.pull-left
+
+      - unless @order_for_meetings.nil?
+        h4 Выберите способ доставки
         .tabs_meetings
           .menu1
             br#meetings
@@ -38,25 +72,4 @@
 / Todo
   вывести инфу если уже был выбран способ доставки
 
-/      p ОТКРЫТА ЗАПИСЬ НА ВСТРЕЧИ ПО РАЗДАЧЕ СП: #{MainOrder.find_by(state: MainOrder.states[:current]).id.to_s}
-/      p ВСТРЕЧИ СОСТОЯТСЯ число. Месяц. День недели
-/      p Ваш пакет с заказом возьмут на встречу только при условии, что Вы на неё записаны.
-/      p Выберите место:
-/      p 11:00 - 20 марта(ВОСКРЕСЕНЬЕ!) - Торговый центр DIDAS PERSIA, Сельмаш
-/      p 11:30 - 20 марта(ВОСКРЕСЕНЬЕ!) - Площадь восстания, возле входа в центральный стадион
-/      p 11:50 - 20 марта(ВОСКРЕСЕНЬЕ!) - магазин АЛМИ ул.Мазурова (вход ближе к ледовому)
-/      p 12:10 - 20 марта(ВОСКРЕСЕНЬЕ!) - магазин Евроопт (ул. Чечерская!)
-/      p 12:20 - 20 марта(ВОСКРЕСЕНЬЕ!) - Магазин Брянский Волотова
-/      p 12:35 - 20 марта(ВОСКРЕСЕНЬЕ!) - Федюнинского, д.4 (Гидропривод, троллейбусное кольцо)
-/      p 12:50 - 20 марта(ВОСКРЕСЕНЬЕ!) - аг. Красное (перекресток возле Церкви)
-/      p 13:10 - 20 марта(ВОСКРЕСЕНЬЕ!) - аг. Урицкое (Торговый дом ЭНЕРГЕТИК)
-/      p 13:40 - 20 марта(ВОСКРЕСЕНЬЕ!) - Магазин ГИППО, Речицкое Шоссе
-/      p 14:00 - 20 марта(ВОСКРЕСЕНЬЕ!) - Пожарная часть ул.Владимирова (возле ОГНЕТУШИТЕЛЯ магазин САНТЕХНИКИ - ЗАПАДНЫЙ мкр-он)
-/      p 14:20 - 20 марта(ВОСКРЕСЕНЬЕ!) - кинотеатр ОКТЯБРЬ (сзади) ул.Барыкина
-/      p 14:40 - 20 марта(ВОСКРЕСЕНЬЕ!) - 5-й мкр Магазин MAXIMA
-/      p 15:00 - 20 марта(ВОСКРЕСЕНЬЕ!) - 104-й мкр на въезде
-/      p 15:20 - 20 марта(ВОСКРЕСЕНЬЕ!) - 94-й мкр (конечная 12-го автобуса)
-/      p 15:40 - 20 марта(ВОСКРЕСЕНЬЕ!) - кинотеатр МИР ул.Ильича
-/
-/      p МЕСТО, где галочку поставить
 
