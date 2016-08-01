@@ -9,11 +9,15 @@
         = f.text_field :name, class: 'form-control crafter_registration', autofocus: true, placeholder: 'Имя'
 
       .field
-        /= f.text_field :phone, class: 'form-control crafter_registration', placeholder: 'Номер телефона', type: 'tell'
         = f.text_field :phone, class: 'form-control crafter_registration', placeholder: 'Номер телефона', type: 'tell', maxlength: '20'
+        /p
+        /  | *Чтобы у нас была возможность связаться с Вами для уточнения заказа
 
       .field
         = f.email_field :email, class: 'form-control crafter_registration', placeholder: 'E-mail'
+        /p
+        /  | *Укажите для получения информации о новинках, акциях, скидках
+
       .field
         - if @validatable
           em

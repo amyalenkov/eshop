@@ -52,9 +52,9 @@
               span #{second_part_new_price}р
           .info
             .params
-              p Размер: <b>#{product_size}</b>
-              p Артикул: <b>#{product_sid}</b>
-              p На складе: <b>#{product_stock_availability}</b>
+              p Размер: <b><i>#{product_size}</i></b>
+              p Артикул: <b><i>#{product_sid}</i></b>
+              p На складе: <b><i>#{product_stock_availability}</i></b>
             .cart
               .add_in_cart_index id="#{product_id}"
                 = render 'products/add_in_cart', product: product
