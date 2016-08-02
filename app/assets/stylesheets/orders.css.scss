@@ -6,6 +6,9 @@
 /*ORDERS*/
 .orders{
   padding: 0;
+  .table input[type='checkbox']{
+    margin-top: 15px;
+  }
   .table thead{
     border: 2px solid #DDDDDD;
     background: #edf8f7;
@@ -19,6 +22,7 @@
   }
   .table td{
     text-align: center;
+    border-right: 1px solid #ffffff;
   }
   .table .title a{
     color: #057e89;

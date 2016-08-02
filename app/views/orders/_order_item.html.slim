@@ -33,7 +33,7 @@ table class="table"
             .description_cart
               .title
                 = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)
-              p Дата добавления: <b>#{order_item.created_at.strftime('%F')}</b>
+              p Дата добавления: <b>#{order_item.created_at.strftime('%d.%m.%Y')}</b>
         td
           p <b>#{order_item.product_id}</b>
         td

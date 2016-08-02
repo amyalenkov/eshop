@@ -122,11 +122,11 @@ table class="table"
 
 .date_description
   p
-    | Оплатить за СП 12 до
+    | Оплатить за СП #{MainOrder.find_by(state: MainOrder.states[:current]).id.to_s} до
     span class='span1'  1 февраля 2016г включительно!
     br
     span class='span2' внимание!!!
     |  Если Ваш чек не будет отправлен нам
-    span class='span3'  до 10 часов утра 2февраля 2016г
+    span class='span3'  до 10 часов утра 2 февраля 2016г
     |  Ваш заказ будет
     span class='span2'  отменен!
