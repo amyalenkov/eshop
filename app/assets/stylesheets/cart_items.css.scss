@@ -259,6 +259,11 @@
             width: 155px;
             font-weight: normal;
           }
+          dd {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
         }
       }
       .row_progress_bar{

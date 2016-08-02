@@ -44,3 +44,4 @@
 
 //= require nprogress
 //= require nprogress-turbolinks
+//= require open_reminder

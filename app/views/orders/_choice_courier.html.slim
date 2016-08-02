@@ -1,13 +1,13 @@
 h4 Доставка курьером
 = form_tag(choice_delivery_order_path(@order_for_meetings.id)) do
   = hidden_field_tag :delivery, Order.deliveries[:courier]
-  =text_field_tag :name, nil, placeholder: 'Ф.И.О.'
+  =text_field_tag :name, nil, placeholder: 'Ф.И.О.', class: 'form-control'
   br
-  =text_field_tag :city, nil, placeholder: 'Город, область'
+  =text_field_tag :city, nil, placeholder: 'Город, область', class: 'form-control'
   br
-  =text_field_tag :address, nil, placeholder: 'Адрес'
+  =text_field_tag :address, nil, placeholder: 'Адрес', class: 'form-control'
   br
-  =text_field_tag :index, nil, placeholder: 'Индекс'
+  =text_field_tag :index, nil, placeholder: 'Индекс', class: 'form-control'
   br
   =submit_tag 'Оформить'
   br

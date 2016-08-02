@@ -42,8 +42,8 @@
 
             .description
               dl
-                dt.red Цена Бел. руб.:
-                dd.red <i><b>#{row.product.get_price}</b></i>
+                dt.red Цена BYN:
+                dd.red <i><b>#{row.product.get_new_price}</b></i>
                 dt Артикул:
                 dd <i><b>#{row.product.id}</b></i>
                 dt Остаток на складе:
@@ -54,8 +54,6 @@
                 dd <i><b>#{product_size_text}</b></i>
                 dt Материал:
                 dd <i><b>#{product_materials_text}</b></i>
-                /dt <i>В боксе:</i>
-                /dd <i><b>НЕТ ДАННЫХ</b></i>
                 dt Упаковано в:
                 dd <i><b>#{product_box_type}</b></i>
                 dt Сертификат:
