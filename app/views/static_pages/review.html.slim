@@ -1,3 +1,9 @@
+= content_for :title do
+  - (MetaTag.find_by_name 'reviews').title
+
+= content_for :description do
+  - (MetaTag.find_by_name 'reviews').description[0..159]
+
 .container-fluid
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.question

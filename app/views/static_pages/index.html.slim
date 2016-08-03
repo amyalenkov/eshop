@@ -1,3 +1,9 @@
+= content_for :title do
+  - (MetaTag.find_by_name 'index').title
+
+= content_for :description do
+  - (MetaTag.find_by_name 'index').description[0..159]
+
 .container-fluid
   .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_info
