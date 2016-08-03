@@ -1,2 +1,2 @@
-class ReviewQuestion < ActiveRecord::Base
+class Question < ActiveRecord::Base
 end

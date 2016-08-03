@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     review.user_id = current_user.id
     review.save!
 
-    @id_review = params[:id]
+    @id_review = params[:name]
     @reviews = Review.all
   end
 
