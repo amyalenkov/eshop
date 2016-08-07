@@ -21,6 +21,8 @@
         - product_name = product.name.gsub('&quot;', '')
         - product_material = product.materials_text
         - product_size = product.size_text
+        - if product_size == 'f'
+          -product_size='Недостаточно данных'
         - product_stock_availability = product.balance_text
         - product_sid = product.sid
         - product_price = product.get_price
