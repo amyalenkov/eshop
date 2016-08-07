@@ -28,13 +28,25 @@ class Product < ActiveRecord::Base
     str_result_price = result_price.to_s
     second_part = str_result_price[-3, 3].to_i.round -2
     first_part = str_result_price.gsub( /.{3}$/, '' )
-    if second_part == 0
-      second_part = '000'
-    elsif second_part == 1000
-      second_part = '000'
-      first_part = (first_part.to_i + 1).to_s
+    if first_part.size > 3
+      million_part = str_result_price.gsub( /.{6}$/, '' )
+      first_part = str_result_price.gsub( /.{3}$/, '' ).gsub( /^\w/, '' )
+      if second_part == 0
+        second_part = '000'
+      elsif second_part == 1000
+        second_part = '000'
+        first_part = (first_part.to_i + 1).to_s
+      end
+      million_part + ' ' + first_part + ' ' + second_part.to_s
+    else
+      if second_part == 0
+        second_part = '000'
+      elsif second_part == 1000
+        second_part = '000'
+        first_part = (first_part.to_i + 1).to_s
+      end
+      first_part + ' ' + second_part.to_s
     end
-    first_part + ' ' + second_part.to_s
   end
 
   def get_new_price
