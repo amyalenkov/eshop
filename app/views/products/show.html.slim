@@ -56,7 +56,7 @@
           - product_size_text='Не достаточно данных'
         -else product_size_text=@product.size_text
 
-        -if @product.materials_text==nil
+        -if @product.materials_text==nil || @product.materials_text==''
           - product_materials_text='Не достаточно данных'
         -else product_materials_text=@product.materials_text
 
