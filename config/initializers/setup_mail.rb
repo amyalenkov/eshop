@@ -8,4 +8,5 @@ ActionMailer::Base.smtp_settings = {
     # password: 'youruzelok',
     authentication: 'plain',
     enable_starttls_auto: true
+
 }
