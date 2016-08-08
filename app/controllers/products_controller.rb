@@ -32,13 +32,11 @@ class ProductsController < ApplicationController
     current_user.add_last_product @product if user_signed_in?
 
     @subcategory = Subcategory.find_by_id @product.subcategory_id.to_s
-
-    Rails.logger.warn 'subcategory_name: '+@subcategory.name
-    path = (Category.find_by name: @subcategory.name).path.split('.')
-
-    @category_path = Hash.new
-    path.each {|id| @category_path[id]=[id, (Category.find_by_id id).name]}
-
+    if @subcategory
+      path = (Category.find_by name: @subcategory.name).path.split('.')
+      @category_path = Hash.new
+      path.each {|id| @category_path[id]=[id, (Category.find_by_id id).name]}
+    end
   end
 
   def search_ajax
