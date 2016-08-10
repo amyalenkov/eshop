@@ -8,6 +8,8 @@
 require File.expand_path('../environment', __FILE__)
 
 set :output, "#{Rails.root}/log/cron_log.log"
+env :PATH, ENV['PATH']
+env :GEM_PATH, ENV['GEM_PATH']
 
 stop_record = Configure.find_by_name 'stop'
 stop_time = stop_record.time
