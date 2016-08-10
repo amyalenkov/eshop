@@ -14,6 +14,7 @@ ActiveAdmin.register Product do
     f.inputs 'Edit' do
       f.input :name
       f.input :description
+      f.input :subcategory
       f.input :depth
       f.input :width
       f.input :height

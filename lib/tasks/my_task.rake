@@ -99,6 +99,7 @@ namespace :db do
     require "#{Rails.root}/lib/api/product"
     count = 0
     Product.find_each do |product|
+      sleep 0.5
       count+=1
       product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
       product_new = product_sima.get_product_by_sid product.sid
