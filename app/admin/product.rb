@@ -6,6 +6,7 @@ ActiveAdmin.register Product do
 
   filter :id
   filter :name
+  filter :sid
 
   permit_params :name, :title, :description
 
