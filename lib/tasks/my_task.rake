@@ -29,20 +29,27 @@ namespace :db do
   desc 'load_products'
   task :load_products => :environment do
     require "#{Rails.root}/lib/api/product"
-    category = Category.find_by_sid 136
+    category = Category.find_by_sid 17208
     count = 0
-    category.descendants.where(is_leaf: true).each do |subcategory|
-      p count.to_s + ' - ' + subcategory.sid.to_s + '\n'
-      count += 1
-      subcategory_id = subcategory.sid
+    path = category.path.split('.')
+
+    puts category.id.to_s
+    puts path.to_s
+
+    if category.id.to_s == path.last
+      puts 'one category, no descendants'
+      puts count.to_s + ' - ' + category.id.to_s
+      puts ' '
+      sleep 0.5
+      category_id = category.id
       current_page = 1
       page_count = 1
       while page_count >= current_page
         product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
-        products, meta = product_sima.get_all_products_for_category(subcategory_id, current_page)
+        products, meta = product_sima.get_all_products_for_category(category_id, current_page)
         page_count = meta['pageCount']
         products.each do |product|
-          Product.create(subcategory_id: subcategory_id, sid: product['sid'],
+          Product.create(subcategory_id: category_id, sid: product['sid'],
                          country_id: product['country_id'], is_hit: product['is_hit'], weight: product['weight'],
                          color_id: product['color_id'], balance_text: product['balance_text'], box_size_text: product['box_size_text'],
                          box_type: product['box_type'],k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
@@ -52,8 +59,38 @@ namespace :db do
                          new_type_id: product['new_type_id']
 
           )
+          puts ' --' + product['sid'].to_s
         end
         current_page = current_page + 1
+      end
+    else
+      category.descendants.where(is_leaf: true).each do |category|
+        puts count.to_s + ' - ' + category.id.to_s
+        puts ' '
+        sleep 0.5
+        count += 1
+        category_id = category.sid
+        current_page = 1
+        page_count = 1
+        while page_count >= current_page
+          product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
+          products, meta = product_sima.get_all_products_for_category(category_id, current_page)
+          page_count = meta['pageCount']
+          products.each do |product|
+            Product.create(subcategory_id: category_id, sid: product['sid'],
+                           country_id: product['country_id'], is_hit: product['is_hit'], weight: product['weight'],
+                           color_id: product['color_id'], balance_text: product['balance_text'], box_size_text: product['box_size_text'],
+                           box_type: product['box_type'],k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
+                           name: product['name'], photo_count: product['photo_count'], price: product['price'],
+                           size_text: product['size_text'], trademark_id: product['trademark_id'], unit: product['unit'],
+                           description: product['description'], image: product['photo']['base_url'],
+                           new_type_id: product['new_type_id']
+
+            )
+            puts ' --' + product['sid'].to_s
+          end
+          current_page = current_page + 1
+        end
       end
     end
   end
@@ -99,7 +136,6 @@ namespace :db do
     require "#{Rails.root}/lib/api/product"
     count = 0
     Product.find_each do |product|
-      sleep 0.5
       count+=1
       product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
       product_new = product_sima.get_product_by_sid product.sid
