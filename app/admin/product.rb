@@ -4,6 +4,7 @@ ActiveAdmin.register Product do
 
   config.per_page = 30
 
+  filter :id
   filter :name
 
   permit_params :name, :title, :description
