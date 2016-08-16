@@ -7,6 +7,7 @@ ActiveAdmin.register Product do
   filter :id
   filter :name
   filter :sid
+  filter :subcategory_id
 
   permit_params :name, :title, :description
 
@@ -14,7 +15,7 @@ ActiveAdmin.register Product do
     f.inputs 'Edit' do
       f.input :name
       f.input :description
-      f.input :subcategory
+      f.input :subcategory_id, :as => :string
       f.input :depth
       f.input :width
       f.input :height
