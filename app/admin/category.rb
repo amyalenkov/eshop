@@ -2,6 +2,8 @@ ActiveAdmin.register Category, :as => 'All Categories' do
 
   menu label: 'Категории'
 
+  permit_params :name, :is_leaf
+
   config.per_page = 30
 
   filter :name
@@ -16,7 +18,7 @@ ActiveAdmin.register Category, :as => 'All Categories' do
       f.input :is_leaf
       f.input :level
       f.input :parent_id
-      f.input :path, as: :string
+      f.input :path, :as => :string
     end
     f.actions
   end

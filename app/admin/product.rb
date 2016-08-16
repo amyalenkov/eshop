@@ -8,8 +8,6 @@ ActiveAdmin.register Product do
 
   permit_params :name, :title, :description
 
-  config.per_page = 30
-
   form do |f|
     f.inputs 'Edit' do
       f.input :name
