@@ -2,13 +2,13 @@
 - if user_signed_in?
   -if current_user.product_in_cart?(product)
     .favourites_in_cart
-      .favourite id="for_favorite_#{product.id}"
+      .favourite id="#{product.id.to_s}_other_product"
         = render 'cart_items/favorite_product', product_id: product.id
     .ok
       = link_to image_tag('ok.png'), cart_items_path
   -else
     .favourites
-      .favourite id="for_favorite_#{product.id}"
+      .favourite id='#{product.id.to_s}_other_product'
         = render 'cart_items/favorite_product', product_id: product.id
     = form_for(CartItem.new, remote: true) do |f|
       .field
