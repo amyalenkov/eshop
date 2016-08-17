@@ -54,6 +54,7 @@
     border: 2px solid #ffb11a;
     border-radius: 10px;
     background: #feeaff;
+    margin-top: 10px;
     .price{
       float: left;
       width: 150px;
@@ -397,6 +398,9 @@
                 background: url("star.png") no-repeat;
                 border: none;
                 outline: none;
+                top: 10px;
+                right: 10px;
+                position: absolute;
               }
               input[type="submit"]:hover{
                 background: url("star-hover.png") no-repeat;
