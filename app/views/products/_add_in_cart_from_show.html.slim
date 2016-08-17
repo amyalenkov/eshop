@@ -23,7 +23,7 @@
           - k_min = 'мин.' unless product.k_min?
           p
             i #{k_min} #{product.min_qty} шт.
-        = image_tag ("st.png")
+        = image_tag ('st.png')
         .ok
           = link_to image_tag('ok.png'), cart_items_path
   -else
@@ -48,7 +48,7 @@
             - k_min = 'мин.' unless product.k_min?
             p
               | <i>#{k_min} #{product.min_qty} шт.</i>
-          = image_tag ("st.png")
+          = image_tag ('st.png')
           .actions
             = f.submit ''
 -else
