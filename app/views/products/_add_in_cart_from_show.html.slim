@@ -2,6 +2,7 @@
 - new_product_price = product.get_new_price
 - first_part_new_price = new_product_price.to_s.scan(/(\w+)\./).last.first
 - second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
+- Rails.logger.warn 'add_in_cart_from_show product: '+product.id.to_s
 - if user_signed_in?
   -if current_user.product_in_cart?(product)
     - count_product = CartItem.find_by user_id: current_user.id, product_id: product.id

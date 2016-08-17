@@ -1,4 +1,5 @@
 - product = @product if product.nil?
+- Rails.logger.warn 'add_in_cart product: '+product.id.to_s
 - if user_signed_in?
   -if current_user.product_in_cart?(product)
     .favourites_in_cart
