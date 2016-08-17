@@ -106,6 +106,7 @@
           = render 'add_comment_for_product'
       - else
         .add_comment_user_signed_in
+
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.other_product
       .title
@@ -137,12 +138,12 @@
                   = link_to product_name, product_path(product)
                 .info
                   .sale
-                    = product_price
+                    = product_price +' Бел.руб'
                     br
                     .second_part_new_price
                       = first_part_new_price
                       span #{second_part_new_price} р
 
-                  .cart
-                    .add_in_cart_index id="#{product}"
-                      = render 'products/add_in_cart', product: product
+                .cart
+                  .add_in_cart_index id="#{product}"
+                    = render 'products/add_in_cart_other_product', product: product

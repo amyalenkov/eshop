@@ -51,3 +51,23 @@
           = image_tag ("st.png")
           .actions
             = f.submit ''
+-else
+  .price
+    .old_price
+      i #{product.get_price} р
+    .new_price
+      .second_part_new_price
+        = first_part_new_price
+        span #{second_part_new_price} р
+  .favourites
+    .favourite id="for_favorite_#{product.id}"
+      = button_to '', new_user_session_path, class: 'button_bg'
+  .count_for_cart
+    .count
+      .field_count
+        input type="number" value="0" disabled=true
+        p
+          | <i>#{k_min} #{product.min_qty} шт.</i>
+      = image_tag ('st.png')
+      .actions
+        = button_to '', new_user_session_path

@@ -1,0 +1,27 @@
+- product = @product if product.nil?
+- if user_signed_in?
+  -if current_user.product_in_cart?(product)
+    .favourites_in_cart
+      .favourite id="for_favorite_#{product.id}"
+        = render 'cart_items/favorite_product', product_id: product.id
+    .ok
+      = link_to image_tag('ok.png'), cart_items_path
+  -else
+    .favourites
+      .favourite id="for_favorite_#{product.id}"
+        = render 'cart_items/favorite_product', product_id: product.id
+    = form_for(CartItem.new, remote: true) do |f|
+      .field
+        = f.number_field :count, :value => '0', :min => '0'
+        br
+        = f.hidden_field :product_id, :value => product.id
+      .actions
+        = f.submit ''
+-else
+  .favourites
+    .favourite id="for_favorite_#{product.id}"
+      = button_to '', new_user_session_path, class: 'favourite'
+    .field
+      input type="number" value="0" disabled=true
+    .actions
+      = button_to '', new_user_session_path
