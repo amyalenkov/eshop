@@ -11,12 +11,12 @@
 | ");
 | $('##{@product.id}').show();
 
-| $('#show_add_in_cart').html("
+| $('##{@product.id}_show_add_in_cart').html("
 = escape_javascript (render partial: 'products/add_in_cart_from_show')
 | ");
-| $('#show_add_in_cart').show();
+| $('##{@product.id}_show_add_in_cart').show();
 
-| $('##{@product.id}_other_product').html("
+| $('##{@product.id}').html("
 = escape_javascript (render partial: 'products/add_in_cart_other_product')
 | ");
-| $('##{@product.id}_other_product').show();
+| $('##{@product.id}').show();
