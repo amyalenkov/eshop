@@ -16,7 +16,7 @@
 | ");
 | $('#show_add_in_cart').show();
 
-| $('##{@product.id}').html("
+| $('##{@product.id}_other_product').html("
 = escape_javascript (render partial: 'products/add_in_cart_other_product')
 | ");
-| $('##{@product.id}').show();
+| $('##{@product.id}_other_product').show();
