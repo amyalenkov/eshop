@@ -4,5 +4,7 @@
 | $('.cart_items').html("
 = escape_javascript (render partial: 'cart_items')
 | ");
+| $('#').show();
 | console.log('delete product from cart')
-| alert('delete product from cart')
+| $('#delete_from_cart').show();
+| setTimeout(function () { '#delete_from_cart'.hide();}, 3000);
