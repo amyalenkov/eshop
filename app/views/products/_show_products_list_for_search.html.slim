@@ -1,8 +1,5 @@
 - unless @search_products.nil?
   -sort_by = cookies[:sort_by]
-  -class_for_sort_by = cookies[:class_for_sort_by]
-  -Rails.logger.info sort_by
-
   -case sort_by
     - when 'by_line'
       -index_products=1
@@ -18,10 +15,13 @@
   - @search_products.in_groups_of(index_products, false) do |products|
     .row_products
       - for product in products
+        - product_id = product.id
         - product_image = product.image+'0/700.jpg'
         - product_name = product.name.gsub('&quot;', '')
         - product_material = product.materials_text
         - product_size = product.size_text
+        - if product_size == 'f'
+          -product_size='Недостаточно данных'
         - product_stock_availability = product.balance_text
         - product_sid = product.sid
         - product_price = product.get_price
@@ -53,11 +53,11 @@
               span #{second_part_new_price}р
           .info
             .params
-              p Размер: <b>#{product_size}</b>
-              p Артикул: <b>#{product_sid}</b>
-              p На складе: <b>#{product_stock_availability}</b>
+              p Размер: <b><i>#{product_size}</i></b>
+              p Артикул: <b><i>#{product_sid}</i></b>
+              p На складе: <b><i>#{product_stock_availability}</i></b>
             .cart
-              .add_in_cart_index id="#{product_sid}"
+              .add_in_cart_index id="#{product_id}"
                 = render 'products/add_in_cart', product: product
 
   =paginate @search_products
