@@ -4,7 +4,12 @@
 | $('.cart_items').html("
 = escape_javascript (render partial: 'cart_items')
 | ");
-| $('#').show();
-| console.log('delete product from cart')
-| $('#delete_from_cart').show();
-| setTimeout(function () { '#delete_from_cart'.hide();}, 3000);
+
+| document.getElementById('delete_from_cart').setAttribute('style','visibility:hidden');
+| document.getElementById('delete_from_cart').setAttribute('style','visibility:visible');
+| setTimeout(closeForm, 2000);
+
+| function closeForm(){
+|   document.getElementById('delete_from_cart').setAttribute('style','visibility:hidden');
+/|   console.log('delete product from cart and sleep 2s')
+| }
