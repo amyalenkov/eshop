@@ -1,0 +1,12 @@
+.login_title
+  h2 Забыли пароль?
+.login_form
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = devise_error_messages!
+    .form-group
+      .field
+        = f.email_field :email, class: 'form-control crafter_registration', placeholder: 'E-mail'
+      button.btn.btn-success.register-btn.register-btn-crafter[type="submit"]
+        | Отправить мне инструкции для восстановления пароля
+
+  = render 'devise/shared/links'
