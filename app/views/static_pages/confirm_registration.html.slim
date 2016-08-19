@@ -1,0 +1,20 @@
+= content_for :title do
+  - (MetaTag.find_by_name 'index').title
+
+= content_for :description do
+  - (MetaTag.find_by_name 'index').description[0..159]
+
+.container-fluid
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      .title
+        h2 Регистрация
+      .content
+        -if params[:name]
+          - name = params[:name]
+        -else
+          - name = 'Пользователь'
+        - email = params[:email]
+
+        p Добро пожаловать, <b>#{name}</b>
+        p На Ваш email: <b>#{email}</b>, высланно письмо для продолжения регистрации.
