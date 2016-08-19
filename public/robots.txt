@@ -5,4 +5,6 @@
 # Disallow: /
 
 User-agent: *
-Disallow:
+Disallow: /*?
+Disallow: /cart_items
+Disallow: /orders
