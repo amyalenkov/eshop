@@ -409,17 +409,20 @@ header {
   }
 
   .info{
-    padding: 10px;
-    padding-top: 5px;
+    padding: 5px 10px 10px;
     text-align: center;
     .index, .order_menu, .categories_menu, .meeting_menu,
     .cart_menu, .rows_menu, .orders_menu, .create_question{
       padding-right: 10px;
       font-size: 20px;
-      padding-top: 4px;
+      padding-top: 0;
       color: #ffffff;
       display: inline-block;
       margin-right: 1%;
+    }
+
+    .cart_menu{
+      margin-top: 5px;
     }
 
     .index a, .order_menu a, .categories_menu a, .meeting_menu a,
