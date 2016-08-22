@@ -401,7 +401,6 @@ header {
   .top{
     background: #6cb2db;
     height: 65px;
-    padding-top: 5px;
   }
 
   a{
@@ -415,14 +414,10 @@ header {
     .cart_menu, .rows_menu, .orders_menu, .create_question{
       padding-right: 10px;
       font-size: 20px;
-      padding-top: 0;
+      padding-top: 10px;
       color: #ffffff;
       display: inline-block;
-      margin-right: 1%;
-    }
-
-    .cart_menu{
-      margin-top: 5px;
+      //margin-right: 1%;
     }
 
     .index a, .order_menu a, .categories_menu a, .meeting_menu a,
@@ -1788,6 +1783,19 @@ header {
 //    text-overflow: ellipsis;
 //  }
 //}
+
+@media (min-width: 1200px) {
+
+  .fixed_menu{
+    .info{
+      .index, .order_menu, .categories_menu, .meeting_menu,
+      .cart_menu, .rows_menu, .orders_menu, .create_question{
+        padding-top: 15px !important;
+        margin-right: 2% !important;
+      }
+    }
+  }
+}
 
 
 
