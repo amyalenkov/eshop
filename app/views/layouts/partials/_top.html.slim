@@ -1,18 +1,6 @@
 #nav.fixed_menu
   .navbar.navbar-inverse.navbar-static
-    .container-fluid.top
-      #imaginary_container
-        .input-group.stylish-input-group
-          = form_tag(search_products_path, :method => :get, :class => 'search') do
-            = text_field_tag 'search', nil, :placeholder => 'Найти...', :autocomplete => 'off', :class => 'search_input'
-            = submit_tag 'НАЙТИ', :class => 'search_button'
-        #search_result[style="display: none"]
-          .search_result
-            span
-              | X
-            ul#result_search_ul
-              = render 'layouts/partials/search'
-
+    .container-fluid_index.top
       .info
         = render 'layouts/partials/info'
 

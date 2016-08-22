@@ -1,3 +1,5 @@
+.index
+  = link_to 'Главная', '/'
 .order_menu
   - if user_signed_in?
     - current_order = current_user.get_current_order
@@ -28,7 +30,7 @@
 .rows_menu
   button type="button" data-toggle="modal" data-target="#getCall" Контакты
 
-.cart_menu.pull-right
+.cart_menu
   - if user_signed_in?
     .cart_menu_for_update
       = render 'layouts/partials/cart_menu'
