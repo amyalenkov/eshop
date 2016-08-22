@@ -410,6 +410,7 @@ header {
 
   .info{
     padding: 10px;
+    padding-top: 5px;
     text-align: center;
     .index, .order_menu, .categories_menu, .meeting_menu,
     .cart_menu, .rows_menu, .orders_menu, .create_question{
@@ -418,6 +419,7 @@ header {
       padding-top: 4px;
       color: #ffffff;
       display: inline-block;
+      margin-right: 1%;
     }
 
     .index a, .order_menu a, .categories_menu a, .meeting_menu a,
