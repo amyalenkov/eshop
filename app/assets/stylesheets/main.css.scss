@@ -411,10 +411,10 @@ header {
     padding: 5px 10px 10px;
     text-align: center;
     .index, .order_menu, .categories_menu, .meeting_menu,
-    .cart_menu, .rows_menu, .orders_menu, .create_question{
+    .rows_menu, .orders_menu, .create_question{
       padding-right: 10px;
       font-size: 20px;
-      padding-top: 10px;
+      //padding-top: 10px;
       color: #ffffff;
       display: inline-block;
       //margin-right: 1%;
@@ -449,6 +449,11 @@ header {
     }
 
     .cart_menu{
+      padding-right: 10px;
+      color: #ffffff;
+      display: inline-block;
+      margin-top: -12px;
+      margin-left: 15px;
       a{
         font-size: 12px;
       }
@@ -488,11 +493,6 @@ header {
         outline: none;
         color: #ffffff;
       }
-    }
-
-    .cart_menu{
-      margin-top: -12px;
-      margin-left: 15px;
     }
 
     .button-no-border{
