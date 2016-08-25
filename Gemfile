@@ -88,5 +88,5 @@ gem 'just-datetime-picker'
 
 gem 'jquery-inputmask-rails'
 
-# progress barbundle instal
+# progress bar bundle install
 gem 'nprogress-rails'

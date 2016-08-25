@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'uzelok4you.by'
+set :application, 'uzelok4u.by'
 # set :application, '185.66.69.13'
 set :repo_url, 'https://github.com/amyalenkov/eshop.git'
 
