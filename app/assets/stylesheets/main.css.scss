@@ -509,9 +509,6 @@ header {
 
 
 }
-//.modal-open .modal{
-//  overflow-y: scroll;
-//}
 .modal-open{
   overflow: visible;
   padding-right: 0;
@@ -531,6 +528,7 @@ header {
   text-align: center;
   margin: 0 auto;
   background: #ebe9e9;
+  min-width: 1350px;
 }
 
 .catalog{
@@ -538,7 +536,14 @@ header {
   //text-align: center;
 }
 
-.catalog_info{
+.catalog_info_old{
+  text-align: left !important;
+  margin-bottom: 290px !important;
+  max-width: 200px !important;
+  background: #ffffff !important;
+}
+
+.catalog_info_old, .catalog_info{
   text-align: center;
   margin-bottom: 290px;
   max-width: 200px;
@@ -728,8 +733,13 @@ header {
   }
 }
 
-.catalog{
-  //width: 800px;
+.catalog_old{
+  width: 800px !important;
+  height: auto !important;
+  margin-left: 30px;
+}
+
+.catalog_old, .catalog{
   width: 100%;
   padding: 0;
   height: 640px;
@@ -1322,7 +1332,7 @@ header {
 }
 
 .catalog_list{
-  width: 800px;
+  width: 785px;
   padding: 0;
   .address_link{
     float: left;
@@ -1382,6 +1392,7 @@ header {
   margin-bottom: -590px;
   display: inline-block;
   background: #ffffff;
+  max-width: 1080px;
   .title{
     font-size: 18px;
     color: #515151;

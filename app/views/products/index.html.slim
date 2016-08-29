@@ -1,6 +1,6 @@
 .container-fluid
   .row
-    .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_info
+    .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_info_old
       .title
         p Недавно просмотренные товары
       .last_visited_products
@@ -14,7 +14,7 @@
           .last_visited_product
 
       = render 'layouts/partials/calendar'
-    .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog_old
       .address_link
         = link_to 'Главная/', '/'
         -unless @subcategory.nil?
