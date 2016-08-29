@@ -1,7 +1,7 @@
-.row
-  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+#slideShowIndexCatalog
+  #slidesContainerIndexCatalog
     - menu.each do |category|
-      .catalog_items
+      .catalog_items.slide_catalog
         a href="/category/#{category.id}"
           p
             | #{category.name}
