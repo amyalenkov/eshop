@@ -4,18 +4,14 @@
 = content_for :description do
   - (MetaTag.find_by_name 'index').description[0..159]
 
-.container-fluid
-  .row
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_info
-      /.review
-        .title
-          p отзыв дня
-          =image_tag @img_for_comment_of_day
-        .body
-          p #{@comment_of_day}
+.container-fluid_index
+  .catalog
+    .title
+      p Каталог
+    br
+    = render 'layouts/partials/categories_index_page', menu: @categories
+  .align_center
+    .catalog_info
       = render 'layouts/partials/calendar'
-    .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog
-      .title
-        p Каталог
-      br
-      = render 'layouts/partials/categories_index_page', menu: @categories
+    .hot_product
+      = render 'layouts/partials/hot_products'

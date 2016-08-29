@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
     @comment_of_day = Additional.find_by_name('comment_of_day').value
     @img_for_comment_of_day = Additional.find_by_name('comment_url').value
     calendar_dates
+
+    @product = Product.find_by_id 35089
+    @alike_products = Product.where(subcategory: @product.subcategory).limit(20).order('RANDOM()')
   end
 
   def order_call
