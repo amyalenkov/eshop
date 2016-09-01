@@ -84,7 +84,7 @@ header {
     font-family: Arial,serif;
     text-decoration: none !important;
     img{
-      width: 90px;
+      width: 125px;
     }
   }
 }
@@ -254,12 +254,12 @@ header {
 .menu_head{
   color: #6cb2db;
   text-align: center;
+  margin-top: -35px;
   a, span{
     color: #6cb2db;
     text-decoration: none;
     border: 1px solid #ffffff;
-    padding-left: 80px;
-    padding-right: 80px;
+    margin-right: 80px;
     font-size: 22px;
   }
   a:hover{
@@ -412,11 +412,9 @@ header {
     text-align: center;
     .index, .order_menu, .categories_menu, .meeting_menu,
     .rows_menu, .orders_menu, .create_question{
-      padding-right: 10px;
-      font-size: 18px;
+      font-size: 22px;
       color: #ffffff;
       display: inline-block;
-      //margin-right: 0.5% !important;
     }
 
     .index a, .order_menu a, .categories_menu a, .meeting_menu a,
@@ -449,6 +447,7 @@ header {
 
     .cart_menu{
       padding-right: 10px;
+      vertical-align: middle;
       color: #ffffff;
       display: inline-block;
       margin-top: -12px;
@@ -886,6 +885,7 @@ header {
     margin:0 auto;
     width: 100% !important;
     height: 500px;
+    padding-top: 20px;
     overflow:auto; /* разрешаем прокрутку */
     position:relative;
     .catalog_items{
@@ -894,7 +894,7 @@ header {
       zoom: 1;
       text-align: center;
       width: 18%;
-      margin-bottom: 50px;
+      margin-bottom: 10px;
 
       p{
         font-size: 24px;
@@ -951,6 +951,7 @@ header {
   #rightControlCatalog {
     height: 27px;
     position: absolute;
+    margin-top: -20px;
     background: transparent url("next_2.png") no-repeat 0 0;
   }
 
@@ -2050,22 +2051,73 @@ header {
 //  }
 //}
 
-@media (min-width: 1200px) {
+//@media (min-width: 931px) {
+//
+//  .fixed_menu{
+//    .info{
+//      padding: 5px 5px 10px;
+//      .index, .order_menu, .categories_menu, .meeting_menu,
+//      .cart_menu, .rows_menu, .orders_menu, .create_question{
+//        padding-top: 11px !important;
+//        text-align: center;
+//        margin-right: 45px;
+//      }
+//    }
+//  }
+//}
+
+@media (min-width: 1280px){
 
   .fixed_menu{
     .info{
-      padding: 5px 5px 10px;
+      text-align: justify;
+      line-height: 0;
+      font-size: 1px;
+      text-justify: newspaper;
+      zoom:1;
+      text-align-last: justify;
+
       .index, .order_menu, .categories_menu, .meeting_menu,
       .cart_menu, .rows_menu, .orders_menu, .create_question{
-        padding-top: 15px !important;
-        margin-right: 0.5% !important;
+        display: inline-block;
+        margin-top: 5px;
       }
+
+      .index{
+        margin-left: 15px;
+      }
+
+      .rows_menu button{
+        padding: 17px;
+      }
+
+      .rows_menu button:hover{
+        padding: 17px;
+      }
+
+      .cart_menu{
+        vertical-align: middle;
+        margin-top: -15px;
+        a{
+          float: left;
+          margin-left: 10px;
+        }
+      }
+
     }
+
+    .info:after {
+      width: 100%;
+      height: 0;
+      visibility: hidden;
+      overflow: hidden;
+      content: '';
+      display: inline-block;
+
+    }
+
   }
 }
-
-
-
 
 .meetings {
   width: 100%;

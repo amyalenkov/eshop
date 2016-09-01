@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var currentPosition = 0;
-    var slideHeight = 200;
+    var slideHeight = 230;
     var slidesCatalog = $('.slide_catalog');
     var numberOfSlides = slidesCatalog.length;
     // Убираем прокрутку
@@ -45,7 +45,7 @@ $(document).ready(function(){
             $('#leftControlCatalog').css('display', 'inline-block');
         }
         // Спрятать правую стрелку, если это последний слайд
-        if(position==4){ $('#rightControlCatalog').hide(); }
+        if(position==3){ $('#rightControlCatalog').hide(); }
         else{
             $('#rightControlCatalog').show();
             $('#rightControlCatalog').css('display', 'inline-block');
