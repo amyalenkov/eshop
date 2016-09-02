@@ -2069,16 +2069,19 @@ header {
 @media (min-width: 1280px){
   .fixed_menu{
     .info{
-      text-align: justify;
-      line-height: 0;
-      font-size: 1px;
-      zoom:1;
-      text-align-last: justify;
+      //text-align: justify;
+      //font-size: 1px;
+      //zoom:1;
+      //text-align-last: justify;
 
+      display: table;
+      line-height: 0;
+      position: relative;
+      width: 100%;
+      
       .index, .order_menu, .categories_menu, .meeting_menu,
       .cart_menu, .rows_menu, .orders_menu, .create_question{
-        display: inline-block;
-        margin-top: 5px;
+        display: table-cell;
       }
 
       .index{
@@ -2095,7 +2098,8 @@ header {
 
       .cart_menu{
         vertical-align: middle;
-        margin-top: -15px;
+        margin-top: -8px;
+        float: left;
         a{
           float: left;
           margin-left: 10px;
