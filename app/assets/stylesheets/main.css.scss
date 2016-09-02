@@ -2070,12 +2070,12 @@ header {
 
   .fixed_menu{
     .info{
+      //text-align: center;
       text-align: justify;
       line-height: 0;
       font-size: 1px;
-      text-justify: newspaper;
       zoom:1;
-      text-align-last: justify;
+      //text-align-last: justify;
 
       .index, .order_menu, .categories_menu, .meeting_menu,
       .cart_menu, .rows_menu, .orders_menu, .create_question{
