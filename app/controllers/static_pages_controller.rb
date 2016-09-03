@@ -10,7 +10,7 @@ class StaticPagesController < ApplicationController
     @last_product = LastProduct.first
     if @last_product
       @product = Product.find_by_id @last_product.product_id
-      @alike_products = Product.where(subcategory: @product.subcategory).limit(20).order('RANDOM()')
+      @alike_products = Product.where(subcategory: @product.subcategory).limit(12).order('RANDOM()')
     end
   end
 

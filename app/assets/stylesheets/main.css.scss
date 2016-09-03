@@ -260,7 +260,7 @@ header {
     text-decoration: none;
     border: 1px solid #ffffff;
     margin-right: 80px;
-    font-size: 22px;
+    font-size: 19px;
   }
   a:hover{
     border: 1px solid #9EA3A9;
@@ -412,7 +412,7 @@ header {
     text-align: center;
     .index, .order_menu, .categories_menu, .meeting_menu,
     .rows_menu, .orders_menu, .create_question{
-      font-size: 22px;
+      font-size: 19px;
       color: #ffffff;
       display: inline-block;
     }
@@ -546,6 +546,7 @@ header {
   text-align: center;
   margin-bottom: 290px;
   max-width: 200px;
+  width: 20%;
   display: inline-block;
   background: #ffffff;
   .title{
@@ -649,6 +650,9 @@ header {
 
   .cal > .simple-calendar{
     text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
     .next_meeting{
       background: #e12a2a;
       color: #ffffff;
@@ -667,8 +671,9 @@ header {
   .calendar_info{
     .info_1, .info_2, .info_3{
       float: left;
-      width: 100%;
+      width: 95%;
       margin-top: 20px;
+      margin-left: 15px;
       span{
         float: left;
         width: 22px;
@@ -1388,14 +1393,17 @@ header {
   }
 }
 
-
 .hot_product{
   margin-bottom: -590px;
   display: inline-block;
   background: #ffffff;
-  max-width: 1080px;
+  max-width: 1280px;
+  width: 75%;
+  margin-left: 25px;
   .title{
-    font-size: 18px;
+    font-size: 25px;
+    padding-top: 30px;
+    margin-left: 80px;
     color: #515151;
     font-weight: bold;
     font-style: italic;
@@ -1405,10 +1413,6 @@ header {
     float: left;
     width: 100%;
     height: 570px;
-    //border-top: 1px solid rgba(81, 81, 81, 0.5);
-    //border-bottom: 1px solid rgba(81, 81, 81, 0.5);
-    //box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5), 0px -2px 6px 0 rgba(0, 0, 0, 0.5);
-
     #slideshowIndex #slidesContainerIndex {
       margin:0 auto;
       width: 960px !important;
@@ -1926,201 +1930,6 @@ header {
   box-shadow: 0 5px 0.5em -1px #666;
 }
 /*END_DOWN_TOP*/
-
-//@media (min-width: 450px) and (max-width: 767px) {
-//  .logo{
-//    font-size: 8px;
-//    text-align: center;
-//  }
-//  #imaginary_container{
-//    width: auto;
-//    text-align: -webkit-center;
-//  }
-//  .menu_right{
-//    margin-top: 15px;
-//    // text-align: center;
-//    text-align: left;
-//    position: inherit;
-//  }
-//  .search_result{
-//    /*left: 15%;*/
-//    display: table;
-//    margin: 0 auto;
-//  }
-//  .company_logo{
-//    height: 100px;
-//    width: 100px;
-//    margin-left: 10px;
-//    margin-right: 10px;
-//    margin-bottom: 10px;
-//  }
-//  .company_logo, .company_name,
-//  .address, .description_search, .city{
-//    float: left;
-//  }
-//  .company_name{
-//    font-weight: bold;
-//  }
-//  .description_search {
-//    width: 200px;
-//    white-space: nowrap;
-//    overflow: hidden;
-//    padding: 5px 5px 5px 0;
-//    text-overflow: ellipsis;
-//  }
-//
-//  /*LEFT COLUMN*/
-//  .catalog_info{
-//    display: none;
-//  }
-//  /*END LEFT COLUMN*/
-//}
-
-
-//@media (min-width: 768px) and (max-width: 930px) {
-//  .logo{
-//    font-size: 9px;
-//    text-align: center;
-//  }
-//  .search_input {
-//    width: 270px;
-//  }
-//  .menu_right{
-//    margin-top: 15px;
-//    //    text-align: center;
-//    text-align: left;
-//  }
-//  .company_logo{
-//    height: 100px;
-//    width: 100px;
-//    margin-left: 10px;
-//    margin-right: 10px;
-//    margin-bottom: 10px;
-//  }
-//  .company_logo, .company_name,
-//  .address, .description_search, .city{
-//    float: left;
-//  }
-//  .company_name{
-//    font-weight: bold;
-//  }
-//  .description_search {
-//    width: 200px;
-//    white-space: nowrap;
-//    overflow: hidden;
-//    padding: 5px 5px 5px 0;
-//    text-overflow: ellipsis;
-//  }
-//}
-
-//@media (min-width: 931px) {
-//  .logo{
-//    font-size: 9px;
-//    text-align: center;
-//  }
-//  .search_input {
-//    //width: 140px;
-//  }
-//  #imaginary_container{
-//    //width: auto;
-//  }
-//  .menu_right{
-//    margin-top: 15px;
-//    text-align: left;
-//  }
-//  .company_logo{
-//    height: 100px;
-//    width: 100px;
-//    margin-left: 10px;
-//    margin-right: 10px;
-//    margin-bottom: 10px;
-//  }
-//  .company_logo, .company_name,
-//  .address, .description_search, .city{
-//    float: left;
-//  }
-//  .company_name{
-//    font-weight: bold;
-//  }
-//  .description_search {
-//    width: 200px;
-//    white-space: nowrap;
-//    overflow: hidden;
-//    padding: 5px 5px 5px 0;
-//    text-overflow: ellipsis;
-//  }
-//}
-
-//@media (min-width: 931px) {
-//
-//  .fixed_menu{
-//    .info{
-//      padding: 5px 5px 10px;
-//      .index, .order_menu, .categories_menu, .meeting_menu,
-//      .cart_menu, .rows_menu, .orders_menu, .create_question{
-//        padding-top: 11px !important;
-//        text-align: center;
-//        margin-right: 45px;
-//      }
-//    }
-//  }
-//}
-
-@media (min-width: 1280px){
-  .fixed_menu{
-    .info{
-      //text-align: justify;
-      //font-size: 1px;
-      //zoom:1;
-      //text-align-last: justify;
-
-      display: table;
-      line-height: 0;
-      position: relative;
-      width: 100%;
-
-      .index, .order_menu, .categories_menu, .meeting_menu,
-      .cart_menu, .rows_menu, .orders_menu, .create_question{
-        display: table-cell;
-        vertical-align: middle;
-      }
-
-      .index{
-        margin-left: 15px;
-      }
-
-      .rows_menu button{
-        padding: 17px;
-      }
-
-      .rows_menu button:hover{
-        padding: 17px;
-      }
-
-      .cart_menu{
-        vertical-align: middle;
-        margin-top: -8px;
-        float: left;
-        a{
-          float: left;
-          margin-left: 10px;
-        }
-      }
-
-    }
-
-    .info:after {
-      width: 100%;
-      height: 0;
-      visibility: hidden;
-      overflow: hidden;
-      content: '';
-      display: inline-block;
-
-    }
-
-  }
-}
 
 .meetings {
   width: 100%;
