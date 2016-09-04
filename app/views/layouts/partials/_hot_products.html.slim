@@ -23,7 +23,7 @@
             .image
               a href="#{product_path(product)}"
                 = image_tag (product_image)
-            .title
+            .product_title
               = link_to product_name, product_path(product)
             .info
               .sale
@@ -32,7 +32,3 @@
                 .second_part_new_price
                   = first_part_new_price
                   span #{second_part_new_price} р
-
-            .cart
-              .add_in_cart_other_product id="#{product.id}"
-                = render 'products/add_in_cart_other_product', product: product
