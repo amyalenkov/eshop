@@ -149,4 +149,11 @@ namespace :db do
     end
   end
 
+  desc 'delete same records'
+  task :delete_same_products => :environment do
+    require "#{Rails.root}/lib/api/product"
+    Product.where.not(id: Product.group(:sid, :name).pluck('min(products.id)'))
+        .delete_all
+  end
+
 end
