@@ -102,12 +102,13 @@
   }
 
   .hot_product{
-    margin-bottom: -590px;
+    margin-bottom: -385px;
     display: inline-block;
     background: #ffffff;
     max-width: 1280px;
-    width: 75%;
+    //min-width: 1150px;
     margin-left: 25px;
+    height: 400px;
     .title{
       font-size: 25px;
       padding-top: 30px;
@@ -120,13 +121,13 @@
     .products{
       float: left;
       width: 100%;
-      height: 570px;
+      height: 320px;
       #slideshowIndex #slidesContainerIndex {
-        margin:0 auto;
-        width: 960px !important;
-        height: 570px;
-        overflow:auto; /* разрешаем прокрутку */
-        position:relative;
+        width: 90% !important;
+        height: 320px;
+        overflow: auto;
+        position: relative;
+        margin: 0 30px;
         .product{
           float: left;
           width: 265px !important;
@@ -195,39 +196,10 @@
               }
             }
           }
-
-        }
-        .product:hover{
-          border: 1px solid #2E2F30;
-          transition: 0.2s;
         }
       }
     }
 
-    .control_hot_product {
-      display:block;
-      width:39px;
-      height:220px;
-      cursor: pointer;
-      z-index: 101;
-
-    }
-    #leftControl {
-      margin-top: 270px;
-      float: left;
-      top: inherit;
-      background: transparent url("next_prev.png") no-repeat 0 0;
-      transform: rotate(180deg);
-      z-index: 101;
-      height: 40px;
-    }
-    #rightControl {
-      float: right;
-      margin-top: -300px;
-      top: inherit;
-      height: 40px;
-      background: transparent url("next_prev.png") no-repeat 0 0;
-    }
   }
 
 

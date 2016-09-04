@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var currentPosition = 0;
-    var slideWidth = 190;
+    var slideWidth = 265;
     var slides = $('.slide_hot_product');
     var numberOfSlides = slides.length;
     // Убираем прокрутку
@@ -30,8 +30,10 @@ $(document).ready(function(){
             // Прячет / показывает элементы контроля
             manageControls(currentPosition);
             // Move slideInner using margin-left
+            console.log(slideWidth*(-currentPosition));
+            console.log(slideWidth*(-currentPosition)+30);
             $('#slideInnerIndex').animate({
-                'marginLeft' : slideWidth*(-currentPosition)
+                'marginLeft' : slideWidth*(-currentPosition)-30
             });
         });
     // manageControls: показывает или скрывает стрелки в зависимости от значения currentPosition
@@ -40,7 +42,7 @@ $(document).ready(function(){
         if(position==0){ $('#leftControl').hide() }
         else{ $('#leftControl').show() }
         // Спрятать правую стрелку, если это последний слайд
-        if(position==5){ $('#rightControl').hide() }
+        if(position==4){ $('#rightControl').hide() }
         else{ $('#rightControl').show() }
     }
 });

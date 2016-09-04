@@ -541,13 +541,15 @@ header {
   margin-bottom: 290px !important;
   max-width: 200px !important;
   background: #ffffff !important;
+  height: auto !important;
 }
 
 .catalog_info_old, .catalog_info{
   text-align: center;
-  margin-bottom: 290px;
+  margin-bottom: 30px;
   max-width: 200px;
   width: 20%;
+  height: 400px;
   display: inline-block;
   background: #ffffff;
   .title{
@@ -958,6 +960,7 @@ header {
     height: 27px;
     position: absolute;
     margin-top: -20px;
+    margin-right: -10px;
     background: transparent url("next_2.png") no-repeat 0 0;
   }
 
@@ -1395,11 +1398,12 @@ header {
 }
 
 .hot_product{
-  margin-bottom: -590px;
+  margin-bottom: -385px;
   display: inline-block;
   background: #ffffff;
   width: 75%;
   margin-left: 25px;
+  height: 400px;
   .title{
     font-size: 25px;
     padding-top: 30px;
@@ -1412,11 +1416,11 @@ header {
   .products{
     float: left;
     width: 100%;
-    height: 570px;
+    height: 320px;
     #slideshowIndex #slidesContainerIndex {
       margin:0 auto;
-      width: 960px !important;
-      height: 570px;
+      width: 1065px !important;
+      height: 320px;
       overflow:auto; /* разрешаем прокрутку */
       position:relative;
       .product{
@@ -1505,7 +1509,7 @@ header {
 
   }
   #leftControl {
-    margin-top: 270px;
+    margin-top: 120px;
     float: left;
     top: inherit;
     background: transparent url("next_prev.png") no-repeat 0 0;
@@ -1515,7 +1519,7 @@ header {
   }
   #rightControl {
     float: right;
-    margin-top: -300px;
+    margin-top: -200px;
     top: inherit;
     height: 40px;
     background: transparent url("next_prev.png") no-repeat 0 0;

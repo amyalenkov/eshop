@@ -1,5 +1,5 @@
-div.catalog_info_old
-  div.title.border_for_rows
+.catalog_info_old
+  .title.border_for_rows
     p Категории
     - @list_categories.each do |category|
       = check_box_tag 'all-categories', "#{category.sid}", true, class: 'check_category'
