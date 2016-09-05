@@ -29,7 +29,7 @@ table class="table"
         td
           .product_cart
             .image_cart
-              = link_to image_tag(order_item.product.image+'0/140-nv.jpg')
+              = link_to image_tag(order_item.product.image+'0/140.jpg')
             .description_cart
               .title
                 = link_to order_item.product.name.gsub('&quot;', ''), product_path(order_item.product_id)
