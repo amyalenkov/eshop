@@ -3,18 +3,18 @@
 .products
   #slideshowIndex
     #slidesContainerIndex
-      - @alike_products.in_groups_of(10, false) do |row|
-        - for product in row
-          - if product
+      - if @alike_products != nil
+        - @alike_products.in_groups_of(10, false) do |row|
+          - for product in row
             - product_picture = product.product.image+'0/140.jpg'
             - if product_picture == nil
               - product_image = 'no_images.png'
             - else product_image = product_picture
-
+  
             - product_name = product.product.name.gsub('&quot;', '')
             - product_sid = product.product.sid
             - product_price = product.product.get_price
-  
+
             - new_product_price = product.product.get_new_price
             - first_part_new_price = new_product_price.to_s.scan(/(\w+)\./).last.first
             - second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
