@@ -19,4 +19,4 @@
 
 .progress
   .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
-= link_to 'Ряд '+"собран #{row.current_count.to_s+' из '+row.min_count.to_s}", row_path(row), method: :get
+= link_to 'Ряд '+"собран #{row.current_count.to_s+' из '+row.min_count.to_s}", rows_path
