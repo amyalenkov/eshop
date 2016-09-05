@@ -1493,6 +1493,19 @@ header {
             }
           }
         }
+        .row{
+          float: left;
+          width: 130px;
+          height: 50px;
+          text-align: center;
+          padding-left: 30px;
+          padding-top: 10px;
+          font-size: 10px;
+          a{
+            float: left;
+            margin-top: -5px;
+          }
+        }
 
       }
       .product:hover{
