@@ -26,6 +26,11 @@ namespace :db do
     end
   end
 
+  desc 'clean tables'
+  task :clean_tables => :environment do
+    [LastProduct, CartItem, OrderItem, Order, Row].each(&:delete_all)
+  end
+
   desc 'load_products'
   task :load_products => :environment do
     require "#{Rails.root}/lib/api/product"
@@ -59,7 +64,7 @@ namespace :db do
                          new_type_id: product['new_type_id']
 
           )
-          puts ' --' + product['sid'].to_s
+          p ' / ' + product['name'].to_s
         end
         current_page = current_page + 1
       end
