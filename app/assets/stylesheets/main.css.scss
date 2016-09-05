@@ -538,8 +538,8 @@ header {
 .catalog_info_old{
   float: left;
   text-align: left !important;
-  margin-bottom: 290px !important;
-  max-width: 200px !important;
+  //margin-bottom: 290px !important;
+  max-width: 225px !important;
   background: #ffffff !important;
   height: auto !important;
 }
@@ -741,7 +741,8 @@ header {
 }
 
 .catalog_old{
-  width: 800px !important;
+  //width: 800px !important;
+  width: 1000px !important;
   height: auto !important;
   margin-left: 30px;
 }
@@ -1344,7 +1345,8 @@ header {
 }
 
 .catalog_list{
-  width: 785px;
+  //width: 785px;
+  width: 1000px;
   padding: 0;
   .address_link{
     float: left;

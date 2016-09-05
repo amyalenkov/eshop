@@ -40,7 +40,7 @@
 }
 
 .cart{
-  width: 800px !important;
+  width: 950px !important;
   padding: 0;
   margin-left: 35px;
   .table thead{
@@ -248,7 +248,7 @@
       width: 70%;
       .img{
         float: left;
-        img{width: 300px;}
+        img{width: 290px;}
       }
       .description{
         float: left;
@@ -673,12 +673,13 @@
 }
 
 .button_cart_left, .button_cart_right{
-  margin-top: 30px;
+  margin-top: 265px;
   margin-bottom: 30px;
 }
 
 .button_cart_right{
   right: 0;
+  position: absolute;
 }
 
 .button_cart_left{
