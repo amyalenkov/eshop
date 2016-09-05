@@ -12,6 +12,7 @@ class StaticPagesController < ApplicationController
       @product = Product.find_by_id @last_product.product_id
       @alike_products = Product.where(subcategory: @product.subcategory).limit(20).order('RANDOM()')
     end
+    # @last_product = Row.where(state: [Row.states[:full], Row.states[:not_full]])
   end
 
   def order_call
