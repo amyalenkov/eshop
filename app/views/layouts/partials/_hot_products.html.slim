@@ -3,7 +3,7 @@
 .products
   #slideshowIndex
     #slidesContainerIndex
-      - if @alike_products != nil
+      - if @hot_products != nil
         - @hot_products.in_groups_of(10, false) do |row|
           - for product in row
             - product_picture = product.product.image+'0/140.jpg'
