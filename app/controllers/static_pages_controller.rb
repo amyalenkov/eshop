@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
     calendar_dates
 
     @last_product = LastProduct.first
-    if @last_product
+    if @last_product != nil
       @product = Product.find_by_id @last_product.product_id
       @alike_products = Product.where(subcategory: @product.subcategory).limit(20).order('RANDOM()')
     end
