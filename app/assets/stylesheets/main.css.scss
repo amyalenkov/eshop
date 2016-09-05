@@ -948,7 +948,7 @@ header {
   }
 
   #leftControlCatalog {
-    top: 345px;
+    //top: 345px;
     background: transparent url("next_2.png") no-repeat 0 0;
     transform: rotate(180deg);
     z-index: 101;
@@ -997,7 +997,7 @@ header {
         float: left;
         color: #057e89;
         margin-bottom: 10px;
-        line-height: 10px;
+        line-height: 11px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -1738,6 +1738,11 @@ header {
 /*END_REGISTRATION_AND_EDITOR_PAGE*/
 
 /*INFO_LINKS*/
+
+.row{
+  margin-right: 0;
+}
+
 .info_links{
   height: 190px;
   background: #e1e4e5;
