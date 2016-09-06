@@ -672,8 +672,13 @@
   background: #798dbd;
 }
 
+.row_button{
+  float: left;
+  width: 100%;
+}
+
 .button_cart_left, .button_cart_right{
-  margin-top: -65px;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
@@ -683,7 +688,7 @@
 
 .button_cart_left{
   left: 0;
-  margin-top: 93px;
+  //margin-top: 93px;
   //margin-top: 60px;
 }
 

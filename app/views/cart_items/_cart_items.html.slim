@@ -89,7 +89,7 @@ table class="table"
 .total-amount-and-count
   = render 'cart_items/total_amount_and_count'
 
-.row
+.row_button
   .pull-left.button_cart_left
     = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'
   -if @cart_items.size == 0
