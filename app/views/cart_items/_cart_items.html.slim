@@ -89,14 +89,15 @@ table class="table"
 .total-amount-and-count
   = render 'cart_items/total_amount_and_count'
 
-.pull-left.button_cart_left
-  = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'
--if @cart_items.size == 0
-  .pull-right.button_cart_right
-    = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order_for_all_cart'
--else
-  .pull-right.button_cart_right
-    = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success', id: 'create_order_for_all_cart'
+.row
+  .pull-left.button_cart_left
+    = button_tag 'Добавить ВЫБРАННЫЕ ПОЗИЦИИ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order'
+  -if @cart_items.size == 0
+    .pull-right.button_cart_right
+      = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success disabled', id: 'create_order_for_all_cart'
+  -else
+    .pull-right.button_cart_right
+      = button_tag 'Добавить ВСЮ КОРЗИНУ к ЗАКАЗУ', class: 'btn btn-success', id: 'create_order_for_all_cart'
 
 #delete_from_cart
   p Продукт удален из корзины
