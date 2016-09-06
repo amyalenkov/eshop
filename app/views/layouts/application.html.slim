@@ -8,9 +8,6 @@ html
     = content_for :title do
       - if (MetaTag.find_by_name 'index').title
 
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
     = csrf_meta_tags
   body
     #wrap
@@ -24,6 +21,11 @@ html
         .content
           = yield
     #footer
+
+      = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+      = javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
+      /= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto'
+
       - if user_signed_in?
         = render 'layouts/partials/reminder'
       = render 'layouts/partials/footer'
