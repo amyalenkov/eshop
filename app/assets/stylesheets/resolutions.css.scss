@@ -1,7 +1,29 @@
 //@media (min-width: 480px){}
 //@media (min-width: 768px){}
 
-@media (min-width: 1024px){
+@media (min-width: 1024px) and (max-width: 1279px){
+  .container-fluid_index{
+    min-width: 1024px;
+    max-width: 1270px;
+  }
+
+  .menu_head{
+    float: right !important;
+  }
+
+  .menu_left{
+    min-width: inherit;
+  }
+
+  .menu_right .login {
+    width: 35%;
+    margin-left: 40px;
+    margin-top: 5px;
+    .exit {
+      font-size: 19px;
+    }
+  }
+
   .fixed_menu{
     .info{
       display: table;
@@ -11,6 +33,7 @@
 
       .index, .order_menu, .categories_menu, .meeting_menu,
       .cart_menu, .rows_menu, .orders_menu, .create_question{
+        font-size: 17px;
         display: table-cell;
         vertical-align: middle;
       }
@@ -53,6 +76,12 @@
 }
 
 @media (min-width: 1280px){
+
+  .menu_head{
+    width: 100%;
+    float: right !important;
+  }
+
   .fixed_menu{
     .info{
       display: table;
