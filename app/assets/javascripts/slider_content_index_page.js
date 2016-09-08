@@ -33,7 +33,7 @@ $(document).ready(function(){
             console.log(slideWidth*(-currentPosition));
             console.log(slideWidth*(-currentPosition)+30);
             $('#slideInnerIndex').animate({
-                'marginLeft' : slideWidth*(-currentPosition)-30
+                'marginLeft' : slideWidth*(-currentPosition)
             });
         });
     // manageControls: показывает или скрывает стрелки в зависимости от значения currentPosition
@@ -42,7 +42,9 @@ $(document).ready(function(){
         if(position==0){ $('#leftControl').hide() }
         else{ $('#leftControl').show() }
         // Спрятать правую стрелку, если это последний слайд
-        if(position==4){ $('#rightControl').hide() }
-        else{ $('#rightControl').show() }
+        //if(position==5){ $('#rightControl').hide() }
+        //else{ $('#rightControl').show() }
+        if(position==5){ $('#rightControl').css('visibility', 'hidden') }
+        else{ $('#rightControl').css('visibility', 'visible') }
     }
 });

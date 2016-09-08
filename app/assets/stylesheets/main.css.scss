@@ -524,7 +524,7 @@ header {
 .align_center{
   float: left;
   width: 100%;
-  padding: 20px;
+  padding-top: 20px;
   text-align: center;
   margin: 0 auto;
   background: #ebe9e9;
@@ -548,8 +548,8 @@ header {
 .catalog_info_old, .catalog_info{
   text-align: center;
   margin-bottom: 30px;
-  max-width: 225px;
-  width: 20%;
+  width: 225px;
+  //width: 20%;
   height: 400px;
   display: inline-block;
   background: #ffffff;
@@ -751,7 +751,7 @@ header {
 .catalog_old, .catalog{
   width: 100%;
   padding: 0;
-  height: 640px;
+  height: 610px;
   text-align: center;
   .address_link{
     float: left;
@@ -904,7 +904,7 @@ header {
       vertical-align: top;
       zoom: 1;
       text-align: center;
-      width: 18%;
+      width: 20%;
       margin-bottom: 10px;
 
       p{
@@ -1766,11 +1766,13 @@ header {
   background: #e1e4e5;
   .height_90{
     height: 90%;
+    float: left;
+    width: 25%;
   }
   .block_links{
+    float: left;
     margin-top: 10px;
     padding-bottom: 10px;
-    float: left;
     font-style: italic;
     line-height: 15px;
     width: 100%;
@@ -1790,9 +1792,9 @@ header {
     margin-bottom: -5px;
   }
   .social_links{
-    margin-left: 56px;
-    width: 100%;
     float: left;
+    width: 100%;
+    padding-left: 30px;
     a{
       float: left;
       width: 40px;

@@ -1,6 +1,7 @@
-.container-fluid
+.container-fluid_index
   .row.info_links
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.height_90
+    /.col-xs-3.col-sm-3.col-md-3.col-lg-3
+    .height_90
       .block_links.table_border
         /= link_to 'Личный кабинет'
         /br
@@ -9,7 +10,8 @@
         = link_to 'Избранное', favorites_path
         br
         = link_to 'Часто задаваемые вопросы', '/questions/show/'
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.height_90
+    /.col-xs-3.col-sm-3.col-md-3.col-lg-3
+    .height_90
       .block_links.table_border
         = link_to 'Каталог', '/'
         br
@@ -17,7 +19,8 @@
         br
         = link_to 'Хиты продаж', products_path(is_hit: true)
         br
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3.height_90
+    /.col-xs-3.col-sm-3.col-md-3.col-lg-3
+    .height_90
       .block_links.table_border
         /= link_to 'Скидки'
         /br
@@ -25,7 +28,8 @@
         br
         = link_to 'Все по 50 000',products_path(min_sum: '50000', max_sum: '60000')
         br
-    .col-xs-3.col-sm-3.col-md-3.col-lg-3
+    /.col-xs-3.col-sm-3.col-md-3.col-lg-3
+    .height_90
       p
         | Нас можно найти:
       .social_links

@@ -3,7 +3,7 @@
 
 @media (min-width: 1024px) and (max-width: 1279px){
   .container-fluid_index{
-    min-width: 1024px;
+    min-width: 1000px;
     max-width: 1270px;
   }
 
@@ -72,6 +72,48 @@
 
     }
 
+  }
+
+  .catalog #slideShowIndexCatalog #slidesContainerIndexCatalog{
+    .catalog_items p{
+      font-size: 18px;
+    }
+  }
+
+  .catalog_info_old, .catalog_info{
+    float: left;
+  }
+
+  .align_center{
+    min-width: 1000px;
+    width: 100%;
+  }
+
+  .hot_product{
+    margin-bottom: 0;
+    float: right;
+    width: 77%;
+    margin-left: 0;
+
+    .title{
+      font-size: 20px;
+      padding-top: 20px;
+      margin-left: 40px;
+    }
+
+    #leftControl{
+      margin-right: -30px;
+    }
+
+    .products #slideshowIndex #slidesContainerIndex{
+      width: 90% !important;
+      margin-left: 40px;
+      .product{
+        .product_title{
+          font-size: 12px;
+        }
+      }
+    }
   }
 }
 
