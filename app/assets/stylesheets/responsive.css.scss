@@ -593,6 +593,9 @@
   }
 
   //INSERT PAGES
+  .cart{
+    width: 75% !important;
+  }
   .cart_items .row{
     width: 120px;
   }
@@ -628,5 +631,12 @@
   .catalog_info_old .border_for_rows, .catalog_info .border_for_rows{
     margin-left: 30px;
   }
+
+  .orders {
+    padding: 0;
+    width: 95%;
+    margin-left: 30px;
+  }
+
   //END INSERT PAGES
 }
