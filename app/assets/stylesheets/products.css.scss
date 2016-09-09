@@ -32,18 +32,17 @@
     float: left;
     width: 100%;
     dl{
-      width: 600px;
+      width: 100%;
       padding-top: 25px;
       font-size: 12px;
+      font-weight: normal;
       dt{
         float: left;
         width: 30%;
-        font-weight: normal;
       }
       dd{
         float: left;
         width: 65%;
-        font-weight: normal;
       }
     }
   }
@@ -215,7 +214,7 @@
       margin-bottom: -50px;
       .comment{
         float: left;
-        width: 60%;
+        width: 100%;
         border-bottom: 1px dotted rgba(46, 47, 48, 0.3);
         .title{
           float: left;

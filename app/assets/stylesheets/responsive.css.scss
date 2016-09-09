@@ -31,7 +31,7 @@
   .menu_right{
     float: right;
     min-width: 350px;
-    margin-top: 20px;
+    padding-top: 80px;
     padding-left: 0;
     padding-right: 0;
     .login {
@@ -158,8 +158,11 @@
     padding: 0;
   }
   .catalog_list{
-    width: 100%;
+    width: 95%;
     .address_link{
+      margin-left: 30px;
+    }
+    .catalog_items{
       margin-left: 30px;
     }
   }
@@ -167,7 +170,6 @@
   .catalog_info_old{
     display: none;
   }
-
   .catalog_old{
     width: 95% !important;
     .head_products .paginate p{
@@ -193,6 +195,54 @@
     }
 
   }
+
+  //PRODUCT
+  .address_link {
+    width: 95%;
+    margin-left: 25px;
+  }
+  .zoom_list{
+    margin-left: 25px;
+  }
+  .description_product{
+    width: 66%;
+  }
+  //END_PRODUCT
+
+  //CART
+  .cart{
+    width: 95% !important;
+  }
+  .table > tbody > tr > td, .table > tbody > tr > th,
+  .table > tfoot > tr > td, .table > tfoot > tr > th,
+  .table > thead > tr > td, .table > thead > tr > th{
+    padding-left: 0;
+    padding-right: 1px;
+  }
+  .cart_items .product_cart{
+    width: 250px;
+  }
+  .cart_items .product_cart .description_cart{
+    width: 170px;
+    font-size: 11px !important;
+    p{font-size: 11px !important;}
+    .ok_submit{margin-left: 150px;}
+  }
+  .cart_items .row .new_row{
+    font-size: 11px;
+  }
+  .cart .tabs .menu1 > a{
+    font-size: 12px;
+  }
+  //END_CART
+
+  //ORDERS
+  .orders {
+    padding: 0;
+    width: 95%;
+    margin-left: 30px;
+  }
+  //END_ORDERS
 
   /*END INTER PAGES*/
 }
@@ -283,6 +333,9 @@
 
   .catalog_info_old, .catalog_info{
     float: left;
+    .border_for_rows{
+      margin-left: 25px;
+    }
   }
 
   .hot_product{
@@ -311,6 +364,32 @@
       }
     }
   }
+
+  /*INSERT PAGES*/
+  .cart{
+    width: 75% !important;
+    margin-left: 25px;
+  }
+
+  .cart_items .row{
+    width: 120px;
+  }
+  .table > tbody > tr > td, .table > tbody > tr > th,
+  .table > tfoot > tr > td, .table > tfoot > tr > th,
+  .table > thead > tr > td, .table > thead > tr > th{
+    padding-left: 0;
+    padding-right: 2px;
+  }
+
+
+  //ORDERS
+  .orders {
+    padding: 0;
+    width: 95%;
+    margin-left: 30px;
+  }
+  //END_ORDERS
+  /*END INSERT PAGES*/
 }
 
 @media (min-width: 1280px){
@@ -469,5 +548,9 @@
 
   }
 
-
+//INSERT PAGES
+  .cart_items .row{
+    width: 120px;
+  }
+//END INSERT PAGES
 }

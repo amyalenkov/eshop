@@ -18,7 +18,7 @@
       - key = pictures_hash.keys
       - counter = @product.photo_count
       - for i in 0...counter
-        - pictures_hash[i] = @product.image+i.to_s+'/700-nw.jpg'
+        - pictures_hash[i] = @product.image+i.to_s+'/700.jpg'
 
       - first_product_image = pictures_hash.values[0]
       = image_tag ("#{first_product_image}"), id: 'zoom_image', class: 'fancybox', width: '100%', data: { 'zoom-image' => "#{first_product_image}"}

@@ -540,7 +540,7 @@ header {
   float: left;
   text-align: left !important;
   //margin-bottom: 290px !important;
-  max-width: 225px !important;
+  max-width: 227px !important;
   background: #ffffff !important;
   height: auto !important;
 }
@@ -548,7 +548,7 @@ header {
 .catalog_info_old, .catalog_info{
   text-align: center;
   margin-bottom: 30px;
-  width: 225px;
+  width: 227px;
   //width: 20%;
   height: 400px;
   display: inline-block;
@@ -1063,7 +1063,7 @@ header {
         bottom:0;
         .field{
           float: left;
-          margin-right: 5px;
+          margin-right: 3px;
           input[type="number"]{
             width: 40px;
             height: 20px;
@@ -1148,7 +1148,7 @@ header {
     transform: scale(1.2);
     .title {
       p{
-        display: block;
+        //display: block;
       }
     }
     //transform: scale(1.1, 1.1);
