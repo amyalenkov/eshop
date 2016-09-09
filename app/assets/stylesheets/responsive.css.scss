@@ -160,6 +160,7 @@
   .catalog_list{
     width: 95%;
     .address_link{
+
       margin-left: 30px;
     }
     .catalog_items{
@@ -198,7 +199,7 @@
 
   //PRODUCT
   .address_link {
-    width: 95%;
+    width: 95% !important;
     margin-left: 25px;
   }
   .zoom_list{
@@ -338,6 +339,21 @@
     }
   }
 
+  .catalog_info{
+    margin-left: 20px;
+    .catalog_list_item{
+      text-align: left;
+    }
+  }
+
+  .catalog_list{
+    width: 70%;
+    margin-left: 5%;
+    .catalog_items .sub_category{
+      width: 30%;
+    }
+  }
+
   .hot_product{
     margin-bottom: 0;
     float: right;
@@ -366,6 +382,29 @@
   }
 
   /*INSERT PAGES*/
+  //PRODUCT
+  .catalog_old {
+    width: 72%!important;
+    margin-left: 3%;
+  }
+  .address_link {
+    width: 95% !important;
+    margin-left: 25px;
+  }
+  .catalog_old .head_products .sort{
+    width: 38%;
+  }
+  .catalog_old .head_products .show{width: 25%;}
+  .catalog_old .head_products .paginate{width: 35%;}
+
+  .zoom_list{
+    margin-left: 25px;
+  }
+  .description_product{
+    width: 66%;
+  }
+  //END_PRODUCT
+
   .cart{
     width: 75% !important;
     margin-left: 25px;
@@ -548,9 +587,36 @@
 
   }
 
-//INSERT PAGES
+  //INSERT PAGES
   .cart_items .row{
     width: 120px;
   }
-//END INSERT PAGES
+
+  .catalog_info{
+    margin-left: 20px;
+    .catalog_list_item{
+      text-align: left;
+    }
+  }
+
+  .catalog_list{
+    width: 75%;
+    margin-left: 35px;
+    .catalog_items .sub_category{
+      width: 25%;
+    }
+  }
+
+  .address_link {
+    width: 95% !important;
+    margin-left: 25px;
+  }
+  .zoom_list{
+    margin-left: 25px;
+  }
+
+  .description_product{
+    width: 70%;
+  }
+  //END INSERT PAGES
 }
