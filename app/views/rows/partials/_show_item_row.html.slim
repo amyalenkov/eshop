@@ -6,65 +6,64 @@
       h3 #{row.product.name.gsub('&quot;', '')}
 
     .modal-body
-      .container-fluid
-        .row
-          .column_product
-            - row.order_items.each do |row_item|
-              - row_item.count
-            .img
-              = image_tag("#{row.product.image+'0/700.jpg'}")
-              br
-              = link_to 'Подробнее о данном товаре...', product_path(row.product.id)
+      .row
+        .column_product
+          - row.order_items.each do |row_item|
+            - row_item.count
+          .img
+            = image_tag("#{row.product.image+'0/700.jpg'}")
+            br
+            = link_to 'Подробнее о данном товаре...', product_path(row.product.id)
 
-              -if row.product.balance_text==nil
-                - product_balance_text='Не достаточно данных'
-              -else product_balance_text=row.product.balance_text
+            -if row.product.balance_text==nil
+              - product_balance_text='Не достаточно данных'
+            -else product_balance_text=row.product.balance_text
 
-              -if row.product.materials_text==nil
-                - product_materials_text='Не достаточно данных'
-              -else product_materials_text=row.product.materials_text
+            -if row.product.materials_text==nil
+              - product_materials_text='Не достаточно данных'
+            -else product_materials_text=row.product.materials_text
 
-              -if row.product.size_text==nil || row.product.size_text=='f'
-                - product_size_text='Не достаточно данных'
-              -else product_size_text=row.product.size_text
+            -if row.product.size_text==nil || row.product.size_text=='f'
+              - product_size_text='Не достаточно данных'
+            -else product_size_text=row.product.size_text
 
-              -if row.product.box_type==nil
-                - product_box_type='Не достаточно данных'
-              -else product_box_type=row.product.box_type
+            -if row.product.box_type==nil
+              - product_box_type='Не достаточно данных'
+            -else product_box_type=row.product.box_type
 
-              -if row.product.certificate_type==nil
-                - product_certificate_type='Не достаточно данных'
-              -else product_certificate_type=row.product.certificate_type
+            -if row.product.certificate_type==nil
+              - product_certificate_type='Не достаточно данных'
+            -else product_certificate_type=row.product.certificate_type
 
-              -if row.product.weight==nil
-                - product_weight='Не достаточно данных'
-              -else product_weight=row.product.weight
+            -if row.product.weight==nil
+              - product_weight='Не достаточно данных'
+            -else product_weight=row.product.weight
 
-            .description
-              dl
-                dt.red Цена BYN:
-                dd.red <i><b>#{row.product.get_new_price}</b></i>
-                dt Артикул:
-                dd <i><b>#{row.product.id}</b></i>
-                dt Остаток на складе:
-                dd <i><b>#{product_balance_text}</b></i>
-                dt Страна-производитель:
-                dd <i><b>#{Country.find_by_alpha2(IsoCountryCodes.find(row.product.country_id).alpha2).name}</b></i>
-                dt Размер:
-                dd <i><b>#{product_size_text}</b></i>
-                dt Материал:
-                dd <i><b>#{product_materials_text}</b></i>
-                dt Упаковано в:
-                dd <i><b>#{product_box_type}</b></i>
-                dt Сертификат:
-                dd <i><b>#{product_certificate_type}</b></i>
-                dt Вес:
-                dd <i><b>#{product_weight} г</b></i>
-            .row_progress_bar
-              = render 'orders/row_info', row: row
-          .column_comment
-            .all_comments
-              = render 'rows/partials/all_comments_for_row', row: row
+          .description
+            dl
+              dt.red Цена BYN:
+              dd.red <i><b>#{row.product.get_new_price}</b></i>
+              dt Артикул:
+              dd <i><b>#{row.product.id}</b></i>
+              dt Остаток на складе:
+              dd <i><b>#{product_balance_text}</b></i>
+              dt Страна-производитель:
+              dd <i><b>#{Country.find_by_alpha2(IsoCountryCodes.find(row.product.country_id).alpha2).name}</b></i>
+              dt Размер:
+              dd <i><b>#{product_size_text}</b></i>
+              dt Материал:
+              dd <i><b>#{product_materials_text}</b></i>
+              dt Упаковано в:
+              dd <i><b>#{product_box_type}</b></i>
+              dt Сертификат:
+              dd <i><b>#{product_certificate_type}</b></i>
+              dt Вес:
+              dd <i><b>#{product_weight} г</b></i>
+          .row_progress_bar
+            = render 'orders/row_info', row: row
+        .column_comment
+          .all_comments
+            = render 'rows/partials/all_comments_for_row', row: row
             - if user_signed_in?
-              .add_comment
-                = render 'rows/partials/add_comment_for_row', row: row
+            .add_comment
+              = render 'rows/partials/add_comment_for_row', row: row
