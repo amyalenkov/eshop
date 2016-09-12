@@ -123,10 +123,10 @@ table class="table"
 .date_description
   p
     | Оплатить за СП #{MainOrder.find_by(state: MainOrder.states[:current]).id.to_s} до
-    span class='span1'  1 февраля 2016г включительно!
+    span class='span1'  #{DateForOrder.find_by_name('stop').date.to_s}
     br
     span class='span2' внимание!!!
     |  Если Ваш чек не будет отправлен нам
-    span class='span3'  до 10 часов утра 2 февраля 2016г
+    span class='span3'  #{DateForOrder.find_by_name('date for paid').date.to_s}
     |  Ваш заказ будет
     span class='span2'  отменен!
