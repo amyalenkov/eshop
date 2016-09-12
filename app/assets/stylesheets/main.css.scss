@@ -886,6 +886,7 @@ header {
   .row_products{
     float: left;
     width: 100%;
+    display: table;
     border-bottom: 1px solid rgba(46, 47, 48, 0.5);
   }
 
@@ -971,8 +972,9 @@ header {
 
 
   .product{
-    float: left;
+    //float: left;
     width: 33%;
+    max-width: 350px;
     height: 200px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -981,6 +983,7 @@ header {
     padding-left: 5px;
     z-index: 100;
     border-radius: 7px;
+    display: inline-block;
     .image{
       float: left;
       width: 45%;

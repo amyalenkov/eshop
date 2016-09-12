@@ -607,8 +607,8 @@
     }
   }
 
-  .catalog_list{
-    width: 75%;
+  .catalog_list, .catalog_old{
+    width: 75% !important;
     margin-left: 35px;
     .catalog_items .sub_category{
       width: 25%;
