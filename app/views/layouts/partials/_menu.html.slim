@@ -1,25 +1,30 @@
-button.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-  | Покупателю
-  span.caret
+/aria-expanded="false" aria-haspopup="true"
+   href="#" role="button"
+
+.btn-group
+  button class="dropdown-toggle" data-toggle="dropdown"
+    | Покупателю
+    span.caret
 
   ul class="dropdown-menu"
     li
-      = link_to 'Как сделать заказ', 'http://10.1.2.32:3001/static_pages/faq#how'
-      /a href="/static_pages/faq/#how" Как сделать заказ
+      = link_to 'Как сделать заказ', '/static_pages/faq#how1'
     li
-      a href="#" Оплата
+      = link_to 'Оплата', '/static_pages/faq#pay'
     li
-      a href="#" Доставка
+      = link_to 'Доставка', '/static_pages/faq#delivery'
     li
-      a href="#" Совместная покупка
+      = link_to 'Совместная покупка', '/static_pages/faq#collective_cart'
     li
-      a href="#" Возврат товара
+      = link_to 'Возврат товара', '/static_pages/faq#problems'
     li
-      a href="#" Термины
+      = link_to 'Термины', '/static_pages/faq#faq'
     li
-      a href="#" Контакты
+      = link_to 'Контакты', '/static_pages/faq#info'
 
 =link_to 'О компании', '/static_pages/about_us', :class => 'static'
+
 span.static
   | Текущая СП: #{MainOrder.find_by(state: MainOrder.states[:current]).id.to_s}
+
 =link_to 'Новости', '/static_pages/news', :class => 'static'

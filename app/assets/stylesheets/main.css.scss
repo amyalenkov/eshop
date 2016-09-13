@@ -258,22 +258,31 @@ header {
   color: #6cb2db;
   text-align: center;
   margin-top: -35px;
-  .dropdown-toggle, .static{
+  .btn-group {
+    .dropdown-toggle{
+      color: #6cb2db;
+      text-decoration: none;
+      border: 1px solid #ffffff;
+      margin-right: 80px;
+      font-size: 19px;
+      background: none;
+    }
+  }
+
+  .btn-group:hover > .dropdown-menu {
+      left: inherit;
+      padding: 0;
+      margin: 0;
+      display: block !important;
+  }
+
+  .static{
     color: #6cb2db;
     text-decoration: none;
     border: 1px solid #ffffff;
     margin-right: 80px;
     font-size: 19px;
     background: none;
-  }
-
-  .dropdown-toggle:hover {
-    .dropdown-menu {
-      left: inherit;
-      padding: 0;
-      margin: 0;
-      display: block !important;
-    }
   }
 
   .static:hover{
