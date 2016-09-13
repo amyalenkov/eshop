@@ -34,7 +34,7 @@
 //= require products
 //= require slider_content
 //= require downTop
-//= require count_down_timer
+/*= require count_down_timer*/
 //= require jivosite
 //= require sort_by
 //= require jquery.inputmask
