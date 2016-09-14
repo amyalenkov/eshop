@@ -49,7 +49,7 @@ init_validation_for_registered_user = () ->
         required: 'Для регистрации необходим пароль'
         minlength: 'Минимальная длина пароля 8 символов'
       'user[password_confirmation]':
-        required: 'Для регистрации необходим пароль'
+        required: 'Для регистрации необходимо подтвердить пароль'
         minlength: 'Минимальная длина пароля 8 символов'
         equalTo: 'Пароли не совпадают'
 
