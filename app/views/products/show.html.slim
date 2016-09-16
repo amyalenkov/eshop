@@ -97,7 +97,8 @@
         = render 'products/add_in_cart_from_show'
 
       .description
-        p #{@product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '').gsub('<li>', '').gsub('</li>', '').gsub('<i>', '').gsub('</i>', '')}
+        noindex
+          p #{@product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '').gsub('<li>', '').gsub('</li>', '').gsub('<i>', '').gsub('</i>', '')}
 
       .all_comments
         = render 'all_comments_for_product'
