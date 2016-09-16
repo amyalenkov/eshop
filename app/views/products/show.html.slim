@@ -130,7 +130,6 @@
               - first_part_new_price = new_product_price.to_s.scan(/(\w+)\./).last.first
               - second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
 
-
               .product.slide
                 .image
                   a href="#{product_path(product)}"
