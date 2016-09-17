@@ -7,11 +7,12 @@ class StaticPagesController < ApplicationController
     @img_for_comment_of_day = Additional.find_by_name('comment_url').value
     calendar_dates
 
-    @last_product = LastProduct.first
-    if @last_product
-      @product = Product.find_by_id @last_product.product_id
-      @alike_products = Product.where(subcategory: @product.subcategory).limit(20).order('RANDOM()')
-    end
+    @hot_products = Row.where(state: [Row.states[:full], Row.states[:not_full]])
+    # if @last_product != nil
+    #   @product = Product.find_by_id @last_product.product_id
+    #   @alike_products = Product.where(subcategory: @product.subcategory).limit(20).order('RANDOM()')
+    # end
+    # Category.find_by_sid(row.product.subcategory_id).root.sid
   end
 
   def order_call

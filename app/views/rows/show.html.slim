@@ -5,28 +5,27 @@
         | ×
       h3 id="myModalLabel" Задать вопрос
     .modal-body
-      .container-fluid
-        .row
-          .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
-            table
-              thead
+      .row
+        .col-xs-10.col-sm-10.col-md-10.col-lg-10.cart
+          table
+            thead
+              tr
+                th Наименование товара
+                th Количество
+                th delete
+            tbody
+              - @row.row_items.each do |row_item|
                 tr
-                  th Наименование товара
-                  th Количество
-                  th delete
-              tbody
-                - @row.row_items.each do |row_item|
-                  tr
-                    td
-                      = link_to @row.product.name, product_path(@row.product.id)
-                    td
-                      = row_item.count
-                    td.delete = link_to 'x', @row, remote: true, method: :delete, class: 'delete'
-                    - if user_signed_in?
-              .add_comment
-                = render 'rows/partials/add_comment_for_row', row: @row
-              .all_comments
-                = render 'rows/partials/all_comments_for_row', row: @row
+                  td
+                    = link_to @row.product.name, product_path(@row.product.id)
+                  td
+                    = row_item.count
+                  td.delete = link_to 'x', @row, remote: true, method: :delete, class: 'delete'
+                  - if user_signed_in?
+            .add_comment
+              = render 'rows/partials/add_comment_for_row', row: @row
+            .all_comments
+              = render 'rows/partials/all_comments_for_row', row: @row
 
     .modal-footer
       button [type="submit" class="btn btn-success pull-right go"] Заказать звонок

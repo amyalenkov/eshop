@@ -4,10 +4,9 @@
 = content_for :title do
   - (MetaTag.find_by_name 'rows').title
 
-.container-fluid
+.container-fluid_index
   .row
-    .calendar
-      =render 'rows/partials/list_categories_for_row'
+    =render 'rows/partials/list_categories_for_row'
 
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.cart.not_full_width
       =render 'rows/partials/tabs_for_rows'

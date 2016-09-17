@@ -1,0 +1,22 @@
+- row = @row if row.nil?
+
+- progress_status='progress-bar-'
+- width='width: '
+- if row != nil
+  - pc = (row.current_count * 100)/row.min_count
+  - if pc > 0 and pc < 25
+    - progress_status.concat('danger')
+    - width.concat('25%')
+  - if pc > 26 and pc <= 50
+    - progress_status.concat('warning')
+    - width.concat('50%')
+  - if pc > 51 and pc < 99
+    - progress_status.concat('info')
+    - width.concat('75%')
+  - if pc > 99
+    - progress_status.concat('success')
+    - width.concat('100%')
+
+.progress
+  .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
+= link_to 'Ряд '+"собран #{row.current_count.to_s+' из '+row.min_count.to_s}", rows_path

@@ -1,4 +1,4 @@
-.container-fluid
+.container-fluid_index
   .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.catalog_info
       .title
@@ -11,16 +11,9 @@
         =link_to "#{@category.name}", "/category/#{@category.id}"
 
       .catalog_items
-        /a href="/category/#{params[:name]}"
-          p #{params[:name]}
-          = image_tag (@category.logo_image)
-        /br
         - if @subcategories != nil
           - @subcategories.each do |subcategory|
             .sub_category
               a href="/subcategory/#{subcategory.id}"
                 p #{subcategory.name}
                 = image_tag (subcategory.logo_image)
-            /= link_to subcategory.name, "/subcategory/#{subcategory.name}", class: 'link'
-            /br
-            /= image_tag (subcategory.logo_image)
