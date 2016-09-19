@@ -8,11 +8,11 @@
           - current_user.last_products.each do |last_product|
             .last_visited_product
               a href="#{product_path(last_product.product.id)}"
-                = image_tag ("#{last_product.product.image+'0/700.jpg'}")
+                = image_tag ("#{last_product.product.image+'0/140.jpg'}")
                 p = last_product.product.name.gsub('&quot;', '')
         - else
           .last_visited_product
-    .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog
+    .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog_old
       = render 'products/sort_by'
       .show_products_list
         = render 'products/show_products_list_for_search'
