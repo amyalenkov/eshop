@@ -79,6 +79,6 @@ create_new_li = (li, div_class_name, data) ->
 
 add_image_tag = (li, image_src) ->
   image = $('<img/>', {
-    "src": image_src,
+    "src": image_src.replace('700', '140'),
     "class": "company_logo"
   }).appendTo(li)

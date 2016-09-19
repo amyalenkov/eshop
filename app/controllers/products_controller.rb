@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_id params[:id]
-    @alike_products = Product.where(subcategory: @product.subcategory).limit(50).order('RANDOM()')
+    @alike_products = Product.where(subcategory: @product.subcategory).limit(15).order('RANDOM()')
     current_user.add_last_product @product if user_signed_in?
 
     @subcategory = Subcategory.find_by_id @product.subcategory_id.to_s
@@ -41,13 +41,13 @@ class ProductsController < ApplicationController
 
   def search_ajax
     @search_products  = ThinkingSphinx.search params[:search], classes: [Product], :star => true,
-                                              :page => params[:page], :per_page => 25
+                                              :page => params[:page], :per_page => 15
     render json: @search_products.to_json
   end
 
   def search
     @search_products  = ThinkingSphinx.search params[:search], classes: [Product], :star => true,
-                                              :page => params[:page], :per_page => 25
+                                              :page => params[:page], :per_page => 15
   end
 
   def sorted_by
