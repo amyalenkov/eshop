@@ -57,7 +57,7 @@ namespace :db do
           Product.create(subcategory_id: category_id, sid: product['sid'],
                          country_id: product['country_id'], is_hit: product['is_hit'], weight: product['weight'],
                          color_id: product['color_id'], balance_text: product['balance_text'], box_size_text: product['box_size_text'],
-                         box_type: product['box_type'],k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
+                         box_type: product['box_type'], k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
                          name: product['name'], photo_count: product['photo_count'], price: product['price'],
                          size_text: product['size_text'], trademark_id: product['trademark_id'], unit: product['unit'],
                          description: product['description'], image: product['photo']['base_url'],
@@ -85,7 +85,7 @@ namespace :db do
             Product.create(subcategory_id: category_id, sid: product['sid'],
                            country_id: product['country_id'], is_hit: product['is_hit'], weight: product['weight'],
                            color_id: product['color_id'], balance_text: product['balance_text'], box_size_text: product['box_size_text'],
-                           box_type: product['box_type'],k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
+                           box_type: product['box_type'], k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
                            name: product['name'], photo_count: product['photo_count'], price: product['price'],
                            size_text: product['size_text'], trademark_id: product['trademark_id'], unit: product['unit'],
                            description: product['description'], image: product['photo']['base_url'],
@@ -111,7 +111,7 @@ namespace :db do
       countries, meta = country_sima.get_all_countries current_page
       page_count = meta['pageCount']
       countries.each do |country|
-        Country.create( alpha2: country['alpha2'], name: country['name'])
+        Country.create(alpha2: country['alpha2'], name: country['name'])
       end
       current_page = current_page + 1
     end
@@ -129,7 +129,7 @@ namespace :db do
       trademarks, meta = trademark_sima.get_all_trademarks current_page
       page_count = meta['pageCount']
       trademarks.each do |trademark|
-        Trademark.create( slug: trademark['slug'], name: trademark['name'])
+        Trademark.create(slug: trademark['slug'], name: trademark['name'])
       end
       current_page = current_page + 1
     end
@@ -160,5 +160,34 @@ namespace :db do
     Product.where.not(id: Product.group(:sid, :name).pluck('min(products.id)'))
         .delete_all
   end
+
+  desc 'load_products_for_subcategory'
+  task :load_products_for_subcategory => :environment do
+    require "#{Rails.root}/lib/api/product"
+    subcategory = Category.find_by_sid 28
+
+    subcategory_id = subcategory.sid
+    current_page = 1
+    page_count = 1
+    while page_count >= current_page
+      product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
+      products, meta = product_sima.get_all_products_for_category(subcategory_id, current_page)
+      page_count = meta['pageCount']
+      products.each do |product|
+        Product.create(subcategory_id: subcategory_id, sid: product['sid'],
+                       country_id: product['country_id'], is_hit: product['is_hit'], weight: product['weight'],
+                       color_id: product['color_id'], balance_text: product['balance_text'], box_size_text: product['box_size_text'],
+                       box_type: product['box_type'], k_min: product['k_min'], materials_text: product['materials_text'], min_qty: product['min_qty'],
+                       name: product['name'], photo_count: product['photo_count'], price: product['price'],
+                       size_text: product['size_text'], trademark_id: product['trademark_id'], unit: product['unit'],
+                       description: product['description'], image: product['photo']['base_url'],
+                       new_type_id: product['new_type_id'], :certificate_type => product['certificate_type']
+
+        )
+      end
+      current_page = current_page + 1
+    end
+  end
+
 
 end
