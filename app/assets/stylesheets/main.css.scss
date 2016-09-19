@@ -92,6 +92,15 @@ header {
   }
 }
 
+.company_logo{
+  float: left;
+}
+.name{
+  float: left;
+  width: 55%;
+  padding-left: 15px;
+}
+
 .menu_left{
   float: left;
   margin-top: 35px;
@@ -270,10 +279,10 @@ header {
   }
 
   .btn-group:hover > .dropdown-menu {
-      left: inherit;
-      padding: 0;
-      margin: 0;
-      display: block !important;
+    left: inherit;
+    padding: 0;
+    margin: 0;
+    display: block !important;
   }
 
   .static{
@@ -443,25 +452,58 @@ header {
   .info{
     padding: 15px 5px 10px;
     text-align: center;
-    .index, .order_menu, .categories_menu, .meeting_menu,
+
+    .btn-group {
+      .dropdown-toggle-categories{
+        text-decoration: none;
+        border: none;
+        font-size: 19px;
+        background: none;
+        padding: 15px;
+      }
+    }
+    .btn-group:hover > .dropdown-menu{
+      left: inherit;
+      padding: 0;
+      margin: 0;
+      display: block !important;
+      a{color: #6cb2db;}
+      button{color: #ffffff;}
+    }
+    .dropdown-submenu:hover > .dropdown-menu{
+      padding: 0;
+      margin: 0;
+      display: block !important;
+      a{color: #6cb2db;}
+      button{color: #ffffff;}
+      float: left;
+      top: -4px;
+      left: 200px;
+      min-height: 611px;
+    }
+
+    .index button, .order_menu, .categories_menu, .meeting_menu,
     .rows_menu, .orders_menu, .create_question{
       font-size: 19px;
       color: #ffffff;
       display: inline-block;
     }
 
-    .index a, .order_menu a, .categories_menu a, .meeting_menu a,
+    .index button, .order_menu a, .categories_menu a, .meeting_menu a,
     .rows_menu a, .orders_menu a, .create_question a, .rows_menu button{
       color: #ffffff;
       padding: 5px;
       border: none;
       background: none;
     }
-    .rows_menu button{
+    .index button, .rows_menu button{
       outline: none;
     }
+    .index button{
+      padding: 14px !important;
+    }
 
-    .index a:hover,.order_menu a:hover, .categories_menu a:hover, .meeting_menu a:hover,
+    .index button:hover,.order_menu a:hover, .categories_menu a:hover, .meeting_menu a:hover,
     .rows_menu a:hover, .orders_menu a:hover, .create_question a:hover, .rows_menu button:hover{
       background: #ffffff;
       color: #000000;
