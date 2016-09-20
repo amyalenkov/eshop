@@ -1,8 +1,8 @@
 = content_for :title do
-  - (MetaTag.find_by_name 'about_us').title
+  - (MetaTag.find_by_name 'news').title
 
 = content_for :description do
-  - (MetaTag.find_by_name 'about_us').description[0..159]
+  - (MetaTag.find_by_name 'news').description[0..159]
 
 .container-fluid_index
   .row

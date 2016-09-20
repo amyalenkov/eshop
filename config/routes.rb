@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get '/category/:name' => 'static_pages#category_list'
 
   get 'static_pages/faq' => 'static_pages#faq'
+  get 'static_pages/news' => 'static_pages#news'
   get 'static_pages/about_us' => 'static_pages#about_us'
   get 'static_pages/for_you' => 'static_pages#for_you'
   get 'static_pages/review' => 'static_pages#review'
