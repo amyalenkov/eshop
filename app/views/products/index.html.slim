@@ -5,10 +5,11 @@
         p Недавно просмотренные товары
       .last_visited_products
         - if user_signed_in?
-          -current_user.last_products.each do |last_product|
+          /-current_user.last_products.find(:all, nil, :limit => 4) each do |last_product|
+          -current_user.last_products each do |last_product|
             .last_visited_product
               a href="#{product_path(last_product.product.id)}"
-                = image_tag ("#{last_product.product.image+'0/700.jpg'}")
+                = image_tag ("#{last_product.product.image+'0/140.jpg'}")
                 p = last_product.product.name.gsub('&quot;', '')
         - else
           .last_visited_product
