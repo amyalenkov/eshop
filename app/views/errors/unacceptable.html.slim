@@ -1,32 +1,6 @@
-doctype html
-html
-  head
-    title
-      =yield(:title)
-    meta name='description' content="#{yield(:description)}"
-
-    = content_for :title do
-      - if (MetaTag.find_by_name 'index').title
-
-    = csrf_meta_tags
-  body
-    #wrap
-      #main.clearfix
-        = render 'layouts/partials/navigation'
-        = render 'layouts/partials/top'
-        .content
-          h2
-            | Данная страница не найдена
-    #footer
-
-      = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-      = javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
-
-      - if user_signed_in?
-        = render 'layouts/partials/reminder'
-      = render 'layouts/partials/footer'
-
-      .go-up title="Вверх" id='ToTop' ⇧
-      .go-down title="Вниз" id='OnBottom' ⇩
-
-    = render 'layouts/partials/contacts_modal'
+.container-fluid_index
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      center
+        h2
+          | Данная страница не найдена
