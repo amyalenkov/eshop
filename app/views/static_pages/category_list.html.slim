@@ -10,10 +10,10 @@
         =link_to 'Главная / ', '/'
         =link_to "#{@category.name}", "/category/#{@category.id}"
 
-      .catalog_items
+      .catalog_items#catalog_items
         - if @subcategories != nil
           - @subcategories.each do |subcategory|
             .sub_category
               a href="/subcategory/#{subcategory.id}"
                 p #{subcategory.name}
-                = image_tag (subcategory.logo_image)
+                = image_tag 'loading.gif', :class => "#{subcategory.logo_image}"

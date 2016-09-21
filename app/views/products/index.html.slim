@@ -28,10 +28,12 @@
               =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
           h4 #{@subcategory.name}
       - if @subcategories != nil
-        .list_categories
+        .list_categories#list_categories
           - @subcategories.each do |subcategory|
             -if subcategory.is_leaf
+              /= image_tag 'loading.gif', :class => "#{subcategory.logo_image}"
               = link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
+              /= link_to image_tag('loading.gif', :class => "#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
       = render 'products/sort_by'
       .show_products_list#product_list
         = render 'products/show_products_list'
