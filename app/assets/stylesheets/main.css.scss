@@ -26,6 +26,14 @@ body > #wrap {height: auto; min-height: 100%; min-width: 1000px;}
   color: red;
 }
 
+.loading{
+  width: 600px;
+  height: 450px;
+  background: url(loading.gif) 50% no-repeat;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
 .container-fluid_index{
   background: #ffffff;
   width: 100%;

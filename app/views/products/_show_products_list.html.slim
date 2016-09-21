@@ -33,7 +33,7 @@
         div class="#{class_for_sort_by}"
           .image
             a href="#{product_path(product)}"
-              = image_tag product_image
+              = image_tag 'loading.gif', :class => "#{product_image}"
           .title
             = link_to product_name, product_path(product)
             p Материал: <b>#{product_material}</b>
