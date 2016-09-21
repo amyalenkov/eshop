@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 
-// require pace/pace
-// require paceLoad
 //= require jquery
 //= require jquery_ujs
 //= require jquery.raty
@@ -44,3 +42,4 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require open_reminder
+//= require post_loader
