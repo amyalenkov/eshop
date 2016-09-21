@@ -32,8 +32,8 @@
           - @subcategories.each do |subcategory|
             -if subcategory.is_leaf
               /= image_tag 'loading.gif', :class => "#{subcategory.logo_image}"
-              = link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
-              /= link_to image_tag('loading.gif', :class => "#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
+              /= link_to image_tag("#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
+              = link_to image_tag('loading.gif', :class => "#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
       = render 'products/sort_by'
       .show_products_list#product_list
         = render 'products/show_products_list'
