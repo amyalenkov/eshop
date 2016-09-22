@@ -154,6 +154,27 @@ namespace :db do
     end
   end
 
+  desc 'update products for paid delivery'
+  task :update_products_for_paid_delivery => :environment do
+    require "#{Rails.root}/lib/api/product"
+    count = 0
+    Product.find_each do |product|
+      count+=1
+      product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
+      product_new = product_sima.get_product_by_sid product.sid
+
+      if product_new
+        puts '---------------------------'
+        puts count
+        puts 'sima product id: '+product_new['id'].to_s
+        puts 'sima product name: '+product_new['name']
+        puts 'local product id: '+product.id.to_s
+        puts 'local product name: '+product.name
+        Product.update product.id, :is_paid_delivery => product_new['is_paid_delivery']
+      end
+    end
+  end
+
   desc 'delete same records'
   task :delete_same_products => :environment do
     require "#{Rails.root}/lib/api/product"
