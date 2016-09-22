@@ -72,6 +72,13 @@
           - product_weight='Не достаточно данных'
         -else product_weight=@product.weight
 
+        -if @product.is_paid_delivery==nil || @product.is_paid_delivery==''
+          - product_pay_delivery='Не достаточно данных'
+        -elsif @product.is_paid_delivery==true
+          - product_pay_delivery='Да'
+        -elsif @product.is_paid_delivery==false
+          - product_pay_delivery='Нет'
+
       .info
         dl
           dt Цифровое обозначение товара:
@@ -90,6 +97,8 @@
           dd <i><b>#{product_box_type}</b></i>
           dt Наличие сертификата:
           dd <i><b>#{product_certificate_type}</b></i>
+          dt Платная доставка:
+          dd <i><b>#{product_pay_delivery}</b></i>
           dt Вес:
           dd <i><b>#{product_weight} г</b></i>
 
