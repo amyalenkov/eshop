@@ -1102,7 +1102,7 @@ header {
       width: 50%;
       position: absolute;
       left: 50%;
-      top: 45%;
+      top: 37%;
       color: #f28709;
       font-size: 16px;
       font-style: italic;
@@ -1143,6 +1143,7 @@ header {
         width: 30% !important;
         margin: 0;
         position:absolute;
+        top: 5px;
         left:70%;
         bottom:0;
         .field{
@@ -1151,6 +1152,15 @@ header {
           input[type="number"]{
             width: 40px;
             height: 20px;
+          }
+          .min {
+            float: left;
+            margin-top: 5px;
+            position: absolute;
+            p{
+              font-size: 9px !important;
+              line-height: 0;
+            }
           }
         }
         .actions{
