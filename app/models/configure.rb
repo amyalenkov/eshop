@@ -5,8 +5,9 @@ class Configure < ActiveRecord::Base
   after_commit :set_cron
 
   def set_cron
-    system 'bundle exec whenever -i'
-    system 'bundle exec whenever -w'
+    Rails.logger.warn 'set cron'
+    system 'bundle exec RAILS_ENV=production whenever -i'
+    system 'bundle exec RAILS_ENV=production whenever -w'
   end
 
 end
