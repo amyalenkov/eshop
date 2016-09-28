@@ -27,13 +27,13 @@ check_payment_minutes = check_payment_time.strftime('%M')
 check_payment_cron = check_payment_minutes.to_s + ' ' + check_payment_hour.to_s + ' * * ' + check_payment_day_of_week.to_s
 
 every stop_cron do
-  # rake "my:stop_task RAILS_ENV=production"
-  rake "my:stop_task RAILS_ENV=development"
+  rake "my:stop_task RAILS_ENV=production"
+  # rake "my:stop_task RAILS_ENV=development"
   # rake "my:stop_task"
 end
 
 every check_payment_cron do
-  # rake "my:check_payment_task RAILS_ENV=production"
-  rake "my:check_payment_task RAILS_ENV=development"
+  rake "my:check_payment_task RAILS_ENV=production"
+  # rake "my:check_payment_task RAILS_ENV=development"
   # rake "my:check_payment_task"
 end
