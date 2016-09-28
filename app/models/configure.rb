@@ -6,8 +6,14 @@ class Configure < ActiveRecord::Base
 
   def set_cron
     Rails.logger.warn 'set cron'
-    system 'bundle exec RAILS_ENV=production whenever -i'
-    system 'bundle exec RAILS_ENV=production whenever -w'
+
+    system 'RAILS_ENV=production whenever -i'
+    system 'RAILS_ENV=production whenever -w'
+
+    # system 'bundle exec RAILS_ENV=production whenever -i'
+    # system 'bundle exec RAILS_ENV=production whenever -w'
+
+    Rails.logger.warn 'update cron'
   end
 
 end

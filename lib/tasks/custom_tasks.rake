@@ -63,6 +63,7 @@ namespace :my do
     full_rows.each do |row|
       row.reserved!
     end
+    p 'end stop task'
   end
 
   desc 'check payment task'
