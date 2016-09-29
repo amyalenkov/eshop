@@ -1,0 +1,9 @@
+- time_now=''
+-if '04:00'.to_time.strftime('%H:%M') <= current_time && current_time < '10:00'.to_time.strftime('%H:%M')
+  - time_now='Доброе утро'
+-elsif '10:00'.to_time.strftime('%H:%M') <= current_time && current_time < '16:00'.to_time.strftime('%H:%M')
+  - time_now='Добрый день'
+-elsif '16:00'.to_time.strftime('%H:%M') <= current_time && current_time < '21:00'.to_time.strftime('%H:%M')
+  - time_now='Добрый вечер'
+-elsif '21:00'.to_time.strftime('%H:%M') <= current_time && current_time < '04:00'.to_time.strftime('%H:%M')
+  - time_now='Доброй ночи'

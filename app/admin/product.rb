@@ -20,8 +20,15 @@ ActiveAdmin.register Product do
       f.input :width
       f.input :height
       f.input :sid
-      f.input :k_min, as: :check_boxes
-      f.input :is_hit, as: :check_boxes
+
+      f.label 'k_min: '
+      f.check_box :k_min
+      # f.input :k_min, as: :check_boxes
+
+      f.label 'is_hit: '
+      f.check_box :is_hit
+      # f.input :is_hit, as: :check_boxes
+
       f.input :min_qty
       f.input :balance_text
       f.input :box_size_text

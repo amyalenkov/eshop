@@ -1,0 +1,11 @@
+-text = text.value.gsub('№', '№'+(MainOrder.last.id - 1).to_s)
+#reminderModal class="modal" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" &times;
+        h4 class="modal-title" #{user_name}
+      .modal-body
+        p "#{text}"
+      .modal-footer
+        button type="button" class="btn btn-default" data-dismiss="modal" Закрыть
