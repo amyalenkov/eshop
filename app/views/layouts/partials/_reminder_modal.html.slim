@@ -1,11 +1,14 @@
--text = text.value.gsub('№', '№'+(MainOrder.last.id - 1).to_s)
-#reminderModal class="modal" role="dialog"
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button type="button" class="close" data-dismiss="modal" &times;
-        h4 class="modal-title" #{user_name}
-      .modal-body
-        p "#{text}"
-      .modal-footer
-        button type="button" class="btn btn-default" data-dismiss="modal" Закрыть
+-value = text.value.gsub('№', '№'+(MainOrder.last.id - 1).to_s)
+-name = name_message
+/= form_tag(:controller => :pcbnew, :action => :getResponseFieldsPage, :method => 'post') do
+/= form_for(:controller => :static_pages_controller, :action => :close_form, :method => 'post') do
+  #reminderModal class="modal" role="dialog"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button type="button" class="close" data-dismiss="modal" &times;
+          h4 class="modal-title" #{user_name}
+        .modal-body
+          p "#{value}"
+        .modal-footer
+          = submit_tag 'Ok', :class => 'btn btn-default'

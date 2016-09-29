@@ -34,13 +34,13 @@
 
 -if order_bill && info_order_bill.turn_on
   -if info_order_bill.start_date <= current_date && current_date <= info_order_bill.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_order_bill, user_name: user_name
+    = render 'layouts/partials/reminder_modal', text: info_order_bill, user_name: user_name, name_message: 'after_stop'
 -if order_choice_delivery && info_choice_delivery.turn_on
   -if info_choice_delivery.start_date <= current_date && current_date <= info_choice_delivery.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_choice_delivery, user_name: user_name
+    = render 'layouts/partials/reminder_modal', text: info_choice_delivery, user_name: user_name, name_message: 'choice_delivery'
 -if info_delivery && info_delivery.turn_on
   -if info_delivery.start_date <= current_date && current_date <= info_delivery.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_delivery, user_name: user_name
+    = render 'layouts/partials/reminder_modal', text: info_delivery, user_name: user_name, name_message: 'info_delivery'
 -if info_stop && info_stop.turn_on
   -if info_stop.start_date <= current_date && current_date <= info_stop.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_stop, user_name: user_name
+    = render 'layouts/partials/reminder_modal', text: info_stop, user_name: user_name, name_message: 'info_stop'
