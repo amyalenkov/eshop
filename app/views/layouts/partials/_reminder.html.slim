@@ -1,42 +1,46 @@
--data = Reminder.find_by_name('reminder')
+-Rails.logger.warn 'main_order_id: '+MainOrder.last.id.to_s
+-Rails.logger.warn 'current_user.id: '+current_user.id.to_s
+-Rails.logger.warn 'Order.states[:bill]: '+Order.states[:bill].to_s
 
--start_date=data.start_date
--stop_date=data.stop_date
--remind_text=data.value
+-order_bill=Order.find_by state: Order.states[:bill], user_id: current_user.id, main_order_id: (MainOrder.last.id - 1)
+-order_choice_delivery=Order.find_by state: Order.states[:choice_delivery], user_id: current_user.id, main_order_id: (MainOrder.last.id - 1)
 
--order=Order.find_by state: Order.states[:choice_delivery], user_id: current_user.id
+-info_order_bill=Reminder.find_by_name('after_stop')
+-info_choice_delivery=Reminder.find_by_name('choice_delivery')
+-info_delivery=Reminder.find_by_name('info_delivery')
+-info_stop=Reminder.find_by_name('info_stop')
+
+/- start_date=order_bill.start_date
+/- stop_date=order_bill.stop_date
+/- order_bill_text=order_bill.value
+
+/-Rails.logger.warn 'user_id: '+order_bill.id.to_s
+/-Rails.logger.warn 'states: '+order_bill.state.to_s
+
+/-Rails.logger.warn 'user_id: '+order_choice_delivery.id.to_s
+/-Rails.logger.warn 'states: '+order_choice_delivery.state.to_s
+
 -current_date=Time.now
 
 -current_time=current_date.strftime('%H:%M')
--time_now=''
 -user_name=''
 
--if '04:00'.to_time.strftime('%H:%M') <= current_time && current_time < '10:00'.to_time.strftime('%H:%M')
-  - time_now='Доброе утро'
--elsif '10:00'.to_time.strftime('%H:%M') <= current_time && current_time < '16:00'.to_time.strftime('%H:%M')
-  - time_now='Добрый день'
--elsif '16:00'.to_time.strftime('%H:%M') <= current_time && current_time < '21:00'.to_time.strftime('%H:%M')
-  - time_now='Добрый вечер'
--elsif '21:00'.to_time.strftime('%H:%M') <= current_time && current_time < '04:00'.to_time.strftime('%H:%M')
-  - time_now='Доброй ночи'
+=render 'layouts/partials/reminder_get_text_time', current_time: current_time
 
 -if current_user.name!=nil
   -user_name = current_user.name
 -else
   - user_name = current_user.email
 
--if order
-  -if start_date <= current_date && current_date <= stop_date
-    /|$(document).ready(function() {
-    /|  $("#reminderModal").modal('show');
-    /|});
-    #reminderModal class="modal" role="dialog"
-      .modal-dialog
-        .modal-content
-          .modal-header
-            button type="button" class="close" data-dismiss="modal" &times;
-            h4 class="modal-title" #{time_now}, #{user_name}
-          .modal-body
-            p #{remind_text}
-          .modal-footer
-            button type="button" class="btn btn-default" data-dismiss="modal" Закрыть
+-if order_bill && info_order_bill.turn_on
+  -if info_order_bill.start_date <= current_date && current_date <= info_order_bill.stop_date
+    = render 'layouts/partials/reminder_modal', text: info_order_bill, user_name: user_name
+-if order_choice_delivery && info_choice_delivery.turn_on
+  -if info_choice_delivery.start_date <= current_date && current_date <= info_choice_delivery.stop_date
+    = render 'layouts/partials/reminder_modal', text: info_choice_delivery, user_name: user_name
+-if info_delivery && info_delivery.turn_on
+  -if info_delivery.start_date <= current_date && current_date <= info_delivery.stop_date
+    = render 'layouts/partials/reminder_modal', text: info_delivery, user_name: user_name
+-if info_stop && info_stop.turn_on
+  -if info_stop.start_date <= current_date && current_date <= info_stop.stop_date
+    = render 'layouts/partials/reminder_modal', text: info_stop, user_name: user_name
