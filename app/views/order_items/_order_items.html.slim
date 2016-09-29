@@ -10,6 +10,7 @@ table class="table"
       th Встречи (г. Гомель)
       th Способ получения
       th Статус оплаты
+      th Статус заказа
   tbody
     - @orders.each do |order|
 
@@ -62,7 +63,10 @@ table class="table"
             | #{next_meeting}
         td
           .link
-            =link_to (state_translate), meetings_orders_path
+            =link_to 'Способ доставки', meetings_orders_path
+        td
+          .link
+            =link_to 'Оплата товарв', '/static_pages/faq#pay'
         td
           .text
-            | #{payment_type}
+            | #{state_translate}

@@ -3,7 +3,7 @@ h4 Встреча
   - meet = MeetingDelivery.find_by_order_id @order.id
 -if meet
   | Вы записаны на встречу:
-  = (MeetingItem.find_by id: meet).location
+  = (MeetingItem.find_by id: meet.meeting_item_id).location
 
 .row
   .col-xs-12.col-sm-12.col-md-12.col-lg-12.map
