@@ -635,6 +635,10 @@ header {
   height: 400px;
   display: inline-block;
   background: #ffffff;
+
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 15px;
   .title{
     font-size: 16px;
     font-style: italic;
