@@ -808,21 +808,21 @@ header {
       #clock{
         width: 95%;
         text-align: center;
+        padding-left: 10px;
         .blockTimer{
           float: left;
           font-size: 35px;
           font-style: normal;
           color: #000000;
           font-weight: normal;
-          width: 30%;
+          width: 33%;
           text-align: center;
           padding-left: 5px;
           .desc{
             font-size: 10px;
             float: left;
-            width: 32%;
-            padding-left: 20px;
-            margin-top: -5px;
+            padding-left: 10px;
+            margin-top: -7px;
             height: 10px;
             color: rgba(0, 0, 0, 0.5);
           }
