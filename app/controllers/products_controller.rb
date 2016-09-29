@@ -80,7 +80,9 @@ class ProductsController < ApplicationController
 
   def products_for_range param_min_sum, param_max_sum
     course = Additional.find_by_name('course').value.to_f
+
     markup = Additional.find_by_name('markup').value.to_f
+
     min = param_min_sum.to_f
     max = param_max_sum.to_f
     min_sum = (min/ course) * ((100 - markup + 5)/100)

@@ -2,7 +2,7 @@ ActiveAdmin.register Category, :as => 'All Categories' do
 
   menu label: 'Категории'
 
-  permit_params :name, :is_leaf
+  permit_params :name, :is_leaf, :mark_up
 
   config.per_page = 30
 
@@ -19,6 +19,7 @@ ActiveAdmin.register Category, :as => 'All Categories' do
       f.input :level
       f.input :parent_id
       f.input :path, :as => :string
+      f.input :mark_up, :as => :string
     end
     f.actions
   end
