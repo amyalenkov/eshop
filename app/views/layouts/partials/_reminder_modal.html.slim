@@ -1,14 +1,17 @@
 -value = text.value.gsub('№', '№'+(MainOrder.last.id - 1).to_s)
--name = name_message
-/= form_tag(:controller => :pcbnew, :action => :getResponseFieldsPage, :method => 'post') do
-/= form_for(:controller => :static_pages_controller, :action => :close_form, :method => 'post') do
-  #reminderModal class="modal" role="dialog"
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button type="button" class="close" data-dismiss="modal" &times;
-          h4 class="modal-title" #{user_name}
-        .modal-body
-          p "#{value}"
-        .modal-footer
-          = submit_tag 'Ok', :class => 'btn btn-default'
+
+-if current_user.name!=nil
+  -user_name = current_user.name
+-else
+  - user_name = current_user
+
+#reminderModal class="modal" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" &times;
+        h4 class="modal-title" #{user_name}
+      .modal-body
+        p "#{value}"
+      .modal-footer
+        button type="button" class="btn btn-default" onclick="close_form('#{name_message}', '#{current_user.id}')" data-dismiss="modal" Ok

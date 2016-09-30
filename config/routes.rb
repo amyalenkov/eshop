@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   get 'static_pages/for_you' => 'static_pages#for_you'
   get 'static_pages/review' => 'static_pages#review'
   get 'static_pages/get_datetime_for_stop' => 'static_pages#get_datetime_for_stop'
+  get 'static_pages/close_form' => 'static_pages#close_form'
   get 'static_pages/confirm_registration' => 'static_pages#confirm_registration'
 
   resources :application

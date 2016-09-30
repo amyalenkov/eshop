@@ -43,3 +43,4 @@
 //= require nprogress-turbolinks
 //= require open_reminder
 //= require post_loader
+//= require close_form

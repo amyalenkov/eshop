@@ -1,7 +1,3 @@
--Rails.logger.warn 'main_order_id: '+MainOrder.last.id.to_s
--Rails.logger.warn 'current_user.id: '+current_user.id.to_s
--Rails.logger.warn 'Order.states[:bill]: '+Order.states[:bill].to_s
-
 -order_bill=Order.find_by state: Order.states[:bill], user_id: current_user.id, main_order_id: (MainOrder.last.id - 1)
 -order_choice_delivery=Order.find_by state: Order.states[:choice_delivery], user_id: current_user.id, main_order_id: (MainOrder.last.id - 1)
 
@@ -10,37 +6,28 @@
 -info_delivery=Reminder.find_by_name('info_delivery')
 -info_stop=Reminder.find_by_name('info_stop')
 
-/- start_date=order_bill.start_date
-/- stop_date=order_bill.stop_date
-/- order_bill_text=order_bill.value
-
-/-Rails.logger.warn 'user_id: '+order_bill.id.to_s
-/-Rails.logger.warn 'states: '+order_bill.state.to_s
-
-/-Rails.logger.warn 'user_id: '+order_choice_delivery.id.to_s
-/-Rails.logger.warn 'states: '+order_choice_delivery.state.to_s
-
 -current_date=Time.now
-
 -current_time=current_date.strftime('%H:%M')
--user_name=''
+
+-Rails.logger.warn 'user: ' + current_user['after_stop'].to_s
+-Rails.logger.warn 'user: ' + current_user['choice_delivery'].to_s
+-Rails.logger.warn 'user: ' + current_user['info_delivery'].to_s
+-Rails.logger.warn 'user: ' + current_user['info_stop'].to_s
 
 =render 'layouts/partials/reminder_get_text_time', current_time: current_time
 
--if current_user.name!=nil
-  -user_name = current_user.name
--else
-  - user_name = current_user.email
-
--if order_bill && info_order_bill.turn_on
+-if order_bill && info_order_bill.turn_on && !current_user['after_stop']
   -if info_order_bill.start_date <= current_date && current_date <= info_order_bill.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_order_bill, user_name: user_name, name_message: 'after_stop'
--if order_choice_delivery && info_choice_delivery.turn_on
+    = render 'layouts/partials/reminder_modal', text: info_order_bill, current_user: current_user, name_message: 'after_stop'
+
+-if order_choice_delivery && info_choice_delivery.turn_on && !current_user['choice_delivery']
   -if info_choice_delivery.start_date <= current_date && current_date <= info_choice_delivery.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_choice_delivery, user_name: user_name, name_message: 'choice_delivery'
--if info_delivery && info_delivery.turn_on
+    = render 'layouts/partials/reminder_modal', text: info_choice_delivery, current_user: current_user, name_message: 'choice_delivery'
+
+-if info_delivery && info_delivery.turn_on && !current_user['info_delivery']
   -if info_delivery.start_date <= current_date && current_date <= info_delivery.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_delivery, user_name: user_name, name_message: 'info_delivery'
--if info_stop && info_stop.turn_on
+    = render 'layouts/partials/reminder_modal', text: info_delivery, current_user: current_user, name_message: 'info_delivery'
+
+-if info_stop && info_stop.turn_on && !current_user['info_stop']
   -if info_stop.start_date <= current_date && current_date <= info_stop.stop_date
-    = render 'layouts/partials/reminder_modal', text: info_stop, user_name: user_name, name_message: 'info_stop'
+    = render 'layouts/partials/reminder_modal', text: info_stop, current_user: current_user, name_message: 'info_stop'
