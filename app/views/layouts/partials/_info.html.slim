@@ -1,5 +1,11 @@
 .index
-  = link_to 'Главная', '/'
+  .btn-group
+    button class="dropdown-toggle-categories" data-toggle="dropdown"
+      | Категории
+      span.caret
+
+    =render 'layouts/partials/drop_down_menu'
+
 .order_menu
   - if user_signed_in?
     - current_order = current_user.get_current_order

@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
     calendar_dates
 
     @hot_products = Row.where(state: [Row.states[:full], Row.states[:not_full]])
+    @all_index_categories = get_all_index_categories
     # if @last_product != nil
     #   @product = Product.find_by_id @last_product.product_id
     #   @alike_products = Product.where(subcategory: @product.subcategory).limit(20).order('RANDOM()')
@@ -44,6 +45,32 @@ class StaticPagesController < ApplicationController
     # render :text => (date + delta).strftime('%Y-%m-%d')
     render :json => {'stop'=>(date + delta).strftime('%Y-%m-%d'), 'next_meeting'=>next_meeting.strftime('%Y-%m-%d'), 'next_bringing'=>next_bringing.strftime('%Y-%m-%d'), 'next_stop'=>next_stop.strftime('%Y-%m-%d')}
 
+  end
+
+  def get_all_index_categories
+    @all_index_categories = Category.where(level: 1)
+    @all_index_categories.each do |category|
+      # category.ancestors.each_with_index { |child, index| Rails.logger.warn 'child: ' + child[index].name}
+      Rails.logger.warn 'id: ' +category.id.to_s
+    end
+  end
+  def get_all_categories
+    Rails.logger.warn '@all_categories: '+Category.all.to_s
+    @all_categories = Category.all
+  end
+
+  def close_form
+    name_message = params[:name_message]
+    user_id = params[:user_id]
+    Rails.logger.warn 'close form'
+    Rails.logger.warn 'name message: '+name_message
+    Rails.logger.warn 'user_id: ' + user_id
+
+    user = User.find_by(:id => user_id)
+    user[name_message] = true
+    user.save
+
+    render :text => 'ok'
   end
 
   private
