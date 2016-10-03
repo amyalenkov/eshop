@@ -12,7 +12,7 @@
       -index_products=3
       -class_for_sort_by='product'
 
-  - @products.in_groups_of(index_products, false) do |products|
+  - @products.take(18).in_groups_of(index_products, false) do |products|
     .row_products
       - for product in products
         - product_id = product.id

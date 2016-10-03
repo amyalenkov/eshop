@@ -1,7 +1,8 @@
 .container-fluid_index
   .row
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.address_link
-      = link_to 'На главную/', '/'
+      = link_to 'На главную', '/'
+      span &nbsp;/&nbsp;
       -if @category_path
         = link_to "#{@category_path.first[1][1]}", "/category/#{@category_path.first[1][0]}"
       -unless @category_path.nil?
@@ -9,7 +10,7 @@
           -Rails.logger.warn 'category name: '+sub[1][1] + ' / category id: '+sub[1][0]
           -Rails.logger.warn 'index: '+index.to_s
           -if index > 0
-            | /
+            |&nbsp;/&nbsp;
             = link_to "#{sub[1][1]}", "/subcategory/#{sub[1][0]}"
 
   .row

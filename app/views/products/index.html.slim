@@ -19,7 +19,8 @@
       = render 'layouts/partials/calendar'
     .col-xs-10.col-sm-10.col-md-10.col-lg-10.catalog_old
       .address_link
-        = link_to 'Главная/', '/'
+        = link_to 'Главная', '/'
+        span &nbsp;/&nbsp;
         -unless @subcategory.nil?
           - ancestors = @subcategory.ancestors
           -Rails.logger.warn 'ancestors'
@@ -27,7 +28,7 @@
           =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
           - @subcategory.ancestors.each_with_index do| sub, index|
             -unless index==0
-              | /
+              |&nbsp;/&nbsp;
               =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
           h4 #{@subcategory.name}
       - if @subcategories != nil

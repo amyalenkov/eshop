@@ -10,7 +10,8 @@
       = render 'layouts/partials/calendar'
     .col-xs-9.col-sm-9.col-md-9.col-lg-9.catalog_list
       .address_link
-        =link_to 'Главная / ', '/'
+        =link_to 'Главная', '/'
+        span &nbsp;/&nbsp;
         =link_to "#{@category.name}", "/category/#{@category.id}"
 
       .catalog_items#catalog_items
