@@ -10,10 +10,10 @@
   - if user_signed_in?
     - current_order = current_user.get_current_order
 
-    -if current_order != nil
+    -if current_order.total_price != nil
       = link_to ('Текущий заказ').html_safe, current_order_order_path(current_order)
     -else
-      = link_to ('Текущий заказ').html_safe, cart_items_path
+      = link_to ('Текущий заказ').html_safe, '#', {:remote => true, 'data-toggle' => 'modal', 'data-target' => '#currentOrder'}
 
   - else
     = link_to 'Текущий заказ', new_user_session_path
@@ -37,7 +37,6 @@
   button type="button" data-toggle="modal" data-target="#getCall" Контакты
 
 .cart_menu
-  /br
   - if user_signed_in?
     .cart_menu_for_update
       = render 'layouts/partials/cart_menu'
@@ -46,5 +45,15 @@
     .cart_count
       = link_to 'Позиций 0<br>0 бел. руб.'.html_safe, new_user_session_path, :class => 'cart_not_tull'
 
-/.contact_menu.pull-right
+#currentOrder.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" &times;
+        h4 class="modal-title" Текущий заказ
+      .modal-body
+        p Вы еще ничего не добавили к текущему заказу.
+      .modal-footer
+        button type="button" class="btn btn-default" data-dismiss="modal" Закрыть
+
 
