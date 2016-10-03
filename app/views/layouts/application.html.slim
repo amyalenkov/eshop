@@ -7,7 +7,7 @@ html
 
     = content_for :title do
       - if (MetaTag.find_by_name 'index').title
-
+    = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
   body
     #wrap
