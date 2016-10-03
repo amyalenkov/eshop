@@ -3,23 +3,23 @@
     .height_90
       .block_links.table_border
         = link_to 'Корзина', cart_items_path
-        br
-        = link_to 'Избранное', favorites_path
+        /br
+        /= link_to 'Избранное', favorites_path
         br
         = link_to 'Часто задаваемые вопросы', '/questions/show/'
     .height_90
       .block_links.table_border
         = link_to 'Каталог', '/'
-        br
-        = link_to 'Новинки',  products_path(news: true)
+        /br
+        /= link_to 'Новинки',  products_path(news: true)
         br
         = link_to 'Хиты продаж', products_path(is_hit: true)
         br
     .height_90
       .block_links.table_border
-        = link_to 'Все по 20 000',products_path(min_sum: '20000', max_sum: '30000')
+        = link_to 'Все по 2 BYN',products_path(min_sum: '20000', max_sum: '30000')
         br
-        = link_to 'Все по 50 000',products_path(min_sum: '50000', max_sum: '60000')
+        = link_to 'Все по 5 BYN',products_path(min_sum: '50000', max_sum: '60000')
         br
     .height_90
       p

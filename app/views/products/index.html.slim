@@ -1,5 +1,6 @@
 = content_for :title do
-  - @subcategory.name
+  -if @subcategory
+    - @subcategory.name
 .container-fluid_index
   .row
     .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_info_old
