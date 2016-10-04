@@ -32,7 +32,7 @@
 //= require products
 //= require slider_content
 //= require downTop
-/*= require jivosite
+// require jivosite
 //= require sort_by
 //= require jquery.inputmask
 //= require jquery.inputmask.extensions
