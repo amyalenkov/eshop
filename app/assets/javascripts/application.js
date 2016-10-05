@@ -19,28 +19,33 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap.min
+// require_tree .
+
+// require jquery.inputmask
+// require jquery.inputmask.extensions
+// require jquery.inputmask.numeric.extensions
+// require jquery.inputmask.date.extensions
+
 //= require jquery.elevatezoom
-//= require_tree .
-//= require topMenu
 //= require fancybox
-//= require active_zoom
-//= require select_row_by_checkbox_in_cart_items
 //= require cart_items
 //= require orders
 //= require validation
 //= require validations/validation
 //= require products
-//= require slider_content
-//= require downTop
-// require jivosite
-//= require sort_by
-//= require jquery.inputmask
-//= require jquery.inputmask.extensions
-//= require jquery.inputmask.numeric.extensions
-//= require jquery.inputmask.date.extensions
-
 //= require nprogress
 //= require nprogress-turbolinks
-//= require open_reminder
-//= require post_loader
-//= require close_form
+
+//= require commonZip
+
+// require active_zoom
+// require topMenu
+// require select_row_by_checkbox_in_cart_items
+// require slider_content
+// require downTop
+// require sort_by
+// require open_reminder
+// require post_loader
+// require close_form
+// require loadProducts
+// require count_down_timer

@@ -9,11 +9,6 @@
 -current_date=Time.now
 -current_time=current_date.strftime('%H:%M')
 
--Rails.logger.warn 'user: ' + current_user['after_stop'].to_s
--Rails.logger.warn 'user: ' + current_user['choice_delivery'].to_s
--Rails.logger.warn 'user: ' + current_user['info_delivery'].to_s
--Rails.logger.warn 'user: ' + current_user['info_stop'].to_s
-
 =render 'layouts/partials/reminder_get_text_time', current_time: current_time
 
 -if order_bill && info_order_bill.turn_on && !current_user['after_stop']

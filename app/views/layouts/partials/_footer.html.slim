@@ -1,3 +1,6 @@
+- if user_signed_in?
+  = render 'layouts/partials/reminder', :nothing => true
+
 = render 'layouts/partials/info_links'
 .container-fluid_index
   .row.footer
@@ -25,3 +28,10 @@
       p Пн.-Вт.: с 09-00 до 18-00, Сб.-Вс.: с 10-00 до 16-00
       p Телефон: +375 (44) 787-09-46 / +375 (44) 753-83-07
       p Электронная почта: uzelok4you@gmail.com
+
+.go-up title="Вверх" id='ToTop' ⇧
+.go-down title="Вниз" id='OnBottom' ⇩
+
+= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+= javascript_include_tag 'application', :debug => true
+
