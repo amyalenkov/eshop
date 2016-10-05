@@ -30,7 +30,8 @@
 //= require nprogress
 //= require nprogress-turbolinks
 
-//= require commonZip
+//= require common
+// require commonZip
 
 // require_tree .
 
