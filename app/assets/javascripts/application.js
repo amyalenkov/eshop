@@ -30,27 +30,4 @@
 //= require nprogress
 //= require nprogress-turbolinks
 
-/*//= require common*/
 //= require commonZip
-
-
-/*
-    // require_tree .
-    //require jquery.inputmask
-
-    // require jquery.inputmask.extensions
-    // require jquery.inputmask.numeric.extensions
-    // require jquery.inputmask.date.extensions
-
-    // require active_zoom
-    // require topMenu
-    // require select_row_by_checkbox_in_cart_items
-    // require slider_content
-    // require downTop
-    // require sort_by
-    // require open_reminder
-    // require post_loader
-    // require close_form
-    // require loadProducts
-    // require count_down_timer
- */
