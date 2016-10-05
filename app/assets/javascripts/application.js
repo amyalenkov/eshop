@@ -19,12 +19,6 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap.min
-// require_tree .
-
-// require jquery.inputmask
-// require jquery.inputmask.extensions
-// require jquery.inputmask.numeric.extensions
-// require jquery.inputmask.date.extensions
 
 //= require jquery.elevatezoom
 //= require fancybox
@@ -37,6 +31,13 @@
 //= require nprogress-turbolinks
 
 //= require commonZip
+
+// require_tree .
+
+// require jquery.inputmask
+// require jquery.inputmask.extensions
+// require jquery.inputmask.numeric.extensions
+// require jquery.inputmask.date.extensions
 
 // require active_zoom
 // require topMenu
