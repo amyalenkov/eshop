@@ -338,6 +338,7 @@
 
   .catalog_info_old, .catalog_info{
     float: left;
+    height: inherit;
     .border_for_rows{
       margin-left: 25px;
     }
@@ -606,6 +607,7 @@
 
   .catalog_info{
     margin-left: 20px;
+    height: inherit;
     .catalog_list_item{
       text-align: left;
     }
