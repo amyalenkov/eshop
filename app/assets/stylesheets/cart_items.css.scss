@@ -4,7 +4,9 @@
 
 
 /*CART*/
-
+.modal-backdrop{
+  background-color: rgba(0,0,0,.2) !important;
+}
 .order_price, .total_price{
   text-align: center;
   font-style: italic;
