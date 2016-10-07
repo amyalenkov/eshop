@@ -185,7 +185,7 @@ namespace :db do
   desc 'load_products_for_subcategory'
   task :load_products_for_subcategory => :environment do
     require "#{Rails.root}/lib/api/product"
-    subcategory = Category.find_by_sid 28
+    subcategory = Category.find_by_sid 1798
 
     subcategory_id = subcategory.sid
     current_page = 1
@@ -207,6 +207,17 @@ namespace :db do
         )
       end
       current_page = current_page + 1
+    end
+  end
+
+  desc 'delete_products_for_subcategory'
+  task :delete_products_for_subcategory => :environment do
+    require "#{Rails.root}/lib/api/product"
+    subcategory_id = 1798
+    products = Product.where(subcategory_id: subcategory_id)
+
+    products.each do |product|
+      Product.delete(product['id'])
     end
   end
 
