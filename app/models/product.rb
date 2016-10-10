@@ -25,15 +25,14 @@ class Product < ActiveRecord::Base
     course = Additional.find_by_name('course').value
 
     markup = get_mark_up
-    Rails.logger.warn 'get_mark_up: '+markup
 
     result_price = ((price.to_f * course.to_f * (markup.to_f/100 +1)).round 2).to_i
     str_result_price = result_price.to_s
     second_part = str_result_price[-3, 3].to_i.round -2
-    first_part = str_result_price.gsub( /.{3}$/, '' )
+    first_part = str_result_price.gsub(/.{3}$/, '')
     if first_part.size > 3
-      million_part = str_result_price.gsub( /.{6}$/, '' )
-      first_part = str_result_price.gsub( /.{3}$/, '' ).gsub( /^\w/, '' )
+      million_part = str_result_price.gsub(/.{6}$/, '')
+      first_part = str_result_price.gsub(/.{3}$/, '').gsub(/^\w/, '')
       if second_part == 0
         second_part = '000'
       elsif second_part == 1000
@@ -55,14 +54,11 @@ class Product < ActiveRecord::Base
   def get_new_price
     course = Additional.find_by_name('course').value
     markup = get_mark_up
-    Rails.logger.warn 'get_mark_up: '+markup.to_s
     (((price.to_f * course.to_f * (markup.to_f/100 +1)).round 2)/10000).round 2
   end
 
   def get_mark_up
-    Rails.logger.warn 'get_mark_up'
     category_id = /(\w+)/.match(Category.find_by_sid(subcategory_id).path.to_s)[1]
-    Rails.logger.warn 'category_id: '+category_id.to_s
 
     markup_category = Category.find_by_id(category_id).mark_up
     markup_default = Additional.find_by_name('markup').value
