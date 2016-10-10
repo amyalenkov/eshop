@@ -50,6 +50,7 @@ Rails.application.configure do
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 1, 100 * 1024 * 1024)
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
