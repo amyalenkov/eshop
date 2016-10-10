@@ -12,23 +12,17 @@ class CartItemsController < ApplicationController
     product_id = params[:cart_item][:product_id]
     count = params[:cart_item][:count]
     unless current_user.product_in_cart? product_id
-      if count == 0
-        @product = Product.find_by_id product_id
-        cart_item = CartItem.new
-        cart_item.product_id = @product.id
-        cart_item.count = 1
-        cart_item.total_price = count * @product.get_price_int
-        cart_item.user_id = current_user.id
-        cart_item.save!
-      else
-        @product = Product.find_by_id product_id
-        cart_item = CartItem.new
-        cart_item.product_id = @product.id
-        cart_item.count = count
-        cart_item.total_price = count * @product.get_price_int
-        cart_item.user_id = current_user.id
-        cart_item.save!
+      if count == '0'
+        count = '1'
       end
+      Rails.logger.warn 'count: '+count
+      @product = Product.find_by_id product_id
+      cart_item = CartItem.new
+      cart_item.product_id = @product.id
+      cart_item.count = count
+      cart_item.total_price = count * @product.get_price_int
+      cart_item.user_id = current_user.id
+      cart_item.save!
     end
   end
 
