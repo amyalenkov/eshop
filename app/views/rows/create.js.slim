@@ -3,22 +3,18 @@
 | var width='';
 
 | if (pc > 0 && pc < 0.25){
-|   console.log(pc);
 |   progress_status=progress_status.concat('danger');
 |   width=width.concat('25%');
 | }
 | if (pc > 0.26 && pc <= 0.5){
-|   console.log(pc);
 |   progress_status=progress_status.concat('warning');
 |   width=width.concat('50%');
 | }
 | if (pc > 0.51 && pc < 0.98){
-|   console.log(pc);
 |   progress_status=progress_status.concat('info');
 |   width=width.concat('75%');
 | }
 | if (pc > 0.99){
-|   console.log(pc);
 |   progress_status=progress_status.concat('success');
 |   width=width.concat('100%');
 | }

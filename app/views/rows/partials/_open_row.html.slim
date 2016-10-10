@@ -3,11 +3,7 @@
 - width = width
 - progress_status = progress_status
 
--Rails.logger.warn('row: '+row.to_s)
-
-
-
-- unless row.nil?
+- if !row.nil?
   td style="width: 110px;"
     .row id="#{cart_item.product.id.to_s}"
       .progress
