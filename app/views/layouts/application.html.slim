@@ -12,14 +12,7 @@ html
   body
     #wrap
       #main.clearfix
-
-        = render 'layouts/partials/header'
-
+        = render 'layouts/partials/header', cache: true
         .content
           = yield
-
-    #footer
-
-      = render 'layouts/partials/footer', :nothing => true
-
-    = render 'layouts/partials/contacts_modal', :nothing => true
+      = render 'layouts/partials/footer', cache: true

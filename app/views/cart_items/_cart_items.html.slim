@@ -14,12 +14,12 @@ table class="table"
       - check_favorite, favorite_product = current_user.is_favorite_product?(cart_item.product_id)
       - tr_class = 'highlight_row_click' if check_favorite
       - tr_class = '' unless check_favorite
-
       - progress_status='progress-bar-'
       - width='width: '
 
       - if cart_item.product.get_row != nil
-        - pc = (cart_item.product.get_row.current_count * 100)/cart_item.product.get_row.min_count
+        - pc = cart_item.product.get_row.current_count.to_f/cart_item.product.get_row.min_count.to_f*100
+        -Rails.logger.warn ('pc: '+pc.to_s)
         - if pc > 0 and pc < 25
           - progress_status.concat('danger')
           - width.concat('25%')
@@ -29,9 +29,10 @@ table class="table"
         - if pc > 51 and pc < 98
           - progress_status.concat('info')
           - width.concat('75%')
-        - if pc > 99 and pc < 101
+        - if pc > 99
           - progress_status.concat('success')
           - width.concat('100%')
+
 
       tr class="#{tr_class}" id="tr_product_#{cart_item.product_id}"
         td
@@ -43,31 +44,18 @@ table class="table"
         td
           .product_cart
             .image_cart
-              = link_to image_tag(cart_item.product.image+'0/140.jpg')
+              = link_to image_tag(cart_item.product.image+'0/140.jpg'), product_path(cart_item.product_id), :target => '_blank'
             .description_cart
               .title
-                = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id)
+                = link_to cart_item.get_product_name.gsub('&quot;', ''), product_path(cart_item.product_id), :target => '_blank'
               p Артикул: <b>#{cart_item.product_id}</b>
               p Дата добавления: <b>#{cart_item.created_at.strftime("%F")}</b>
-              /=text_area_tag 'comment_'+cart_item.id.to_s, nil, placeholder: ' Комментарий'
               =form_tag add_comment_cart_item_path(cart_item.id), remote: true
                 =submit_tag '', class: 'ok_submit', title: 'Сохранить комментарий'
                   =content_tag_for :span, 'Сохранить'
                 =text_area_tag 'comment', cart_item.comment, placeholder: ' Комментарий'
 
-        - row = cart_item.product.get_row
-
-        - unless row.nil?
-          td style="width: 110px;"
-            .row
-              .progress
-                .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
-              p Ряд собран #{row.current_count.to_s+' из '+row.min_count.to_s}
-        - else
-          td style="width: 110px;"
-            .row
-              p Создайте ряд для выкупа
-              = link_to 'Открыть ряд', rows_path(product_id: cart_item.product.id, count: 0), method: :post, class: 'new_row'
+        =render 'rows/partials/open_row', row: cart_item.product.get_row, cart_item: cart_item, progress_status: progress_status, width: width
 
         td style="width: 80px;"
           .price
@@ -101,3 +89,5 @@ table class="table"
 
 #delete_from_cart
   p Продукт удален из корзины
+#open_row
+  p Ряд открыт

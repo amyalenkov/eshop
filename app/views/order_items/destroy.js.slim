@@ -4,3 +4,11 @@
 | $('.cart_menu').html("
 = escape_javascript (render partial: 'layouts/partials/cart_menu')
 | ");
+
+| document.getElementById('delete_from_current_order').setAttribute('style','visibility:hidden');
+| document.getElementById('delete_from_current_order').setAttribute('style','visibility:visible');
+| setTimeout(closeForm, 2000);
+
+| function closeForm(){
+|   document.getElementById('delete_from_current_order').setAttribute('style','visibility:hidden');
+| }

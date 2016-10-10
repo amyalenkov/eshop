@@ -214,4 +214,17 @@
     padding-top: 30px;
   }
 }
+
+#delete_from_current_order{
+  top: 25px;
+  right: 50px;
+  position: fixed;
+  border-radius: 5px;
+  background: rgba(46, 47, 48, 0.8);
+  color: #ffffff;
+  padding: 10px 25px 0 25px;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 1000;
+}
 /*END_ORDERS*/

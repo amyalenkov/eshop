@@ -18,17 +18,21 @@ class RowsController < ApplicationController
 
   def create
     product = Product.find_by_id params[:product_id]
+    count = params[:count]
     @row = product.get_row
     if @row.nil?
       @row = Row.new
       @row.product = product
       @row.min_count = product.get_min_sale
-      @row.current_count = 0
+      @row.current_count = count
       @row.main_order = MainOrder.find_by state: MainOrder.states[:current]
       @row.save!
     end
-    # redirect_to @row
-    redirect_to '/rows'
+
+    # render template: 'cart_items/_cart_items'
+    # render partial: 'cart_items/_cart_items'
+    # redirect_to cart_item_path
+    # redirect_to '/rows'
   end
 
   def update

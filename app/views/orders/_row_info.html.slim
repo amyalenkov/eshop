@@ -17,9 +17,9 @@
     - progress_status.concat('success')
     - width.concat('100%')
 
-.row
-  .progress
-    .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
-  = link_to 'Ряд ', row_path(row), method: :get
-  /p #{text} #{row.current_count.to_s+' из '+row.min_count.to_s}
-  p собран #{row.current_count.to_s+' из '+row.min_count.to_s}
+-if !row.nil?
+  .row
+    .progress
+      .progress-bar class="#{progress_status}" role="progressbar" style="#{width}"
+    = link_to 'Ряд', '/rows'
+    p собран #{row.current_count.to_s+' из '+row.min_count.to_s}

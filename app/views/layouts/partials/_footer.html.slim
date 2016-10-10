@@ -1,37 +1,39 @@
-- if user_signed_in?
-  = render 'layouts/partials/reminder', :nothing => true
+#footer
+  - if user_signed_in?
+    = render 'layouts/partials/reminder'
 
-= render 'layouts/partials/info_links'
-.container-fluid_index
-  .row.footer
-    .col-xs-4.col-sm-4.col-md-4.col-lg-4
-      p
-        b Uzelok4u.by
-      p ИП Болотина Валентина Семеновна
-      p Свидетельство о государственной регистрации выдано 03.08.2016 г. Администрацией Советского района г. Гомеля
-      p Регистрация интернет магазина в Торговом реестре РБ № 350025 от 26.08.2016 г.
+  = render 'layouts/partials/info_links'
+  .container-fluid_index
+    .row.footer
+      .col-xs-4.col-sm-4.col-md-4.col-lg-4
+        p
+          b Uzelok4u.by
+        p ИП Болотина Валентина Семеновна
+        p Свидетельство о государственной регистрации выдано 03.08.2016 г. Администрацией Советского района г. Гомеля
+        p Регистрация интернет магазина в Торговом реестре РБ № 350025 от 26.08.2016 г.
 
-    .col-xs-4.col-sm-4.col-md-4.col-lg-4
-      p
-        b Банковские реквизиты
-      p УНП: 491360407
-      p Юр. адрес: г. Гомель, РБ, ул. Бакунина, 112, кв.1
-      p БЕЛАРУСБАНК:
-      p Р/с 3013119310014 в ф-л 300 ГОУ ОАО «АСБ Беларусбанк»
-      p г.Гомель, БИК 151501661
+      .col-xs-4.col-sm-4.col-md-4.col-lg-4
+        p
+          b Банковские реквизиты
+        p УНП: 491360407
+        p Юр. адрес: г. Гомель, РБ, ул. Бакунина, 112, кв.1
+        p БЕЛАРУСБАНК:
+        p Р/с 3013119310014 в ф-л 300 ГОУ ОАО «АСБ Беларусбанк»
+        p г.Гомель, БИК 151501661
 
-    .col-xs-4.col-sm-4.col-md-4.col-lg-4
-      p
-        b График работы
-      p Прием заказов через сайт: круглосуточно
-      p Прием звонков:
-      p Пн.-Вт.: с 09-00 до 18-00, Сб.-Вс.: с 10-00 до 16-00
-      p Телефон: +375 (44) 787-09-46 / +375 (44) 753-83-07
-      p Электронная почта: uzelok4you@gmail.com
+      .col-xs-4.col-sm-4.col-md-4.col-lg-4
+        p
+          b График работы
+        p Прием заказов через сайт: круглосуточно
+        p Прием звонков:
+        p Пн.-Вт.: с 09-00 до 18-00, Сб.-Вс.: с 10-00 до 16-00
+        p Телефон: +375 (44) 787-09-46 / +375 (44) 753-83-07
+        p Электронная почта: uzelok4you@gmail.com
 
-.go-up title="Вверх" id='ToTop' ⇧
-.go-down title="Вниз" id='OnBottom' ⇩
+  .go-up title="Вверх" id='ToTop' ⇧
+  .go-down title="Вниз" id='OnBottom' ⇩
 
-= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-= javascript_include_tag 'application', :debug => true
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application'
 
+= render 'layouts/partials/contacts_modal'

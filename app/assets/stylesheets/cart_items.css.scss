@@ -695,15 +695,29 @@
 }
 
 #delete_from_cart{
-  top: 10px;
-  right: 10px;
+  top: 25px;
+  right: 50px;
   position: fixed;
   border-radius: 5px;
-  background: rgba(46, 47, 48, 0.7);
+  background: rgba(46, 47, 48, 0.8);
   color: #ffffff;
-  padding: 7px 10px 0 10px;
+  padding: 10px 25px 0 25px;
   visibility: hidden;
   transition: 0.3s;
+  z-index: 1000;
+}
+
+#open_row{
+  top: 25px;
+  right: 50px;
+  position: fixed;
+  border-radius: 5px;
+  background: rgba(46, 47, 48, 0.8);
+  color: #ffffff;
+  padding: 10px 25px 0 25px;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 1000;
 }
 /*END_CART*/
 

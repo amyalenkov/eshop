@@ -1,0 +1,48 @@
+| var pc = #{@row.current_count}/#{@row.min_count};
+| var progress_status='progress-bar-';
+| var width='';
+
+| if (pc > 0 && pc < 0.25){
+|   console.log(pc);
+|   progress_status=progress_status.concat('danger');
+|   width=width.concat('25%');
+| }
+| if (pc > 0.26 && pc <= 0.5){
+|   console.log(pc);
+|   progress_status=progress_status.concat('warning');
+|   width=width.concat('50%');
+| }
+| if (pc > 0.51 && pc < 0.98){
+|   console.log(pc);
+|   progress_status=progress_status.concat('info');
+|   width=width.concat('75%');
+| }
+| if (pc > 0.99){
+|   console.log(pc);
+|   progress_status=progress_status.concat('success');
+|   width=width.concat('100%');
+| }
+
+| console.log(progress_status);
+| console.log(width);
+
+| var parent = document.getElementById(#{@row.product.id.to_s});
+| parent.firstElementChild.textContent='Ряд собран #{@row.current_count.to_s} из #{@row.min_count}';
+| parent.lastElementChild.setAttribute('style','visibility:hidden');
+
+| var progress = document.createElement('div');
+| progress.className = 'progress';
+| var progress_bar = document.createElement('div');
+| progress_bar.className = 'progress-bar ' + progress_status;
+| progress_bar.style.width = width;
+| progress.appendChild(progress_bar);
+| parent.insertBefore(progress, parent.firstElementChild);
+
+
+| document.getElementById('open_row').setAttribute('style','visibility:hidden');
+| document.getElementById('open_row').setAttribute('style','visibility:visible');
+| setTimeout(closeForm, 2000);
+
+| function closeForm(){
+|   document.getElementById('open_row').setAttribute('style','visibility:hidden');
+| }
