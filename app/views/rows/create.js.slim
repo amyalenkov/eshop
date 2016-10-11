@@ -1,39 +1,41 @@
-| var pc = #{@row.current_count}/#{@row.min_count};
-| var progress_status='progress-bar-';
-| var width='';
+|if(#{@row.product_id}){
+|   var pc = #{@row.current_count}/#{@row.min_count};
+|   var progress_status='progress-bar-';
+|   var width='';
 
-| if (pc > 0 && pc < 0.25){
-|   progress_status=progress_status.concat('danger');
-|   width=width.concat('25%');
-| }
-| if (pc > 0.26 && pc <= 0.5){
-|   progress_status=progress_status.concat('warning');
-|   width=width.concat('50%');
-| }
-| if (pc > 0.51 && pc < 0.98){
-|   progress_status=progress_status.concat('info');
-|   width=width.concat('75%');
-| }
-| if (pc > 0.99){
-|   progress_status=progress_status.concat('success');
-|   width=width.concat('100%');
-| }
+|   if (pc > 0 && pc < 0.25){
+|     progress_status=progress_status.concat('danger');
+|     width=width.concat('25%');
+|   }
+|   if (pc > 0.26 && pc <= 0.5){
+|     progress_status=progress_status.concat('warning');
+|     width=width.concat('50%');
+|   }
+|   if (pc > 0.51 && pc < 0.98){
+|     progress_status=progress_status.concat('info');
+|     width=width.concat('75%');
+|   }
+|   if (pc > 0.99){
+|     progress_status=progress_status.concat('success');
+|     width=width.concat('100%');
+|   }
 
-| console.log(progress_status);
-| console.log(width);
+|   var progress_ = document.getElementById('progress_'+#{@row.product.id.to_s});
+|   if(progress_ === null){
+|     var parent = document.getElementById(#{@row.product.id.to_s});
+|     parent.firstElementChild.textContent='Ряд собран #{@row.current_count.to_s} из #{@row.min_count}';
+|     parent.lastElementChild.setAttribute('style','visibility:hidden');
 
-| var parent = document.getElementById(#{@row.product.id.to_s});
-| parent.firstElementChild.textContent='Ряд собран #{@row.current_count.to_s} из #{@row.min_count}';
-| parent.lastElementChild.setAttribute('style','visibility:hidden');
-
-| var progress = document.createElement('div');
-| progress.className = 'progress';
-| var progress_bar = document.createElement('div');
-| progress_bar.className = 'progress-bar ' + progress_status;
-| progress_bar.style.width = width;
-| progress.appendChild(progress_bar);
-| parent.insertBefore(progress, parent.firstElementChild);
-
+|     var progress = document.createElement('div');
+|     progress.className = 'progress';
+|     progress.id = 'progress_'+#{@row.product.id.to_s};
+|     var progress_bar = document.createElement('div');
+|     progress_bar.className = 'progress-bar ' + progress_status;
+|     progress_bar.style.width = width;
+|     progress.appendChild(progress_bar);
+|     parent.insertBefore(progress, parent.firstElementChild);
+|   }
+|}
 
 | document.getElementById('open_row').setAttribute('style','visibility:hidden');
 | document.getElementById('open_row').setAttribute('style','visibility:visible');
