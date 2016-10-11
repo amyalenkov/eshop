@@ -14,5 +14,6 @@ html
       #main.clearfix
         = render 'layouts/partials/header', cache: true
         .content
+          =image_tag 'loading.gif', id: 'loadimg'
           = yield
       = render 'layouts/partials/footer', cache: true

@@ -28,9 +28,12 @@
         option value="Алфавиту" Алфавиту ⇩
         option value="Артикулу" Артикулу ⇧
   .show
-    =link_to '', '', class: 'by_line', onclick: "sortBy('by_line')"
-    /=link_to '', '', class: 'by_two', onclick: "sortBy('by_two')"
-    =link_to '', '', class: 'by_three', onclick: "sortBy('by_three')"
+    - if user_signed_in?
+      =link_to '', '', class: 'by_line', onclick: "sortBy('by_line', '#{current_user.id}')"
+      =link_to '', '', class: 'by_three', onclick: "sortBy('by_three', '#{current_user.id}')"
+    - else
+      =link_to '', '', class: 'by_line', onclick: "sortBy('by_line', 'nil')"
+      =link_to '', '', class: 'by_three', onclick: "sortBy('by_three', 'nil')"
   .paginate
     p Показывать по
     =link_to '20', '?paginate=20', class: 'index_paginate'

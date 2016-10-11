@@ -1,12 +1,24 @@
-function sortBy(typeSort){
-    deleteAllCookies();
-    setCookie('sort_by', typeSort, {expires: 0});
-    console.log('typeSort: '+typeSort);
-    if (typeSort=="by_line"){
-        setCookie('class_for_sort_by', 'product_in_line', {expires: 0});
-    }
-    else{
-        deleteCookie('class_for_sort_by');
+function sortBy(typeSort, id) {
+
+    if(id!=='nil') {
+        $.ajax({
+            type: 'POST',
+            url: '/products/sort_by',
+            data: {'id': id, 'typeSort': typeSort},
+            success: function(data){
+                console.log('data: '+data);
+            }
+        });
+    }else{
+        deleteAllCookies();
+        setCookie('sort_by', typeSort, {expires: 0});
+        console.log('typeSort: '+typeSort);
+        if (typeSort=="by_line"){
+            setCookie('class_for_sort_by', 'product_in_line', {expires: 0});
+        }
+        else{
+            deleteCookie('class_for_sort_by');
+        }
     }
     //alert(document.cookie);
 }

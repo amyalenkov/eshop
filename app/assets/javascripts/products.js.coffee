@@ -4,6 +4,7 @@
 $ ->
 
   $('#sorted_by').on 'change', ->
+    startLoadingAnimation;
     $.ajax
       type: 'POST'
       url: '/products/sorted_by'
@@ -14,6 +15,22 @@ $ ->
         min_sum: $(@).attr('min_sum')
         max_sum: $(@).attr('max_sum')
         news: $(@).attr('news')
+    stopLoadingAnimation;
+
+    startLoadingAnimation = (
+      console.log('startLoadingAnimation');
+      imgObj = $('#loadimg');
+      imgObj.show();
+
+      centerY = $(document).scrollTop() + ($(document).height() + imgObj.height())/2;
+      centerX = $(document).scrollLeft() + ($(document).width() + imgObj.width())/2;
+      content = $('.content');
+
+      imgObj.offset(top:centerY, left:centerX);
+    )
+
+    stopLoadingAnimation = $('#loadimg').hide();
+
 
 # click by 'x'
   $(document).on 'click', '.search_result span', ->

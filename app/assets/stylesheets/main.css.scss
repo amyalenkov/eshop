@@ -8,6 +8,7 @@
 html, body, #wrap { height: 100%; font-family: 'Roboto', sans-serif; /*font-family: Chevin, serif;*/}
 body > #wrap {height: auto; min-height: 100%; min-width: 1000px;}
 #main { padding-bottom: 330px; }  /* must be same height as the footer */
+#loadimg{position: absolute; z-index: 9999; display: none;}
 
 .clearfix:after {content: ".";
   display: block;
@@ -1332,7 +1333,7 @@ header {
       float: left;
       width: 18%;
       position: absolute;
-      left: 74%;
+      left: 60%;
       color: #f28709;
       font-size: 18px;
       font-style: italic;
@@ -1355,11 +1356,11 @@ header {
     }
     .info{
       float: left;
-      width: 50%;
+      width: 20%;
       height: 50px;
       text-align: left;
       position: absolute;
-      left: 50%;
+      left: 65%;
       top: 35%;
       bottom: 10px;
       padding-left: 10px;
