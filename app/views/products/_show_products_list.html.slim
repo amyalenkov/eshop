@@ -21,15 +21,13 @@
 
   /-ActiveRecord::Base.include_root_in_json = true
   /-product_json = @products.to_json.gsub(/\\"/, '')
-
-
   /#row_products.row_products
 
-  - @products.take(9).in_groups_of(index_products, false) do |products|
+  - @products.take(18).in_groups_of(index_products, false) do |products|
     .row_products
       - for product in products
         - product_id = product.id
-        /- product_image = product.image+'0/140.jpg'
+        - product_image = product.image+'0/140.jpg'
         - product_image = ''
         - product_name = product.name.gsub('&quot;', '')
         /- product_material = product.materials_text
