@@ -1,6 +1,7 @@
 = content_for :title do
   -if @subcategory
     - @subcategory.name
+
 .container-fluid_index
   .row
     .col-xs-2.col-sm-2.col-md-2.col-lg-2.catalog_info_old
@@ -23,8 +24,6 @@
         span &nbsp;/&nbsp;
         -unless @subcategory.nil?
           - ancestors = @subcategory.ancestors
-          -Rails.logger.warn 'ancestors'
-          -Rails.logger.warn ancestors.size
           =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
           - @subcategory.ancestors.each_with_index do| sub, index|
             -unless index==0
@@ -36,6 +35,6 @@
           - @subcategories.each do |subcategory|
             -if subcategory.is_leaf
               = link_to image_tag('loading.gif', :class => "#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
-      = render 'products/sort_by'
+      = render 'products/sort_by', :layout => false
       .show_products_list#product_list
         = render 'products/show_products_list'

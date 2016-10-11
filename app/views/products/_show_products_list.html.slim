@@ -1,5 +1,10 @@
 - unless @products.nil?
-  -sort_by = cookies[:sort_by]
+
+  - if user_signed_in?
+    -sort_by = (User.find_by_id current_user.id).sort_by
+  - else
+    -sort_by = cookies[:sort_by]
+
   -case sort_by
     - when 'by_line'
       -index_products=1
@@ -12,13 +17,22 @@
       -index_products=3
       -class_for_sort_by='product'
 
-  - @products.take(18).in_groups_of(index_products, false) do |products|
+  -Rails.logger.warn 'sort_by: '+sort_by.to_s
+
+  /-ActiveRecord::Base.include_root_in_json = true
+  /-product_json = @products.to_json.gsub(/\\"/, '')
+
+
+  /#row_products.row_products
+
+  - @products.take(9).in_groups_of(index_products, false) do |products|
     .row_products
       - for product in products
         - product_id = product.id
-        - product_image = product.image+'0/140.jpg'
+        /- product_image = product.image+'0/140.jpg'
+        - product_image = ''
         - product_name = product.name.gsub('&quot;', '')
-        - product_material = product.materials_text
+        /- product_material = product.materials_text
         - product_size = product.size_text
         - if product_size == 'f'
           -product_size='Недостаточно данных'
@@ -28,7 +42,7 @@
         - new_product_price = product.get_new_price
         - first_part_new_price = new_product_price.to_s.scan( /(\w+)\./).last.first
         - second_part_new_price = new_product_price.to_s.scan( /(\.\w+)/).last.first
-        - country = IsoCountryCodes.find(product.country_id)
+        /- country = IsoCountryCodes.find(product.country_id)
 
         div class="#{class_for_sort_by}"
           .image
@@ -36,9 +50,9 @@
               = image_tag 'loading.gif', :class => "#{product_image}"
           .title
             = link_to product_name, product_path(product)
-            p Материал: <b>#{product_material}</b>
-            p Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
-          .description
+            /p Материал: <b>#{product_material}</b>
+            /p Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
+          /.description
             p Материал: <b>#{product_material}</b>
             p Производитель: <b>#{Country.find_by_alpha2(country.alpha2).name}</b>
             p Размер: <b>#{product_size}</b>
@@ -60,4 +74,13 @@
               .add_in_cart_index id="#{product_id}"
                 = render 'products/add_in_cart', product: product
 
+
   =paginate @products
+
+
+  /script language="javascript" type="text/javascript" src="/assets/loadProducts.js"
+  /javascript:
+  /  document.onload(loadProduct('#{product_json.html_safe}', '#{class_for_sort_by.html_safe}'));
+    //loadProducts('#{product_json.html_safe}');
+    //$(document).on('page:load', function() {loadProducts('#{product_json.html_safe}');});
+
