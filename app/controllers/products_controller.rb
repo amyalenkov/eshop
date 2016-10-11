@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
     if request.url.to_s.include? '/category/'
       @subcategory = Category.find_by id: params[:name]
       @subcategories = @subcategory.children
-      Rails.logger.warn @subcategory.id
     elsif request.url.to_s.include? '/subcategory/'
       @subcategory = Category.find_by_id params[:name]
       Rails.logger.warn @subcategory.id
@@ -48,6 +47,14 @@ class ProductsController < ApplicationController
   def search
     @search_products  = ThinkingSphinx.search params[:search], classes: [Product], :star => true,
                                               :page => params[:page], :per_page => 15
+  end
+
+  def sort_by
+    Rails.logger.warn 'id: '+params[:id].to_s
+    Rails.logger.warn 'typeSort: '+params[:typeSort].to_s
+    sort_by = User.find_by_id params[:id]
+    sort_by.sort_by = params[:typeSort].to_s
+    sort_by.save!
   end
 
   def sorted_by
