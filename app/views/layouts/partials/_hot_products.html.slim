@@ -21,10 +21,10 @@
 
             .product.slide_hot_product
               .image
-                a href="#{product_path(product)}"
+                a href="#{product_path(product.product_id)}"
                   = image_tag (product_image)
               .product_title
-                = link_to product_name, product_path(product)
+                = link_to product_name, product_path(product.product_id)
               .info
                 .sale
                   = product_price +' Бел.руб'
