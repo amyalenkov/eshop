@@ -34,3 +34,14 @@ $(function(){
     setTimeout(function(){
         changeSubCategoryLogo()}, 1500);
 });
+
+$('#sorted_by').change(function(){
+    var changeAttr = function(){
+        $('#product_list div img[class]').each(function(){
+            $(this).attr('src', $(this).attr('class')).removeAttr('class')
+        })
+    };
+
+    setTimeout(function(){
+        changeAttr()}, 2000);
+});
