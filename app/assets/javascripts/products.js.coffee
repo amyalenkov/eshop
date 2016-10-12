@@ -4,7 +4,7 @@
 $ ->
 
   $('#sorted_by').on 'change', ->
-    startLoadingAnimation;
+    start_loading_animation;
     $.ajax
       type: 'POST'
       url: '/products/sorted_by'
@@ -15,22 +15,26 @@ $ ->
         min_sum: $(@).attr('min_sum')
         max_sum: $(@).attr('max_sum')
         news: $(@).attr('news')
-    stopLoadingAnimation;
 
-    startLoadingAnimation = (
-      console.log('startLoadingAnimation');
-      imgObj = $('#loadimg');
-      imgObj.show();
-
-      centerY = $(document).scrollTop() + ($(document).height() + imgObj.height())/2;
-      centerX = $(document).scrollLeft() + ($(document).width() + imgObj.width())/2;
-      content = $('.content');
-
-      imgObj.offset(top:centerY, left:centerX);
+    start_loading_animation = (
+      imgObj = $('#loading_animation')
+      listCategories = $('#list_categories')
+      catalog_old = $('.catalog_old')
+      imgObj.css('height', catalog_old[0].clientHeight - listCategories[0].clientHeight)
+      imgObj.css('marginTop', listCategories[0].clientHeight)
+      imgObj.css('display', 'block')
+      stopLoadingAnimation
     )
 
-    stopLoadingAnimation = $('#loadimg').hide();
+    stopLoadingAnimation =(
+      $('#loading_animation').delay(2000).fadeOut()
+    )
 
+# sleep
+  delay = (ms, func) -> setTimeout func, ms
+  sleep = (ms) ->
+    start = new Date().getTime()
+    continue while new Date().getTime() - start < ms
 
 # click by 'x'
   $(document).on 'click', '.search_result span', ->
