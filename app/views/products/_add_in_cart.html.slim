@@ -8,6 +8,7 @@
         = render 'cart_items/favorite_product', product_id: product.id
     .ok
       = link_to image_tag('ok.png'), cart_items_path
+      input value="#{(CartItem.find_by_product_id product.id).count}" disabled="true"
   -else
     .favourites
       .favourite id="for_favorite_#{product.id}"

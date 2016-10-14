@@ -1203,6 +1203,11 @@ header {
             float: left;
             margin-left: 30px;
           }
+          input{
+            width: 40px;
+            height: 20px;
+            margin-top: 1px;
+          }
         }
         .favourites{
           float: left;
@@ -1403,6 +1408,10 @@ header {
             margin-top: -42px;
             float: left;
             margin-left: 30px;
+          }
+          input{
+            width: 40px;
+            height: 24px;
           }
         }
         .favourites{
