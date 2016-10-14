@@ -145,7 +145,7 @@
   .row_item{
     float: left;
     width: 135px;
-    height: 200px;
+    height: 215px;
     text-align: center;
     margin-top: 5px;
     margin-left: 5px;
@@ -204,7 +204,11 @@
           width: 40%;
           margin-left: 25px;
         }
-        p, a{display: none;}
+        a{display: none;}
+        p{
+          font-size: 9px;
+          margin-top: -10px;
+        }
         .block{display: block;}
       }
     }
@@ -222,6 +226,7 @@
         float: left;
         font-size: 9px;
         color: #f53b3b;
+        margin-right: 5px;
       }
     }
   }
