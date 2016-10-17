@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
 
   def create
     card_items = params[:card_items]
-
+    Rails.logger.warn card_items
     @order = current_user.get_current_order
     if @order.nil?
       @order = Order.new
@@ -145,7 +145,7 @@ class OrdersController < ApplicationController
   def check_presence_product_in_order cart_item
     check_presence_product_in_order = false
     @order.order_items.each do |order_item|
-      if order_item.in_progress?
+      if order_item.in_progress? and order_item.nil?
         check_presence_product_in_order = true if order_item.product == cart_item.product
       end
     end
