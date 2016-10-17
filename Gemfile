@@ -6,7 +6,7 @@ gem 'rails', '4.1.0'
 
 group :development do
   gem 'rack-mini-profiler'
-  gem 'capistrano'
+  gem 'capistrano', '>= 3.4.0'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
@@ -14,9 +14,8 @@ group :development do
   gem 'spring'
 end
 
-gem 'derailed_benchmarks'
-
-gem 'rorvswild'
+# gem 'derailed_benchmarks'
+# gem 'rorvswild'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
