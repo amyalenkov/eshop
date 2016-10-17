@@ -6,7 +6,7 @@ gem 'rails', '4.1.0'
 
 group :development do
   gem 'rack-mini-profiler'
-  gem 'capistrano', '>= 3.4.0'
+  gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
