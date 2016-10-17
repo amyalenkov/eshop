@@ -92,5 +92,3 @@ gem 'jquery-inputmask-rails'
 
 # progress bar
 gem 'nprogress-rails'
-
-gem 'memory_profiler'
