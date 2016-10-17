@@ -13,7 +13,7 @@ table class="table"
     - @rows.each do |row|
       = form_tag(set_state_rows_path, :remote => true) do
         tr
-          td = link_to 'row '+row.id.to_s, row_path(row.id)
+          td = link_to 'row '+row.id.to_s, '/rows'
           td = image_tag (row.product.image+'0/700.jpg'), style: 'max-width: 100px;'
           td = link_to row.product.name.to_s, product_path(row.product.id)
           td = row.min_count
