@@ -14,6 +14,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'derailed_benchmarks'
+
 gem 'rorvswild'
 
 # Use SCSS for stylesheets
@@ -90,3 +92,5 @@ gem 'jquery-inputmask-rails'
 
 # progress bar bundle install
 gem 'nprogress-rails'
+
+gem 'memory_profiler'
