@@ -14,7 +14,7 @@ group :development do
   gem 'spring'
 end
 
-# gem 'derailed_benchmarks'
+gem 'derailed_benchmarks'
 # gem 'rorvswild'
 
 # Use SCSS for stylesheets
