@@ -90,7 +90,7 @@ gem 'just-datetime-picker'
 
 gem 'jquery-inputmask-rails'
 
-# progress bar bundle install
+# progress bar
 gem 'nprogress-rails'
-
-gem 'memory_profiler'
+#
+# gem 'memory_profiler'
