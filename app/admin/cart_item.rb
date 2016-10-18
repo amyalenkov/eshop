@@ -4,4 +4,6 @@ ActiveAdmin.register CartItem do
 
   config.per_page = 30
 
+  filter :user, label: 'Юзер'
+
 end
