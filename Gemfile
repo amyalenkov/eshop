@@ -15,6 +15,7 @@ group :development do
 end
 
 gem 'derailed_benchmarks'
+gem 'stackprof'
 # gem 'rorvswild'
 
 # Use SCSS for stylesheets
