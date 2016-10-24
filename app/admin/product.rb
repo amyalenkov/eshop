@@ -9,7 +9,7 @@ ActiveAdmin.register Product do
   filter :sid
   filter :subcategory_id
 
-  permit_params :name, :title, :description
+  permit_params :name, :title, :description, :balance_text
 
   form do |f|
     f.inputs 'Edit' do
