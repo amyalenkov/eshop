@@ -17,10 +17,10 @@ ActiveAdmin.register Configure do
 
   form do |f|
     f.inputs 'Редактирование' do
-      f.input :name
+      # f.input :name
       f.input :day_of_week, as: :select, collection: Configure.day_of_weeks.keys.to_a
       f.input :time
-      f.input :value
+      # f.input :value
     end
     f.actions
   end
