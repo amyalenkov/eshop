@@ -103,4 +103,26 @@ namespace :my do
     end
   end
 
+  desc 'count_product_task'
+  task :count_product_task => :environment do
+    require "#{Rails.root}/lib/api/product"
+    p 'count_product_task'
+    count = 0
+    OrderItem.find_each do |product|
+      count += 1
+      product_sima = ProductSima.new 'https://www.sima-land.ru/api/v2/'
+      product_new = product_sima.get_product_by_sid Product.find_by_id(product.product_id).sid
+
+      if product_new && product_new['balance_text']
+        puts '---------------------------'
+        puts count
+
+        product = Product.find_by_id product.product_id
+        product.balance_text = product_new['balance_text']
+        product.save
+
+      end
+    end
+  end
+
 end
