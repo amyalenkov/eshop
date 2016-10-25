@@ -1,8 +1,8 @@
 = content_for :description do
-  - (MetaTag.find_by_name 'cart').description[0..159]
+  /- (MetaTag.find_by_name 'cart').description[0..159]
 
 = content_for :title do
-  - (MetaTag.find_by_name 'cart').title
+  /- (MetaTag.find_by_name 'cart').title
 
 .container-fluid_index
   .row
