@@ -29,5 +29,6 @@
 //= require products
 //= require nprogress
 //= require nprogress-turbolinks
+//= require click-carousel.min
 
 //= require_tree .
