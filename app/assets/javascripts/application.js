@@ -11,10 +11,10 @@
 // about supported directives.
 
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.raty
 //= require ratyrate
-//= require jquery.turbolinks
 //= require turbolinks
 //= require jquery.validate
 //= require jquery.validate.additional-methods
