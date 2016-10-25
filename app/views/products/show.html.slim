@@ -124,36 +124,37 @@
         p
           | Другие посетители с этим товаром смотрели:
       .products
-        #slideshow
-          #slidesContainer
-            -@alike_products.each do |product|
-              - product_picture = product.image+'0/700.jpg'
-              - if product_picture == nil
-                - product_image = 'no_images.png'
-              -else product_image = product_picture
+        = image_tag 'next_prev.png', alt: 'Left Arrow', id: 'carouselLeft'
+        #containerSlider
+          -@alike_products.each do |product|
+            - product_picture = product.image+'0/140.jpg'
+            - if product_picture == nil
+              - product_image = 'no_images.png'
+            -else product_image = product_picture
 
-              - product_name = product.name.gsub('&quot;', '')
-              - product_sid = product.sid
-              - product_price = product.get_price
+            - product_name = product.name.gsub('&quot;', '')
+            - product_sid = product.sid
+            - product_price = product.get_price
 
-              - new_product_price = product.get_new_price
-              - first_part_new_price = new_product_price.to_s.scan(/(\w+)\./).last.first
-              - second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
+            - new_product_price = product.get_new_price
+            - first_part_new_price = new_product_price.to_s.scan(/(\w+)\./).last.first
+            - second_part_new_price = new_product_price.to_s.scan(/(\.\w+)/).last.first
 
-              .product.slide
-                .image
-                  a href="#{product_path(product)}"
-                    = image_tag (product_image)
-                .title
-                  = link_to product_name, product_path(product)
-                .info
-                  .sale
-                    = product_price +' Бел.руб'
-                    br
-                    .second_part_new_price
-                      = first_part_new_price
-                      span #{second_part_new_price} р
+            .product.slide
+              .image
+                a href="#{product_path(product)}"
+                  = image_tag (product_image)
+              .title
+                = link_to product_name, product_path(product)
+              .info
+                .sale
+                  = product_price +' Бел.руб'
+                  br
+                  .second_part_new_price
+                    = first_part_new_price
+                    span #{second_part_new_price} р
 
-                .cart
-                  .add_in_cart_other_product id="#{product.id}"
-                    = render 'products/add_in_cart_other_product', product: product
+              .cart
+                .add_in_cart_other_product id="#{product.id}"
+                  = render 'products/add_in_cart_other_product', product: product
+        = image_tag 'next_prev.png', alt: 'Right Arrow', id: 'carouselRight'
