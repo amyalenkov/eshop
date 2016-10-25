@@ -126,3 +126,6 @@ $(document).on('page:unload', function() {
 $(document).on('page:ready', function() {
     get_dates()
 });
+$(document).on('turbolinks:load', function() {
+    get_dates()
+});
