@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require jquery.raty
 //= require ratyrate
-//= require turbolinks
 //= require jquery.turbolinks
+//= require turbolinks
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap.min
