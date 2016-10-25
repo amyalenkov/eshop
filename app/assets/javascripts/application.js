@@ -11,11 +11,10 @@
 // about supported directives.
 
 //= require jquery
-//= require jquery_ujs
 //= require jquery.turbolinks
+//= require jquery_ujs
 //= require jquery.raty
 //= require ratyrate
-//= require turbolinks
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap.min
@@ -32,3 +31,4 @@
 //= require click-carousel.min
 
 //= require_tree .
+//= require turbolinks
