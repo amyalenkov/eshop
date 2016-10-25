@@ -35,13 +35,13 @@ count_product_minutes = count_product_time.strftime('%M')
 count_product_cron = count_product_minutes.to_s + ' ' + count_product_hour.to_s + ' * * *'
 
 every stop_cron do
-  # rake "my:stop_task RAILS_ENV=production"
+  rake "my:stop_task RAILS_ENV=production"
   # rake "my:stop_task RAILS_ENV=development"
   # rake "my:stop_task"
 end
 
 every check_payment_cron do
-  # rake "my:check_payment_task RAILS_ENV=production"
+  rake "my:check_payment_task RAILS_ENV=production"
   # rake "my:check_payment_task RAILS_ENV=development"
   # rake "my:check_payment_task"
 end
