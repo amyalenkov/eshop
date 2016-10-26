@@ -26,6 +26,7 @@
 //= require validation
 //= require validations/validation
 //= require products
+//= require google_analytics
 // require nprogress
 // require nprogress-turbolinks
 //= require click-carousel.min
