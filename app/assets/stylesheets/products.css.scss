@@ -459,16 +459,13 @@
 
 
 #carouselRight{
-  float: right !important;
-}
-
-#carouselLeft{
+  float: left !important;
   transform: rotate(180deg);
 }
 
 #carouselLeft, #carouselRight{
   cursor: pointer;
-  float: left;
+  float: right;
   position: relative;
   z-index: 1000;
   margin-top: 105px;
