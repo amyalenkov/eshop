@@ -1008,8 +1008,8 @@ header {
     width: 100% !important;
     height: 500px;
     padding-top: 20px;
-    overflow:auto; /* разрешаем прокрутку */
-    position:relative;
+    overflow: hidden; /* разрешаем прокрутку */
+    position: relative;
     .catalog_items{
       display: inline-block;
       vertical-align: top;
