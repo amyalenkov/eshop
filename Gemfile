@@ -91,4 +91,4 @@ gem 'just-datetime-picker'
 gem 'jquery-inputmask-rails'
 
 # progress bar
-gem 'nprogress-rails'
+#gem 'nprogress-rails'
