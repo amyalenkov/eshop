@@ -119,9 +119,9 @@ table class="table"
 
 .date_description
   p
-    | Оплатить за СП #{MainOrder.find_by(state: MainOrder.states[:current]).id.to_s} до
-    span class='span1'  #{DateForOrder.find_by_name('stop').date.to_s}
-    br
+    /| Оплатить за СП #{MainOrder.find_by(state: MainOrder.states[:current]).id.to_s} до
+    /span class='span1'  #{DateForOrder.find_by_name('stop').date.to_s}
+    /br
     span class='span2' внимание!!!
     |  Если Ваш чек не будет отправлен нам
     span class='span3'  #{DateForOrder.find_by_name('date for paid').date.to_s}
