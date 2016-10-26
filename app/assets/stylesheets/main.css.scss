@@ -1006,9 +1006,10 @@ header {
   #slideShowIndexCatalog, #slidesContainerIndexCatalog{
     margin:0 auto;
     width: 100% !important;
-    height: 500px;
+    height: 515px;
     padding-top: 20px;
-    overflow: hidden; /* разрешаем прокрутку */
+    margin-bottom: -42px;
+    overflow: auto; /* разрешаем прокрутку */
     position: relative;
     .catalog_items{
       display: inline-block;
@@ -1073,7 +1074,7 @@ header {
   #rightControlCatalog {
     height: 27px;
     position: absolute;
-    margin-top: -20px;
+    margin-top: -5px;
     margin-right: -10px;
     background: transparent url("next_2.png") no-repeat 0 0;
   }
