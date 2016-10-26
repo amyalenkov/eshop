@@ -650,6 +650,7 @@ header {
 
   padding-left: 0;
   padding-right: 0;
+  padding-bottom: 6px;
   margin-left: 15px;
   .title{
     font-size: 16px;
@@ -1002,7 +1003,7 @@ header {
 
   /*CATALOG_ITEMS*/
 
-  #slideShowIndexCatalog #slidesContainerIndexCatalog {
+  #slideShowIndexCatalog, #slidesContainerIndexCatalog{
     margin:0 auto;
     width: 100% !important;
     height: 500px;
@@ -2090,4 +2091,3 @@ header {
   }
   /*END TABS*/
 }
-
