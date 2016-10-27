@@ -12,7 +12,7 @@
 
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery_ujs
+
 //= require jquery.raty
 //= require ratyrate
 //= require jquery.validate
@@ -32,4 +32,3 @@
 //= require click-carousel.min
 
 //= require_tree .
-//= require turbolinks
