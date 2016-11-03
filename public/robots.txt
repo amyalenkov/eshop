@@ -8,3 +8,4 @@ User-agent: *
 Disallow: /*?
 Disallow: /cart_items
 Disallow: /orders
+Sitemap: http://uzelok4u.by/sitemap.xml
