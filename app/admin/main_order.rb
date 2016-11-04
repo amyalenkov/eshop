@@ -17,6 +17,13 @@ ActiveAdmin.register MainOrder do
       link_to 'rows', admin_rowsformainorder_path(main_order_id: main_order.id)
     end
     column 'Итоговая сумма', :full_amount
+    column 'стоп/рассчет' do |main_order|
+      if main_order.state == 'current'
+        link_to  'стоп!', stop_task_path(:order_id => main_order)
+      elsif main_order.state == 'stopped'
+        link_to  'рассчет!',  check_payment_task_path(:order_id => main_order)
+      end
+    end
   end
 
   show do

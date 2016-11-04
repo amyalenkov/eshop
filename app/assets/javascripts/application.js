@@ -32,4 +32,4 @@
 //= require click-carousel.min
 
 //= require_tree .
-//= require turbolinks
+// require turbolinks

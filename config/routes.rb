@@ -71,6 +71,9 @@ Rails.application.routes.draw do
   get '/422', :to => 'errors#unacceptable'
   get '/500', :to => 'errors#internal_error'
 
+  get '/stop_task' => 'main_order#stop_task'
+  get '/check_payment_task' => 'main_order#check_payment_task'
+
   %w( 404 422 500 ).each do |code|
     get code, :to => 'errors#show', :code => code
   end
