@@ -49,16 +49,16 @@ function colorForDateCalendar(data){
     var t = JSON.parse(data);
     var events = document.getElementsByClassName('has-events');
 
-    var stop = t['stop'].slice(-2);
+    //var stop = t['stop'].slice(-2);
     var next_meeting = t['next_meeting'].slice(-2);
     var next_bringing = t['next_bringing'].slice(-2);
     var next_stop = t['next_stop'].slice(-2);
 
     //console.log(data);
 
-    if(stop.charAt(0)==0){
-        stop = stop.substring(1, 2);
-    }
+    //if(stop.charAt(0)==0){
+    //    stop = stop.substring(1, 2);
+    //}
 
     if(next_stop.charAt(0)==0){
         next_stop = next_stop.substring(1, 2);
@@ -72,11 +72,11 @@ function colorForDateCalendar(data){
         next_bringing = next_bringing.substring(1, 2);
     }
 
-    for(i=0; i<3; i++){
-        if(events[i] != undefined && events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == stop){
-            events[i].className += ' next_stop';
-        }
-    }
+    //for(i=0; i<3; i++){
+    //    if(events[i] != undefined && events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == stop){
+    //        events[i].className += ' next_stop';
+    //    }
+    //}
 
     for(i=0; i<3; i++){
         if(events[i] != undefined && events[i].innerHTML.replace(/ /g,'').replace('\n','').replace(/ /g,'') == next_meeting){
