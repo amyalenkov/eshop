@@ -25,3 +25,5 @@ call_ajax = (date) ->
       document.getElementById('pre').setAttribute('href', pre.getAttribute("href"))
       document.getElementById('next').setAttribute("href", next.getAttribute("href"))
       document.getElementById('title').innerHTML = title.innerHTML
+
+      get_dates()

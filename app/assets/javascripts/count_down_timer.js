@@ -106,9 +106,8 @@ function get_dates(){
         dataType: "text",
         success: function (data) {
             var t = JSON.parse(data);
-            //initializeClock('clock', t['stop']);
-            initializeClock('clock', t['next_stop']);
             colorForDateCalendar(data);
+            initializeClock('clock', t['next_stop']);
         }
     });
 }
