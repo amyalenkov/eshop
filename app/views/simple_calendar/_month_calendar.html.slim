@@ -1,8 +1,9 @@
-.simple-calendar
-  = link_to '< ', calendar.url_for_previous_view
-  = I18n.t('date.month_names')[start_date.month]
-  = link_to ' >', calendar.url_for_next_view
-  table.table.table-striped
+#calendar.simple-calendar
+  = link_to '< ', calendar.url_for_previous_view, class: 'pre', id: 'pre'
+  span#title
+    = I18n.t('date.month_names')[start_date.month]
+  = link_to ' >', calendar.url_for_next_view, class: 'next', id: 'next'
+  table#calTable.table.table-striped
     thead
       tr
         - date_range.slice(0, 7).each do |day|

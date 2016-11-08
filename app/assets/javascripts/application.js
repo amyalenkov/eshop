@@ -12,7 +12,6 @@
 
 //= require jquery
 //= require jquery.turbolinks
-// require jquery_ujs
 //= require jquery.raty
 //= require ratyrate
 //= require jquery.validate
@@ -27,9 +26,7 @@
 //= require validations/validation
 //= require products
 //= require google_analytics
-// require nprogress
-// require nprogress-turbolinks
 //= require click-carousel.min
+//= require simple_calendar_async
 
 //= require_tree .
-// require turbolinks
