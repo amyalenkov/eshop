@@ -7,6 +7,7 @@ ActiveAdmin.register Category, :as => 'All Categories' do
   config.per_page = 30
 
   filter :name
+  filter :parent_id
 
   form do |f|
     f.inputs 'Edit' do
