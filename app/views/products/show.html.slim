@@ -3,9 +3,16 @@
     .col-xs-12.col-sm-12.col-md-12.col-lg-12.address_link
       = link_to 'На главную', '/'
       span &nbsp;/&nbsp;
-      -if @category_path
-        = link_to "#{@category_path.first[1][1]}", "/category/#{@category_path.first[1][0]}"
-      -unless @category_path.nil?
+      -unless @subcategory.nil?
+        - ancestors = @subcategory.ancestors
+        =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
+        - @subcategory.ancestors.each_with_index do| sub, index|
+          -unless index==0
+            |&nbsp;/&nbsp;
+            =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
+      /-if @category_path
+      /  = link_to "#{@category_path.first[1][1]}", "/category/#{@category_path.first[1][0]}"
+      /-unless @category_path.nil?
         - @category_path.each_with_index do |sub, index|
           /-Rails.logger.warn 'category name: '+sub[1][1] + ' / category id: '+sub[1][0]
           /-Rails.logger.warn 'index: '+index.to_s

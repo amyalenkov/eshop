@@ -30,12 +30,12 @@ class ProductsController < ApplicationController
     @alike_products = Product.where(subcategory: @product.subcategory).limit(15).order('RANDOM()')
     current_user.add_last_product @product if user_signed_in?
 
-    @subcategory = Subcategory.find_by_id @product.subcategory_id.to_s
-    if @subcategory
-      path = (Category.find_by name: @subcategory.name).path.split('.')
-      @category_path = Hash.new
-      path.each {|id| @category_path[id]=[id, (Category.find_by_id id).name]}
-    end
+    @subcategory = Category.find_by_sid @product.subcategory_id.to_s
+    # if @subcategory
+    #   path = (Category.find_by name: @subcategory.name).path.split('.')
+    #   @category_path = Hash.new
+    #   path.each {|id| @category_path[id]=[id, (Category.find_by_id id).name]}
+    # end
   end
 
   def search_ajax
