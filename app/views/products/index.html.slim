@@ -23,18 +23,16 @@
         = link_to 'Главная', '/'
         span &nbsp;/&nbsp;
         -unless @subcategory.nil?
-          - ancestors = @subcategory.ancestors
-          =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
-          - @subcategory.ancestors.each_with_index do| sub, index|
-            -unless index==0
+          - @array_path.each_with_index do | id, index |
+            =link_to "#{Category.find_by_id(id).name}", "/category/#{id}" if index == 0
+            - unless index == 0
               |&nbsp;/&nbsp;
-              =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
+              =link_to "#{Category.find_by_id(id).name}", "/subcategory/#{id}"
           h4 #{@subcategory.name}
       - if @subcategories != nil
         .list_categories#list_categories
           - @subcategories.each do |subcategory|
-            -if subcategory.is_leaf
-              = link_to image_tag('loading.gif', :class => "#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
+            = link_to image_tag('loading.gif', :class => "#{subcategory.logo_image}")+"<p>#{subcategory.name}</p>".html_safe, "/subcategory/#{subcategory.id}"
       #loading_animation
       = render 'products/sort_by', :layout => false
       .show_products_list#product_list

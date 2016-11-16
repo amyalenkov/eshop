@@ -4,21 +4,11 @@
       = link_to 'На главную', '/'
       span &nbsp;/&nbsp;
       -unless @subcategory.nil?
-        - ancestors = @subcategory.ancestors
-        =link_to "#{ancestors[0].name}", "/category/#{ancestors[0].id}"
-        - @subcategory.ancestors.each_with_index do| sub, index|
-          -unless index==0
+        - @array_path.each_with_index do |id, index|
+          = link_to "#{Category.find_by_id(id).name}", "/category/#{id}" if index == 0
+          - unless index == 0
             |&nbsp;/&nbsp;
-            =link_to "#{sub.name}", "/subcategory/#{sub.id}" unless index==0
-      /-if @category_path
-      /  = link_to "#{@category_path.first[1][1]}", "/category/#{@category_path.first[1][0]}"
-      /-unless @category_path.nil?
-        - @category_path.each_with_index do |sub, index|
-          /-Rails.logger.warn 'category name: '+sub[1][1] + ' / category id: '+sub[1][0]
-          /-Rails.logger.warn 'index: '+index.to_s
-          -if index > 0
-            |&nbsp;/&nbsp;
-            = link_to "#{sub[1][1]}", "/subcategory/#{sub[1][0]}"
+            = link_to "#{Category.find_by_id(id).name}", "/subcategory/#{id}"
 
   .row
     .col-xs-3.col-sm-3.col-md-3.col-lg-3.zoom_list
