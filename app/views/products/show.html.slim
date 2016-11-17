@@ -105,7 +105,7 @@
 
       .description
         noindex
-          p #{@product.description.gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '').gsub('<li>', '').gsub('</li>', '').gsub('<i>', '').gsub('</i>', '')}
+          p #{@product.description.gsub('«Сима-ленд»', '«Узелок»').gsub('<b>', '').gsub('</b>', '').gsub('<p>', '').gsub('</p>', '').gsub('<li>', '').gsub('</li>', '').gsub('<i>', '').gsub('</i>', '')}
 
       .all_comments
         = render 'all_comments_for_product'
