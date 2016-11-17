@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by_id params[:id]
-    @alike_products = Product.where(subcategory: @product.subcategory).limit(15).order('RANDOM()')
+    @alike_products = Product.where(subcategory_id: @product.subcategory_id).limit(15).order('RANDOM()')
     current_user.add_last_product @product if user_signed_in?
 
     @subcategory = Category.find_by_sid @product.subcategory_id.to_s

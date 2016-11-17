@@ -71,8 +71,8 @@
               .add_in_cart_index id="#{product_id}"
                 = render 'products/add_in_cart', product: product
 
-  #page_links
-    =paginate @products, remote: true
+
+  =paginate @products
 
 
   /script language="javascript" type="text/javascript" src="/assets/loadProducts.js"
