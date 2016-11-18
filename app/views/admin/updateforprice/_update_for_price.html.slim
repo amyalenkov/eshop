@@ -1,0 +1,23 @@
+= link_to 'обновить количество товаров', static_pages_update_product_count_path
+table class="table"
+  thead
+    tr
+      th категория
+      th количество товаров
+      th обновить
+  tbody
+    - @categories.each do |category|
+      = form_tag(static_pages_update_products_path) do
+        tr
+          td = category.name
+          td = category.total_count_products
+          = hidden_field_tag 'category_id', category.id
+          - category_for_update = @update_products.find_by_category_id(category.id)
+          - if category_for_update.nil?
+            td = submit_tag 'обновить товары'
+          - elsif category_for_update.last_update_finish.nil?
+            td = 'обновление'
+          - elsif category_for_update.last_update_start > category_for_update.last_update_finish
+            td = 'обновление'
+          - elsif category_for_update.last_update_start < category_for_update.last_update_finish
+            td = submit_tag 'обновить товары'

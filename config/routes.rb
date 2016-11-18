@@ -64,6 +64,9 @@ Rails.application.routes.draw do
   get 'static_pages/close_form' => 'static_pages#close_form'
   get 'static_pages/confirm_registration' => 'static_pages#confirm_registration'
 
+  get 'static_pages/update_product_count' => 'static_pages#update_product_count'
+  post 'static_pages/update_products' => 'static_pages#update_products'
+
   resources :application
   post 'static_pages/order_call'
 

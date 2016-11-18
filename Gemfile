@@ -92,3 +92,5 @@ gem 'jquery-inputmask-rails'
 
 # progress bar
 #gem 'nprogress-rails'
+
+gem 'sucker_punch', '~> 2.0'
