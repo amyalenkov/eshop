@@ -73,19 +73,13 @@ class StaticPagesController < ApplicationController
     render :text => 'ok'
   end
 
+  require 'sucker_punch/async_syntax'
+
   def update_product_count
-    Category.where(level: 1).each do |main_category|
-      array = get_leaf_children_categories main_category
-      count_products = Product.where(subcategory_id: array).count
-      if main_category.total_count_products != count_products
-        main_category.total_count_products = count_products
-        main_category.save!
-      end
-    end
+    UpdateCountProductsJob.perform_async
     redirect_to admin_updateforprice_path
   end
 
-  require 'sucker_punch/async_syntax'
   def update_products
     p 'start controller'
     main_category = Category.find_by_id params[:category_id]
