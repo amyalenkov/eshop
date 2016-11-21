@@ -9,6 +9,7 @@ html
       - if (MetaTag.find_by_name 'index').title
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
+    = javascript_include_tag 'google_analytics'
   body
     #wrap
       #main.clearfix
