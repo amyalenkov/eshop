@@ -25,7 +25,6 @@
 //= require validation
 //= require validations/validation
 //= require products
-//= require google_analytics
 //= require click-carousel.min
 //= require simple_calendar_async
 
